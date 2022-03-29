@@ -37,9 +37,9 @@
 		<nav class="col-md-8 position-center mb-4 text-nav">
 			<center>
 				<div class="buttons-nav-text">
-					<a href=""><button class="bts button-nav-active"><img src="Imagenes\home.png" width="30" height="30"><p>Inicio</p></button></a>				
+					<a href=""><button class="bts button-nav-active"><img src="Imagenes\home.png" width="30" height="30"><p>Inicio</p></button></a>
 					<a href=""><button class="bts button-nav buttons-nav"><img src="Imagenes\acercade.png" width="30" height="30"><p>Acerca De</p></button></a>
-					<button class="bts button-nav buttons-nav" onclick="location.href='login.php'"><img src="Imagenes\login.png" width="25" height="30"><br> <b>Inicio De Sesión</b></button>
+					<button class="bts button-nav buttons-nav" onclick="location.href='login.php'"><img src="Imagenes\login.png" width="25" height="30"><br><p>Inicio De Sesión</p></button>
 				</div>
 			</center>
 		</nav>
