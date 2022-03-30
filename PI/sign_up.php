@@ -43,7 +43,7 @@
 				<label class="mb-3">Contraseña</label>
 				<input class="col-md-10 mb-3" id="pass" type="password" name="pass" minlength="6" maxlength="20" required>
 				<label class="mb-3">Confirmar contraseña <p class="coincide" id="demo"></p></label>
-				<input class="col-md-10 mb-3" id="pass-confirm" type="password" name="pass-confirm"  minlength="6" required>
+				<input class="col-md-10 mb-3" id="pass-confirm" type="password" name="pass-confirm" minlength="6" required>
 				<terminos class="col-md-10 mb-3 content">
 					<input type="checkbox" name="terms" required> No he leído, pero si acepto terminos y condiciones. <a href="javascript:to_open()">Terminos</a>
 			  </terminos>

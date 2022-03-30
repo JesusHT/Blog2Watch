@@ -13,5 +13,28 @@ function close() {
 document.getElementById("pass").addEventListener('input', function() {
     let pass = document.getElementById("pass-confirm").value;
     let passCheck = this.value;
-    document.getElementById("demo").innerHTML = pass === passCheck ? "Coinciden!" : "No coinciden!";
+
+
+    if (pass === passCheck) {
+    	document.getElementById("demo").innerHTML = "Coinciden!";
+    	document.getElementById('demo').style.color="rgb(53,247,149)";
+    }else{
+    	document.getElementById("demo").innerHTML = "no coinciden!";
+    	document.getElementById('demo').style.color="#950101";
+    }
+    //document.getElementById("demo").innerHTML = pass === passCheck ? "Coinciden!" : "No coinciden!";
+});
+
+document.getElementById("pass-confirm").addEventListener('input', function() {
+    let pass = document.getElementById("pass").value;
+    let passCheck = this.value;
+
+
+    if (pass === passCheck) {
+    	document.getElementById("demo").innerHTML = "Coinciden!";
+    	document.getElementById('demo').style.color="rgb(53,247,149)";
+    }else{
+    	document.getElementById("demo").innerHTML = "no coinciden!";
+    	document.getElementById('demo').style.color="#950101";
+    }
 });
