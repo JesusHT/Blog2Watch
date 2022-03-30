@@ -355,7 +355,7 @@ a {
 }
 
 .ventana-terms {
-	background: #787a7b;
+	background-color: #787a7b;
 	width: 30%;
 	padding: 10px;
 	min-height: 250px;
@@ -413,4 +413,48 @@ a {
 	padding-left: 5%;
 	color: white;
 	background: red;
+}
+
+.ventana-aviso-visitante {
+	background-color: #787a7b;
+	width: 70%;
+	height: 70%;
+	padding: 20px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: block;
+	color: white;
+	border: solid 2px black;
+}
+
+.title-aviso {
+	display: inline;
+	color: white;
+	font-weight: bold;
+	margin: 0 auto;
+}
+
+.contenido-aviso {
+	width: 97%;
+	height: 80%;
+	margin: 0 auto;
+	background: #232526;
+	overflow: auto;
+	border-radius: 10px;
+}
+
+.buttons-aviso{
+	background-color: #373b68;
+	color: white;
+}
+
+.buttons-aviso:hover{
+	background-color: #252847;
+}
+
+.texto-aviso p{
+	color: white;
+	text-align: center;
 }

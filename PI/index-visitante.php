@@ -103,36 +103,30 @@
 			</div>
 		</content>
 		<buzon class="mailbox">
-			<a class="mailbox2"><img src="Imagenes\buzon.png" id="mailbox-open"></a>
-			<a href="javascript:to_open()"><img src="Imagenes\buzon1.png" id="mailbox-closed"></a>
+			<a href="javascript:to_open()"><img src="Imagenes\buzon1.png"></a>
 		</buzon>
-		<buzon-abierto class="ventana-mailbox" id="vent">
-			<h5 class="title-mailbox">BUZÓN DE SUGERENCIAS</h5>
+		<aviso-visitante class="ventana-aviso-visitante" id="vent">
+			<h5 class="title-aviso">AVISO</h5>
 			<cerrar id="close">
 				<a href="javascript:close()"><img src="Imagenes/error.png" width="25" height="25" align="right"></a>
 			</cerrar>
 			<br><br>
-			<body-mailbox class="row">
-				<div class="mailbox-chat">
-						<div class="row">
-							<div class="col-md-6">
-								<p class="text-name-mailbox">Adiministrador</p>
-								<p class="text-mailbox">Mensage</p>
-							</div>
-							<div class="col-md-6"></div>
-							<div class="col-md-6"></div>
-							<div class="col-md-6">
-								<p class="text-name-mailbox">Usuario</p>
-								<p class="text-mailbox">Mensage</p>
-							</div>
-						</div>
+			<body-visitante class="row">
+				<div class="contenido-aviso">
+					<p align="center">Si quieres disfrutar de los privilegios:</p>
+					<img src="Imagenes\"><p class="posicion-texto">Comentar</p>
+					<img src="Imagenes\caraf.png" width="28" height="28"><img src="Imagenes\carat.png" width="28" height="28"><p class="posicion-texto">Reaccionar</p>
+					<img src="Imagenes\sobre.png" width="28" height="28"><p class="posicion-texto">Entrar al Buzón</p>
+					<p align="center">Registrate a nuestro blog o inicia sesión</p>
+					<div class="mb-3">
+						<center>
+							<a href="sign_up.php"><button class="buttons-aviso">Registrarse</button></a>
+							<a href="login.php" ><button class="buttons-aviso">Inicia Sesión</button></a>					
+						</center>
+					</div>	
 				</div>
-				<form class="btn-group" method="POST" action="#">
-					<textarea class="col-md-10 textarea-mailbox" type="text" name="mailbox" placeholder="Escribir sugerencia..."></textarea>
-					<input class="col-md-2 submit-mailbox" type="submit" value="Enviar">
-				</form>
 			</body-mailbox>
-		</buzon-abierto>
+		</aviso-visitante>
 	</div>
 	<script src="resources\script.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
