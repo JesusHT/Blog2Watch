@@ -36,25 +36,24 @@
 				echo '<p class="message">', $message ,'</p>';
 			}
 		?>
-		<form method="POST" action="sign_up.php" class="align align-color">
+		<form class="align align-color" method="POST" action="sign_up.php">
 			<div class="row">
 				<label class="mb-3">Nombre de usuario</label>
-				<input type="text" name="name" class="col-md-10 mb-2" maxlength="20">
+				<input class="col-md-10 mb-2" type="text" name="name" maxlength="20" minlength="5" required>
 				<label class="mb-3">Contraseña</label>
-				<input id="pass" type="password" name="pass" class="col-md-10 mb-3" minlength="6" maxlength="20">
-				<label class="mb-3">Confirmar contraseña <p id="demo" class="coincide"></p></label>
-				<input id="pass-confirm" type="password" name="pass-confirm" class="col-md-10 mb-3" minlength="6">
+				<input class="col-md-10 mb-3" id="pass" type="password" name="pass" minlength="6" maxlength="20" required>
+				<label class="mb-3">Confirmar contraseña <p class="coincide" id="demo"></p></label>
+				<input class="col-md-10 mb-3" id="pass-confirm" type="password" name="pass-confirm"  minlength="6" required>
 				<terminos class="col-md-10 mb-3 content">
-					<input type="checkbox" name="terms"> No he leído, pero si acepto terminos y condiciones. <a href="javascript:to_open()">Terminos</a>
+					<input type="checkbox" name="terms" required> No he leído, pero si acepto terminos y condiciones. <a href="javascript:to_open()">Terminos</a>
 			  </terminos>
-				<input type="submit" value="Registrar" class="col-md-10 button-Login mb-3"> 
-
+				<input class="col-md-10 button-Login mb-3" type="submit" value="Registrar"> 
 			</div>
 		</form>
 		<p class="color-align">¿Ya tienes un cuenta? <a href="login.php">Inicia sesión</a></p>
 	</Caja>
 	<div class="ventana-terms" id="vent">
-		<cerrar id="close" class="position">
+		<cerrar class="position" id="close">
 			<a href="javascript:close()"><img src="Imagenes/error.png"></a>
 		</cerrar>
 		<p>Reglas</p>

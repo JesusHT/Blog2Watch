@@ -41,17 +41,17 @@
 		<div class="col-md-10 content">
 			<p class="color-align mb-4">Por favor, escriba la información de su cuenta para iniciar sesión</p>
 		</div>
-		<form method="POST" action="login.php" class="align align-color">
+		<form class="align align-color" method="POST" action="login.php">
 			<div class="row">
 				<label class="mb-3">Usuario</label>
-				<input type="text" name="name" class="col-md-10 mb-2">
+				<input class="col-md-10 mb-2" type="text" name="name" required>
 				<label class="mb-3">Contraseña</label>
-				<input type="password" name="pass" class="col-md-10 mb-3">
-				<input type="submit" value="Ingresar" class="col-md-10 button-Login mb-3"> 
+				<input class="col-md-10 mb-3" type="password" name="pass" required>
+				<input class="col-md-10 button-Login mb-3" type="submit" value="Ingresar"> 
 			</div>
 		</form>
 		<p class="color-align">¿No tienes una cuenta? <a href="sign_up.php">Regístrate</a></p>
 	</Caja>
-	<img src="Imagenes/logowelcom.png" class="logowelcome">
+	<img class="logowelcome" src="Imagenes/logowelcom.png">
 </body>
 </html>
