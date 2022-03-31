@@ -156,6 +156,8 @@ textarea {
 
 .button-post {
 	background-color: black;
+	width: 100%;
+	min-width: 165px;
 	height: 40px;
 	border-radius: 5px;
 }
@@ -165,7 +167,6 @@ textarea {
 }
 
 .content-comment {
-	height: 75%;
 	max-height: 200px;
 	overflow: auto;
 }
@@ -415,18 +416,18 @@ a {
 	background: red;
 }
 
+
+/* CSS - AVISO PARA EL VISITANTE */
 .ventana-aviso-visitante {
 	background-color: #787a7b;
-	width: 70%;
-	height: 70%;
 	padding: 20px;
 	position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	display: block;
+	display: none;
 	color: white;
-	border: solid 2px black;
+	border-radius: 10px;
 }
 
 .title-aviso {
@@ -437,24 +438,22 @@ a {
 }
 
 .contenido-aviso {
-	width: 97%;
-	height: 80%;
 	margin: 0 auto;
 	background: #232526;
 	overflow: auto;
 	border-radius: 10px;
 }
 
-.buttons-aviso{
+.buttons-aviso {
 	background-color: #373b68;
 	color: white;
 }
 
-.buttons-aviso:hover{
+.buttons-aviso:hover {
 	background-color: #252847;
 }
 
-.texto-aviso p{
-	color: white;
-	text-align: center;
+.img-aviso img {
+	width: 28px;
+	height: 28px;
 }

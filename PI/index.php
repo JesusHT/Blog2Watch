@@ -78,20 +78,20 @@
 								echo '<post class="row post">
 									<post-title class="title-post"><h3>Titulo de la publicación</h3></post-title>
 									<post-info class="info-post"><p>Información de la publicación<br><br></p></post-info>
-									<post-reactions class="reactions-post position-center row mb-3">
-										<button class="col-md-6 button-post"><img src="Imagenes\caraf.png" width="28" height="30"><p></p></button>
-										<button class="col-md-6 button-post"><img src="Imagenes\carat.png" class="mb-3" width="28" height="30"><p> </p></button>
+									<post-reactions class="reactions-post position-center mb-3 btn-group">
+										<a href="javascript:to_open()" class="col-md-6"><button class="button-post"><img src="Imagenes\caraf.png" width="28" height="30"></button></a>
+										<a href="javascript:to_open()" class="col-md-6"><button class="button-post"><img src="Imagenes\carat.png" class="mb-3" width="28" height="30"></button></a>
 									</post-reactions>
 									<post-comment class="col-md-12">
 										<div class="row">
 											<div class="col-md-12">
-												<div class="content-comment mb-3">
+												<div class="content-comment mb-2">
 													<p class="text-name-comment"></p><p class="text-comment"></p>
 												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="row">
-													<form method="POST" class="btn-group mb-3">
+													<form method="POST" class="btn-group mb-3" action="javascript:to_open()">
 														<textarea class="col-md-10 textarea-comment" type="text" name="comment" placeholder="Escribir comentario..."></textarea>
 														<input class="col-md-2 submit-comment" type="submit" value="Comentar">
 													</form>
@@ -99,8 +99,8 @@
 											</div>
 										</div>
 									</post-comment>
-									</post>
-									<br>';
+								</post>
+								<br>';
 							}
 						?>
 					</section>

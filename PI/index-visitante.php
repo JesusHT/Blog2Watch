@@ -51,11 +51,11 @@
 							<a class="text-filtered btn" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-controls="collapseOne" ><img src="Imagenes\filtrar.png" width="30" height="30">FILTROS</a>
 							<div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
 							  <div class="body-filtered section-filtered text-section-filtered row hr-filterd filtered">
-							  	<section-filtered class="col-md-4">TIPO<hr>
+							  	<section-filtered class="col-md-4 mb-3">TIPO<hr>
 							  		<a href="" title="Muestra unicamente las series">Series</a><br>
 							  		<a href="" title="Muestra unicamente las peliculas">Peliculas</a>
 							  	</section-filtered>
-							  	<section-filtered class="col-md-4">ORDENAR POR<hr>
+							  	<section-filtered class="col-md-4 mb-3">ORDENAR POR<hr>
 							  		<a href="" title="Ordena del más relevante al menos relevante">Más Relevante</a><br>
 							  		<a href="" title="Ordena del menos relevante al más relevante">Menos Relevante</a>
 							  	</section-filtered>
@@ -73,20 +73,20 @@
 								echo '<post class="row post">
 									<post-title class="title-post"><h3>Titulo de la publicación</h3></post-title>
 									<post-info class="info-post"><p>Información de la publicación<br><br></p></post-info>
-									<post-reactions class="reactions-post position-center row mb-3">
-										<button class="col-md-6 button-post"><img src="Imagenes\caraf.png" width="28" height="30"><p></p></button>
-										<button class="col-md-6 button-post"><img src="Imagenes\carat.png" class="mb-3" width="28" height="30"><p> </p></button>
+									<post-reactions class="reactions-post position-center mb-3 btn-group">
+										<a href="javascript:to_open()" class="col-md-6"><button class="button-post"><img src="Imagenes\caraf.png" width="28" height="30"></button></a>
+										<a href="javascript:to_open()" class="col-md-6"><button class="button-post"><img src="Imagenes\carat.png" class="mb-3" width="28" height="30"></button></a>
 									</post-reactions>
 									<post-comment class="col-md-12">
 										<div class="row">
 											<div class="col-md-12">
-												<div class="content-comment mb-3">
+												<div class="content-comment mb-2">
 													<p class="text-name-comment"></p><p class="text-comment"></p>
 												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="row">
-													<form method="POST" class="btn-group mb-3">
+													<form method="POST" class="btn-group mb-3" action="javascript:to_open()">
 														<textarea class="col-md-10 textarea-comment" type="text" name="comment" placeholder="Escribir comentario..."></textarea>
 														<input class="col-md-2 submit-comment" type="submit" value="Comentar">
 													</form>
@@ -94,8 +94,8 @@
 											</div>
 										</div>
 									</post-comment>
-									</post>
-									<br>';
+								</post>
+								<br>';
 							}
 						?>
 					</section>
@@ -114,9 +114,20 @@
 			<body-visitante class="row">
 				<div class="contenido-aviso">
 					<p align="center">Si quieres disfrutar de los privilegios:</p>
-					<img src="Imagenes\"><p class="posicion-texto">Comentar</p>
-					<img src="Imagenes\caraf.png" width="28" height="28"><img src="Imagenes\carat.png" width="28" height="28"><p class="posicion-texto">Reaccionar</p>
-					<img src="Imagenes\sobre.png" width="28" height="28"><p class="posicion-texto">Entrar al Buzón</p>
+					<div class="row">
+						<div class="col-md-4 img-aviso" align="center">
+							<div class="position-center">
+								<img src="Imagenes\comentar.png" class="mb-2"><br>
+								<img src="Imagenes\caraf.png" class="mb-2"><img src="Imagenes\carat.png" class="mb-2"><br>
+								<img src="Imagenes\sobre.png">
+							</div>
+						</div>
+						<div class="col-md-6">
+							<p>Comentar</p>
+							<p>Reaccionar</p>
+							<p>Entrar al Buzón</p>
+						</div>
+					</div>
 					<p align="center">Registrate a nuestro blog o inicia sesión</p>
 					<div class="mb-3">
 						<center>
