@@ -30,28 +30,24 @@
 	<link rel="icon" type="image/png" href="Imagenes\icono.ico">
 	<title>Blog2Watch</title>
 </head>
-<body class="body">
+<body class="body2">
 	<img src="Imagenes/logoblog.png" class="logoblog">
-	<Caja class="caja">
+	<Inicio-sesion class="login">
 		<?php 
 			if (!empty($message)) {
-				echo '<p class="messagelogin">', $message ,'</p>';
+				echo '<p class="message-error">', $message ,'</p>';
 			}
 		?>
-		<div class="col-md-10 content">
-			<p class="color-align mb-4">Por favor, escriba la información de su cuenta para iniciar sesión</p>
-		</div>
-		<form class="align align-color" method="POST" action="login.php">
-			<div class="row">
-				<label class="mb-3">Usuario</label>
-				<input class="col-md-10 mb-2" type="text" name="name" required>
-				<label class="mb-3">Contraseña</label>
-				<input class="col-md-10 mb-3" type="password" name="pass" required>
-				<input class="col-md-10 button-Login mb-3" type="submit" value="Ingresar"> 
-			</div>
+		<p align="center">Por favor, escriba la información de su cuenta para iniciar sesión</p>
+		<form class="margin-bottom" method="POST" action="login.php">
+			<label>Usuario</label>
+			<input class="align-input" type="text" name="name" required>
+			<label>Contraseña</label>
+			<input class="align-input" type="password" name="pass" required>
+			<input class="button-submit align-input" type="submit" value="Ingresar"> 
 		</form>
-		<p class="color-align">¿No tienes una cuenta? <a href="sign_up.php">Regístrate</a></p>
-	</Caja>
+		<p align="center">¿No tienes una cuenta? <a href="sign_up.php">Regístrate</a></p>
+	</Inicio-sesion>
 	<img class="logowelcome" src="Imagenes/logowelcom.png">
 </body>
 </html>

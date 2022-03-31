@@ -40,35 +40,31 @@
 	<link rel="icon" type="image/png" href="Imagenes\icono.ico">
 	<title>Blog2Watch</title>
 </head>
-<body class="body">
-	<div>
-		<div><img src="Imagenes/logoblog.png" class="logoblog2"></div><br>
-		<div>	<sign-up class="registro">
-		<?php 
-			if (!empty($message)) {
-				echo '<p class="message">', $message ,'</p>';	
-			}
-			if (!empty($message2)) {
-				echo '<p class="message2">', $message2 ,'</p>';
-			}
-		?>
-		<form method="POST" action="sign_up.php" class="margin-bottom">
-			<label>Nombre de usuario</label><br>
-			<input class="align-input" type="text" name="name" maxlength="20" minlength="5" required><br>
-			<label>Contraseña</label><br>
-			<input class="align-input" id="pass" type="password" name="pass" minlength="6" maxlength="20" required>
-			<br>
-			<label>Confirmar contraseña <p class="coincide" id="demo"></p></label><br>
-			<input class="align-input" id="pass-confirm" type="password" name="pass-confirm" minlength="6" required>
-			<br>
-			<terminos>
-				<input type="checkbox" name="terms" required> Acepto terminos y condiciones. <a href="javascript:to_open()">Terminos</a>
-			</terminos>
-			<input class="button-submit align-input" type="submit" value="Registrar"> 
-		</form>
-		<p align="center">¿Ya tienes un cuenta? <a href="login.php">Inicia sesión</a></p>
-	</sign-up></div>
-	</div>
+<body class="body2">
+		<img src="Imagenes/logoblog.png" class="logoblog2">
+		<sign-up class="registro">
+			<?php 
+				if (!empty($message)) {
+					echo '<p class="message-correcto">', $message ,'</p>';	
+				}
+				if (!empty($message2)) {
+					echo '<p class="message-error">', $message2 ,'</p>';
+				}
+			?>
+			<form method="POST" action="sign_up.php" class="margin-bottom">
+				<label>Nombre de usuario</label>
+				<input class="align-input" type="text" name="name" maxlength="20" minlength="5" required>
+				<label>Contraseña</label>
+				<input class="align-input" id="pass" type="password" name="pass" minlength="6" maxlength="20" required>
+				<label>Confirmar contraseña <p class="coincide" id="demo"></p></label>
+				<input class="align-input" id="pass-confirm" type="password" name="pass-confirm" minlength="6" required>
+				<terminos>
+					<input type="checkbox" name="terms" required> Acepto terminos y condiciones. <a href="javascript:to_open()">Terminos</a>
+				</terminos>
+				<input class="button-submit align-input" type="submit" value="Registrar"> 
+			</form>
+			<p align="center">¿Ya tienes un cuenta? <a href="login.php">Inicia sesión</a></p>
+		</sign-up>
 	<div class="ventana-terms" id="vent">
 		<p style="display: inline;">Terminos y Condiciones</p><a href="javascript:close()"><img src="Imagenes/error.png" width="25" height="25" align="right"></a>
 		<p></p>

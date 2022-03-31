@@ -17,7 +17,7 @@ a {
 	color: white;
 }
 
-.body {
+.body2 {
 	background: #232526;
 }
 
@@ -301,28 +301,21 @@ a.color-select:hover {
 	padding-left: 1.5%;
 }
 
-/*CSS - Login */
+/* CSS - GLOBAL LOGIN Y SIGN UP */
 
-.caja {
-	background: #787a7b;
-	border-radius: 5px;
-	padding: 20px;
-	position: absolute;
-	top: 55%;
-	left: 50%;
-	color: white;
-	transform: translate(-50%, -50%);
+.margin-bottom label,input{
+	margin-bottom: 1rem!important;
 }
 
 .button-submit {
-	background: #373b68;
+	background-color: #373b68;
 	color: white;
 	height: 50px;
 	margin: 0 auto;
 }
 
-.margin-bottom label,input{
-	margin-bottom: 1rem!important;
+.button-submit:hover {
+	background-color: #252847;
 }
 
 .align-input {
@@ -330,6 +323,22 @@ a.color-select:hover {
 	width: 100%;
 	border-radius: 10px;
 }
+
+.message-error {
+	padding-left: 5%;
+	color: white;
+	background-color: red;
+	font-weight: bold;
+}
+
+.message-correcto {
+	padding-left: 5%;
+	color: white;
+	background-color: green;
+	font-weight: bold;
+}
+
+/*CSS - Login */
 
 .logoblog {
 	margin: 0 auto;
@@ -341,6 +350,18 @@ a.color-select:hover {
 	width: 300px;
 }
 
+.login {
+	background: #787a7b;
+	max-width: 400px;
+	border-radius: 5px;
+	padding: 20px;
+	position: absolute;
+	top: 55%;
+	left: 50%;
+	color: white;
+	transform: translate(-50%, -50%);
+}
+
 .logowelcome {
 	margin: 0 auto;
 	position: absolute;
@@ -349,17 +370,11 @@ a.color-select:hover {
 	width: 150px;
 }
 
-.messagelogin {
-	padding-left: 5%;
-	color: white;
-	background: red;
-}
-
-
 /* CSS - Registro */
 
 .registro {
 	background: #787a7b;
+	max-width: 400px;
 	border-radius: 5px;
 	padding: 20px;
 	position: absolute;
@@ -377,36 +392,6 @@ a.color-select:hover {
 	transform: translate(-50%, -50%);
 	height: 150px;
 	width: 300px;
-}
-
-.button-submit {
-	background: #373b68;
-	color: white;
-	height: 50px;
-	margin: 0 auto;
-}
-
-.margin-bottom label,input{
-	margin-bottom: 1rem!important;
-}
-
-.align-input {
-	margin: 0 auto;
-	width: 100%;
-	border-radius: 10px;
-}
-
-.message {
-	padding-left: 5%;
-	color: white;
-	background-color: green;
-	font-weight: bold;
-}
-
-.message2 {
-	color: white;
-	background-color: red;
-	font-weight: bold;
 }
 
 .coincide {
