@@ -16,10 +16,10 @@ document.getElementById("pass").addEventListener('input', function() {
 
 
     if (pass === passCheck) {
-    	document.getElementById("demo").innerHTML = "Coinciden!";
+    	document.getElementById("demo").innerHTML = "¡Coinciden!";
     	document.getElementById('demo').style.color="rgb(53,247,149)";
     }else{
-    	document.getElementById("demo").innerHTML = "no coinciden!";
+    	document.getElementById("demo").innerHTML = "¡No coinciden!";
     	document.getElementById('demo').style.color="#950101";
     }
     //document.getElementById("demo").innerHTML = pass === passCheck ? "Coinciden!" : "No coinciden!";
@@ -31,10 +31,10 @@ document.getElementById("pass-confirm").addEventListener('input', function() {
 
 
     if (pass === passCheck) {
-    	document.getElementById("demo").innerHTML = "Coinciden!";
+    	document.getElementById("demo").innerHTML = "¡Coinciden!";
     	document.getElementById('demo').style.color="rgb(53,247,149)";
     }else{
-    	document.getElementById("demo").innerHTML = "no coinciden!";
+    	document.getElementById("demo").innerHTML = "¡No coinciden!";
     	document.getElementById('demo').style.color="#950101";
     }
 });

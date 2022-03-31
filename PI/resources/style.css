@@ -13,6 +13,14 @@ textarea {
   resize: none;
 }
 
+a {
+	color: white;
+}
+
+.body {
+	background: #232526;
+}
+
 /* CSS - Header */
 .logo img {	
 	width: 270px;
@@ -293,103 +301,40 @@ a.color-select:hover {
 	padding-left: 1.5%;
 }
 
-/*CSS - Login y sign_up */
-
-.body-Login {
-	background: #232526;
-}
+/*CSS - Login */
 
 .caja {
 	background: #787a7b;
 	border-radius: 5px;
 	padding: 20px;
-	width: 400px;
 	position: absolute;
 	top: 55%;
 	left: 50%;
+	color: white;
 	transform: translate(-50%, -50%);
 }
 
-
-@media (max-width: 400px) {
-	.caja {
-		width: 87%;
-	}
-}
-
-.content {
-	margin: 0 auto;
-	color: white;
-}
-
-.color-align {
-	color: white;
-	text-align: center;
-}
-
-.button-Login {
+.button-submit {
 	background: #373b68;
 	color: white;
 	height: 50px;
 	margin: 0 auto;
 }
 
-.align input {
+.margin-bottom label,input{
+	margin-bottom: 1rem!important;
+}
+
+.align-input {
 	margin: 0 auto;
-	border-radius: 5px;
-}
-
-.align-color label {
-	color: white;
-	padding-left: 9%;
-	border-radius: 5px;
-}
-
-.coincide {
-	color: #950101;
-	font-weight: bold;
-	display: inline;
-}
-
-a {
-	color: white;
-}
-
-.ventana-terms {
-	background-color: #787a7b;
-	width: 30%;
-	padding: 10px;
-	min-height: 250px;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	display: none;
-	color: white;
-	border: solid 2px black;
-}
-
-.position img {
-	position: absolute;
-	width: 25px;
-	height: 25px;
-	left: 93%;
+	width: 100%;
+	border-radius: 10px;
 }
 
 .logoblog {
 	margin: 0 auto;
 	position: absolute;
 	top: 13%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	height: 150px;
-	width: 300px;
-}
-
-.logoblog2 {
-	margin: 0 auto;
-	position: absolute;
-	top: 9%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	height: 150px;
@@ -404,18 +349,85 @@ a {
 	width: 150px;
 }
 
-.message {
-	padding-left: 5%;
-	color: white;
-	background: green;
-}
-
 .messagelogin {
 	padding-left: 5%;
 	color: white;
 	background: red;
 }
 
+
+/* CSS - Registro */
+
+.registro {
+	background: #787a7b;
+	border-radius: 5px;
+	padding: 20px;
+	position: absolute;
+	top: 55%;
+	left: 50%;
+	color: white;
+	transform: translate(-50%, -50%);
+}
+
+.logoblog2 {
+	margin: 0 auto;
+	position: absolute;
+	top: 9%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	height: 150px;
+	width: 300px;
+}
+
+.button-submit {
+	background: #373b68;
+	color: white;
+	height: 50px;
+	margin: 0 auto;
+}
+
+.margin-bottom label,input{
+	margin-bottom: 1rem!important;
+}
+
+.align-input {
+	margin: 0 auto;
+	width: 100%;
+	border-radius: 10px;
+}
+
+.message {
+	padding-left: 5%;
+	color: white;
+	background-color: green;
+	font-weight: bold;
+}
+
+.message2 {
+	color: white;
+	background-color: red;
+	font-weight: bold;
+}
+
+.coincide {
+	color: #950101;
+	font-weight: bold;
+	display: inline;
+}
+
+.ventana-terms {
+	background-color: #787a7b;
+	padding: 10px;
+	min-height: 250px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	display: none;
+	color: white;
+	border: solid 2px black;
+	border-radius: 10px;
+}
 
 /* CSS - AVISO PARA EL VISITANTE */
 .ventana-aviso-visitante {

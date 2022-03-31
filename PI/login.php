@@ -30,7 +30,7 @@
 	<link rel="icon" type="image/png" href="Imagenes\icono.ico">
 	<title>Blog2Watch</title>
 </head>
-<body class="body-Login">
+<body class="body">
 	<img src="Imagenes/logoblog.png" class="logoblog">
 	<Caja class="caja">
 		<?php 

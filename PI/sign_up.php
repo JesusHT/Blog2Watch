@@ -2,21 +2,33 @@
   require 'includes\db.php';
 
   $message = '';
+  $message2 = '';
 
   if (!empty($_POST['name']) && !empty($_POST['pass']) && !empty($_POST['pass-confirm'])) {
-    $sql = "INSERT INTO users (name, pass) VALUES (:name, :pass)";
-    $stmt = $conn->prepare($sql);
-    $stmt->bindParam(':name', $_POST['name']);
-    
-    $password = password_hash($_POST['pass'], PASSWORD_BCRYPT);
-    $stmt->bindParam(':pass', $password);
+  	$records = $conn->prepare('SELECT id, name, pass FROM users WHERE name = :name');
+    $records->bindParam(':name', $_POST['name']);
+    $records->execute();
+    $results = $records->fetch(PDO::FETCH_ASSOC);
 
-    if ($stmt->execute()) {
-      $message = '¡Usuario registrado exitoxamente!';
+    $message = '';
+
+    if (is_countable($results) > 0) {
+    	$message2 = 'El usuario ya existe';
     } else {
-      $message = '¡No se ha podido crear el usuario!';
+	    $sql = "INSERT INTO users (name, pass) VALUES (:name, :pass)";
+	    $stmt = $conn->prepare($sql);
+	    $stmt->bindParam(':name', $_POST['name']);
+	    
+	    $password = password_hash($_POST['pass'], PASSWORD_BCRYPT);
+	    $stmt->bindParam(':pass', $password);
+
+	    if ($stmt->execute()) {
+	      $message = '¡Usuario registrado exitoxamente!';
+	    } else {
+	      $message2 = '¡No se ha podido crear el usuario!';
+	    }
+	   } 
     }
-   }
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,35 +40,38 @@
 	<link rel="icon" type="image/png" href="Imagenes\icono.ico">
 	<title>Blog2Watch</title>
 </head>
-<body class="body-Login">
-	<img src="Imagenes/logoblog.png" class="logoblog2">
-	<Caja class="caja">
+<body class="body">
+	<div>
+		<div><img src="Imagenes/logoblog.png" class="logoblog2"></div><br>
+		<div>	<sign-up class="registro">
 		<?php 
 			if (!empty($message)) {
-				echo '<p class="message">', $message ,'</p>';
+				echo '<p class="message">', $message ,'</p>';	
+			}
+			if (!empty($message2)) {
+				echo '<p class="message2">', $message2 ,'</p>';
 			}
 		?>
-		<form class="align align-color" method="POST" action="sign_up.php">
-			<div class="row">
-				<label class="mb-3">Nombre de usuario</label>
-				<input class="col-md-10 mb-2" type="text" name="name" maxlength="20" minlength="5" required>
-				<label class="mb-3">Contraseña</label>
-				<input class="col-md-10 mb-3" id="pass" type="password" name="pass" minlength="6" maxlength="20" required>
-				<label class="mb-3">Confirmar contraseña <p class="coincide" id="demo"></p></label>
-				<input class="col-md-10 mb-3" id="pass-confirm" type="password" name="pass-confirm" minlength="6" required>
-				<terminos class="col-md-10 mb-3 content">
-					<input type="checkbox" name="terms" required> No he leído, pero si acepto terminos y condiciones. <a href="javascript:to_open()">Terminos</a>
-			  </terminos>
-				<input class="col-md-10 button-Login mb-3" type="submit" value="Registrar"> 
-			</div>
+		<form method="POST" action="sign_up.php" class="margin-bottom">
+			<label>Nombre de usuario</label><br>
+			<input class="align-input" type="text" name="name" maxlength="20" minlength="5" required><br>
+			<label>Contraseña</label><br>
+			<input class="align-input" id="pass" type="password" name="pass" minlength="6" maxlength="20" required>
+			<br>
+			<label>Confirmar contraseña <p class="coincide" id="demo"></p></label><br>
+			<input class="align-input" id="pass-confirm" type="password" name="pass-confirm" minlength="6" required>
+			<br>
+			<terminos>
+				<input type="checkbox" name="terms" required> Acepto terminos y condiciones. <a href="javascript:to_open()">Terminos</a>
+			</terminos>
+			<input class="button-submit align-input" type="submit" value="Registrar"> 
 		</form>
-		<p class="color-align">¿Ya tienes un cuenta? <a href="login.php">Inicia sesión</a></p>
-	</Caja>
+		<p align="center">¿Ya tienes un cuenta? <a href="login.php">Inicia sesión</a></p>
+	</sign-up></div>
+	</div>
 	<div class="ventana-terms" id="vent">
-		<cerrar class="position" id="close">
-			<a href="javascript:close()"><img src="Imagenes/error.png"></a>
-		</cerrar>
-		<p>Reglas</p>
+		<p style="display: inline;">Terminos y Condiciones</p><a href="javascript:close()"><img src="Imagenes/error.png" width="25" height="25" align="right"></a>
+		<p></p>
 	</div>
 	<script src="resources/script.js"></script>
 </body>
