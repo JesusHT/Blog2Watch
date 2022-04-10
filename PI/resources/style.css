@@ -23,7 +23,7 @@ a {
 
 /* CSS - Header */
 .logo img {	
-	width: 270px;
+	width: 265px;
 	height: 110px;
 	margin-left: auto;
 	margin-right: auto;
@@ -154,7 +154,8 @@ a {
 
 .info-post p {
 	color: white;
-	border-bottom: solid 2px white;
+	border-bottom: solid 1px white;
+	text-align: justify;
 }
 
 .reactions-post p {
@@ -208,6 +209,53 @@ a {
 .text-comment {
 	color: white;
 	padding-left: 1.5%;
+}
+
+.font label{
+	color: white;
+}
+
+.info-textarea {
+	background-color: black;
+	color: white;
+	border-radius: 5px;
+	width: 100%;
+	min-width: 120px;
+}
+
+.button-submit2 {
+	background-color: black;
+	color: white;
+	height: 50px;
+	margin: 0 auto;
+}
+
+.button-submit2:hover {
+	background-color: #950101;
+}
+
+.align-input2 {
+	background-color: black;
+	color: white;
+	margin: 0 auto;
+	width: 100%;
+	border-radius: 10px;
+}
+
+.message-error2 {
+	padding-left: 5%;
+	border-radius: 5px;
+	color: white;
+	background-color: red;
+	font-weight: bold;
+}
+
+.message-correcto2 {
+	padding-left: 5%;
+	border-radius: 5px;
+	color: white;
+	background-color: green;
+	font-weight: bold;
 }
 
 /* CSS - Plataform */
@@ -301,9 +349,9 @@ a.color-select:hover {
 	padding-left: 1.5%;
 }
 
-/* CSS - GLOBAL LOGIN Y SIGN UP */
+/* CSS - STYLES GLOBAL LOGIN Y SIGN UP */
 
-.margin-bottom label,input{
+.margin-bottom label,input,textarea,select{
 	margin-bottom: 1rem!important;
 }
 

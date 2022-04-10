@@ -2,9 +2,17 @@
   session_start();
 
   require 'includes\db.php';
+  
+  error_reporting(E_ALL ^ E_WARNING);
+
+  $titulo = $_POST['title'];
+  $info = $_POST['info'];
+  $plataforma = $_POST['plataforma'];
+  $tipo = $_POST['tipo'];
+  $_SESSION['fecha'] = $_POST['fecha'];
 
   if (isset($_SESSION['user_id'])) {
-    $records = $conn->prepare('SELECT id, name, pass FROM users WHERE id = :id');
+    $records = $conn->prepare('SELECT * FROM users WHERE id = :id');
     $records->bindParam(':id', $_SESSION['user_id']);
     $records->execute();
     $results = $records->fetch(PDO::FETCH_ASSOC);
@@ -14,7 +22,48 @@
     if (count($results) > 0) {
       $user = $results;
     }
-  } 
+
+  }
+
+	if (!empty($titulo) && !empty($info) && !empty($plataforma) && !empty($tipo)){
+		$records = $conn->prepare('SELECT * FROM post WHERE titulo = :titulo');
+    $records->bindParam(':titulo', $titulo);
+    $records->execute();
+    $results = $records->fetch(PDO::FETCH_ASSOC);
+
+    $message = '';
+
+    if (is_countable($results) > 0) {
+    	$message2 = 'Ya existe una publicación con ese titulo';
+    }else {
+	    $sql = "INSERT INTO post (titulo, info, plataforma, tipo) VALUES (:titulo, :info, :plataforma, :tipo)";
+		  $stmt = $conn->prepare($sql);
+
+		  $stmt->bindParam(':titulo', $titulo);
+		  $stmt->bindParam(':info', $info);
+		  $stmt->bindParam(':plataforma', $plataforma);
+		  $stmt->bindParam(':tipo', $tipo);
+
+		  if ($stmt->execute()) {
+		    $message = '¡Publicación subida exitoxamente!';
+
+		  } else {
+		 	 $message2 = '¡No se ha podido subir la publicación!';
+		  }	
+		}
+	}
+
+	$sql = "SELECT * FROM post";
+	$query = $conn -> prepare($sql);
+	$query -> execute();
+	$results = $query -> fetchAll(PDO::FETCH_OBJ);
+
+	if(isset($_POST['eliminar'])){
+		$sql = "DELETE FROM post WHERE id_oficio = :id_oficio";
+		$stmt = $conn->prepare($sql);
+		$stmt->bindParam(':id_oficio', $_POST['eliminar']);
+		$stmt->execute();
+	} 
 ?>
 
 <!DOCTYPE html>
@@ -23,7 +72,8 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="resources\style.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" type="text/css" href="resources\style.css">
 	<link rel="icon" type="image/png" href="Imagenes\icono.ico">
 	<title>Blog2Watch</title>
 </head>
@@ -57,41 +107,98 @@
 							<div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
 							  <div class="body-filtered section-filtered text-section-filtered row hr-filterd filtered">
 							  	<section-filtered class="col-md-4">TIPO<hr>
-							  		<a href="" title="Muestra unicamente las series">Series</a><br>
-							  		<a href="" title="Muestra unicamente las peliculas">Peliculas</a>
+							  		<form action="index-administrador.php" method="get" id="form1">
+											<input type="radio" id="1" name="tipo" value="1" onclick="document.getElementById('form1').submit()"><label for="1" onclick="document.getElementById('form1').submit()"> Serie</label><br>
+									    <input type="radio" id="2" name="tipo" value="0" onclick="document.getElementById('form1').submit()"><label for="2" onclick="document.getElementById('form1').submit()"> Peliculas</label>
+										</form>
 							  	</section-filtered>
 							  	<section-filtered class="col-md-4">ORDENAR POR<hr>
-							  		<a href="" title="Ordena del más relevante al menos relevante">Más Relevante</a><br>
-							  		<a href="" title="Ordena del menos relevante al más relevante">Menos Relevante</a>
+							  		<form action="index-administrador.php" method="get" id="form2">
+											<input type="radio" id="3" name="relevancia" value="1" onclick="document.getElementById('form2').submit()"><label for="3" onclick="document.getElementById('form2').submit()"> Más relevante</label><br>
+									    <input type="radio" id="4" name="relevancia" value="0" onclick="document.getElementById('form2').submit()"><label for="4" onclick="document.getElementById('form2').submit()"> Menos relevante</label>
+										</form>
 							  	</section-filtered>
 							  	<section-filtered class="col-md-4">FECHA DE CARGA<hr>
-							  		<a href="" title="Ordena del más nuevo al más antiguo">Recientes</a><br>
-							  		<a href="" title="Ordena del más antiguo al más nuevo">Antiguos</a>
+							  		<form action="index-administrador.php" method="POST" id="form3">
+											<input type="radio" id="5" name="fecha" value="1" onclick="document.getElementById('form3').submit()"><label for="5" onclick="document.getElementById('form3').submit()"> Más reciente</label><br>
+									    <input type="radio" id="6" name="fecha" value="0" onclick="document.getElementById('form3').submit()"><label for="6" onclick="document.getElementById('form3').submit()"> Menos reciente</label>
+										</form>
 							  	</section-filtered>
 							  </div>
 							</div>
 						</acordion-filtered>
 					</section>
 					<section class="col-md-8 position-center">
-						<?php  
-							for ($i=1;$i<=5;$i++){ 
-								echo '<post class="row post">
-									<post-title class="title-post"><h3>Titulo de la publicación</h3></post-title>
-									<post-info class="info-post"><p>Información de la publicación<br><br></p></post-info>
-									<post-reactions class="reactions-post position-center row mb-3">
-										<button class="col-md-6 button-post"><img src="Imagenes\caraf.png" width="28" height="30"><p></p></button>
-										<button class="col-md-6 button-post"><img src="Imagenes\carat.png" class="mb-3" width="28" height="30"><p> </p></button>
+						<post-form class="row post">
+							<div class="mt-3">
+								<?php 
+								if (!empty($message)) {
+									echo '<p class="message-correcto2">', $message ,'</p>';	
+								}
+								if (!empty($message2)) {
+									echo '<p class="message-error2">', $message2 ,'</p>';
+								}
+							?>
+							</div>
+							<form class="margin-bottom font" action="index-administrador.php" method="POST" id="formul"> 
+									<label>Ingrese Titulo</label>
+									<input class="align-input2" type="text" name="title" maxlength="100" required>
+									<label>Ingrese Información</label>
+									<textarea name="info" class="info-textarea" minlength="6" maxlength="500" required></textarea>
+									<label>Seleccione Plataforma</label>
+									<select class="align-input2" name="plataforma" required>
+									  <option value="NETFLIX">Netflix</option>
+									  <option value="Amazon">Amazon Prime</option>
+									  <option value="Disney">Disney+</option>
+									  <option value="HBO">HBO</option>
+									  <option value="Otro">Otro</option>
+									</select>
+									<label>Seleccione Tipo</label>
+									<select class="align-input2" name="tipo" required>
+									  <option value="Pelicula">Pelicula</option>
+									  <option value="Serie">Serie</option>
+									</select>
+									<input class="button-submit2 align-input" type="submit">
+							</form>
+						</post-form>	
+						<br>
+						<?php 
+							if($query -> rowCount() > 0) { 
+								if ($_SESSION['fecha'] == 1) {
+									rsort($results);
+								}else{
+									sort($results);
+								}
+								foreach($results as $result) {
+									echo '<post class="row post">
+									<div class="col-md-12 mt-2">
+										<div class="row">
+											<div class="col-md-10">
+												<post-title class="title-post"><h3>' . $result -> titulo . '</h3></post-title>
+											</div>
+											<div class="col-md-2" align="right">
+												<form action="" method="GET">
+													<input type="hidden" name="eliminar" value=" '. $result -> id_post . '">
+													<button type="submit"><i class="bi bi-trash-fill"></i></button>								
+												</form>
+											</div>
+										</div>
+									</div>
+									<post-info class="info-post mt-2"><p>' . $result -> info . '</p></post-info>
+									<post-reactions class="reactions-post position-center mb-3 btn-group">
+										<a href="javascript:to_open()" class="col-md-6"><button class="button-post"><img src="Imagenes\caraf.png" width="28" height="30"></button></a>
+										<a href="javascript:to_open()" class="col-md-6"><button class="button-post"><img src="Imagenes\carat.png" class="mb-3" width="28" height="30"></button></a>
 									</post-reactions>
 									<post-comment class="col-md-12">
 										<div class="row">
 											<div class="col-md-12">
-												<div class="content-comment mb-3">
+												<div class="content-comment mb-2">
 													<p class="text-name-comment"></p><p class="text-comment"></p>
 												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="row">
-													<form method="POST" class="btn-group mb-3">
+													<form method="POST" class="btn-group mb-3" action="">
 														<textarea class="col-md-10 textarea-comment" type="text" name="comment" placeholder="Escribir comentario..."></textarea>
 														<input class="col-md-2 submit-comment" type="submit" value="Comentar">
 													</form>
@@ -99,9 +206,11 @@
 											</div>
 										</div>
 									</post-comment>
-									</post>
-									<br>';
+								</post>
+								<br>';
+								} 
 							}
+
 						?>
 					</section>
 				</content>
@@ -144,3 +253,5 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
 </body>
 </html>
+
+								

@@ -4,7 +4,7 @@
   session_start();
 
   if (!empty($_POST['name']) && !empty($_POST['pass'])) {
-    $records = $conn->prepare('SELECT id, name, pass FROM users WHERE name = :name');
+    $records = $conn->prepare('SELECT * FROM users WHERE name = :name');
     $records->bindParam(':name', $_POST['name']);
     $records->execute();
     $results = $records->fetch(PDO::FETCH_ASSOC);
@@ -12,8 +12,13 @@
     $message = '';
 
     if (is_countable($results) > 0 && password_verify($_POST['pass'], $results['pass'])) {
-      $_SESSION['user_id'] = $results['id'];
-      header("Location: index.php");
+      	if ($results['name'] == 'Administrador'){
+      		$_SESSION['user_id'] = $results['id'];
+     			header("Location: index-administrador.php");
+      	}else{
+      		$_SESSION['user_id'] = $results['id'];
+     			header("Location: index-user.php");
+      	}
     } else {
       $message = 'El Usuario y/o contraseña son incorrectos';
     }

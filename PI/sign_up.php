@@ -5,7 +5,7 @@
   $message2 = '';
 
   if (!empty($_POST['name']) && !empty($_POST['pass']) && !empty($_POST['pass-confirm'])) {
-  	$records = $conn->prepare('SELECT id, name, pass FROM users WHERE name = :name');
+  	$records = $conn->prepare('SELECT * FROM users WHERE name = :name');
     $records->bindParam(':name', $_POST['name']);
     $records->execute();
     $results = $records->fetch(PDO::FETCH_ASSOC);
