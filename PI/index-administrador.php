@@ -9,7 +9,7 @@
   $info = $_POST['info'];
   $plataforma = $_POST['plataforma'];
   $tipo = $_POST['tipo'];
-  $_SESSION['fecha'] = $_POST['fecha'];
+
 
   if (isset($_SESSION['user_id'])) {
     $records = $conn->prepare('SELECT * FROM users WHERE id = :id');
@@ -53,17 +53,25 @@
 		}
 	}
 
-	$sql = "SELECT * FROM post";
+	
+
+	if ($_POST['fecha'] == 0 || $_POST['fecha'] == 1) {
+		$sql = "SELECT * FROM post ORDER BY id_post DESC";
+	}else{
+		$sql = "SELECT * FROM post ORDER BY id_post ASC";
+	}
+
 	$query = $conn -> prepare($sql);
 	$query -> execute();
 	$results = $query -> fetchAll(PDO::FETCH_OBJ);
 
 	if(isset($_POST['eliminar'])){
-		$sql = "DELETE FROM post WHERE id_oficio = :id_oficio";
+		$sql = "DELETE FROM post WHERE id_post = :id_post";
 		$stmt = $conn->prepare($sql);
-		$stmt->bindParam(':id_oficio', $_POST['eliminar']);
+		$stmt->bindParam(':id_post', $_POST['eliminar']);
 		$stmt->execute();
 	} 
+
 ?>
 
 <!DOCTYPE html>
@@ -120,8 +128,8 @@
 							  	</section-filtered>
 							  	<section-filtered class="col-md-4">FECHA DE CARGA<hr>
 							  		<form action="index-administrador.php" method="POST" id="form3">
-											<input type="radio" id="5" name="fecha" value="1" onclick="document.getElementById('form3').submit()"><label for="5" onclick="document.getElementById('form3').submit()"> Más reciente</label><br>
-									    <input type="radio" id="6" name="fecha" value="0" onclick="document.getElementById('form3').submit()"><label for="6" onclick="document.getElementById('form3').submit()"> Menos reciente</label>
+											<input type="radio" id="5" name="fecha" <?php if ($_POST['fecha'] == 1 || $_POST['fecha'] == 0){ echo "checked";}?> value="1" onclick="document.getElementById('form3').submit()"><label for="5" onclick="document.getElementById('form3').submit()"> Más reciente</label><br>
+									    <input type="radio" id="6" name="fecha" <?php if ($_POST['fecha'] == 2){ echo "checked";}?>  value="2" onclick="document.getElementById('form3').submit()"><label for="6" onclick="document.getElementById('form3').submit()"> Menos reciente</label>
 										</form>
 							  	</section-filtered>
 							  </div>
@@ -164,11 +172,6 @@
 						<br>
 						<?php 
 							if($query -> rowCount() > 0) { 
-								if ($_SESSION['fecha'] == 1) {
-									rsort($results);
-								}else{
-									sort($results);
-								}
 								foreach($results as $result) {
 									echo '<post class="row post">
 									<div class="col-md-12 mt-2">
@@ -177,7 +180,7 @@
 												<post-title class="title-post"><h3>' . $result -> titulo . '</h3></post-title>
 											</div>
 											<div class="col-md-2" align="right">
-												<form action="" method="GET">
+												<form action="index-administrador.php" method="POST">
 													<input type="hidden" name="eliminar" value=" '. $result -> id_post . '">
 													<button type="submit"><i class="bi bi-trash-fill"></i></button>								
 												</form>
@@ -193,12 +196,13 @@
 										<div class="row">
 											<div class="col-md-12">
 												<div class="content-comment mb-2">
-													<p class="text-name-comment"></p><p class="text-comment"></p>
+													<p class="text-name-comment"> ' . $result -> name . ' </p><p class="text-comment"> ' . $result -> comment . ' </p>
 												</div>
 											</div>
 											<div class="col-md-12">
 												<div class="row">
-													<form method="POST" class="btn-group mb-3" action="">
+													<form method="POST" class="btn-group mb-3" action="index-administrador.php">
+														<input type="hidden" name="eliminar" value=" '. $result -> id_post . '">
 														<textarea class="col-md-10 textarea-comment" type="text" name="comment" placeholder="Escribir comentario..."></textarea>
 														<input class="col-md-2 submit-comment" type="submit" value="Comentar">
 													</form>

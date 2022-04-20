@@ -16,11 +16,15 @@ document.getElementById("pass").addEventListener('input', function() {
 
 
     if (pass === passCheck) {
-    	document.getElementById("demo").innerHTML = "¡Coinciden!";
-    	document.getElementById('demo').style.color="rgb(53,247,149)";
+    	document.getElementById("demo").innerHTML = '<i class="bi bi-check-lg"></i>';
+    	document.getElementById('demo').style.color="green";
+        document.getElementById("demo2").innerHTML = '<i class="bi bi-check-lg"></i>';
+        document.getElementById('demo2').style.color="green";
     }else{
-    	document.getElementById("demo").innerHTML = "¡No coinciden!";
+    	document.getElementById("demo").innerHTML = '<i class="bi bi-x-lg"></i>';
     	document.getElementById('demo').style.color="#950101";
+        document.getElementById("demo2").innerHTML = '<i class="bi bi-x-lg"></i>';
+        document.getElementById('demo2').style.color="#950101";
     }
     //document.getElementById("demo").innerHTML = pass === passCheck ? "Coinciden!" : "No coinciden!";
 });
@@ -31,10 +35,14 @@ document.getElementById("pass-confirm").addEventListener('input', function() {
 
 
     if (pass === passCheck) {
-    	document.getElementById("demo").innerHTML = "¡Coinciden!";
-    	document.getElementById('demo').style.color="rgb(53,247,149)";
+    	document.getElementById("demo").innerHTML = '<i class="bi bi-check-lg"></i>';
+    	document.getElementById('demo').style.color="green";
+        document.getElementById("demo2").innerHTML = '<i class="bi bi-check-lg"></i>';
+        document.getElementById('demo2').style.color="green";
     }else{
-    	document.getElementById("demo").innerHTML = "¡No coinciden!";
+    	document.getElementById("demo").innerHTML = '<i class="bi bi-x-lg"></i>';
     	document.getElementById('demo').style.color="#950101";
+        document.getElementById("demo2").innerHTML = '<i class="bi bi-x-lg"></i>';
+        document.getElementById('demo2').style.color="#950101";
     }
 });

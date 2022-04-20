@@ -23,11 +23,8 @@ a {
 
 /* CSS - Header */
 .logo img {	
-	width: 265px;
-	height: 110px;
-	margin-left: auto;
-	margin-right: auto;
-	display: block;
+	width: 230px;
+	height: auto;
 }
 
 /* CSS - Nav */
@@ -351,8 +348,9 @@ a.color-select:hover {
 
 /* CSS - STYLES GLOBAL LOGIN Y SIGN UP */
 
-.margin-bottom label,input,textarea,select{
+label,input,textarea,select{
 	margin-bottom: 1rem!important;
+	border-radius: 10px;
 }
 
 .button-submit {
@@ -369,7 +367,6 @@ a.color-select:hover {
 .align-input {
 	margin: 0 auto;
 	width: 100%;
-	border-radius: 10px;
 }
 
 .message-error {
@@ -386,28 +383,17 @@ a.color-select:hover {
 	font-weight: bold;
 }
 
+.form-users {
+	background: #787a7b;
+	border-radius: 5px;
+	padding: 20px;
+}
+
 /*CSS - Login */
 
 .logoblog {
-	margin: 0 auto;
-	position: absolute;
-	top: 13%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	height: 150px;
-	width: 300px;
-}
-
-.login {
-	background: #787a7b;
-	max-width: 400px;
-	border-radius: 5px;
-	padding: 20px;
-	position: absolute;
-	top: 55%;
-	left: 50%;
-	color: white;
-	transform: translate(-50%, -50%);
+	height: auto;
+	width: 250px;
 }
 
 .logowelcome {
@@ -418,46 +404,49 @@ a.color-select:hover {
 	width: 150px;
 }
 
-/* CSS - Registro */
-
-.registro {
-	background: #787a7b;
-	max-width: 400px;
-	border-radius: 5px;
-	padding: 20px;
-	position: absolute;
-	top: 55%;
-	left: 50%;
+a[href="sign_up.php"], a[href="login.php"], a[href="recuperar.php"]{ 
 	color: white;
-	transform: translate(-50%, -50%);
+	font-weight: bold;
 }
 
-.logoblog2 {
-	margin: 0 auto;
-	position: absolute;
-	top: 9%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	height: 150px;
-	width: 300px;
+section p {
+	color: white;
 }
 
+/* CSS - Registro */
 .coincide {
 	color: #950101;
 	font-weight: bold;
 	display: inline;
 }
 
+terminos span {
+	color: white;
+}
+
+.terms p {
+	display: inline;
+	font-weight: bold;
+}
+
+.cerrar {
+	color: #373b68;
+}
+
+.cerrar:hover {
+	color: #252847;
+}
+
 .ventana-terms {
 	background-color: #787a7b;
 	padding: 10px;
 	min-height: 250px;
+	min-width: 350px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	display: none;
-	color: white;
 	border: solid 2px black;
 	border-radius: 10px;
 }

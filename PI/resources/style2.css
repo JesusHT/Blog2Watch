@@ -1,0 +1,22 @@
+body {
+	background-color: #000000;
+}
+
+img[src='Imagenes/logoblog.png'] {
+	width: 230px;
+	height: auto;
+}
+
+nav[class='row'] a{
+	color: white;
+	font-weight: bold;
+}
+
+nav[class='row'] a:hover{
+	background-color: #950101;
+	color: white;
+}
+
+.nav-tabs2{
+	border-bottom: 1px solid #950101;
+}
