@@ -49,59 +49,58 @@
 			</center>
 		</nav>
 		<content>
-			<div class="container-fluid">
+			<div class="container">
 				<content class="row">
 					<section class="col-md-8 position-center mb-3">
-						<acordion-filtered class="acordion-item" id="accordionExample">
-							<a class="text-filtered btn" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-controls="collapseOne" ><img src="Imagenes\filtrar.png" width="30" height="30">FILTROS</a>
-							<div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-							  <div class="body-filtered section-filtered text-section-filtered row hr-filterd filtered">
-							  	<section-filtered class="col-md-4">TIPO<hr>
-							  		<a href="" title="Muestra unicamente las series">Series</a><br>
-							  		<a href="" title="Muestra unicamente las peliculas">Peliculas</a>
-							  	</section-filtered>
-							  	<section-filtered class="col-md-4">ORDENAR POR<hr>
-							  		<a href="" title="Ordena del más relevante al menos relevante">Más Relevante</a><br>
-							  		<a href="" title="Ordena del menos relevante al más relevante">Menos Relevante</a>
-							  	</section-filtered>
-							  	<section-filtered class="col-md-4">FECHA DE CARGA<hr>
-							  		<a href="" title="Ordena del más nuevo al más antiguo">Recientes</a><br>
-							  		<a href="" title="Ordena del más antiguo al más nuevo">Antiguos</a>
-							  	</section-filtered>
-							  </div>
-							</div>
-						</acordion-filtered>
+						<?php require 'includes\filtros.php'; ?>
 					</section>
 					<section class="col-md-8 position-center">
-						<?php  
-							for ($i=1;$i<=5;$i++){ 
-								echo '<post class="row post">
-									<post-title class="title-post"><h3>Titulo de la publicación</h3></post-title>
-									<post-info class="info-post"><p>Información de la publicación<br><br></p></post-info>
-									<post-reactions class="reactions-post position-center mb-3 btn-group">
-										<a href="javascript:to_open()" class="col-md-6"><button class="button-post"><img src="Imagenes\caraf.png" width="28" height="30"></button></a>
-										<a href="javascript:to_open()" class="col-md-6"><button class="button-post"><img src="Imagenes\carat.png" class="mb-3" width="28" height="30"></button></a>
-									</post-reactions>
-									<post-comment class="col-md-12">
-										<div class="row">
-											<div class="col-md-12">
-												<div class="content-comment mb-2">
-													<p class="text-name-comment"></p><p class="text-comment"></p>
+					<?php 
+							if($query -> rowCount() > 0) { 
+								foreach($results as $result) {
+						?>
+									<post class="row post">
+										<div class="col-md-12 mt-2">
+											<div class="row">
+												<div class="col-md-10">
+													<post-title class="title-post"><h3><?php echo $result -> titulo; ?></h3></post-title>
 												</div>
-											</div>
-											<div class="col-md-12">
-												<div class="row">
-													<form method="POST" class="btn-group mb-3" action="javascript:to_open()">
-														<textarea class="col-md-10 textarea-comment" type="text" name="comment" placeholder="Escribir comentario..."></textarea>
-														<input class="col-md-2 submit-comment" type="submit" value="Comentar">
+												<div class="col-md-2" align="right">
+													<form action="index-administrador.php" method="POST">
+														<input type="hidden" name="eliminar" value="<?php echo $result -> id_post; ?>">
+														<button type="submit"><i class="bi bi-trash-fill"></i></button>								
 													</form>
 												</div>
 											</div>
 										</div>
-									</post-comment>
-								</post>
-								<br>';
+										<post-info class="info-post mt-2"><p><?php echo $result -> info; ?></p></post-info>
+										<post-reactions class="reactions-post position-center mb-3">
+											
+										</post-reactions>
+										<post-comment class="col-md-12">
+											<div class="row">
+												<div class="col-md-12">
+													<div class="content-comment mb-2">
+														<p class="text-name-comment"><?php  ?></p><p class="text-comment"><?php  ?></p>
+													</div>
+												</div>
+												<div class="col-md-12">
+													<div class="row">
+														<form method="POST" class="btn-group mb-3" action="index-administrador.php">
+															<input type="hidden" name="eliminar" value="<?php echo $result -> id_post; ?>">
+															<textarea class="col-md-10 textarea-comment" type="text" name="comment" placeholder="Escribir comentario..."></textarea>
+															<input class="col-md-2 submit-comment" type="submit" value="Comentar">
+														</form>
+													</div>
+												</div>
+											</div>
+										</post-comment>
+									</post>
+									<br>
+						<?php
+								} 
 							}
+
 						?>
 					</section>
 				</content>

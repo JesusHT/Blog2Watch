@@ -54,9 +54,6 @@ a {
 	height: 65px;
 }
 
-.buttons-nav-text a {
-	text-decoration: none;
-}
 
 .text-nav p {
 	color: white;
@@ -115,8 +112,7 @@ a {
 }
 
 .body-filtered {
-	width: 98%;
-	/*background-color: #323232;*/
+	width: auto;
 	margin: 0 auto;
 	border-radius: 5px;
 }
@@ -137,6 +133,7 @@ a {
 	text-decoration: none;
 }
 
+
 /* CSS - Post */
 
 .post {
@@ -155,10 +152,6 @@ a {
 	text-align: justify;
 }
 
-.reactions-post p {
-	color: white;
-	display: inline;
-}
 
 .button-post {
 	background-color: black;
