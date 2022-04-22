@@ -2,6 +2,11 @@
 
 	require 'db.php';
 
+	use PHPMailer\PHPMailer\PHPMailer;
+
+	require 'phpmailer/PHPMailer/src/PHPMailer.php';
+	require 'phpmailer/PHPMailer/src/SMTP.php';
+
 	# Declaramos las variables que vamos a utilizar, esto con el fin de que no aparezca el warning de variable indefinida.
 	$user = "";
 	$pass = "";
@@ -10,8 +15,9 @@
 	$message = "";
 	$message2 = "";
 	$correo = "";
-
-	if (isset($_POST['name']) && !isset($_POST['pregunta'])) { # Validamos que exista un valor en $_POST['name'] y que no exista nigun valor en $_POST['pregunta'].
+	
+	// Inicio de sesion de usuario 	
+	if (isset($_POST['name']) && isset($_POST['pass'])) { # Validamos que exista un valor en $_POST['name'] y  $_POST['pass'].
 		session_start(); # Iniciamos una sesion que nos ayudara más tarde.
 
 		# Asignamos las variables previamente declaradas a sus respectivos $_POST.
@@ -37,6 +43,7 @@
 				$message = "El usuario y/o la contraseña son incorrectos"; 
 		    }
 		}
+		// Registro de usuario 
 	} else if (isset($_POST['name']) && isset($_POST['pregunta'])) {
 		$user = $_POST['name'];
 		$pass = $_POST['pass'];
@@ -72,8 +79,9 @@
 			    }
 			} 
 		}
-	} else if (isset($_POST['correo'])){
-		$user = $_POST['name'];
+	// Recuperación de contraseña
+	} else if (isset($_POST['correo']) && isset($_POST['respuesta']) && isset($_POST['pregunta']) && isset($_POST['user'])){
+		$user = $_POST['user'];
 		$question = $_POST['pregunta'];
 		$respuesta = $_POST['respuesta'];
 		$correo = $_POST['correo'];
@@ -100,11 +108,34 @@
 						$newpass .= substr($pattern, mt_rand(0,$max), 1); // Extraemos valores de pattern de manera aleatoria 
 					}
 
+					$mail = new PHPMailer(true);
+
+					//Server settings
+					$mail->SMTPDebug = 2;                                 // Enable verbose debug output
+					$mail->isSMTP();                                      // Set mailer to use SMTP
+					$mail->Host = 'smtp.gmail.com';                   	  // Specify main and backup SMTP servers
+					$mail->SMTPAuth = true;                               // Enable SMTP authentication
+					$mail->Username = 'blogtwowatch@gmail.com';           // SMTP username
+					$mail->Password = '!Root123';                         // SMTP password
+					$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+					$mail->Port = 587;                                    // TCP port to connect to
+		
+					//Recipients
+					$mail->setFrom('blogtwowatch@gmail.com', 'Blog2Watch');
+					$mail->addAddress($correo, $user);
+		
+					//Content
+					$mail->isHTML(true);                                  // Set email format to HTML
+					$mail->Subject = 'Recuperar password';
+					$mail->Body    = 'Nueva contraseña: ' . $newpass;
+		
+					$mail->send();
+
 			      	$password = password_hash($newpass, PASSWORD_BCRYPT);
 			      	$stmt -> bindParam(':pass', $password);
 
 			      	if ($stmt -> execute()) {
-					  	$message2 = '¡Se ha enviado a tu correo una nueva contraseña';
+					  	$message = '¡Se ha enviado a tu correo tu nueva contraseña!';
 					} else {
 					 	$message2 = '¡No se ha podido restablecer la contraseña!';
 					}
@@ -112,7 +143,7 @@
 			      	$message2 = 'Datos incorrectos';
 			    }
 		    } else {
-		      $message2 = 'El usuario no existe';
+		      	$message2 = 'El usuario no existe. <a href="sign_up.php">Regístrate</a>';
 		    }
 		}
 	}

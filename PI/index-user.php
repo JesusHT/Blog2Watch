@@ -23,7 +23,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="resources\style.css">
+	<link rel="stylesheet" type="text/css" href="resources\style.css">
 	<link rel="icon" type="image/png" href="Imagenes\icono.ico">
 	<title>Blog2Watch</title>
 </head>
@@ -61,21 +61,10 @@
 						?>
 									<post class="row post">
 										<div class="col-md-12 mt-2">
-											<div class="row">
-												<div class="col-md-10">
-													<post-title class="title-post"><h3><?php echo $result -> titulo; ?></h3></post-title>
-												</div>
-												<div class="col-md-2" align="right">
-													<form action="index-administrador.php" method="POST">
-														<input type="hidden" name="eliminar" value="<?php echo $result -> id_post; ?>">
-														<button type="submit"><i class="bi bi-trash-fill"></i></button>								
-													</form>
-												</div>
-											</div>
+											<post-title class="title-post"><h3><?php echo $result -> titulo; ?></h3></post-title>
 										</div>
 										<post-info class="info-post mt-2"><p><?php echo $result -> info; ?></p></post-info>
-										<post-reactions class="reactions-post position-center mb-3">
-											
+										<post-reactions>
 										</post-reactions>
 										<post-comment class="col-md-12">
 											<div class="row">

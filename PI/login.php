@@ -42,5 +42,6 @@
 	</div>
 	<!-- <img class="logowelcome" src="Imagenes/logowelcom.png"> -->
 	<script src="resources/script.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 </body>
 </html>

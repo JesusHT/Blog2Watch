@@ -57,17 +57,7 @@
 						?>
 									<post class="row post">
 										<div class="col-md-12 mt-2">
-											<div class="row">
-												<div class="col-md-10">
-													<post-title class="title-post"><h3><?php echo $result -> titulo; ?></h3></post-title>
-												</div>
-												<div class="col-md-2" align="right">
-													<form action="index-administrador.php" method="POST">
-														<input type="hidden" name="eliminar" value="<?php echo $result -> id_post; ?>">
-														<button type="submit"><i class="bi bi-trash-fill"></i></button>								
-													</form>
-												</div>
-											</div>
+											<post-title class="title-post"><h3><?php echo $result -> titulo; ?></h3></post-title>
 										</div>
 										<post-info class="info-post mt-2"><p><?php echo $result -> info; ?></p></post-info>
 										<post-reactions>
@@ -81,7 +71,7 @@
 												</div>
 												<div class="col-md-12">
 													<div class="row">
-														<form method="POST" class="btn-group mb-3" action="index-administrador.php">
+														<form method="POST" class="btn-group mb-3" action="javascript:to_open()">
 															<input type="hidden" name="eliminar" value="<?php echo $result -> id_post; ?>">
 															<textarea class="col-md-10 textarea-comment" type="text" name="comment" placeholder="Escribir comentario..."></textarea>
 															<input class="col-md-2 submit-comment" type="submit" value="Comentar">
@@ -105,11 +95,12 @@
 			<a href="javascript:to_open()"><img src="Imagenes\buzon1.png"></a>
 		</buzon>
 		<aviso-visitante class="ventana-aviso-visitante" id="vent">
-			<h5 class="title-aviso">AVISO</h5>
-			<cerrar id="close">
-				<a href="javascript:close()"><i class="bi bi-x-circle-fill"></i></a>
-			</cerrar>
-			<br><br>
+			<div class="mb-3">
+				<h5 class="title-aviso">AVISO</h5>
+				<cerrar id="close">
+					<a href="javascript:close()"><i class="bi bi-x-circle-fill"></i></a>
+				</cerrar>
+			</div>
 			<body-visitante class="row">
 				<div class="contenido-aviso">
 					<p align="center">Si quieres disfrutar de los privilegios:</p>
@@ -126,13 +117,11 @@
 							<p>Reaccionar</p>
 							<p>Entrar al Buzón</p>
 						</div>
-					</div>
-					<p align="center">Registrate a nuestro blog o inicia sesión</p>
-					<div class="mb-3">
-						<center>
-							<a href="sign_up.php"><button class="buttons-aviso">Registrarse</button></a>
-							<a href="login.php" ><button class="buttons-aviso">Inicia Sesión</button></a>					
-						</center>
+					</div>		
+					<div class="mb-3" align="center">
+						<p>Registrate a nuestro blog o inicia sesión</p>
+						<a href="sign_up.php"><button class="buttons-aviso">Registrarse</button></a>
+						<a href="login.php"><button class="buttons-aviso">Inicia Sesión</button></a>					
 					</div>	
 				</div>
 			</body-mailbox>
