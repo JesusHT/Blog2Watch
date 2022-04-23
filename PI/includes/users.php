@@ -16,6 +16,7 @@
 	$message2 = "";
 	$correo = "";
 	
+	
 	// Inicio de sesion de usuario 	
 	if (isset($_POST['name']) && isset($_POST['pass'])) { # Validamos que exista un valor en $_POST['name'] y  $_POST['pass'].
 		session_start(); # Iniciamos una sesion que nos ayudara más tarde.
@@ -58,7 +59,6 @@
 		    $records -> execute();
 		    $results = $records -> fetch(PDO::FETCH_ASSOC);
 
-
 		    if (is_countable($results) > 0) {
 		    	$message2 = 'El usuario ya existe';
 		    } else {
@@ -80,8 +80,8 @@
 			} 
 		}
 	// Recuperación de contraseña
-	} else if (isset($_POST['correo']) && isset($_POST['respuesta']) && isset($_POST['pregunta']) && isset($_POST['user'])){
-		$user = $_POST['user'];
+	} else if (isset($_POST['correo']) && isset($_POST['respuesta']) && isset($_POST['pregunta']) && isset($_POST['user2'])){
+		$user = $_POST['user2'];
 		$question = $_POST['pregunta'];
 		$respuesta = $_POST['respuesta'];
 		$correo = $_POST['correo'];
@@ -135,6 +135,7 @@
 			      	$stmt -> bindParam(':pass', $password);
 
 			      	if ($stmt -> execute()) {
+						$_COOKIE['user'] = null; # Después de que el usuario restablece su contraseña limpiamos la cookie declarando la variable null.
 					  	$message = '¡Se ha enviado a tu correo tu nueva contraseña!';
 					} else {
 					 	$message2 = '¡No se ha podido restablecer la contraseña!';
@@ -147,4 +148,39 @@
 		    }
 		}
 	}
+	
+	// Validamos que el usuario que quiere recuperar la contraseña exista en la BD
+	if (isset($_POST['user'])){
+		$user = $_POST['user'];
+		
+		if (!empty($user)) {
+			$records = $conn -> prepare('SELECT * FROM users WHERE name = :name');
+
+			$records -> bindParam(':name', $user);
+			$records -> execute();
+			$results = $records->fetch(PDO::FETCH_ASSOC);
+
+			if (is_countable($results) > 0) {
+				setcookie("user", $user); # Creamos la COOKIE que contendra el nombre del usuario, que nos servira después para hacer una consulta sql en el archivo validacion.php
+				header("Location:  ../PI/validacion.php");
+			} else {
+				$message2 = 'El usuario no existe. <a href="sign_up.php">Regístrate</a>';
+			}
+		}
+	}
+
+	// Validamos que la COOKIE se haya creado correctamente para poder mostrar la pregunta de seguridad sin necesidad de que el usuario la ponga, esto por el posible escenario donde se le olvidé la pregunta.
+	if (isset($_COOKIE['user'])) { # Validamos que la variable $_COOKIE['user'] tiene un valor 
+		$records = $conn->prepare('SELECT * FROM users WHERE name = :name'); # Preparamos una sentencia sql SELECT
+		$records->bindParam(':name', $_COOKIE['user']); # Definimos cual va ser el valor de :name
+		$records->execute(); # Ejecutamos la sentecncia SQL
+		$results = $records->fetch(PDO::FETCH_ASSOC); # Obtenemos los datos de la bd (PDO::FETCH_ASSOC: devuelve un array indexado por los nombres de las columnas del conjunto de resultados.) y le asignamos la variable $result a los datos obtenidos.
+
+		$users = null; # Creamos una variable $users y establecemos que su valor es null
+
+		if (count($results) > 0) { # Validamos que el array indexado $results tenga valores 
+			$users = $results; # Establecemos que la variable $user contendra los valores del array $results para usarlo después en validacion.php
+		}
+	}	
+
 ?>

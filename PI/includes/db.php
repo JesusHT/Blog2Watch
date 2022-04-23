@@ -2,7 +2,7 @@
 
   $server = 'localhost';
   $username = 'root';
-  $password = '';
+  $password = '!JesusHT12015'; // Cambiar contraseña o dejar en blanco  (NOTA: La contraseña debe ser del usuario root de phpmyadmin o el mysql mariadb)
   $database = 'database';
 
   try {
