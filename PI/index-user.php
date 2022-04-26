@@ -1,21 +1,4 @@
-<?php 
-  session_start();
-
-  require 'includes\db.php';
-
-  if (isset($_SESSION['user_id'])) {
-    $records = $conn->prepare('SELECT * FROM users WHERE id = :id');
-    $records->bindParam(':id', $_SESSION['user_id']);
-    $records->execute();
-    $results = $records->fetch(PDO::FETCH_ASSOC);
-
-    $user = null;
-
-    if (count($results) > 0) {
-      $user = $results;
-    }
-  } 
-?>
+<?php require 'includes\sesion.php' ?>
 
 <!DOCTYPE html>
 <html>
@@ -23,14 +6,14 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<link rel="stylesheet" type="text/css" href="resources\style.css">
+	<link rel="stylesheet" type="text/css" href="resources\css\style.css">
 	<link rel="icon" type="image/png" href="Imagenes\icono.ico">
 	<title>Blog2Watch</title>
 </head>
 <body class="body">
 	<div class="container-xx1">
 		<header>
-			<div class="col-md-8 position-center logo">
+			<div class="col-md-8 position-center logo" align="center">
 				<img src="Imagenes\logoblog.png">
 			</div>
 		</header>
@@ -127,7 +110,7 @@
 			</body-mailbox>
 		</buzon-abierto>
 	</div>
-	<script src="resources\script.js"></script>
+	<script src="resources/js/script.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
 </body>
