@@ -18,34 +18,7 @@
 	
 	
 	// Inicio de sesion de usuario 	
-	if (isset($_POST['name']) && isset($_POST['pass'])) { # Validamos que exista un valor en $_POST['name'] y  $_POST['pass'].
-		session_start(); # Iniciamos una sesion que nos ayudara más tarde.
-
-		# Asignamos las variables previamente declaradas a sus respectivos $_POST.
-		$user = $_POST['name'];
-		$pass = $_POST['pass'];
-
-		if (!empty($user) && !empty($pass)) { # Validamos que no este vacia la variable $user y $pass.
-		    $records = $conn -> prepare('SELECT * FROM users WHERE name = :name'); # Preparamos una sentencia sql.
-		    $records -> bindParam(':name', $user); # asiganamos el valor que tendra :name (bindParam = Vincula un parámetro al nombre de variable especificado)
-		    $records -> execute(); # Ejecutamos la sentencia sql.
-		    $results = $records -> fetch(PDO::FETCH_ASSOC); # Obtenemos los datos de la bd (PDO::FETCH_ASSOC: devuelve un array indexado por los nombres de las columnas del conjunto de resultados.) y le asignamos la variable $result a los datos obtenidos.
-
-
-		    if (is_countable($results) > 0 && password_verify($pass, $results['pass'])) { # validamos que el usuario exista y que la contraseña sea correcta.
-		      	if ($results['name'] == 'Administrador' || $results['name'] == 'xime.mzo'){ # Validadmos que sea la cuenta de administrador.
-		      		$_SESSION['user_id'] = $results['id']; # Le asiganomos a una variable $_SESSION la id del usuario.
-		     		header("Location: ../PI/index-administrador.php"); # Redirigimos al usuario al index administrador.
-		      	} else { 
-		      		$_SESSION['user_id'] = $results['id']; # Le asiganomos a una variable $_SESSION la id del usuario.
-		     		header("Location: ../index-user.php"); # Redirigimos al usuario al index user.
-		      	}
-		    } else {
-				$message = "El usuario y/o la contraseña son incorrectos"; 
-		    }
-		}
-		// Registro de usuario 
-	} else if (isset($_POST['name']) && isset($_POST['pregunta'])) {
+	if (isset($_POST['name']) && isset($_POST['pregunta']) && isset($_POST['pregunta'])) {
 		$user = $_POST['name'];
 		$pass = $_POST['pass'];
 		$question = $_POST['pregunta'];
@@ -80,6 +53,33 @@
 			} 
 		}
 	// Recuperación de contraseña
+	} else if (isset($_POST['name']) && isset($_POST['pass']) && empty($_POST['user2'])) { # Validamos que exista un valor en 	$_POST['name'] y  $_POST['pass'].
+		session_start(); # Iniciamos una sesion que nos ayudara más tarde.
+
+		# Asignamos las variables previamente declaradas a sus respectivos $_POST.
+		$user = $_POST['name'];
+		$pass = $_POST['pass'];
+
+		if (!empty($user) && !empty($pass)) { # Validamos que no este vacia la variable $user y $pass.
+		    $records = $conn -> prepare('SELECT * FROM users WHERE name = :name'); # Preparamos una sentencia sql.
+		    $records -> bindParam(':name', $user); # asiganamos el valor que tendra :name (bindParam = Vincula un parámetro al nombre de variable especificado)
+		    $records -> execute(); # Ejecutamos la sentencia sql.
+		    $results = $records -> fetch(PDO::FETCH_ASSOC); # Obtenemos los datos de la bd (PDO::FETCH_ASSOC: devuelve un array indexado por los nombres de las columnas del conjunto de resultados.) y le asignamos la variable $result a los datos obtenidos.
+
+
+		    if (is_countable($results) > 0 && password_verify($pass, $results['pass'])) { # validamos que el usuario exista y que la contraseña sea correcta.
+		      	if ($results['name'] == 'Administrador'){ # Validadmos que sea la cuenta de administrador.
+		      		$_SESSION['user_id'] = $results['id']; # Le asiganomos a una variable $_SESSION la id del usuario.
+		     		header("Location: ../PI/index-administrador.php"); # Redirigimos al usuario al index administrador.
+		      	} else { 
+		      		$_SESSION['user_id'] = $results['id']; # Le asiganomos a una variable $_SESSION la id del usuario.
+		     		header("Location: ../PI/index-user.php"); # Redirigimos al usuario al index user.
+		      	}
+		    } else {
+				$message = "El usuario y/o la contraseña son incorrectos"; 
+		    }
+		}
+		// Registro de usuario 
 	} else if (isset($_POST['correo']) && isset($_POST['respuesta']) && isset($_POST['pregunta']) && isset($_POST['user2'])){
 		$user = $_POST['user2'];
 		$question = $_POST['pregunta'];

@@ -7,29 +7,33 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="resources\css\style.css">
+	<link rel="stylesheet" type="text/css" href="resources\css\styleNav.css">
 	<link rel="icon" type="image/png" href="Imagenes\icono.ico">
 	<title>Blog2Watch</title>
 </head>
 <body class="body">
-	<div class="container-xx1">
+	<div class="container">
 		<header>
 			<div class="col-md-8 position-center logo" align="center">
 				<img src="Imagenes\logoblog.png">
 			</div>
 		</header>
-		<nav class="col-md-8 position-center mb-4 text-nav">
-			<center>
-				<div class="buttons-nav-text">
-					<a href=""><button class="bts button-nav-active"><img src="Imagenes\home.png" width="30" height="30"><p>Inicio</p></button></a>				
-					<a href=""><button class="bts button-nav buttons-nav"><img src="Imagenes\acercade.png" width="30" height="30"><p>Acerca De</p></button></a>
-					<button class="bts button-nav buttons-nav dropdown"><img src="Imagenes\login.png" width="25" height="30"><br> <?php  if (!empty($user)){ echo `<p>`, strtoupper($user['name']) ,`</p>`; } ?>
+		<nav class="nav justify-content-center navbar-dark mb-3 col-md-8 position-center row">
+			<ul class="nav nav-tabs" id="myTab" role="tablist">
+				<li class="nav-item col-4" role="presentation">
+					<button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><i class="bi bi-house-door-fill"></i> Home</button>
+				</li>
+				<li class="nav-item col-4" role="presentation">
+					<button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"><i class="bi bi-info-circle-fill"></i> Acerca De</button>
+				</li>
+				<li class="nav-item col-4 dropdown">
+					<button class="nav-link " type="button"><i class="bi bi-person-fill"></i> <?php if (!empty($user)){ echo $user['name']; } ?></button>
 						<div class="dropdown-content">
 					    <a href="#">Cambiar Contraseña</a>					
 					    <a href="logout.php">Cerrar Sesión</a>
 					  </div>
-					</button>
-				</div>
-			</center>
+				</li>
+			</ul>
 		</nav>
 		<content>
 			<div class="container">

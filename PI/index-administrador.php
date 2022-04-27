@@ -1,69 +1,9 @@
 <?php 
-  session_start();
 
-  require 'includes\db.php';
-  
-	$titulo = "";
-	$info = "";
-	$plataforma = "";
-	$tipo = "";
-	$message = "";
-	$message2 = "";
+	require 'includes/sesion.php';
+	require 'includes/administrador.php';
 
-	if (isset($_SESSION['user_id'])) {
-		$records = $conn->prepare('SELECT * FROM users WHERE id = :id');
-		$records -> bindParam(':id', $_SESSION['user_id']);
-		$records -> execute();
-		$results = $records -> fetch(PDO::FETCH_ASSOC);
-
-		$user = null;
-
-		if (count($results) > 0) {
-			$user = $results;
-		}
-
-	}
-
-	if (isset($_POST['title'])) {
-		$titulo = $_POST['title'];
-		$info = $_POST['info'];
-		$plataforma = $_POST['plataforma'];
-		$tipo = $_POST['tipo'];
-
-		if (!empty($titulo) && !empty($info) && !empty($plataforma) && !empty($tipo)){
-			$records = $conn -> prepare('SELECT * FROM post WHERE titulo = :titulo');
-			$records->bindParam(':titulo', $titulo);
-			$records->execute();
-			$results = $records -> fetch(PDO::FETCH_ASSOC);
-	
-			if (is_countable($results) > 0) {
-				$message2 = 'Ya existe una publicación con ese titulo';
-			} else {
-				$sql = "INSERT INTO post (titulo, info, plataforma, tipo) VALUES (:titulo, :info, :plataforma, :tipo)";
-				$stmt = $conn -> prepare($sql);
-		
-				$stmt -> bindParam(':titulo', $titulo);
-				$stmt -> bindParam(':info', $info);
-				$stmt -> bindParam(':plataforma', $plataforma);
-				$stmt -> bindParam(':tipo', $tipo);
-		
-				if ($stmt -> execute()) {
-					$message = '¡Publicación subida exitoxamente!';
-				} else {
-					$message2 = '¡No se ha podido subir la publicación!';
-				}	
-			}
-		}
-		
-	}
-
-	if(isset($_POST['eliminar'])){
-		$sql = "DELETE FROM post WHERE id_post = :id_post";
-		$stmt = $conn -> prepare($sql);
-		$stmt -> bindParam(':id_post', $_POST['eliminar']);
-		$stmt -> execute();
-	} 
-?>
+ ?>
 
 <!DOCTYPE html>
 <html>
@@ -84,19 +24,22 @@
 				<img src="Imagenes\logoblog.png">
 			</div>
 		</header>
-		<nav class="col-md-8 position-center mb-4 text-nav">
-			<center>
-				<div class="buttons-nav-text">
-					<a href=""><button class="bts button-nav-active"><img src="Imagenes\home.png" width="30" height="30"><p>Inicio</p></button></a>				
-					<a href=""><button class="bts button-nav buttons-nav"><img src="Imagenes\acercade.png" width="30" height="30"><p>Acerca De</p></button></a>
-					<button class="bts button-nav buttons-nav dropdown"><img src="Imagenes\login.png" width="25" height="30"><br> <?php  if (!empty($user)){ echo `<p>`, strtoupper($user['name']) ,`</p>`; } ?>
+		<nav class="nav justify-content-center navbar-dark mb-3 col-md-8 position-center row">
+			<ul class="nav nav-tabs" id="myTab" role="tablist">
+				<li class="nav-item col-4" role="presentation">
+					<button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><i class="bi bi-house-door-fill"></i> Home</button>
+				</li>
+				<li class="nav-item col-4" role="presentation">
+					<button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"><i class="bi bi-info-circle-fill"></i> Acerca De</button>
+				</li>
+				<li class="nav-item col-4 dropdown">
+					<button class="nav-link " type="button"><i class="bi bi-person-fill"></i> <?php if (!empty($user)){ echo $user['name']; } ?></button>
 						<div class="dropdown-content">
 					    <a href="#">Cambiar Contraseña</a>					
 					    <a href="logout.php">Cerrar Sesión</a>
 					  </div>
-					</button>
-				</div>
-			</center>
+				</li>
+			</ul>
 		</nav>
 		<content>
 			<div class="container-fluid">
