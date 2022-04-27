@@ -27,58 +27,68 @@
 					<button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false"><i class="bi bi-info-circle-fill"></i> Acerca De</button>
 				</li>
 				<li class="nav-item col-4 dropdown">
-					<button class="nav-link " type="button"><i class="bi bi-person-fill"></i> <?php if (!empty($user)){ echo $user['name']; } ?></button>
-						<div class="dropdown-content">
-					    <a href="#">Cambiar Contraseña</a>					
-					    <a href="logout.php">Cerrar Sesión</a>
-					  </div>
+					<button class="nav-link" id="select-tab" data-bs-toggle="tab" data-bs-target="#select" type="button" role="tab" aria-controls="select" aria-selected="false"><i class="bi bi-person-fill"></i> <?php if (!empty($user)){ echo $user['name']; } ?></button>
+					<div class="dropdown-content">
+					    <a class="dropdown-item" id="perfil-tab" data-bs-toggle="pill" data-bs-target="#perfil" type="button" role="tab" aria-controls="perfil" aria-selected="false" >Perfil</a>					
+					    <a class="dropdown-item" href="logout.php">Cerrar Sesión</a>
+					 </div>
 				</li>
 			</ul>
 		</nav>
 		<content>
 			<div class="container">
 				<content class="row">
-					<section class="col-md-8 position-center mb-3">
-						<?php require 'includes\filtros.php'; ?>
-					</section>
-					<section class="col-md-8 position-center">
-					<?php 
-							if($query -> rowCount() > 0) { 
-								foreach($results as $result) {
-						?>
-									<post class="row post">
-										<div class="col-md-12 mt-2">
-											<post-title class="title-post"><h3><?php echo $result -> titulo; ?></h3></post-title>
-										</div>
-										<post-info class="info-post mt-2"><p><?php echo $result -> info; ?></p></post-info>
-										<post-reactions>
-										</post-reactions>
-										<post-comment class="col-md-12">
-											<div class="row">
-												<div class="col-md-12">
-													<div class="content-comment mb-2">
-														<p class="text-name-comment"><?php  ?></p><p class="text-comment"><?php  ?></p>
-													</div>
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+							<section class="col-md-8 position-center mb-3">
+								<?php require 'includes\filtros.php'; ?>
+							</section>
+							<section class="col-md-8 position-center">
+							<?php 
+									if($query -> rowCount() > 0) { 
+										foreach($results as $result) {
+								?>
+											<post class="row post">
+												<div class="col-md-12 mt-2">
+													<post-title class="title-post"><h3><?php echo $result -> titulo; ?></h3></post-title>
 												</div>
-												<div class="col-md-12">
+												<post-info class="info-post mt-2"><p><?php echo $result -> info; ?></p></post-info>
+												<post-reactions>
+												</post-reactions>
+												<post-comment class="col-md-12">
 													<div class="row">
-														<form method="POST" class="btn-group mb-3" action="index-administrador.php">
-															<input type="hidden" name="eliminar" value="<?php echo $result -> id_post; ?>">
-															<textarea class="col-md-10 textarea-comment" type="text" name="comment" placeholder="Escribir comentario..."></textarea>
-															<input class="col-md-2 submit-comment" type="submit" value="Comentar">
-														</form>
+														<div class="col-md-12">
+															<div class="content-comment mb-2">
+																<p class="text-name-comment"><?php  ?></p><p class="text-comment"><?php  ?></p>
+															</div>
+														</div>
+														<div class="col-md-12">
+															<div class="row">
+																<form method="POST" class="btn-group mb-3" action="index-administrador.php">
+																	<input type="hidden" name="eliminar" value="<?php echo $result -> id_post; ?>">
+																	<textarea class="col-md-10 textarea-comment" type="text" name="comment" placeholder="Escribir comentario..."></textarea>
+																	<input class="col-md-2 submit-comment" type="submit" value="Comentar">
+																</form>
+															</div>
+														</div>
 													</div>
-												</div>
-											</div>
-										</post-comment>
-									</post>
-									<br>
-						<?php
-								} 
-							}
+												</post-comment>
+											</post>
+											<br>
+								<?php
+										} 
+									}
 
-						?>
-					</section>
+								?>
+							</section>
+						</div>
+						<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+							<section class="col-md-8 position-center">aaaa</section>
+						</div>
+						<div class="tab-pane fade" id="perfil" role="tabpanel" aria-labelledby="perfil-tab">
+							<section class="col-md-8 position-center">bbbb</section>
+						</div>
+					</div>
 				</content>
 			</div>
 		</content>

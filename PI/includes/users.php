@@ -70,10 +70,10 @@
 		    if (is_countable($results) > 0 && password_verify($pass, $results['pass'])) { # validamos que el usuario exista y que la contraseña sea correcta.
 		      	if ($results['name'] == 'Administrador'){ # Validadmos que sea la cuenta de administrador.
 		      		$_SESSION['user_id'] = $results['id']; # Le asiganomos a una variable $_SESSION la id del usuario.
-		     		header("Location: ../PI/index-administrador.php"); # Redirigimos al usuario al index administrador.
+		     		header("Location: ../index-administrador.php"); # Redirigimos al usuario al index administrador.
 		      	} else { 
 		      		$_SESSION['user_id'] = $results['id']; # Le asiganomos a una variable $_SESSION la id del usuario.
-		     		header("Location: ../PI/index-user.php"); # Redirigimos al usuario al index user.
+		     		header("Location: ../index-user.php"); # Redirigimos al usuario al index user.
 		      	}
 		    } else {
 				$message = "El usuario y/o la contraseña son incorrectos"; 

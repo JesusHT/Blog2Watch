@@ -11,13 +11,13 @@
 .nav-link:hover {
     background-color: #950101;
     color: #fff;
-	width: 105%;
+	  width: 105%;
     height: auto;
 }
 
 .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
     color: #fff;
-    background-color:  #950101;
+    background-color:  #3d0000;
     border-color: #dee2e6 #dee2e6 #fff;
 }
 
@@ -37,22 +37,20 @@
   display: none;
   top: 100%;
   position: absolute;
-  background-color: #5b5c5d;
+  background-color: black;
   width: 100%;
   left: 0px;
 }
 
 .dropdown-content a {
   color: white;
-  text-decoration: none;
   display: block;
-  height: 50px;
+  text-decoration: none;
   text-align:center;
   border: 1px dotted white; 
-  padding: 8px;
 	font-weight: bold;
 }
 
-.dropdown-content a:hover {background-color: #787a7b;}
+.dropdown-content a:hover {background-color: #950101; color: white;}
 
 .dropdown:hover .dropdown-content {display: block;}
