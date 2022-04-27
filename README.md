@@ -1,2 +1,4 @@
 # Blog2Watch
 Diseñar un blog web de series y peliculas utilizando CSS, JavaScript, PHP y Mysql
+
+01001000 01101111 01101100 01100001 00100000 01001101 01110101 01101110 01100100 01101111 00100001

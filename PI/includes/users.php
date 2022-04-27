@@ -33,7 +33,7 @@
 
 
 		    if (is_countable($results) > 0 && password_verify($pass, $results['pass'])) { # validamos que el usuario exista y que la contraseña sea correcta.
-		      	if ($results['name'] == 'Administrador'){ # Validadmos que sea la cuenta de administrador.
+		      	if ($results['name'] == 'Administrador' || $results['name'] == 'xime.mzo'){ # Validadmos que sea la cuenta de administrador.
 		      		$_SESSION['user_id'] = $results['id']; # Le asiganomos a una variable $_SESSION la id del usuario.
 		     		header("Location: ../PI/index-administrador.php"); # Redirigimos al usuario al index administrador.
 		      	} else { 
