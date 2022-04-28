@@ -1,14 +1,11 @@
-/*CSS - index.php*/
-
 /* CSS - style global */
-
 
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
-.body {
+body {
 	background-color: #000000;
 	color: #fff;
-	font-family:Open Sans;
+	font-family: 'Open Sans', sans-serif;
 }
 
 .position-center {
@@ -20,24 +17,28 @@ textarea {
 }
 
 a {
-	color: white;
 	text-decoration: none;
 }
 
 .body2 {
 	background: #232526;
+	color: #000000;
 }
 
 /* CSS - Header */
 .logo img {	
-	width: 230px;
+	width: 250px;
 	height: auto;
+}
+
+div img[class="logo"] {
+	width: 235px;
 }
 
 /*CSS - Filtrar Por */
 
 .text-filtered {
-	color: white;
+	color: #fff;
 	opacity: 65%;
 	text-decoration: none;
 	font-weight: bold;
@@ -49,7 +50,7 @@ a {
 }
 
 .text-filtered:hover {
-	color: white;
+	color: #fff;
 	opacity: 100%;
 }
 
@@ -60,51 +61,32 @@ a {
 }
 
 .text-section-filtered {
-	color: white;
+	color: #fff;
 	font-weight: bold;
 	font-size: 13px;
 }
 
 .hr-filterd hr{
-	background-color: #ffffff;
+	background-color: #fff;
 	border: none;
 	height: 2px;
 }
 
-.filtered a{
-	text-decoration: none;
-}
-
-
 /* CSS - Post */
 
-.post {
-	border: solid 2px white;
-	border-radius: 22px;
-}
-
-.title-post {
-	color: white;
+h3 {
+	color: #fff;
 	font-weight: bold;
 }
 
+.post {
+	border: solid 2px #fff;
+	border-radius: 22px;
+}
+
 .info-post p {
-	color: white;
-	border-bottom: solid 1px white;
+	border-bottom: solid 1px #fff;
 	text-align: justify;
-}
-
-
-.button-post {
-	background-color: black;
-	width: 100%;
-	min-width: 165px;
-	height: 40px;
-	border-radius: 5px;
-}
-
-.button-post:hover {
-	background-color: #950101;
 }
 
 .content-comment {
@@ -114,16 +96,16 @@ a {
 
 .textarea-comment {
 	height: 40px;
-	background-color: black;
-	color: white;
+	background-color: #000000;
+	color: #fff;
 	border-radius: 10px;
 	min-width: 246px;
 }
 
 .submit-comment {
 	height: 40px;
-	background-color: black;
-	color: white;
+	background-color: #000000;
+	color: #fff;
 	border-radius: 10px;
 	font-weight: bold;
 }
@@ -133,31 +115,25 @@ a {
 }
 
 .text-name-comment {
-	color: white;
 	font-weight: bold;
 	display: inline;
 }
 
 .text-comment {
-	color: white;
 	padding-left: 1.5%;
 }
 
-.font label{
-	color: white;
-}
-
 .info-textarea {
-	background-color: black;
-	color: white;
+	background-color: #000000;
+	color: #fff;
 	border-radius: 5px;
 	width: 100%;
 	min-width: 120px;
 }
 
 .button-submit2 {
-	background-color: black;
-	color: white;
+	background-color: #000000;
+	color: #fff;
 	height: 50px;
 	margin: 0 auto;
 }
@@ -167,42 +143,11 @@ a {
 }
 
 .align-input2 {
-	background-color: black;
-	color: white;
+	background-color: #000000;
+	color: #fff;
 	margin: 0 auto;
 	width: 100%;
 	border-radius: 10px;
-}
-
-.message-error2 {
-	padding-left: 5%;
-	border-radius: 5px;
-	color: white;
-	background-color: red;
-	font-weight: bold;
-}
-
-.message-correcto2 {
-	padding-left: 5%;
-	border-radius: 5px;
-	color: white;
-	background-color: green;
-	font-weight: bold;
-}
-
-/* CSS - Plataform */
-
-.gif img {
-	height: 150px;
-	width: 350px;
-}
-
-.color-plataform {
-	background-color: #950101;
-}
-
-a.color-select:hover {
-	background-color:#7c0101;
 }
 
 /* CSS - Buzón */
@@ -213,7 +158,7 @@ a.color-select:hover {
 	left: 90%;
 	top: 87%;
 	width: 60px;
-	height: 60px;
+	height: auto;
 	position: fixed;
 }
 
@@ -231,13 +176,12 @@ a.color-select:hover {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	display: none;
-	color: white;
-	border: solid 2px black;
+	border: solid 2px #000000;
 }
 
 .title-mailbox {
 	display: inline;
-	color: white;
+	color: #fff;
 	font-weight: bold;
 }
 
@@ -252,16 +196,16 @@ a.color-select:hover {
 
 .textarea-mailbox {
 	height: 40px;
-	background-color: black;
-	color: white;
+	background-color: #000000;
+	color: #fff;
 	border-radius: 5px;
 	min-width: 120px;
 }
 
 .submit-mailbox {
 	height: 40px;
-	background-color: black;
-	color: white;
+	background-color: #000000;
+	color: #fff;
 	border-radius: 5px;
 	font-weight: bold;
 }
@@ -271,13 +215,13 @@ a.color-select:hover {
 }
 
 .text-name-mailbox {
-	color: white;
+	color: #fff;
 	font-weight: bold;
 	display: inline;
 }
 
 .text-mailbox {
-	color: white;
+	color: #fff;
 	padding-left: 1.5%;
 }
 
@@ -290,7 +234,7 @@ label,input,textarea,select{
 
 .button-submit {
 	background-color: #373b68;
-	color: white;
+	color: #fff;
 	height: 50px;
 	margin: 0 auto;
 }
@@ -306,16 +250,19 @@ label,input,textarea,select{
 
 .message-error {
 	padding-left: 5%;
-	color: white;
 	background-color: red;
 	font-weight: bold;
 }
 
 .message-correcto {
 	padding-left: 5%;
-	color: white;
 	background-color: green;
 	font-weight: bold;
+}
+
+div[class="mt-3"] p {
+	padding-left: 10px;
+	border-radius: 5px;
 }
 
 .form-users {
@@ -326,26 +273,14 @@ label,input,textarea,select{
 
 /*CSS - Login */
 
-.logoblog {
-	height: auto;
-	width: 250px;
-}
-
-.logowelcome {
-	margin: 0 auto;
-	position: absolute;
-	top: 67%;
-	height: 200px;
-	width: 150px;
-}
-
-a[href="sign_up.php"], a[href="login.php"], a[href="recuperar.php"]{ 
-	color: white;
+body[class="body2"] a {
+	color: #fff;
 	font-weight: bold;
 }
 
+
 section p {
-	color: white;
+	color: #fff;
 }
 
 /* CSS - Registro */
@@ -355,8 +290,8 @@ section p {
 	display: inline;
 }
 
-terminos span {
-	color: white;
+.terminos span {
+	color: #fff;
 }
 
 .terms p {
@@ -382,7 +317,7 @@ terminos span {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	display: none;
-	border: solid 2px black;
+	border: solid 2px #000000;
 	border-radius: 10px;
 }
 
@@ -395,13 +330,13 @@ terminos span {
 	left: 50%;
 	transform: translate(-50%, -50%);
 	display: none;
-	color: white;
+	color: #fff;
 	border-radius: 10px;
 }
 
 .title-aviso {
 	display: inline;
-	color: white;
+	color: #fff;
 	font-weight: bold;
 	margin: 0 auto;
 }
@@ -415,7 +350,7 @@ terminos span {
 
 .buttons-aviso {
 	background-color: #373b68;
-	color: white;
+	color: #fff;
 }
 
 .buttons-aviso:hover {
@@ -426,3 +361,7 @@ terminos span {
 	width: 28px;
 	height: 28px;
 }
+
+div[class="col-6 col-sm-4"] i {
+	font-size: 25px;
+} 

@@ -52,7 +52,7 @@
 			    }
 			} 
 		}
-	// Recuperación de contraseña
+	// Registro de usuario 
 	} else if (isset($_POST['name']) && isset($_POST['pass']) && empty($_POST['user2'])) { # Validamos que exista un valor en 	$_POST['name'] y  $_POST['pass'].
 		session_start(); # Iniciamos una sesion que nos ayudara más tarde.
 
@@ -79,7 +79,7 @@
 				$message = "El usuario y/o la contraseña son incorrectos"; 
 		    }
 		}
-		// Registro de usuario 
+		// Recuperación de contraseña/
 	} else if (isset($_POST['correo']) && isset($_POST['respuesta']) && isset($_POST['pregunta']) && isset($_POST['user2'])){
 		$user = $_POST['user2'];
 		$question = $_POST['pregunta'];

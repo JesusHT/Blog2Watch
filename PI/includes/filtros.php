@@ -27,7 +27,7 @@
 <acordion-filtered class="acordion-item" id="accordionExample">
 	<a class="text-filtered btn" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-controls="collapseOne" ><img src="Imagenes\filtrar.png" width="30" height="30">FILTROS</a>
 	<div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-		<div class="body-filtered section-filtered text-section-filtered row hr-filterd filtered mt-2">
+		<div class="body-filtered section-filtered text-section-filtered row hr-filterd mt-2">
 			<section-filtered class="col-md-4">TIPO<hr>
 				<form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST" id="form1">
 					<input type="radio" id="1" name="tipo" value="1" <?php if ($tipo == 1){ echo "checked";}?> onclick="document.getElementById('form1').submit()">

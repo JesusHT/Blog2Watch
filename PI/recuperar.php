@@ -14,7 +14,7 @@
 		<content class="row" style="padding: 10px;">
 			<header class="col-lg-12">
 					<div align="center">
-						<img src="Imagenes/logoblog.png" class="logoblog">
+						<img src="Imagenes/logoblog.png" class="logo">
 					</div>
 			</header>
 			<section class="col-lg-4 position-center form-users">

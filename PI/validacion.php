@@ -13,9 +13,9 @@
 	<div class="container">
 		<content class="row" style="padding: 10px;">
 			<header class="col-lg-12">
-					<div align="center">
-						<img src="Imagenes/logoblog.png" class="logoblog">
-					</div>
+				<div align="center">
+					<img src="Imagenes/logoblog.png" class="logo">
+				</div>
 			</header>
 			<section class="col-lg-4 position-center form-users">
 				<div style="display: none;"><?php require 'includes\users.php';?></div>

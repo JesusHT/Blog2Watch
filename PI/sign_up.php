@@ -16,7 +16,7 @@
 		<content class="row" style="padding: 10px;">
 			<section class="col-md-12">
 				<div align="center">
-					<img src="Imagenes/logoblog.png" class="logoblog">
+					<img src="Imagenes/logoblog.png" class="logo">
 				</div>
 			</section>
 			<section class="col-md-4 position-center form-users">
@@ -35,7 +35,7 @@
 					</div>
 					<div class="form-floating">
 						<input class="form-control" id="pass" type="password" name="pass" minlength="6" maxlength="20" required id="floatingPassword" placeholder="Password">
-						<label for="floatingPassword"><span><i class="bi bi-lock-fill"></i></span> Contraseña <p class="coincide" id="demo"></label>
+						<label for="floatingPassword"><span><i class="bi bi-lock-fill"></i></span> Contraseña <p class="coincide" id="demo"></p></label>
 					</div>
 					<div class="form-floating">
 						<input class="form-control" id="pass-confirm" type="password" name="pass-confirm" minlength="6" maxlength="20" required id="floatingPassword" placeholder="Password">
@@ -54,8 +54,8 @@
 						<input class="form-control" type="text" name="respuesta" minlength="3" maxlength="20" required id="floatingResponse" placeholder="respuesta">
 						<label for="floatingResponse"><i class="bi bi-chat-right-text-fill"></i> Respuesta</label>
 					</div>							
-					<terminos>
-						<input type="checkbox" name="terms" required><span> Acepto terminos y condiciones. </span><a href="javascript:to_open()">ver más</a>
+					<terminos class="terminos">
+						<input type="checkbox" name="terms" required> <span>Acepto terminos y condiciones. </span> <a href="javascript:to_open()">ver más</a>
 					</terminos>
 					<input class="button-submit align-input" type="submit" value="Registrar"> 
 				</form>
@@ -69,7 +69,7 @@
 				<p>Terminos y Condiciones</p>
 			</div>
 			<div class="col-md-2">
-				<a href="javascript:close()" class="cerrar"><i class="bi bi-x-circle-fill"></i></a>
+				<button onclick="location.href='javascript:close()'"><i class="bi bi-x-circle-fill"></i></button>
 			</div>
 		</div>
 		<p><!--INGRESAR AQUÍ LOS TERMINOS--></p>
