@@ -107,7 +107,7 @@
 											<post-comment class="col-md-12">
 												<div class="row">
 													<div class="col-md-12">
-														<div class="content-comment mb-2">
+														<div class="body-comment mb-2">
 															<p class="text-name-comment"><?php  ?>NOMBRE USUARIO</p><p class="text-comment">AAAAAAA<?php  ?></p>
 														</div>
 													</div>

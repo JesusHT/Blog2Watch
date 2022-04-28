@@ -19,7 +19,7 @@
 			<nav class="scroller gif"><div id="menu"><!-- Plataformas --> </div></nav>
 		</div>
 		<header>
-			<div class="col-lg-8 position-center logo" align="center">
+			<div class="col-md-8 position-center logo" align="center">
 				<img src="Imagenes\logoblog.png">
 			</div>
 		</header>
@@ -37,50 +37,49 @@
 			</ul>
 		</nav>
 		<content>
-			<div class="container-fluid">
+			<div class="container">
 				<content class="row">
 					<div class="tab-content" id="myTabContent">
 						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-							<section class="col-lg-8 position-center mb-3">
+							<section class="col-md-8 col-sm-4 position-center mb-3">
 								<?php require 'includes\filtros.php'; ?>
 							</section>
-							<section class="col-lg-8 position-center">
-								<?php 
-									if($query -> rowCount() > 0) { 
-										foreach($results as $result) {
-								?>
-											<post class="row post">
-												<div class="col-lg-12 mt-2">
-													<post-title><h3><?php echo $result -> titulo; ?></h3></post-title>
-												</div>
-												<post-info class="info-post mt-2"><p><?php echo $result -> info; ?></p></post-info>
-												<post-reactions>
-												</post-reactions>
-												<post-comment class="col-lg-12">
-													<div class="row">
-														<div class="col-lg-12">
-															<div class="content-comment mb-2">
+							<section class="col-md-8 col-sm-4 position-center container">
+								<div class="row">
+									<?php 
+										if($query -> rowCount() > 0) { 
+											foreach($results as $result) {
+									?>
+												<post class="row post mb-3 position-center">
+													<div class="col-md-12 mt-2 row">
+														<post-title><h3><?php echo $result -> titulo; ?></h3></post-title>
+													</div>
+													<div class="row col-md-12 row">
+														<post-info class="info-post mt-2"><p><?php echo $result -> info; ?></p></post-info>
+													</div>
+													<post-reactions>
+													</post-reactions>
+													<post-comment class="col-md-12 row">
+														<div class="col-md-12">
+															<div class="body-comment mb-2">
 																<p class="text-name-comment"><?php  ?></p><p class="text-comment"><?php  ?></p>
 															</div>
 														</div>
-														<div class="col-lg-12">
-															<div class="row">
-																<form method="POST" class="btn-group mb-3" action="javascript:to_open()">
-																	<input type="hidden" name="eliminar" value="<?php echo $result -> id_post; ?>">
-																	<textarea class="col-lg-10 textarea-comment" type="text" name="comment" placeholder="Escribir comentario..."></textarea>
-																	<input class="col-lg-2 submit-comment" type="submit" value="Comentar">
-																</form>
+														<form action="javascript:to_open()" method="POST">
+															<div class="input-group mb-3">
+																<input type="hidden" name="id_post" value="<?php echo $result -> id_post; ?>">
+																<textarea type="text" class="form-control textarea-comment" placeholder="Escribir comentari..." name="comment"></textarea>
+																<button class="btn btn-outline-secondary submit-comment" type="submit" id="button-addon2"><i class="bi bi-chat-right-text-fill"></i></button>
 															</div>
-														</div>
-													</div>
-												</post-comment>
-											</post>
-											<br>
-								<?php
-										} 
-									}
+														</form>
+													</post-comment>
+												</post>
+									<?php
+											} 
+										}
 
-								?>
+									?>
+								</div>
 							</section>
 						</div>
 						<div class="tab-pane fade" id="acercaDe" role="tabpanel" aria-labelledby="acercaDe-tab">...</div>
@@ -108,7 +107,7 @@
 							<p>Reaccionar</p>
 							<p>Entrar al Buzón</p>
 						</div>
-						<div class="col-12 mb-3" align="center">
+						<div class="coll-md-12 mb-3" align="center">
 							<p>Registrate a nuestro blog o inicia sesión</p>
 							<a href="sign_up.php"><button class="buttons-aviso">Registrarse</button></a>
 							<a href="login.php"><button class="buttons-aviso">Inicia Sesión</button></a>					

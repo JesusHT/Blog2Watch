@@ -87,10 +87,12 @@ h3 {
 .info-post p {
 	border-bottom: solid 1px #fff;
 	text-align: justify;
+	height: auto;
+  	word-wrap: break-word;
 }
 
-.content-comment {
-	max-height: 200px;
+.body-comment {
+	max-height: 170px;
 	overflow: auto;
 }
 
@@ -98,8 +100,11 @@ h3 {
 	height: 40px;
 	background-color: #000000;
 	color: #fff;
-	border-radius: 10px;
-	min-width: 246px;
+}
+
+.textarea-comment:focus {
+	background-color: #000000;
+	color: #fff;
 }
 
 .submit-comment {
@@ -108,6 +113,11 @@ h3 {
 	color: #fff;
 	border-radius: 10px;
 	font-weight: bold;
+}
+
+.input-group .btn {
+    position: relative;
+    z-index: 0;
 }
 
 .submit-comment:hover {
