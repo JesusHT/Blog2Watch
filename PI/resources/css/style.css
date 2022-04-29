@@ -25,6 +25,8 @@ a {
 	color: #000000;
 }
 
+
+
 /* CSS - Header */
 .logo img {	
 	width: 250px;
@@ -375,3 +377,12 @@ section p {
 div[class="col-6 col-sm-4"] i {
 	font-size: 25px;
 } 
+
+.color button{
+	background-color: black;
+	color: #fff;
+}
+
+.submit:hover {
+	opacity: 50%;
+}

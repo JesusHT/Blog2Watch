@@ -6,10 +6,13 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://fonticons-free-fonticons.netdna-ssl.com/kits/1ce05b4b/publications/118813/woff2.css" media="all">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css">
 	<link rel="stylesheet" type="text/css" href="resources\css\stylePlataformas.css">
-	<link rel="stylesheet" type="text/css" href="resources\css\style.css">
+  	<link rel="stylesheet" type="text/css" href="resources\css\styleReactions.css">
 	<link rel="stylesheet" type="text/css" href="resources\css\styleNav.css">
+  	<link rel="stylesheet" type="text/css" href="resources\css\style.css">
 	<link rel="icon" type="image/png" href="Imagenes\icono.ico">
 	<title>Blog2Watch</title>
 </head>
@@ -45,41 +48,37 @@
 				<content class="row">
 					<div class="tab-content" id="myTabContent">
 						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-							<section class="col-md-8 position-center mb-3">
+							<section class="col-md-8 col-sm-4 position-center mb-3">
 								<?php require 'includes\filtros.php'; ?>
 							</section>
-							<section class="col-md-8 position-center">
+							<section class="col-md-8 col-sm-4 position-center">
 							<?php 
 									if($query -> rowCount() > 0) { 
 										foreach($results as $result) {
 								?>
-											<post class="row post">
+											<post class="row post mb-3 position-center">
 												<div class="col-md-12 mt-2">
-													<post-title><h3><?php echo $result -> titulo; ?></h3></post-title>
+													<h3><?php echo $result -> titulo; ?></h3>
 												</div>
-												<post-info class="info-post mt-2"><p><?php echo $result -> info; ?></p></post-info>
-												<post-reactions>
-												</post-reactions>
+												<post-info class="info-post mt-2 col-md-12"><p><?php echo $result -> info; ?></p></post-info>
+												<div class="reaction" align="left">
+													<?php require 'includes\reactioNs.php'; ?>
+												</div>
 												<post-comment class="col-md-12">
-													<div class="row">
-														<div class="col-md-12">
-															<div class="content-comment mb-2">
-																<p class="text-name-comment"><?php  ?></p><p class="text-comment"><?php  ?></p>
-															</div>
-														</div>
-														<div class="col-md-12">
-															<div class="row">
-																<form method="POST" class="btn-group mb-3" action="index-administrador.php">
-																	<input type="hidden" name="eliminar" value="<?php echo $result -> id_post; ?>">
-																	<textarea class="col-md-10 textarea-comment" type="text" name="comment" placeholder="Escribir comentario..."></textarea>
-																	<input class="col-md-2 submit-comment" type="submit" value="Comentar">
-																</form>
-															</div>
+													<div class="col-md-12">
+														<div class="body-comment mb-2">
+															<p class="text-name-comment"><?php  ?></p><p class="text-comment"><?php  ?></p>
 														</div>
 													</div>
+													<form action="" method="POST">
+														<div class="input-group mb-3">
+															<input type="hidden" name="id_post" value="<?php echo $result -> id_post; ?>">
+															<textarea type="text" class="form-control textarea-comment" placeholder="Escribir comentari..." name="comment"></textarea>
+															<button class="btn btn-outline-secondary submit-comment" type="submit" id="button-addon2"><i class="bi bi-chat-right-text-fill"></i></button>
+														</div>
+													</form>
 												</post-comment>
 											</post>
-											<br>
 								<?php
 										} 
 									}
@@ -88,10 +87,10 @@
 							</section>
 						</div>
 						<div class="tab-pane fade" id="acercaDe" role="tabpanel" aria-labelledby="acercaDe-tab">
-							<section class="col-md-8 position-center">aaaa</section>
+							<section class="col-md-8 col-sm-4 position-center">aaaa</section>
 						</div>
 						<div class="tab-pane fade" id="perfil" role="tabpanel" aria-labelledby="perfil-tab">
-							<section class="col-md-8 position-center">bbbb</section>
+							<section class="col-md-8 col-sm-4 position-center">bbbb</section>
 						</div>
 					</div>
 				</content>

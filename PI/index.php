@@ -1,15 +1,16 @@
-<?php require 'includes\sesion.php'; ?>
-
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://fonticons-free-fonticons.netdna-ssl.com/kits/1ce05b4b/publications/118813/woff2.css" media="all">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css">
 	<link rel="stylesheet" type="text/css" href="resources\css\stylePlataformas.css">
-	<link rel="stylesheet" type="text/css" href="resources\css\style.css">
+  	<link rel="stylesheet" type="text/css" href="resources\css\styleReactions.css">
 	<link rel="stylesheet" type="text/css" href="resources\css\styleNav.css">
+  	<link rel="stylesheet" type="text/css" href="resources\css\style.css">
 	<link rel="icon" type="image/png" href="Imagenes\icono.ico">
 	<title>Blog2Watch</title>
 </head>
@@ -52,14 +53,23 @@
 									?>
 												<post class="row post mb-3 position-center">
 													<div class="col-md-12 mt-2 row">
-														<post-title><h3><?php echo $result -> titulo; ?></h3></post-title>
+														<h3><?php echo $result -> titulo; ?></h3>
 													</div>
-													<div class="row col-md-12 row">
-														<post-info class="info-post mt-2"><p><?php echo $result -> info; ?></p></post-info>
+													<post-info class="info-post mt-2 col-md-12"><p><?php echo $result -> info; ?></p></post-info>
+													<div class="reactions2" align="left">
+														<form action="<?php $_SERVER['PHP_SELF'] ?>" method="GET">
+															<h6 class="clasificacion2">
+
+																<?php for ($i=5; $i >= 1; $i--) { ?>
+
+																	<input id="radio<?php echo $i, $result -> id_post; ?>" type="radio" name="estrellas" value="<?php echo $i?>">
+																	<label for="radio<?php echo $i, $result -> id_post; ?>"onclick="javascript:to_open()"><i class="fa-solid fa-popcorn"></i></label>
+
+																<?php }?>
+															</h6>
+														</form>
 													</div>
-													<post-reactions>
-													</post-reactions>
-													<post-comment class="col-md-12 row">
+													<post-comment class="col-md-12">
 														<div class="col-md-12">
 															<div class="body-comment mb-2">
 																<p class="text-name-comment"><?php  ?></p><p class="text-comment"><?php  ?></p>
@@ -82,7 +92,7 @@
 								</div>
 							</section>
 						</div>
-						<div class="tab-pane fade" id="acercaDe" role="tabpanel" aria-labelledby="acercaDe-tab">...</div>
+						<div class="tab-pane fade" id="acercaDe" role="tabpanel" aria-labelledby="acercaDe-tab"><section class="col-md-8 col-sm-4 position-center">aaaa</section></div>
 					</div>
 				</content>
 			</div>
