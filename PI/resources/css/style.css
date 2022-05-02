@@ -25,7 +25,14 @@ a {
 	color: #000000;
 }
 
+h3 {
+	color: #fff;
+	font-weight: bold;
+}
 
+section p {
+	color: #fff;
+}
 
 /* CSS - Header */
 .logo img {	
@@ -76,10 +83,6 @@ div img[class="logo"] {
 
 /* CSS - Post */
 
-h3 {
-	color: #fff;
-	font-weight: bold;
-}
 
 .post {
 	border: solid 2px #fff;
@@ -135,32 +138,15 @@ h3 {
 	padding-left: 1.5%;
 }
 
-.info-textarea {
-	background-color: #000000;
-	color: #fff;
-	border-radius: 5px;
-	width: 100%;
-	min-width: 120px;
-}
-
 .button-submit2 {
 	background-color: #000000;
-	color: #fff;
-	height: 50px;
-	margin: 0 auto;
+	width: 100%;
 }
 
 .button-submit2:hover {
 	background-color: #950101;
 }
 
-.align-input2 {
-	background-color: #000000;
-	color: #fff;
-	margin: 0 auto;
-	width: 100%;
-	border-radius: 10px;
-}
 
 /* CSS - Buzón */
 
@@ -178,76 +164,25 @@ h3 {
 	display: none;
 }
 
-.ventana-mailbox {
-	background: #787a7b;
-	width: 70%;
-	height: 90%;
-	padding: 20px;
+.v-mailbox {
+	background-color: #787a7b;
+	border-radius: 10px;
+	max-width: 800px;
+	color: #000000;
 	position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	display: none;
-	border: solid 2px #000000;
-}
-
-.title-mailbox {
-	display: inline;
-	color: #fff;
-	font-weight: bold;
-}
-
-.mailbox-chat {
-	width: 97%;
-	height: 80%;
-	margin: 0 auto;
-	background: #232526;
-	overflow: auto;
-	border-radius: 10px;
-}
-
-.textarea-mailbox {
-	height: 40px;
-	background-color: #000000;
-	color: #fff;
-	border-radius: 5px;
-	min-width: 120px;
-}
-
-.submit-mailbox {
-	height: 40px;
-	background-color: #000000;
-	color: #fff;
-	border-radius: 5px;
-	font-weight: bold;
-}
-
-.submit-mailbox:hover {
-	background-color: #950101;
-}
-
-.text-name-mailbox {
-	color: #fff;
-	font-weight: bold;
-	display: inline;
-}
-
-.text-mailbox {
-	color: #fff;
-	padding-left: 1.5%;
 }
 
 /* CSS - STYLES GLOBAL LOGIN Y SIGN UP */
-
-label,input,textarea,select{
-	margin-bottom: 1rem!important;
-	border-radius: 10px;
-}
 
 .button-submit {
 	background-color: #373b68;
 	color: #fff;
 	height: 50px;
+	width: 100%;
 	margin: 0 auto;
 }
 
@@ -290,11 +225,6 @@ body[class="body2"] a {
 	font-weight: bold;
 }
 
-
-section p {
-	color: #fff;
-}
-
 /* CSS - Registro */
 .coincide {
 	color: #950101;
@@ -319,10 +249,9 @@ section p {
 	color: #252847;
 }
 
-.ventana-terms {
+.v-terms {
 	background-color: #787a7b;
 	padding: 10px;
-	min-height: 250px;
 	min-width: 350px;
 	position: absolute;
 	top: 50%;
@@ -334,7 +263,8 @@ section p {
 }
 
 /* CSS - AVISO PARA EL VISITANTE */
-.ventana-aviso-visitante {
+
+.v-visitante {
 	background-color: #787a7b;
 	padding: 20px;
 	position: fixed;
@@ -346,6 +276,15 @@ section p {
 	border-radius: 10px;
 }
 
+.bg-visitante {
+	background-color: #616262;
+}
+
+.bg-visitante:hover {
+	background-color: #787a7b;
+	color: #fff;
+}
+
 .title-aviso {
 	display: inline;
 	color: #fff;
@@ -353,10 +292,9 @@ section p {
 	margin: 0 auto;
 }
 
-.contenido-aviso {
+.body-aviso, .body-mailbox  {
 	margin: 0 auto;
 	background: #232526;
-	overflow: auto;
 	border-radius: 10px;
 }
 
@@ -385,4 +323,15 @@ div[class="col-6 col-sm-4"] i {
 
 .submit:hover {
 	opacity: 50%;
+}
+
+.bg-dark {
+    background-color: #000000!important;
+}
+
+.acercaDe {
+	border: solid 2px white;
+	border-radius: 5px;
+	color: #fff;
+	transition: background-color 1.5s;
 }

@@ -34,12 +34,8 @@
 				<li class="nav-item col-4" role="presentation">
 					<button class="nav-link" id="acercaDe-tab" data-bs-toggle="tab" data-bs-target="#acercaDe" type="button" role="tab" aria-controls="acercaDe" aria-selected="false"><i class="bi bi-info-circle-fill"></i> Acerca De</button>
 				</li>
-				<li class="nav-item col-4 dropdown">
-					<button class="nav-link" id="select-tab" data-bs-toggle="tab" data-bs-target="#select" type="button" role="tab" aria-controls="select" aria-selected="false"><i class="bi bi-person-fill"></i> <?php if (!empty($user)){ echo $user['name']; } ?></button>
-					<div class="dropdown-content">
-					    <a class="dropdown-item" id="perfil-tab" data-bs-toggle="pill" data-bs-target="#perfil" type="button" role="tab" aria-controls="perfil" aria-selected="false" >Perfil</a>					
-					    <a class="dropdown-item" href="includes/logout.php">Cerrar Sesión</a>
-					 </div>
+				<li class="nav-item col-4">
+					<button class="nav-link" id="perfil-tab" data-bs-toggle="pill" data-bs-target="#perfil" type="button" role="tab" aria-controls="perfil" aria-selected="false" ><i class="bi bi-person-fill"></i> <?php if (!empty($user)){ echo $user['name']; } ?></button>
 				</li>
 			</ul>
 		</nav>
@@ -100,32 +96,28 @@
 			<a class="mailbox2"><img src="Imagenes\buzon.png" id="mailbox-open"></a>
 			<a href="javascript:to_open()"><img src="Imagenes\buzon1.png" id="mailbox-closed"></a>
 		</buzon>
-		<buzon-abierto class="ventana-mailbox" id="vent">
-			<h5 class="title-mailbox">BUZÓN DE SUGERENCIAS</h5>
-			<cerrar id="close">
-				<a href="javascript:close()"><img src="Imagenes/error.png" width="25" height="25" align="right"></a>
-			</cerrar>
-			<br><br>
-			<body-mailbox class="row">
-				<div class="mailbox-chat">
-						<div class="row">
-							<div class="col-md-6">
-								<p class="text-name-mailbox">Adiministrador</p>
-								<p class="text-mailbox">Mensage</p>
-							</div>
-							<div class="col-md-6"></div>
-							<div class="col-md-6"></div>
-							<div class="col-md-6">
-								<p class="text-name-mailbox">Usuario</p>
-								<p class="text-mailbox">Mensage</p>
-							</div>
-						</div>
-				</div>
-				<form class="btn-group" method="POST" action="#">
-					<textarea class="col-md-10 textarea-mailbox" type="text" name="mailbox" placeholder="Escribir sugerencia..."></textarea>
-					<input class="col-md-2 submit-mailbox" type="submit" value="Enviar">
+		<buzon-abierto class="v-mailbox p-4 container-sm container-md" id="vent">
+			<div class="row g-2 mb-2">
+				<div class="col-10"><h5 class="title-aviso fw-bold">BUZÓN</h5></div>
+				<div class="col-2 text-right" align="right"><button type="button" class="text-light bg-visitante" onclick="location.href='javascript:close()'"><i class="bi bi-x-circle-fill"></i></button></div>
+			</div>
+			<div class="body-mailbox p-2">
+				<form action="" method="post">
+					<div class="form-floating mb-3 mt-2">
+						<select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="tipoMensaje" required>
+							<option value="Sugerencia">Sugerencia</option>
+							<option value="Queja">Queja</option>
+							<option value="Error">Reportar error</option>
+						</select>
+						<label for="floatingSelect">Tipo</label>				
+					</div>
+					<div class="form-floating mb-3 ">
+						<textarea type="text" class="form-control" style="height: 200px" id="floatingInput" placeholder="Mensaje..." name="mensajeBuzon"  minlength="6" maxlength="500" required></textarea>
+						<label for="floatingInput"><i class="bi bi-chat-right-text"></i> Mensaje</label>
+					</div>
+					<button class="button-submit text-white mb-3" type="submit">Enviar <i class="bi bi-send-fill"></i></button>
 				</form>
-			</body-mailbox>
+			</div>
 		</buzon-abierto>
 	</div>
 	<script src="resources/js/script.js"></script>

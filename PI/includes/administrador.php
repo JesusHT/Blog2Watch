@@ -48,5 +48,26 @@
 		$stmt -> execute();
 	} 
 
+	
+	$sql = "SELECT * FROM buzon ORDER BY id_buzon DESC";
+
+	$query2 = $conn -> prepare($sql);
+	$query2 -> execute();
+	$comentarios = $query2 -> fetchAll(PDO::FETCH_OBJ);
+
+
+	if(isset($_POST['eliminar-user'])){
+		$sql = "DELETE FROM users WHERE id = :id";
+		$stmt = $conn -> prepare($sql);
+		$stmt -> bindParam(':id', $_POST['eliminar-user']);
+		$stmt -> execute();
+	} 
+
+	
+	$sql_2 = "SELECT * FROM users";
+
+	$query3 = $conn -> prepare($sql_2);
+	$query3 -> execute();
+	$usuarios = $query3 -> fetchAll(PDO::FETCH_OBJ);
 
 ?>

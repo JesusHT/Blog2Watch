@@ -26,11 +26,11 @@
 					}
 				?>
 				<form method="POST" action="recuperar.php">
-					<div class="form-floating mt-2">
+					<div class="form-floating mt-2 mb-3">
 						<input class="align-input form-control" type="text" name="user"  maxlength="20" minlength="5" required id="floatingInput" placeholder="username">
 						<label for="floatingInput"><span><i class="bi bi-person-fill"></i></span> Usuario</label>
 					</div>
-					<input class="button-submit align-input" type="submit" value="Continuar"> 
+					<input class="button-submit align-input mb-3" type="submit" value="Continuar"> 
 				</form>
 				<p align="center">¿No tienes una cuenta? <a href="sign_up.php">Regístrate</a><br>¿Recordaste tú contraseña? <a href="login.php">Inicia sesión</a></p>
 			</section>

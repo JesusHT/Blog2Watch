@@ -24,7 +24,7 @@
 				<img src="Imagenes\logoblog.png">
 			</div>
 		</header>
-		<nav class="nav justify-content-center navbar-dark mb-3 col-lg-8 position-center row">
+		<nav class="nav justify-content-center navbar-dark mb-3 col-md-8 position-center row">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item col-4" role="presentation">
 					<button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><i class="bi bi-house-door-fill"></i> Home</button>
@@ -37,99 +37,95 @@
 				</li>
 			</ul>
 		</nav>
-		<content>
-			<div class="container">
-				<content class="row">
-					<div class="tab-content" id="myTabContent">
-						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-							<section class="col-md-8 col-sm-4 position-center mb-3">
-								<?php require 'includes\filtros.php'; ?>
-							</section>
-							<section class="col-md-8 col-sm-4 position-center container">
-								<div class="row">
-									<?php 
-										if($query -> rowCount() > 0) { 
-											foreach($results as $result) {
-									?>
-												<post class="row post mb-3 position-center">
-													<div class="col-md-12 mt-2 row">
-														<h3><?php echo $result -> titulo; ?></h3>
-													</div>
-													<post-info class="info-post mt-2 col-md-12"><p><?php echo $result -> info; ?></p></post-info>
-													<div class="reactions2" align="left">
-														<form action="<?php $_SERVER['PHP_SELF'] ?>" method="GET">
-															<h6 class="clasificacion2">
+		<div class="container">
+			<content class="row">
+				<div class="tab-content" id="myTabContent">
+					<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+						<section class="col-md-8 col-sm-4 position-center mb-3">
+							<?php require 'includes\filtros.php'; ?>
+						</section>
+						<section class="col-md-8 col-sm-4 position-center container">
+							<div class="row">
+								<?php 
+									if($query -> rowCount() > 0) { 
+										foreach($results as $result) {
+								?>
+											<post class="row post mb-3 position-center">
+												<div class="col-md-12 mt-2 row">
+													<h3><?php echo $result -> titulo; ?></h3>
+												</div>
+												<post-info class="info-post mt-2 col-md-12"><p><?php echo $result -> info; ?></p></post-info>
+												<div class="reactions2" align="left">
+													<form action="<?php $_SERVER['PHP_SELF'] ?>" method="GET">
+														<h6 class="clasificacion2">
 
-																<?php for ($i=5; $i >= 1; $i--) { ?>
+															<?php for ($i=5; $i >= 1; $i--) { ?>
 
-																	<input id="radio<?php echo $i, $result -> id_post; ?>" type="radio" name="estrellas" value="<?php echo $i?>">
-																	<label for="radio<?php echo $i, $result -> id_post; ?>"onclick="javascript:to_open()"><i class="fa-solid fa-popcorn"></i></label>
+																<input id="radio<?php echo $i, $result -> id_post; ?>" type="radio" name="estrellas" value="<?php echo $i?>">
+																<label for="radio<?php echo $i, $result -> id_post; ?>"onclick="javascript:to_open()"><i class="fa-solid fa-popcorn"></i></label>
 
-																<?php }?>
-															</h6>
-														</form>
-													</div>
-													<post-comment class="col-md-12">
-														<div class="col-md-12">
-															<div class="body-comment mb-2">
-																<p class="text-name-comment"><?php  ?></p><p class="text-comment"><?php  ?></p>
-															</div>
+															<?php }?>
+														</h6>
+													</form>
+												</div>
+												<post-comment class="col-md-12">
+													<div class="col-md-12">
+														<div class="body-comment mb-2">
+															<p class="text-name-comment"><?php  ?></p><p class="text-comment"><?php  ?></p>
 														</div>
-														<form action="javascript:to_open()" method="POST">
-															<div class="input-group mb-3">
-																<input type="hidden" name="id_post" value="<?php echo $result -> id_post; ?>">
-																<textarea type="text" class="form-control textarea-comment" placeholder="Escribir comentari..." name="comment"></textarea>
-																<button class="btn btn-outline-secondary submit-comment" type="submit" id="button-addon2"><i class="bi bi-chat-right-text-fill"></i></button>
-															</div>
-														</form>
-													</post-comment>
-												</post>
-									<?php
-											} 
-										}
+													</div>
+													<form action="javascript:to_open()" method="POST">
+														<div class="input-group mb-3">
+															<input type="hidden" name="id_post" value="<?php echo $result -> id_post; ?>">
+															<textarea type="text" class="form-control textarea-comment" placeholder="Escribir comentari..." name="comment"></textarea>
+															<button class="btn btn-outline-secondary submit-comment" type="submit" id="button-addon2"><i class="bi bi-chat-right-text-fill"></i></button>
+														</div>
+													</form>
+												</post-comment>
+											</post>
+								<?php
+										} 
+									}
 
-									?>
-								</div>
-							</section>
-						</div>
-						<div class="tab-pane fade" id="acercaDe" role="tabpanel" aria-labelledby="acercaDe-tab"><section class="col-md-8 col-sm-4 position-center">aaaa</section></div>
+								?>
+							</div>
+						</section>
 					</div>
-				</content>
-			</div>
-		</content>
+					<div class="tab-pane fade" id="acercaDe" role="tabpanel" aria-labelledby="acercaDe-tab"><section class="col-md-8 col-sm-4 position-center">aaaa</section></div>
+				</div>
+			</content>
+		</div>
 		<buzon class="mailbox">
 			<a href="javascript:to_open()"><img src="Imagenes\buzon1.png"></a>
 		</buzon>
-		<aviso-visitante class="ventana-aviso-visitante" id="vent">
-			<h5 class="title-aviso">AVISO</h5>
-			<input type="button" id="cerrar" hidden><label for="cerrar"><a href="javascript:close()"><i class="bi bi-x-circle-fill"></i></a></label>
-			<body-visitante class="row">
-				<div class="contenido-aviso">
-					<p align="center">Si quieres disfrutar de los privilegios:</p>
-					<div class="row">
-						<div class="col-6 col-sm-4" align="right">
-							<i class="bi bi-chat-right-text-fill"></i><br>
-							<i class="bi bi-emoji-smile"></i><i class="bi bi-emoji-frown"></i><br>
-							<i class="bi bi-mailbox"></i>
+		<aviso-visitante class="v-visitante" id="vent">
+			<div class="row g-2 mb-2">
+				<div class="col-10"><h5 class="title-aviso fw-bold">AVISO</h5></div>
+				<div class="col-2 text-right" align="right"><button type="button" class="text-light bg-visitante" onclick="location.href='javascript:close()'"><i class="bi bi-x-circle-fill"></i></button></div>
+			</div>
+			<div class="body-aviso p-2">
+				<p class="text-center">Si quieres disfrutar los privilegios:</p>
+				<div class="col-md-12 mb-2" >
+					<div class="row g-2">
+						<div class="col-6" align="right">
+							<h5><i class="bi bi-chat-right-text-fill"></i><br><?php for ($i=0; $i < 5; $i++) {?><i class="fa-solid fa-popcorn"></i><?php }?><br><i class="bi bi-mailbox"></i></h5>
 						</div>
-						<div class="col-6 col-sm-4">
-							<p>Comentar</p>
-							<p>Reaccionar</p>
-							<p>Entrar al Buzón</p>
+						<div class="col-6">
+							<h5>Comentar<br>Reaccionar<br>Buzón</h4>
 						</div>
-						<div class="coll-md-12 mb-3" align="center">
-							<p>Registrate a nuestro blog o inicia sesión</p>
-							<a href="sign_up.php"><button class="buttons-aviso">Registrarse</button></a>
-							<a href="login.php"><button class="buttons-aviso">Inicia Sesión</button></a>					
-						</div>	
 					</div>
-				</div>		
-			</body-visitante>
+				</div>
+				<div class="col-md-12 mb-3 text-center">
+					<p>Registrate o inicia sesión en nuestro blog</p>
+					<button class="buttons-aviso"><a href="sign_up.php" class="text-white">Registrarse</a></button>
+					<button class="buttons-aviso"><a href="login.php" class="text-white">Iniciar sesión</a></button>					
+				</div>	
+			</div>		
 		</aviso-visitante>
 	</div>
 	<script src="resources/js/script.js"></script>
 	<script src="resources/js/plataformas.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/ulg/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
 </body>
 </html>

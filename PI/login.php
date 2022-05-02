@@ -30,11 +30,11 @@
 						<input class="align-input form-control" type="text" name="name" required id="floatingInput" placeholder="username">
 						<label for="floatingInput"><span><i class="bi bi-person-fill"></i></span> Usuario</label>
 					</div>
-					<div class="form-floating">
+					<div class="form-floating mb-3">
 						<input class="align-input form-control" type="password" name="pass" required id="floatingPassword" placeholder="Password">
 						<label for="floatingPassword"><span><i class="bi bi-lock-fill"></i></span> Contraseña</label>
 					</div>
-					<input class="button-submit align-input" type="submit" value="Ingresar"> 
+					<input class="button-submit align-input mb-3" type="submit" value="Ingresar"> 
 				</form>
 				<p align="center">¿No tienes una cuenta? <a href="sign_up.php">Regístrate</a><br>¿Se te olvidó tu contraseña? <a href="recuperar.php">Recuperar</a></p>
 			</section>
