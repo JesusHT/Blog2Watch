@@ -178,6 +178,7 @@
 									?>
 								</div>
 						</section>
+							</section>
 					</div>
 					<div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">
 						<section class="col-md-8 col-sm-4 position-center">

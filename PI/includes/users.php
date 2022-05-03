@@ -18,12 +18,11 @@
 	
 	
 	// Inicio de sesion de usuario 	
-	if (isset($_POST['name']) && isset($_POST['pregunta']) && isset($_POST['pregunta'])) {
+	if (isset($_POST['name']) && isset($_POST['pregunta']) && isset($_POST['respuesta'])) {
 		$user = $_POST['name'];
 		$pass = $_POST['pass'];
 		$question = $_POST['pregunta'];
 		$respuesta = $_POST['respuesta'];
-
 
 		if (!empty($user) && !empty($pass) && !empty($question) && !empty($respuesta)) {
 
@@ -46,9 +45,9 @@
 			    $stmt -> bindParam(':respuesta', $respuesta);
 
 			    if ($stmt -> execute()) {
-			      $message = '¡Usuario registrado exitoxamentes!';
+			      	$message = '¡Usuario registrado exitoxamentes!';
 			    } else {
-			      $message2 = '¡No se ha podido registrar el usuario!';
+			      	$message2 = '¡No se ha podido registrar el usuario!';
 			    }
 			} 
 		}
@@ -70,10 +69,10 @@
 		    if (is_countable($results) > 0 && password_verify($pass, $results['pass'])) { # validamos que el usuario exista y que la contraseña sea correcta.
 		      	if ($results['name'] == 'Administrador'){ # Validadmos que sea la cuenta de administrador.
 		      		$_SESSION['user_id'] = $results['id']; # Le asiganomos a una variable $_SESSION la id del usuario.
-		     		header("Location: ../index-administrador.php"); # Redirigimos al usuario al index administrador.
+		     		header("Location: ../PI/index-administrador.php"); # Redirigimos al usuario al index administrador.
 		      	} else { 
 		      		$_SESSION['user_id'] = $results['id']; # Le asiganomos a una variable $_SESSION la id del usuario.
-		     		header("Location: ../index-user.php"); # Redirigimos al usuario al index user.
+		     		header("Location: ../PI/index-user.php"); # Redirigimos al usuario al index user.
 		      	}
 		    } else {
 				$message = "El usuario y/o la contraseña son incorrectos"; 
@@ -197,5 +196,7 @@
 		}
 	}	
 
+	// Buzón 
+	//$records = $conn -> prepare('INSERT INTO buzon (users, tipo_mensaje, mensaje) VALUES (:users, :tipo_mensaje, :mensaje)');
 ?>
 
