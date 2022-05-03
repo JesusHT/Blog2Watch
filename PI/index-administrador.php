@@ -177,7 +177,6 @@
 										}
 									?>
 								</div>
-						</section>
 							</section>
 					</div>
 					<div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">
