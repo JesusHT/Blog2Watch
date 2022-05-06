@@ -2,7 +2,8 @@
 	$host = 'localhost';
 	$basededatos = 'database';
 	$usuario = 'root';
-	$contraseña = '!JesusHT12015';
+	$contraseña = ''; 
+	//$contraseña = '!JesusHT12015';
 
 	$conexion = new mysqli($host, $usuario,$contraseña, $basededatos);
 

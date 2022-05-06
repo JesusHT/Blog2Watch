@@ -77,7 +77,7 @@
 													<form action="javascript:to_open()" method="POST">
 														<div class="input-group mb-3">
 															<input type="hidden" name="id_post" value="<?php echo $result -> id_post; ?>">
-															<textarea type="text" class="form-control textarea-comment" placeholder="Escribir comentari..." name="comment"></textarea>
+															<textarea type="text" class="form-control textarea-comment" placeholder="Escribir comentario..." name="comment"></textarea>
 															<button class="btn btn-outline-secondary submit-comment" type="submit" id="button-addon2"><i class="bi bi-chat-right-text-fill"></i></button>
 														</div>
 													</form>
@@ -86,7 +86,6 @@
 								<?php
 										} 
 									}
-
 								?>
 							</div>
 						</section>

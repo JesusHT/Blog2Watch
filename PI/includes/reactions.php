@@ -1,9 +1,5 @@
 <?php 
-
     require 'db.php';
-
-    
-
 ?>
 
 <form action="<?php $_SERVER['PHP_SELF'] ?>" method="POST">

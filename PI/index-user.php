@@ -47,6 +47,7 @@
 							<section class="col-md-8 col-sm-4 position-center mb-3">
 								<?php require 'includes\filtros.php'; ?>
 							</section>
+							<!-- Home.publicaciones -->
 							<section class="col-md-8 col-sm-4 position-center">
 							<?php 
 									if($query -> rowCount() > 0) { 
@@ -58,18 +59,20 @@
 												</div>
 												<post-info class="info-post mt-2 col-md-12"><p><?php echo $result -> info; ?></p></post-info>
 												<div class="reaction" align="left">
-													<?php require 'includes\reactioNs.php'; ?>
+													<?php require 'includes\reactions.php'; ?>
 												</div>
+												<!-- Comentarios -->
 												<post-comment class="col-md-12">
 													<div class="col-md-12">
 														<div class="body-comment mb-2">
 															<p class="text-name-comment"><?php  ?></p><p class="text-comment"><?php  ?></p>
 														</div>
 													</div>
+													
 													<form action="" method="POST">
 														<div class="input-group mb-3">
 															<input type="hidden" name="id_post" value="<?php echo $result -> id_post; ?>">
-															<textarea type="text" class="form-control textarea-comment" placeholder="Escribir comentari..." name="comment"></textarea>
+															<textarea type="text" class="form-control textarea-comment" placeholder="Escribir comentario..." name="comment"></textarea>
 															<button class="btn btn-outline-secondary submit-comment" type="submit" id="button-addon2"><i class="bi bi-chat-right-text-fill"></i></button>
 														</div>
 													</form>
@@ -82,16 +85,28 @@
 								?>
 							</section>
 						</div>
+
+						<!-- Pestaña Acerca De -->
 						<div class="tab-pane fade" id="acercaDe" role="tabpanel" aria-labelledby="acercaDe-tab">
 							<section class="col-md-8 col-sm-4 position-center">aaaa</section>
 						</div>
+
+						<!-- Pestaña perfil -->
 						<div class="tab-pane fade" id="perfil" role="tabpanel" aria-labelledby="perfil-tab">
-							<section class="col-md-8 col-sm-4 position-center">bbbb</section>
+							<section class="col-md-8 col-sm-4 position-center">
+								bbbb <br>
+								<button class="btn-logout" type="button" onclick="location.href='includes/logout.php'"><i class="bi bi-box-arrow-right"></i> Cerrar Sesión </button>
+								<button class="btn-logout" type="button"><i class="bi bi-question-circle"></i> Editar pregunta </button>
+								<button class="btn-logout" type="button"><i class="bi bi-braces-asterisk"></i> Editar contrase&ntilde;a </button>
+							</section>
 						</div>
+
 					</div>
 				</content>
 			</div>
 		</content>
+
+		<!-- Buzón -->
 		<buzon class="mailbox">
 			<a class="mailbox2"><img src="Imagenes\buzon.png" id="mailbox-open"></a>
 			<a href="javascript:to_open()"><img src="Imagenes\buzon1.png" id="mailbox-closed"></a>
@@ -119,6 +134,7 @@
 				</form>
 			</div>
 		</buzon-abierto>
+
 	</div>
 	<script src="resources/js/script.js"></script>
 	<script src="resources/js/plataformas.js"></script>

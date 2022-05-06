@@ -335,3 +335,49 @@ div[class="col-6 col-sm-4"] i {
 	color: #fff;
 	transition: background-color 1.5s;
 }
+
+
+
+/*Btn cerrar sesion user - temporal*/
+.btn-logout {
+    display: block;
+    padding: 0.5rem 1rem;
+    background-color: #000000;
+    color: #fff;
+    width: 30%; 
+    height: auto;
+    text-decoration: none;
+    transition: background-color all 1.5s;
+}
+
+.btn-logout:hover, .btn-logout:active {
+    background-color: #950101;
+    color: #fff;
+	width: 40%;
+    height: auto;
+	transition: all 1s;
+}
+
+.btn-logout::after, .btn-logout::before {
+    display: block;
+    padding: 0.5rem 1rem;
+    background-color: #000000;
+    color: #fff;
+    width: 30%; 
+    height: auto;
+    text-decoration: none;
+    transition: background-color all 1.5s;
+}
+
+.btn-2:hover:after,
+.btn-2:hover:before {
+  backface-visibility: hidden;
+  transition: width 350ms ease-in-out all 1s;
+  width: 30%;
+}
+
+.btn-2:hover:before {
+  bottom: auto;
+  top: 0;
+  width: 30%;
+}

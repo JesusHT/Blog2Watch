@@ -14,7 +14,6 @@ document.getElementById("pass").addEventListener('input', function() {
     let pass = document.getElementById("pass-confirm").value;
     let passCheck = this.value;
 
-
     if (pass === passCheck) {
     	document.getElementById("demo").innerHTML = '<i class="bi bi-check-lg"></i>';
     	document.getElementById('demo').style.color="green";
@@ -31,7 +30,6 @@ document.getElementById("pass").addEventListener('input', function() {
 document.getElementById("pass-confirm").addEventListener('input', function() {
     let pass = document.getElementById("pass").value;
     let passCheck = this.value;
-
 
     if (pass === passCheck) {
     	document.getElementById("demo").innerHTML = '<i class="bi bi-check-lg"></i>';

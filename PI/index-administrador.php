@@ -1,4 +1,5 @@
-<?php require 'includes/sesion.php'; require 'includes/administrador.php'; ?>
+<?php require 'includes/sesion.php'; 
+require 'includes/administrador.php'; ?>
 
 <!DOCTYPE html>
 <html>
@@ -95,7 +96,7 @@
 												<option value="Pelicula">Pelicula</option>
 												<option value="Serie">Serie</option>
 											</select>
-											<label for="floatingSelect">Tipo</label>				
+											<label for="floatingSelect">Tipo</label>
 										</div>
 									</div>
 									<input class="button-submit2 text-white mb-3" type="submit" value="Subir">
@@ -136,7 +137,7 @@
 												<form action="" method="POST">
 													<div class="input-group mb-3">
 														<input type="hidden" name="id_post" value="<?php echo $result -> id_post; ?>">
-														<textarea type="text" class="form-control textarea-comment" placeholder="Escribir comentari..." name="comment"></textarea>
+														<textarea type="text" class="form-control textarea-comment" placeholder="Escribir comentario..." name="comment"></textarea>
 														<button class="btn btn-outline-secondary submit-comment" type="submit" id="button-addon2"><i class="bi bi-chat-right-text-fill"></i></button>
 													</div>
 												</form>
