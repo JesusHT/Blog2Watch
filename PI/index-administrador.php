@@ -69,15 +69,18 @@ require 'includes/administrador.php'; ?>
 										}
 									?>
 								</div>
+								<!--Form Publicaciones-->
 								<form action="index-administrador.php" method="POST" id="formul"> 
 									<div class="form-floating mb-3">
 										<input type="text" class="form-control bg-dark text-white" id="floatingInput" placeholder="title" name="title" maxlength="100" required>
 										<label for="floatingInput">Titulo</label>
 									</div>
+
 									<div class="form-floating mb-3 ">
 										<textarea type="text" class="form-control bg-dark text-white" style="height: 100px" id="floatingInput" placeholder="info" name="info"  minlength="6" maxlength="500" required></textarea>
 										<label for="floatingInput">Información</label>
 									</div>
+
 									<div class="row g-2">
 										<div class="form-floating mb-3 col-6">
 											<select class="form-select bg-dark text-white"  id="floatingSelect" aria-label="Floating label select example" name="plataforma" required>
@@ -88,16 +91,18 @@ require 'includes/administrador.php'; ?>
 												<option value="HBO">HBO</option>
 												<option value="Otro">Otro</option>
 											</select>
-											<label for="floatingSelect">Plataforma</label>				
+											<label for="floatingSelect">Plataforma</label>	
 										</div>
+
 										<div class="form-floating mb-3 col-6">
 											<select class="form-select bg-dark text-white" id="floatingSelect" aria-label="Floating label select example" name="tipo" required>
 												<option selected disabled>Elija el tipo</option>
 												<option value="Pelicula">Pelicula</option>
 												<option value="Serie">Serie</option>
 											</select>
-											<label for="floatingSelect">Tipo</label>
+											<label for="floatingSelect">Tipo</label>	
 										</div>
+
 									</div>
 									<input class="button-submit2 text-white mb-3" type="submit" value="Subir">
 								</form>

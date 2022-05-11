@@ -51,6 +51,8 @@
 			    }
 			} 
 		}
+
+		
 	// Registro de usuario 
 	} else if (isset($_POST['name']) && isset($_POST['pass']) && empty($_POST['user2'])) { # Validamos que exista un valor en 	$_POST['name'] y  $_POST['pass'].
 		session_start(); # Iniciamos una sesion que nos ayudara más tarde.
@@ -78,6 +80,8 @@
 				$message = "El usuario y/o la contraseña son incorrectos"; 
 		    }
 		}
+
+
 		// Recuperación de contraseña/
 	} else if (isset($_POST['correo']) && isset($_POST['respuesta']) && isset($_POST['pregunta']) && isset($_POST['user2'])){
 		$user = $_POST['user2'];
@@ -134,7 +138,7 @@
 						<meta name="viewport" content="width=device-width, initial-scale=1.0">
 						<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 					</head>
-					<body style="background-color: #000000; color: #fff;">
+					<body style="background-color: #ffffff; color: #000000;">
 						<div align="center"><img src="https://i.ibb.co/dMWmZGV/logo.png" alt="Blog2Watch" title="Blog2Watch" width="250"></div>
 						<div style="height: 400px; padding: 10px 50px 20px;">
 							<p>Nueva contraseña: ' . $newpass . '</p>

@@ -1,4 +1,5 @@
-<?php require 'includes\sesion.php' ?>
+<?php require 'includes\sesion.php';
+require 'includes\interacciones.php'; ?>
 
 <!DOCTYPE html>
 <html>
@@ -14,6 +15,8 @@
 	<link rel="stylesheet" type="text/css" href="resources\css\styleNav.css">
   	<link rel="stylesheet" type="text/css" href="resources\css\style.css">
 	<link rel="icon" type="image/png" href="Imagenes\icono.ico">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<title>Blog2Watch</title>
 </head>
 <body>
@@ -69,14 +72,17 @@
 														</div>
 													</div>
 													
-													<form action="" method="POST">
+													<form action="index-user.php" method="POST" id="formComm">
 														<div class="input-group mb-3">
+															<!--<input type="hidden" name="id_user" value="<?php //session_start(); echo $_SESSION['user_id']; ?>">-->
+															<input type="hidden" name="id_user" value="<?php echo $user['id']; ?>">
 															<input type="hidden" name="id_post" value="<?php echo $result -> id_post; ?>">
-															<textarea type="text" class="form-control textarea-comment" placeholder="Escribir comentario..." name="comment"></textarea>
+															<textarea type="text" name="comment" class="form-control textarea-comment" placeholder="Escribir comentario..."></textarea>
 															<button class="btn btn-outline-secondary submit-comment" type="submit" id="button-addon2"><i class="bi bi-chat-right-text-fill"></i></button>
 														</div>
 													</form>
 												</post-comment>
+
 											</post>
 								<?php
 										} 

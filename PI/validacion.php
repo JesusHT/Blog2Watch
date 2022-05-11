@@ -18,7 +18,7 @@
 				</div>
 			</header>
 			<section class="col-lg-4 position-center form-users">
-				<div style="display: block;"><?php require 'includes\users.php';?></div>
+				<div style="display: none;"><?php require 'includes\users.php';?></div>
 				<?php 				
 					if (!empty($message)) {
 						echo '<p class="message-correcto">' . $message . ' <a href="login.php">Inicia sesión</a></p>';	
