@@ -1,5 +1,4 @@
-<?php require 'includes\sesion.php';
-require 'includes\interacciones.php'; ?>
+<?php require 'includes\sesion.php'; require 'includes\interacciones.php'; ?>
 
 <!DOCTYPE html>
 <html>
@@ -111,7 +110,6 @@ require 'includes\interacciones.php'; ?>
 				</content>
 			</div>
 		</content>
-
 		<!-- Buzón -->
 		<buzon class="mailbox">
 			<a class="mailbox2"><img src="Imagenes\buzon.png" id="mailbox-open"></a>
@@ -140,7 +138,6 @@ require 'includes\interacciones.php'; ?>
 				</form>
 			</div>
 		</buzon-abierto>
-
 	</div>
 	<script src="resources/js/script.js"></script>
 	<script src="resources/js/plataformas.js"></script>

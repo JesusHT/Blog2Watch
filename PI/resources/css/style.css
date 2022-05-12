@@ -266,14 +266,7 @@ body[class="body2"] a {
 
 .v-visitante {
 	background-color: #787a7b;
-	padding: 20px;
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-	display: none;
-	color: #fff;
-	border-radius: 10px;
+	color: #000000;
 }
 
 .bg-visitante {
@@ -292,7 +285,7 @@ body[class="body2"] a {
 	margin: 0 auto;
 }
 
-.body-aviso, .body-mailbox  {
+.body-mailbox  {
 	margin: 0 auto;
 	background: #232526;
 	border-radius: 10px;

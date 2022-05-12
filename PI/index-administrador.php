@@ -1,5 +1,4 @@
-<?php require 'includes/sesion.php'; 
-require 'includes/administrador.php'; ?>
+<?php require 'includes/sesion.php'; require 'includes/administrador.php'; ?>
 
 <!DOCTYPE html>
 <html>
@@ -85,11 +84,11 @@ require 'includes/administrador.php'; ?>
 										<div class="form-floating mb-3 col-6">
 											<select class="form-select bg-dark text-white"  id="floatingSelect" aria-label="Floating label select example" name="plataforma" required>
 												<option selected disabled>Elija una plataforma</option>
-												<option value="NETFLIX">Netflix</option>
-												<option value="Amazon">Amazon Prime</option>
-												<option value="Disney">Disney+</option>
-												<option value="HBO">HBO</option>
-												<option value="Otro">Otro</option>
+												<option value="1">Netflix</option>
+												<option value="2">Amazon Prime</option>
+												<option value="3">Disney+</option>
+												<option value="4">HBO</option>
+												<option value="5">Otro</option>
 											</select>
 											<label for="floatingSelect">Plataforma</label>	
 										</div>
@@ -97,8 +96,8 @@ require 'includes/administrador.php'; ?>
 										<div class="form-floating mb-3 col-6">
 											<select class="form-select bg-dark text-white" id="floatingSelect" aria-label="Floating label select example" name="tipo" required>
 												<option selected disabled>Elija el tipo</option>
-												<option value="Pelicula">Pelicula</option>
-												<option value="Serie">Serie</option>
+												<option value="2">Pelicula</option>
+												<option value="1">Serie</option>
 											</select>
 											<label for="floatingSelect">Tipo</label>	
 										</div>

@@ -56,17 +56,15 @@
 												</div>
 												<post-info class="info-post mt-2 col-md-12"><p><?php echo $result -> info; ?></p></post-info>
 												<div class="reactions2" align="left">
-													<form action="<?php $_SERVER['PHP_SELF'] ?>" method="GET">
-														<h6 class="clasificacion2">
+													<h6 class="clasificacion2">
 
-															<?php for ($i=5; $i >= 1; $i--) { ?>
+														<?php for ($i=5; $i >= 1; $i--) { ?>
 
-																<input id="radio<?php echo $i, $result -> id_post; ?>" type="radio" name="estrellas" value="<?php echo $i?>">
-																<label for="radio<?php echo $i, $result -> id_post; ?>"onclick="javascript:to_open()"><i class="fa-solid fa-popcorn"></i></label>
+															<input id="radio<?php echo $i, $result -> id_post; ?>" type="radio" name="estrellas" value="<?php echo $i?>" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+															<label for="radio<?php echo $i, $result -> id_post; ?>"onclick="javascript:to_open()"><i class="fa-solid fa-popcorn"></i></label>
 
-															<?php }?>
-														</h6>
-													</form>
+														<?php }?>
+													</h6>
 												</div>
 												<post-comment class="col-md-12">
 													<div class="col-md-12">
@@ -74,13 +72,11 @@
 															<p class="text-name-comment"><?php  ?></p><p class="text-comment"><?php  ?></p>
 														</div>
 													</div>
-													<form action="javascript:to_open()" method="POST">
-														<div class="input-group mb-3">
-															<input type="hidden" name="id_post" value="<?php echo $result -> id_post; ?>">
-															<textarea type="text" class="form-control textarea-comment" placeholder="Escribir comentario..." name="comment"></textarea>
-															<button class="btn btn-outline-secondary submit-comment" type="submit" id="button-addon2"><i class="bi bi-chat-right-text-fill"></i></button>
-														</div>
-													</form>
+													<div class="input-group mb-3">
+														<input type="hidden" name="id_post" value="<?php echo $result -> id_post; ?>">
+														<textarea type="text" class="form-control textarea-comment" placeholder="Escribir comentario..." name="comment"></textarea>
+														<button class="btn btn-outline-secondary submit-comment" type="submit" id="button-addon2" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-chat-right-text-fill"></i></button>
+													</div>
 												</post-comment>
 											</post>
 								<?php
@@ -94,33 +90,40 @@
 				</div>
 			</content>
 		</div>
-		<buzon class="mailbox">
-			<a href="javascript:to_open()"><img src="Imagenes\buzon1.png"></a>
-		</buzon>
-		<aviso-visitante class="v-visitante" id="vent">
-			<div class="row g-2 mb-2">
-				<div class="col-10"><h5 class="title-aviso fw-bold">AVISO</h5></div>
-				<div class="col-2 text-right" align="right"><button type="button" class="text-light bg-visitante" onclick="location.href='javascript:close()'"><i class="bi bi-x-circle-fill"></i></button></div>
-			</div>
-			<div class="body-aviso p-2">
-				<p class="text-center">Si quieres disfrutar los privilegios:</p>
-				<div class="col-md-12 mb-2" >
-					<div class="row g-2">
-						<div class="col-6" align="right">
-							<h5><i class="bi bi-chat-right-text-fill"></i><br><?php for ($i=0; $i < 5; $i++) {?><i class="fa-solid fa-popcorn"></i><?php }?><br><i class="bi bi-mailbox"></i></h5>
-						</div>
-						<div class="col-6">
-							<h5>Comentar<br>Reaccionar<br>Buzón</h4>
+		<!-- Button trigger modal -->
+		<button type="button" class="mailbox" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+		  	<img src="Imagenes\buzon1.png">
+		</button>
+
+		<!-- Modal -->
+		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+		    <div class="modal-content v-visitante">
+		        <div class="modal-header">
+		        	<h5 class="modal-title fw-bold" id="staticBackdropLabel">AVISO</h5>
+		        	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      	</div>
+		      	<div class="modal-body">
+		        	<p class="text-center">Si quieres disfrutar los privilegios:</p>
+					<div class="col-md-12 mb-2" >
+						<div class="row g-2">
+							<div class="col-6" align="right">
+								<h5><i class="bi bi-chat-right-text-fill"></i><br><?php for ($i=0; $i < 5; $i++) {?><i class="fa-solid fa-popcorn"></i><?php }?><br><i class="bi bi-mailbox"></i></h5>
+							</div>
+							<div class="col-6">
+								<h5>Comentar<br>Reaccionar<br>Buzón</h4>
+							</div>
 						</div>
 					</div>
-				</div>
-				<div class="col-md-12 mb-3 text-center">
-					<p>Registrate o inicia sesión en nuestro blog</p>
-					<button class="buttons-aviso"><a href="sign_up.php" class="text-white">Registrarse</a></button>
-					<button class="buttons-aviso"><a href="login.php" class="text-white">Iniciar sesión</a></button>					
-				</div>	
-			</div>		
-		</aviso-visitante>
+					<div class="col-md-12 mb-3 text-center">
+						<p>Registrate o inicia sesión en nuestro blog</p>
+						<button class="buttons-aviso"><a href="sign_up.php" class="text-white">Registrarse</a></button>
+						<button class="buttons-aviso"><a href="login.php" class="text-white">Iniciar sesión</a></button>		
+					</div>
+		       	</div>
+		    </div>
+		  </div>
+		</div>
 	</div>
 	<script src="resources/js/script.js"></script>
 	<script src="resources/js/plataformas.js"></script>

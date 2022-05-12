@@ -52,12 +52,13 @@
 	} 
 
 	//Mostrar buzon
-	$sql = "SELECT * FROM buzon ORDER BY id_buzon DESC";
+	/*$sql = "SELECT * FROM buzon ORDER BY id_buzon DESC";
 
 	$query2 = $conn -> prepare($sql);
 	$query2 -> execute();
 	$comentarios = $query2 -> fetchAll(PDO::FETCH_OBJ);
-
+	*/
+	
 	//Eliminar usuarios
 	if(isset($_POST['eliminar-user'])){
 		$sql = "DELETE FROM users WHERE id = :id";
