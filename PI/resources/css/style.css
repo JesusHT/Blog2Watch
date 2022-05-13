@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
 body {
-	background-color: #fff;
+	background-color: #000000;
 	color: #fff;
 	font-family: 'Open Sans', sans-serif;
 }
@@ -267,7 +267,6 @@ body[class="body2"] a {
 .v-visitante {
 	background-color: #787a7b;
 	color: #000000;
-
 }
 
 .bg-visitante {

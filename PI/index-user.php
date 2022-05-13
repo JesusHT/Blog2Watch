@@ -71,13 +71,13 @@
 														</div>
 													</div>
 													
-													<form action="index-user.php" method="POST" id="formComm">
+													<form action="" method="POST" id="formComm">
 														<div class="input-group mb-3">
-															<!--<input type="hidden" name="id_user" value="<?php //session_start(); echo $_SESSION['user_id']; ?>">-->
-															<input type="hidden" name="id_user" value="<?php echo $user['id']; ?>">
-															<input type="hidden" name="id_post" value="<?php echo $result -> id_post; ?>">
-															<textarea type="text" name="comment" class="form-control textarea-comment" placeholder="Escribir comentario..."></textarea>
-															<button class="btn btn-outline-secondary submit-comment" type="submit" id="button-addon2"><i class="bi bi-chat-right-text-fill"></i></button>
+															<!--<input type="hidden" name="id_user" id="id_user" value="<?php //session_start(); echo $_SESSION['user_id']; ?>">-->
+															<input type="hidden" name="id_user" id="id_user" value="<?php echo $user['id']; ?>">
+															<input type="hidden" name="id_post" id="id_post" value="<?php echo $result -> id_post; ?>">
+															<textarea type="text" name="comment" id="comment" class="form-control textarea-comment" placeholder="Escribir comentario..."></textarea>
+															<button class="btn btn-outline-secondary submit-comment" type="submit" id="button-addon2" name="submit"><i class="bi bi-chat-right-text-fill"></i></button>
 														</div>
 													</form>
 												</post-comment>
