@@ -1,4 +1,4 @@
-<?php require 'includes\sesion.php'; require 'includes\interacciones.php'; ?>
+<?php require 'includes\sesion.php';?>
 
 <!DOCTYPE html>
 <html>
@@ -14,8 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="resources\css\styleNav.css">
   	<link rel="stylesheet" type="text/css" href="resources\css\style.css">
 	<link rel="icon" type="image/png" href="Imagenes\icono.ico">
-	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<title>Blog2Watch</title>
 </head>
 <body>
@@ -70,18 +69,15 @@
 															<p class="text-name-comment"><?php  ?></p><p class="text-comment"><?php  ?></p>
 														</div>
 													</div>
-													
-													<form action="" method="POST" id="formComm">
-														<div class="input-group mb-3">
-															<!--<input type="hidden" name="id_user" id="id_user" value="<?php //session_start(); echo $_SESSION['user_id']; ?>">-->
-															<input type="hidden" name="id_user" id="id_user" value="<?php echo $user['id']; ?>">
-															<input type="hidden" name="id_post" id="id_post" value="<?php echo $result -> id_post; ?>">
-															<textarea type="text" name="comment" id="comment" class="form-control textarea-comment" placeholder="Escribir comentario..."></textarea>
-															<button class="btn btn-outline-secondary submit-comment" type="submit" id="button-addon2" name="submit"><i class="bi bi-chat-right-text-fill"></i></button>
-														</div>
-													</form>
+													<div class="input-group mb-3">
+														<input type="hidden" name="id_user" id="id_user" value="<?php echo $user['id']; ?>">
+														<input type="hidden" name="id_post" id="id_post" value="<?php echo $result -> id_post; ?>">
+														<textarea type="text" name="comment" id="comment" class="form-control textarea-comment" placeholder="Escribir comentario..."></textarea>
+														<button  type="button" class="btn btn-outline-secondary submit-comment" id="enviar">
+															<i class="bi bi-chat-right-text-fill"></i>
+														</button>
+													</div>
 												</post-comment>
-
 											</post>
 								<?php
 										} 
@@ -93,16 +89,13 @@
 
 						<!-- Pestaña Acerca De -->
 						<div class="tab-pane fade" id="acercaDe" role="tabpanel" aria-labelledby="acercaDe-tab">
-							<section class="col-md-8 col-sm-4 position-center">aaaa</section>
+							<section class="col-md-8 col-sm-4 position-center"><?php require 'includes\acercaDe.php'; ?></section>	
 						</div>
 
 						<!-- Pestaña perfil -->
 						<div class="tab-pane fade" id="perfil" role="tabpanel" aria-labelledby="perfil-tab">
 							<section class="col-md-8 col-sm-4 position-center">
-								bbbb <br>
-								<button class="btn-logout" type="button" onclick="location.href='includes/logout.php'"><i class="bi bi-box-arrow-right"></i> Cerrar Sesión </button>
-								<button class="btn-logout" type="button"><i class="bi bi-question-circle"></i> Editar pregunta </button>
-								<button class="btn-logout" type="button"><i class="bi bi-braces-asterisk"></i> Editar contrase&ntilde;a </button>
+								<?php require 'includes\profile.php';?>
 							</section>
 						</div>
 
@@ -124,9 +117,9 @@
 				<form action="" method="post">
 					<div class="form-floating mb-3 mt-2">
 						<select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="tipoMensaje" required>
-							<option value="Sugerencia">Sugerencia</option>
-							<option value="Queja">Queja</option>
-							<option value="Error">Reportar error</option>
+							<option value="1">Sugerencia</option>
+							<option value="2">Queja</option>
+							<option value="3">Reportar error</option>
 						</select>
 						<label for="floatingSelect">Tipo</label>				
 					</div>
@@ -141,6 +134,7 @@
 	</div>
 	<script src="resources/js/script.js"></script>
 	<script src="resources/js/plataformas.js"></script>
+	<script src="resources/js/app.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>	
 </body>

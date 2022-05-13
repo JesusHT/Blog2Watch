@@ -154,10 +154,15 @@
 									?>
 						</section>
 					</div>
+					<!-- Pestaña Acerca De -->
 					<div class="tab-pane fade" id="acercaDe" role="tabpanel" aria-labelledby="acercaDe-tab">
 						<section class="col-md-8 col-sm-4 position-center"><?php require 'includes\acercaDe.php'; ?></section>
 					</div>
-					<div class="tab-pane fade" id="perfil" role="tabpanel" aria-labelledby="perfil-tab"><section class="col-md-8 col-sm-4 position-center">aaaa</section></div>
+					<!-- Pestaña perfil -->
+					<div class="tab-pane fade" id="perfil" role="tabpanel" aria-labelledby="perfil-tab">
+						<section class="col-md-8 col-sm-4 position-center"><?php require 'includes\profile.php'; ?></section>
+					</div>
+					<!-- Pestaña Buzón -->
 					<div class="tab-pane fade" id="buzon" role="tabpanel" aria-labelledby="buzon-tab">
 						<section class="col-md-8 col-sm-4 position-center">
 							<div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
@@ -184,6 +189,7 @@
 								</div>
 							</section>
 					</div>
+					<!-- Pestaña Usuarios -->
 					<div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">
 						<section class="col-md-8 col-sm-4 position-center">
 							<input type="text" name="busqueda" id="busqueda" placeholder="Buscar..." class="bg-dark text-white">
