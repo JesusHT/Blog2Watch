@@ -1,8 +1,8 @@
 <?php 
-  require 'db.php';
+  	require 'db.php';
+  	
+	# Declaración de variables 
 
-  //Crear publicaciones
-  
 	$titulo = "";
 	$info = "";
 	$plataforma = "";
@@ -10,6 +10,7 @@
 	$message = "";
 	$message2 = "";
 
+	# Crear publicaciones
 	if (isset($_POST['title'])) {
 		$titulo = $_POST['title'];
 		$info = $_POST['info'];
@@ -43,7 +44,7 @@
 		
 	}
 
-	//Eliminar publicaciones
+	# Eliminar publicaciones
 	if(isset($_POST['eliminar'])){
 		$sql = "DELETE FROM post WHERE id_post = :id_post";
 		$stmt = $conn -> prepare($sql);
@@ -51,26 +52,18 @@
 		$stmt -> execute();
 	} 
 
-	//Mostrar buzon
-	/*$sql = "SELECT * FROM buzon ORDER BY id_buzon DESC";
+	# Mostrar buzon
+	$sql = "SELECT * FROM buzon ORDER BY id_buzon DESC";
 
 	$query2 = $conn -> prepare($sql);
 	$query2 -> execute();
 	$comentarios = $query2 -> fetchAll(PDO::FETCH_OBJ);
-	*/
 	
-	//Eliminar usuarios
+	# Eliminar usuarios
 	if(isset($_POST['eliminar-user'])){
 		$sql = "DELETE FROM users WHERE id = :id";
 		$stmt = $conn -> prepare($sql);
 		$stmt -> bindParam(':id', $_POST['eliminar-user']);
 		$stmt -> execute();
 	} 
-	
-	//Mostrar usuarios
-	$sql_2 = "SELECT * FROM users";
-
-	$query3 = $conn -> prepare($sql_2);
-	$query3 -> execute();
-	$usuarios = $query3 -> fetchAll(PDO::FETCH_OBJ);
 ?>

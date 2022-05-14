@@ -1,7 +1,7 @@
 <?php
     require 'db.php';
 	
-	#definir las variables 
+	# Definir las variables 
     $fecha = 3;
     $tipo = 3;
     $relevancia = 3;
@@ -47,7 +47,7 @@
 ?>
 
 <acordion-filtered class="acordion-item" id="accordionExample">
-	<a class="text-filtered btn" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-controls="collapseOne" ><img src="Imagenes\filtrar.png" width="30" height="30">FILTROS</a>
+	<a class="text-filtered btn" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-controls="collapseOne" ><img src="resources/pictures/filtrar.png" width="30" height="30">FILTROS</a>
 	<div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
 		<div class="body-filtered section-filtered text-section-filtered row hr-filterd mt-2">
 			<section-filtered class="col-md-12">

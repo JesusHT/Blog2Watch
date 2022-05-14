@@ -13,7 +13,7 @@
   	<link rel="stylesheet" type="text/css" href="resources\css\styleReactions.css">
 	<link rel="stylesheet" type="text/css" href="resources\css\styleNav.css">
   	<link rel="stylesheet" type="text/css" href="resources\css\style.css">
-	<link rel="icon" type="image/png" href="Imagenes\icono.ico">
+	<link rel="icon" type="image/png" href="resources\pictures\icono.ico">
 	<title>Blog2Watch</title>
 </head>
 <body>
@@ -22,7 +22,7 @@
 			<nav class="scroller gif"><div id="menu"><!-- Plataformas --> </div></nav>
 		</div>
 		<header>
-			<div class="col-md-8 position-center logo row justify-content-center"><img src="Imagenes\logoblog.png"></div>
+			<div class="col-md-8 position-center logo row justify-content-center"><img src="resources\pictures\logoblog.png"></div>
 		</header>
 		<nav class="nav justify-content-center navbar-dark mb-3 col-md-8 position-center row">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -41,9 +41,9 @@
 			<div class="container">
 				<content class="row">
 					<div class="tab-content" id="myTabContent">
+						<!-- Pestaña de inicio -->
 						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 							<section class="col-md-8 col-sm-4 position-center mb-3"><?php require 'includes\filtros.php'; ?></section>
-							<!-- Home.publicaciones -->
 							<section class="col-md-8 col-sm-4 position-center">
 								<?php 
 									if($query -> rowCount() > 0) { 
@@ -100,8 +100,8 @@
 		</content>
 		<!-- Buzón -->
 		<buzon class="mailbox">
-			<a class="mailbox2"><img src="Imagenes\buzon.png" id="mailbox-open"></a>
-			<a onclick="to_open()"><img src="Imagenes\buzon1.png" id="mailbox-closed"></a>
+			<a class="mailbox2"><img src="resources/pictures\buzon.png" id="mailbox-open"></a>
+			<a onclick="to_open()"><img src="resources/pictures\buzon1.png" id="mailbox-closed"></a>
 		</buzon>
 		<buzon-abierto class="v-mailbox p-4 container-sm container-md" id="vent">
 			<div class="row g-2 mb-2">

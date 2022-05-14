@@ -2,7 +2,7 @@ $(obtener_registros());
 
 function obtener_registros(name){
 	$.ajax({
-		url: '../PI/includes/consulta.php',
+		url: 'includes/consulta.php',
 		type: 'POST',
 		dataType: 'html',
 		data: { name: name },

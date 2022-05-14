@@ -38,7 +38,7 @@
 	<div class="col-4">
 		<div class="row">
 			<div class="card bg-dark" style="width: 18rem;">
-			  	<img src="Imagenes/perfil.png" class="card-img-top perfil-img d-block mx-auto">
+			  	<img src="resources/pictures/perfil.png" class="card-img-top perfil-img d-block mx-auto">
 			  	<div class="card-body">
 			   		<p class="card-text text-center"><?php if (!empty($user)){ echo $user['name']; } ?></p>
 			  	</div>

@@ -17,7 +17,7 @@
 	$correo = "";
 	
 	
-	// Inicio de sesion de usuario 	
+	# Registro de usuarios 	
 	if (isset($_POST['name']) && isset($_POST['pregunta']) && isset($_POST['respuesta'])) {
 		$user = $_POST['name'];
 		$pass = $_POST['pass'];
@@ -45,7 +45,7 @@
 			    $stmt -> bindParam(':respuesta', $respuesta);
 
 			    if ($stmt -> execute()) {
-			      	$message = '¡Usuario registrado exitoxamentes!';
+			      	$message = '¡Usuario registrado exitosamente!';
 			    } else {
 			      	$message2 = '¡No se ha podido registrar el usuario!';
 			    }
@@ -53,7 +53,7 @@
 		}
 
 		
-	// Registro de usuario 
+	# Inicio de sesión  
 	} else if (isset($_POST['name']) && isset($_POST['pass']) && empty($_POST['user2'])) { # Validamos que exista un valor en 	$_POST['name'] y  $_POST['pass'].
 		session_start(); # Iniciamos una sesion que nos ayudara más tarde.
 
@@ -71,10 +71,10 @@
 		    if (is_countable($results) > 0 && password_verify($pass, $results['pass'])) { # validamos que el usuario exista y que la contraseña sea correcta.
 		      	if ($results['name'] == 'Administrador'){ # Validadmos que sea la cuenta de administrador.
 		      		$_SESSION['user_id'] = $results['id']; # Le asiganomos a una variable $_SESSION la id del usuario.
-		     		header("Location: ../PI/index-administrador.php"); # Redirigimos al usuario al index administrador.
+		     		header("Location: index-administrador.php"); # Redirigimos al usuario al index administrador.
 		      	} else { 
 		      		$_SESSION['user_id'] = $results['id']; # Le asiganomos a una variable $_SESSION la id del usuario.
-		     		header("Location: ../PI/index-user.php"); # Redirigimos al usuario al index user.
+		     		header("Location: index-user.php"); # Redirigimos al usuario al index user.
 		      	}
 		    } else {
 				$message = "El usuario y/o la contraseña son incorrectos"; 
@@ -82,7 +82,7 @@
 		}
 
 
-		// Recuperación de contraseña/
+	# Recuperación de contraseña
 	} else if (isset($_POST['correo']) && isset($_POST['respuesta']) && isset($_POST['pregunta']) && isset($_POST['user2'])){
 		$user = $_POST['user2'];
 		$question = $_POST['pregunta'];
@@ -138,7 +138,7 @@
 						<meta name="viewport" content="width=device-width, initial-scale=1.0">
 						<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 					</head>
-					<body style="background-color: #ffffff; color: #000000;">
+					<body style="background-color: #000000; color: #fff;">
 						<div align="center"><img src="https://i.ibb.co/dMWmZGV/logo.png" alt="Blog2Watch" title="Blog2Watch" width="250"></div>
 						<div style="height: 400px; padding: 10px 50px 20px;">
 							<p>Nueva contraseña: ' . $newpass . '</p>
@@ -166,7 +166,7 @@
 		}
 	}
 	
-	// Validamos que el usuario que quiere recuperar la contraseña exista en la BD
+	# Recuperación de contraseña (Validar si el usuario existe)
 	if (isset($_POST['user'])){
 		$user = $_POST['user'];
 		
@@ -179,14 +179,14 @@
 
 			if (is_countable($results) > 0) {
 				setcookie("user", $user); # Creamos la COOKIE que contendra el nombre del usuario, que nos servira después para hacer una consulta sql en el archivo validacion.php
-				header("Location:  ../PI/validacion.php");
+				header("Location: validacion.php");
 			} else {
 				$message2 = 'El usuario no existe. <a href="sign_up.php">Regístrate</a>';
 			}
 		}
 	}
 
-	// Validamos que la COOKIE se haya creado correctamente para poder mostrar la pregunta de seguridad sin necesidad de que el usuario la ponga, esto por el posible escenario donde se le olvidé la pregunta.
+	# Validamos que la COOKIE se haya creado correctamente para poder mostrar la pregunta de seguridad sin necesidad de que el usuario la ponga, esto por el posible escenario donde se le olvidé la pregunta.
 	if (isset($_COOKIE['user'])) { # Validamos que la variable $_COOKIE['user'] tiene un valor 
 		$records = $conn->prepare('SELECT * FROM users WHERE name = :name'); # Preparamos una sentencia sql SELECT
 		$records->bindParam(':name', $_COOKIE['user']); # Definimos cual va ser el valor de :name
@@ -195,12 +195,12 @@
 
 		$users = null; # Creamos una variable $users y establecemos que su valor es null
 
-		if (count($results) > 0) { # Validamos que el array indexado $results tenga valores 
+		if (is_countable($results) > 0) { # Validamos que el array indexado $results tenga valores 
 			$users = $results; # Establecemos que la variable $user contendra los valores del array $results para usarlo después en validacion.php
 		}
 	}	
 
-	// Buzón 
+	# Buzón 
 	//$records = $conn -> prepare('INSERT INTO buzon (users, tipo_mensaje, mensaje) VALUES (:users, :tipo_mensaje, :mensaje)');
 ?>
 

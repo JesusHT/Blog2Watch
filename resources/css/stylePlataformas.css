@@ -17,7 +17,7 @@
     position: absolute;
     display: block;
     content: "";
-    background-image: url('../../Imagenes/plataformas.png');
+    background-image: url('../pictures/plataformas.png');
     background-size: 150px auto;
     background-repeat: no-repeat;
     width: 150px;

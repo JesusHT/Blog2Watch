@@ -6,7 +6,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="stylesheet" type="text/css" href="resources\css\style.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-	<link rel="icon" type="image/png" href="Imagenes\icono.ico">
+	<link rel="icon" type="image/png" href="resources\pictures\icono.ico">
 	<title>Blog2Watch</title>
 </head>
 <body class="body2">
@@ -14,7 +14,7 @@
 		<content class="row" style="padding: 10px;">
 			<header class="col-lg-12">
 					<div align="center">
-						<img src="Imagenes/logoblog.png" class="logo">
+						<img src="resources/pictures/logoblog.png" class="logo">
 					</div>
 			</header>
 			<section class="col-lg-4 position-center form-users">

@@ -4,6 +4,7 @@
 
     require 'db.php';
 
+    # Validar si el usuario inicio sesión
     if (isset($_SESSION['user_id'])) {
         $records = $conn->prepare('SELECT * FROM users WHERE id = :id');
         $records->bindParam(':id', $_SESSION['user_id']);
@@ -16,7 +17,7 @@
             $user = $results;
         }
     } else {
-        header('Location: ../PI/login.php'); 
+        header('Location: ../login.php'); 
     }
 
 ?>
