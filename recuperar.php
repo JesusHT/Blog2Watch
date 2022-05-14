@@ -11,18 +11,16 @@
 </head>
 <body class="body2">
 	<div class="container">
-		<content class="row" style="padding: 10px;">
+		<content class="row p-2">
 			<header class="col-lg-12">
-					<div align="center">
-						<img src="resources/pictures/logoblog.png" class="logo">
-					</div>
+				<div class="logo justify-content-center row"><img src="resources/pictures/logoblog.png"></div>
 			</header>
-			<section class="col-lg-4 position-center form-users">
+			<section class="col-lg-4 position-center bg-gray p-4 rounded">
 				<?php 
 					require 'includes\users.php';
 					
 					if (!empty($message2)) {
-						echo '<p class="message-error">' . $message2 . '</p>';	
+						echo '<p class="message-error text-white">' . $message2 . '</p>';	
 					}
 				?>
 				<form method="POST" action="recuperar.php">
@@ -30,12 +28,12 @@
 						<input class="align-input form-control" type="text" name="user"  maxlength="20" minlength="5" required id="floatingInput" placeholder="username">
 						<label for="floatingInput"><span><i class="bi bi-person-fill"></i></span> Usuario</label>
 					</div>
-					<input class="button-submit align-input mb-3" type="submit" value="Continuar"> 
+					<input type="submit" class="button-submit text-white align-input mb-3" value="Continuar"> 
 				</form>
-				<p align="center">¿No tienes una cuenta? <a href="sign_up.php">Regístrate</a><br>¿Recordaste tú contraseña? <a href="login.php">Inicia sesión</a></p>
+				<p class="text-white text-center">¿No tienes una cuenta? <a href="sign_up.php">Regístrate</a><br>Regresar <a href="login.php">Inicia sesión</a></p>
 			</section>
 		</content>
 	</div>
-</body>
 	<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+</body>
 </html>

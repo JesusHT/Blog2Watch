@@ -18,7 +18,7 @@
 </head>
 <body>
 	<div class="container">
-		<!-- Navegador de plataformas -->
+		<!-- Menú de plataformas -->
 		<div class="site-sidebar"> 
 			<nav class="scroller gif"><div id="menu"><!-- Plataformas --></div></nav>
 		</div>
@@ -55,18 +55,16 @@
 				<div class="tab-content" id="myTabContent">	
 					<!-- Pestaña de inicio  -->	
 					<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-						<section class="col-md-8 col-sm-4  position-center mb-3">
-							<?php require 'includes\filtros.php'; ?>
-						</section>
+						<section class="col-md-8 col-sm-4  position-center mb-3"><?php require 'includes\filtros.php'; ?></section>
 						<section class="col-md-8 col-sm-4 position-center">
-							<post-form class="row post mb-3">
+							<post-form class="row post mb-3 text-white">
 								<div class="mt-3">
 									<?php 
 										if (!empty($message)) {
-											echo '<p class="message-correcto">' . $message . '</p>';	
+											echo '<p class="message-correcto text-white">' . $message . '</p>';	
 										}
 										if (!empty($message2)) {
-											echo '<p class="message-error">' . $message2 . '</p>';
+											echo '<p class="message-error text-white">' . $message2 . '</p>';
 										}
 									?>
 								</div>
@@ -104,7 +102,7 @@
 										</div>
 
 									</div>
-									<input class="button-submit2 text-white mb-3" type="submit" value="Subir">
+									<input class="button-submit2 text-white mb-3 rounded border-white border-1" type="submit" value="Subir">
 								</form>
 							</post-form>
 							<!-- Publicaciones -->
@@ -112,12 +110,10 @@
 								if($query -> rowCount() > 0) { 
 									foreach($results as $result) {
 							?>
-										<post class="row post mb-3 position-center">
+										<post class="row border rounded-3 border-white mb-3 position-center">
 											<div class="col-md-12 mt-2">
 												<div class="row">
-													<div class="col-md-10">
-														<h3><?php echo $result -> titulo; ?></h3>
-													</div>
+													<div class="col-md-10"><h3  class="text-white fw-bold"><?php echo $result -> titulo; ?></h3></div>
 													<div class="col-md-2 btn-group color"> 
 														<form action="index-administrador.php" method="POST" >
 															<input type="hidden" name="eliminar" value="<?php echo $result -> id_post; ?>">
@@ -130,19 +126,23 @@
 													</div>
 												</div>
 											</div>
-											<post-info class="info-post mt-2 col-md-12"><p><?php echo $result -> info; ?></p></post-info>
-											<div class="reaction" align="left"><?php require 'includes\reactions.php'; ?></div>
+											<post-info class="info-post text-white mt-2 col-md-12"><p><?php echo $result -> info; ?></p></post-info>
+											<div class="reaction text-white" align="left"><?php require 'includes\reactions.php'; ?></div>
 											<post-comment class="col-md-12">
 												<div class="col-md-12">
 													<div class="body-comment mb-2">
 														<p class="text-name-comment"><?php  ?></p><p class="text-comment"><?php  ?></p>
 													</div>
 												</div>
-												<form action="" method="POST">
+												<form action="" id="formComment<?php echo $result -> id_post; ?>">
 													<div class="input-group mb-3">
-														<input type="hidden" name="id_post" value="<?php echo $result -> id_post; ?>">
-														<textarea type="text" class="form-control textarea-comment" placeholder="Escribir comentario..." name="comment"></textarea>
-														<button class="btn btn-outline-secondary submit-comment" type="submit" id="button-addon2"><i class="bi bi-chat-right-text-fill"></i></button>
+														<input type="hidden" name="id_user" id="id_user" value="<?php echo $user['id']; ?>">
+														<input type="hidden" name="id_post" id="id_post" value="<?php echo $result -> id_post; ?>">
+														<textarea type="text" name="comment" id="comment<?php echo $result -> id_post; ?>" class="form-control h-comment bg-dark text-white" placeholder="Escribir comentario..."></textarea>
+														<button type="button" class="btn btn-outline-secondary submit-comment text-white" id="enviar" 
+														onclick="enviarDatos(<?php echo $result -> id_post; ?>)">
+															<i class="bi bi-chat-right-text-fill"></i>
+														</button>
 													</div>
 												</form>
 											</post-comment>
@@ -210,8 +210,10 @@
 		</div>
 	</div>
 	<!-- Scripts -->
+	<script src="resources/js/app.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="resources/js/plataformas.js"></script>
+	<script src="resources/js/validar.js"></script>
 	<script src="resources/js/peticion.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/ulg/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>

@@ -49,13 +49,13 @@
 									if($query -> rowCount() > 0) { 
 										foreach($results as $result) {
 								?>
-											<post class="row post mb-3 position-center">
+											<post class="row border rounded-3 border-white mb-3 position-center">
 												<!-- Titulo -->
-												<div class="col-md-12 mt-2"><h3><?php echo $result -> titulo; ?></h3></div>
+												<div class="col-md-12 mt-2"><h3 class="text-white fw-bold"><?php echo $result -> titulo; ?></h3></div>
 												<!-- Información -->
-												<post-info class="info-post mt-2 col-md-12"><p><?php echo $result -> info; ?></p></post-info>
+												<post-info class="info-post mt-2 col-md-12 text-white"><p><?php echo $result -> info; ?></p></post-info>
 												<!-- Reacciones -->
-												<div class="reaction" align="left"><?php require 'includes\reactions.php'; ?></div>
+												<div class="reaction text-white" align="left"><?php require 'includes\reactions.php'; ?></div>
 												<!-- Comentarios -->
 												<post-comment class="col-md-12">
 													<div class="col-md-12">
@@ -67,8 +67,8 @@
 														<div class="input-group mb-3">
 															<input type="hidden" name="id_user" id="id_user" value="<?php echo $user['id']; ?>">
 															<input type="hidden" name="id_post" id="id_post" value="<?php echo $result -> id_post; ?>">
-															<textarea type="text" name="comment" id="comment<?php echo $result -> id_post; ?>" class="form-control textarea-comment" placeholder="Escribir comentario..."></textarea>
-															<button type="button" class="btn btn-outline-secondary submit-comment" id="enviar" 
+															<textarea type="text" name="comment" id="comment<?php echo $result -> id_post; ?>" class="form-control h-comment bg-dark text-white" placeholder="Escribir comentario..."></textarea>
+															<button type="button" class="btn btn-outline-secondary submit-comment text-white" id="enviar" 
 															onclick="enviarDatos(<?php echo $result -> id_post; ?>)">
 																<i class="bi bi-chat-right-text-fill"></i>
 															</button>
@@ -100,15 +100,15 @@
 		</content>
 		<!-- Buzón -->
 		<buzon class="mailbox">
-			<a class="mailbox2"><img src="resources/pictures\buzon.png" id="mailbox-open"></a>
-			<a onclick="to_open()"><img src="resources/pictures\buzon1.png" id="mailbox-closed"></a>
+			<a class="mailbox2"><img src="resources/pictures/buzon.png" id="mailbox-open"></a>
+			<a onclick="to_open()"><img src="resources/pictures/buzon1.png" id="mailbox-closed"></a>
 		</buzon>
-		<buzon-abierto class="v-mailbox p-4 container-sm container-md" id="vent">
+		<buzon-abierto class="v-mailbox text-dark rounded-2 bg-gray p-4 container-sm container-md" id="vent">
 			<div class="row g-2 mb-2">
-				<div class="col-10"><h5 class="title-aviso fw-bold">BUZÓN</h5></div>
-				<div class="col-2 text-right" align="right"><button type="button" class="text-light bg-visitante" onclick="location.href='javascript:close()'"><i class="bi bi-x-circle-fill"></i></button></div>
+				<div class="col-10"><h5 class="fw-bold">BUZÓN</h5></div>
+				<div class="col-2" align="right"><button type="button" class="text-light bg-visitante" onclick="location.href='javascript:close()'"><i class="bi bi-x-circle-fill"></i></button></div>
 			</div>
-			<div class="body-mailbox p-2">
+			<div class="position-center bg-darkGray rounded p-2">
 				<form action="" method="post">
 					<div class="form-floating mb-3 mt-2">
 						<select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="tipoMensaje" required>
@@ -130,6 +130,7 @@
 	<!-- Scripts -->
 	<script src="resources/js/app.js"></script>
 	<script src="resources/js/script.js"></script>
+	<script src="resources/js/validar.js"></script>
 	<script src="resources/js/plataformas.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>	

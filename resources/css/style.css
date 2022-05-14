@@ -3,9 +3,40 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap');
 
 body {
-	background-color: #000000;
-	color: #fff;
 	font-family: 'Open Sans', sans-serif;
+	background-color: #000000;
+}
+
+/* Backgrounds-colors */
+	.bg-gray {
+		background-color: #787a7b;
+	}
+	.bg-darkGray {
+		background-color: #232526;
+	}
+	.bg-purple {
+		background-color: #610094;
+	}
+	.bg-darkPurple {
+		background-color: #3d0859;
+	}
+	.bg-dark {
+		background-color: #000000!important;
+	}
+
+
+.rounded-3 {
+	border-radius: 22px!important;
+}
+
+a {
+	text-decoration: none;
+	font-weight: bold;
+	color: #fff;
+}
+
+a:hover {
+	color: #252847;
 }
 
 .position-center {
@@ -16,22 +47,9 @@ textarea {
   resize: none;
 }
 
-a {
-	text-decoration: none;
-}
-
 .body2 {
-	background: #232526;
+	background-color: #232526;
 	color: #000000;
-}
-
-h3 {
-	color: #fff;
-	font-weight: bold;
-}
-
-section p {
-	color: #fff;
 }
 
 /* CSS - Header */
@@ -47,10 +65,7 @@ div img[class="logo"] {
 /*CSS - Filtrar Por */
 
 .text-filtered {
-	color: #fff;
 	opacity: 65%;
-	text-decoration: none;
-	font-weight: bold;
 	display: inline;
 }
 
@@ -59,7 +74,6 @@ div img[class="logo"] {
 }
 
 .text-filtered:hover {
-	color: #fff;
 	opacity: 100%;
 }
 
@@ -69,12 +83,6 @@ div img[class="logo"] {
 	border-radius: 5px;
 }
 
-.text-section-filtered {
-	color: #fff;
-	font-weight: bold;
-	font-size: 13px;
-}
-
 .hr-filterd hr{
 	background-color: #fff;
 	border: none;
@@ -82,13 +90,6 @@ div img[class="logo"] {
 }
 
 /* CSS - Post */
-
-
-.post {
-	border: solid 2px #fff;
-	border-radius: 22px;
-}
-
 .info-post p {
 	border-bottom: solid 1px #fff;
 	text-align: justify;
@@ -101,21 +102,13 @@ div img[class="logo"] {
 	overflow: auto;
 }
 
-.textarea-comment {
+.h-comment {
 	height: 40px;
-	background-color: #000000;
-	color: #fff;
-}
-
-.textarea-comment:focus {
-	background-color: #000000;
-	color: #fff;
 }
 
 .submit-comment {
 	height: 40px;
 	background-color: #000000;
-	color: #fff;
 	border-radius: 10px;
 	font-weight: bold;
 }
@@ -147,7 +140,6 @@ div img[class="logo"] {
 	background-color: #950101;
 }
 
-
 /* CSS - Buzón */
 
 .mailbox img {
@@ -165,10 +157,7 @@ div img[class="logo"] {
 }
 
 .v-mailbox {
-	background-color: #787a7b;
-	border-radius: 10px;
 	max-width: 800px;
-	color: #000000;
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -180,7 +169,6 @@ div img[class="logo"] {
 
 .button-submit {
 	background-color: #373b68;
-	color: #fff;
 	height: 50px;
 	width: 100%;
 	margin: 0 auto;
@@ -212,62 +200,31 @@ div[class="mt-3"] p {
 	border-radius: 5px;
 }
 
-.form-users {
-	background: #787a7b;
-	border-radius: 5px;
-	padding: 20px;
-}
-
-/*CSS - Login */
-
-body[class="body2"] a {
-	color: #fff;
-	font-weight: bold;
-}
-
 /* CSS - Registro */
+
 .coincide {
 	color: #950101;
 	font-weight: bold;
 	display: inline;
 }
 
-.terminos span {
-	color: #fff;
-}
-
-.terms p {
-	display: inline;
-	font-weight: bold;
-}
-
 .cerrar {
 	color: #373b68;
 }
-
 .cerrar:hover {
 	color: #252847;
 }
 
 .v-terms {
-	background-color: #787a7b;
-	padding: 10px;
 	min-width: 350px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	display: none;
-	border: solid 2px #000000;
-	border-radius: 10px;
 }
 
 /* CSS - AVISO PARA EL VISITANTE */
-
-.v-visitante {
-	background-color: #787a7b;
-	color: #000000;
-}
 
 .bg-visitante {
 	background-color: #616262;
@@ -275,25 +232,10 @@ body[class="body2"] a {
 
 .bg-visitante:hover {
 	background-color: #787a7b;
-	color: #fff;
-}
-
-.title-aviso {
-	display: inline;
-	color: #fff;
-	font-weight: bold;
-	margin: 0 auto;
-}
-
-.body-mailbox  {
-	margin: 0 auto;
-	background: #232526;
-	border-radius: 10px;
 }
 
 .buttons-aviso {
 	background-color: #373b68;
-	color: #fff;
 }
 
 .buttons-aviso:hover {
@@ -311,32 +253,17 @@ div[class="col-6 col-sm-4"] i {
 
 .color button{
 	background-color: black;
-	color: #fff;
 }
 
 .submit:hover {
 	opacity: 50%;
 }
 
-.bg-dark {
-    background-color: #000000!important;
-}
-
-.acercaDe {
-	border: solid 2px white;
-	border-radius: 5px;
-	color: #fff;
-	transition: background-color 1.5s;
-}
-
-
-
 /*Btn cerrar sesion user - temporal*/
 .btn-logout {
     display: block;
     padding: 0.5rem 1rem;
     background-color: #000000;
-    color: #fff;
     width: 30%; 
     height: auto;
     text-decoration: none;
@@ -345,7 +272,6 @@ div[class="col-6 col-sm-4"] i {
 
 .btn-logout:hover, .btn-logout:active {
     background-color: #950101;
-    color: #fff;
 	width: 35%;
     height: auto;
 	transition: all 1s;
@@ -355,15 +281,13 @@ div[class="col-6 col-sm-4"] i {
     display: block;
     padding: 0.5rem 1rem;
     background-color: #000000;
-    color: #fff;
     width: 30%; 
     height: auto;
     text-decoration: none;
     transition: background-color all 1.5s;
 }
 
-.btn-2:hover:after,
-.btn-2:hover:before {
+.btn-2:hover:after, .btn-2:hover:before {
   backface-visibility: hidden;
   transition: width 350ms ease-in-out all 1s;
   width: 30%;

@@ -2,10 +2,6 @@ p input[type="radio"] {
   display: none;
 }
 
-.reaction label {
-  color: #fff;
-}
-
 .clasificacion {
   direction: rtl;
   unicode-bidi: bidi-override;
@@ -20,10 +16,6 @@ p input[type="radio"]:checked ~ label {
 }
 
 /*index visitante */
-
-.reactions2 label {
-  color: #fff;
-}
 
 .reactions2 label:hover {
   color: #950101;

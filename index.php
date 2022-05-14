@@ -16,14 +16,15 @@
 </head>
 <body>
 	<div class="container">
+		<!-- Menú de plataformas -->
 		<div class="site-sidebar"> 
 			<nav class="scroller gif"><div id="menu"><!-- Plataformas --> </div></nav>
 		</div>
+		<!-- Encabezado -->
 		<header>
-			<div class="col-md-8 position-center logo" align="center">
-				<img src="resources/pictures/logoblog.png">
-			</div>
+			<div class="col-md-8 position-center logo justify-content-center row"><img src="resources/pictures/logoblog.png"></div>
 		</header>
+		<!-- Menú -->
 		<nav class="nav justify-content-center navbar-dark mb-3 col-md-8 position-center row">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item col-4" role="presentation">
@@ -37,25 +38,27 @@
 				</li>
 			</ul>
 		</nav>
+		<!-- Contenido -->
 		<div class="container">
 			<content class="row">
 				<div class="tab-content" id="myTabContent">
+					<!-- Pestaña de inicio -->
 					<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-						<section class="col-md-8 col-sm-4 position-center mb-3">
-							<?php require 'includes\filtros.php'; ?>
-						</section>
+						<!-- Filtros -->
+						<section class="col-md-8 col-sm-4 position-center mb-3"><?php require 'includes\filtros.php'; ?></section>
+						<!-- Publicaciones -->
 						<section class="col-md-8 col-sm-4 position-center container">
 							<div class="row">
 								<?php 
 									if($query -> rowCount() > 0) { 
 										foreach($results as $result) {
 								?>
-											<post class="row post mb-3 position-center">
+											<post class="row border rounded-3 border-white mb-3 position-center">
 												<div class="col-md-12 mt-2 row">
-													<h3><?php echo $result -> titulo; ?></h3>
+													<h3 class="text-white fw-bold"><?php echo $result -> titulo; ?></h3>
 												</div>
-												<post-info class="info-post mt-2 col-md-12"><p><?php echo $result -> info; ?></p></post-info>
-												<div class="reactions2" align="left">
+												<post-info class="info-post text-white mt-2 col-md-12"><p><?php echo $result -> info; ?></p></post-info>
+												<div class="reactions2 text-white" align="left">
 													<h6 class="clasificacion2">
 
 														<?php for ($i=5; $i >= 1; $i--) { ?>
@@ -74,8 +77,8 @@
 													</div>
 													<div class="input-group mb-3">
 														<input type="hidden" name="id_post" value="<?php echo $result -> id_post; ?>">
-														<textarea type="text" class="form-control textarea-comment" placeholder="Escribir comentario..." name="comment"></textarea>
-														<button class="btn btn-outline-secondary submit-comment" type="submit" id="button-addon2" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-chat-right-text-fill"></i></button>
+														<textarea type="text" class="form-control h-comment bg-dark text-white" placeholder="Escribir comentario..." name="comment"></textarea>
+														<button class="btn btn-outline-secondary submit-comment text-white" type="submit" id="button-addon2" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-chat-right-text-fill"></i></button>
 													</div>
 												</post-comment>
 											</post>
@@ -86,7 +89,10 @@
 							</div>
 						</section>
 					</div>
-					<div class="tab-pane fade" id="acercaDe" role="tabpanel" aria-labelledby="acercaDe-tab"><section class="col-md-8 col-sm-4 position-center">aaaa</section></div>
+					<!-- Pestaña acerca de -->
+					<div class="tab-pane fade" id="acercaDe" role="tabpanel" aria-labelledby="acercaDe-tab">
+						<section class="col-md-8 col-sm-4 position-center"><?php require 'includes/acercaDe.php'; ?></section>
+					</div>
 				</div>
 			</content>
 		</div>
@@ -94,16 +100,15 @@
 		<div  class="mailbox" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
 		  	<img src="resources/pictures/buzon1.png" >
 		</div>
-
 		<!-- Modal -->
 		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 		  <div class="modal-dialog">
-		    <div class="modal-content v-visitante">
+		    <div class="modal-content bg-gray text-white p-2">
 		        <div class="modal-header">
 		        	<h5 class="modal-title fw-bold" id="staticBackdropLabel">AVISO</h5>
 		        	<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 		      	</div>
-		      	<div class="modal-body">
+		      	<div class="modal-body bg-darkGray">
 		        	<p class="text-center">Si quieres disfrutar los privilegios:</p>
 					<div class="col-md-12 mb-2" >
 						<div class="row g-2">
@@ -125,6 +130,7 @@
 		  </div>
 		</div>
 	</div>
+	<!-- Scripts -->
 	<script src="resources/js/script.js"></script>
 	<script src="resources/js/plataformas.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>

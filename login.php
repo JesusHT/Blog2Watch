@@ -13,14 +13,14 @@
 </head>
 <body class="body2">
 	<div class="container">
-		<content class="row" style="padding: 10px;">
+		<content class="row p-2">
 			<header class="col-lg-12">
 					<div class="logo justify-content-center row"><img src="resources/pictures/logoblog.png"></div>
 			</header>
-			<section class="col-lg-4 position-center form-users">
+			<section class="col-lg-4 position-center rounded bg-gray p-4">
 				<?php 					 	
 					if (!empty($message)) {
-						echo '<p class="message-error">' . $message . '</p>';
+						echo '<p class="message-error text-white">' . $message . '</p>';
 					}
 				?>
 				<form method="POST" action="login.php">
@@ -32,9 +32,9 @@
 						<input class="align-input form-control" type="password" name="pass" required id="floatingPassword" placeholder="Password">
 						<label for="floatingPassword"><span><i class="bi bi-lock-fill"></i></span> Contraseña</label>
 					</div>
-					<input class="button-submit align-input mb-3" type="submit" value="Ingresar"> 
+					<input class="button-submit  align-input mb-3 text-white" type="submit" value="Ingresar"> 
 				</form>
-				<p class="text-center">¿No tienes una cuenta? <a href="sign_up.php">Regístrate</a><br>¿Se te olvidó tu contraseña? <a href="recuperar.php">Recuperar</a></p>
+				<p class="text-center text-white">¿No tienes una cuenta? <a href="sign_up.php">Regístrate</a><br>¿Se te olvidó tu contraseña? <a href="recuperar.php">Recuperar</a></p>
 			</section>
 		</content>
 	</div>

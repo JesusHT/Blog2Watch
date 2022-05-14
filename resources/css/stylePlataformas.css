@@ -3,14 +3,12 @@
     position: absolute;
     transform: translateX(-100%);
     transition: transform .55s ease;
-    color: #fff;
     position: fixed;
 }
 
 .site-sidebar { 
     position: absolute;
     z-index: 3; 
-    
 }
 
 .site-sidebar::before {

@@ -13,19 +13,19 @@
 </head>
 <body class="body2">
 	<div class="container">
-		<content class="row" style="padding: 10px;">
-			<section class="col-md-12 ">
-				<div align="center">
-					<img src="resources/pictures/logoblog.png" class="logo">
-				</div>
+		<content class="row p-2">
+			<!-- Encabezado -->
+			<section class="col-md-12">
+				<div class="logo justify-content-center row"><img src="resources/pictures/logoblog.png"></div>
 			</section>
-			<section class="col-md-4 col-sm-4 position-center form-users">
+			<!-- Contenido -->
+			<section class="col-md-4 col-sm-4 position-center rounded bg-gray p-4">
 				<?php 
 					if (!empty($message)) {
-						echo '<p class="message-correcto">', $message ,'</p>';	
+						echo '<p class="message-correcto text-white">', $message ,'</p>';	
 					}
 					if (!empty($message2)) {
-						echo '<p class="message-error">', $message2 ,'</p>';
+						echo '<p class="message-error text-white">', $message2 ,'</p>';
 					}
 				?>
 				<form method="POST" action="sign_up.php">
@@ -56,25 +56,27 @@
 							<label for="floatingResponse"><i class="bi bi-chat-right-text-fill"></i> Respuesta</label>
 						</div>	
 					</div>						
-					<terminos class="terminos">
-						<input type="checkbox" name="terms" required> <span>Acepto terminos y condiciones. </span> <a href="javascript:to_open()">ver más</a>
+					<terminos class="terminos text-white">
+						<input type="checkbox" name="terms" required><span> Acepto terminos y condiciones. </span> <a href="javascript:to_open()">ver más</a>
 					</terminos>
-					<input class="button-submit align-input mb-3 mt-2" type="submit" value="Registrar"> 
+					<input class="button-submit text-white align-input mb-3 mt-2" type="submit" value="Registrar"> 
 				</form>
-				<p align="center">¿Ya tienes un cuenta? <a href="login.php">Inicia sesión</a></p>
+				<p class="text-center text-white">¿Ya tienes un cuenta? <a href="login.php">Inicia sesión</a></p>
 			</section>
 		</content>
 	</div>
-	<div class="v-terms terms" id="vent">
+	<!-- Ventana terminos -->
+	<div class="v-terms bg-gray p-2 border rounded-2 border-dark" id="vent">
 		<div class="row g-2 mb-2">
-			<div class="col-10"><h5 class="title-aviso fw-bold">TERMINOS</h5></div>
+			<div class="col-10"><h5 class="fw-bold">TERMINOS</h5></div>
 			<div class="col-2 text-right" align="right"><button type="button" class="text-light bg-visitante" onclick="location.href='javascript:close()'"><i class="bi bi-x-circle-fill"></i></button></div>
 		</div>
-		<div class="body-mailbox p-2">
-			<p>a<!--INGRESAR AQUÍ LOS TERMINOS--></p>
+		<div class="bg-darkGray p-2 text-white">
+			<p><!--INGRESAR AQUÍ LOS TERMINOS--></p>
 		</div>
 	</div>
 	<script src="resources/js/script.js"></script>
+	<script src="resources/js/validar.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 </body>
 </html>
