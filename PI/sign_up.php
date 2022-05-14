@@ -45,9 +45,9 @@
 						<div class="form-floating mb-3 col-7">
 							<select class="form-select align-input" id="floatingSelect" aria-label="Floating label select example" name="pregunta" required>
 								<option selected disabled>Elija una pregunta</option>
-								<option value="¿Cuál es el nombre de mi mascota?">¿Cuál es el nombre de mi mascota?</option>
-								<option value="¿Cuál es mi canción favorita?">¿Cuál es mi canción favorita?</option>
-								<option value="¿Cuál es mi videojuego favorito?">¿Cuál es mi videojuego favorito?</option>
+								<option value="1">¿Cuál es el nombre de mi mascota?</option>
+								<option value="2">¿Cuál es mi canción favorita?</option>
+								<option value="3">¿Cuál es mi videojuego favorito?</option>
 							</select>
 							<label for="floatingSelect"><i class="bi bi-question-lg"></i> Pregunta de seguridad</label>				
 						</div>

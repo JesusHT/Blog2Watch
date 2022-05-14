@@ -1,14 +1,12 @@
-$('#enviar').click(regresar);
+function enviarDatos(id_post){
+	let formulario = new FormData(document.getElementById("formComment"+id_post));
 
-function regresar(){
-	$.ajax({
-		url: '../PI/includes/interacciones.php',
-		type: 'POST',
-		dataType: 'html',
-		data:{
-			comment:$('#comment').val(),
-			id_post:$('#id_user').val(),
-			id_user:$('#id_post').val()
-		}
-	}).done({});
+fetch('../PI/includes/interacciones.php', {
+     method: "post",
+     body: formulario
+}).then((response) => {
+     document.getElementById("comment"+id_post).value = "";
+}).then((data) => {
+     /*mas acciones a realizar*/
+})
 }

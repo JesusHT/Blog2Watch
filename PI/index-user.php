@@ -14,7 +14,6 @@
 	<link rel="stylesheet" type="text/css" href="resources\css\styleNav.css">
   	<link rel="stylesheet" type="text/css" href="resources\css\style.css">
 	<link rel="icon" type="image/png" href="Imagenes\icono.ico">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<title>Blog2Watch</title>
 </head>
 <body>
@@ -23,9 +22,7 @@
 			<nav class="scroller gif"><div id="menu"><!-- Plataformas --> </div></nav>
 		</div>
 		<header>
-			<div class="col-md-8 position-center logo" align="center">
-				<img src="Imagenes\logoblog.png">
-			</div>
+			<div class="col-md-8 position-center logo row justify-content-center"><img src="Imagenes\logoblog.png"></div>
 		</header>
 		<nav class="nav justify-content-center navbar-dark mb-3 col-md-8 position-center row">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -45,23 +42,20 @@
 				<content class="row">
 					<div class="tab-content" id="myTabContent">
 						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-							<section class="col-md-8 col-sm-4 position-center mb-3">
-								<?php require 'includes\filtros.php'; ?>
-							</section>
+							<section class="col-md-8 col-sm-4 position-center mb-3"><?php require 'includes\filtros.php'; ?></section>
 							<!-- Home.publicaciones -->
 							<section class="col-md-8 col-sm-4 position-center">
-							<?php 
+								<?php 
 									if($query -> rowCount() > 0) { 
 										foreach($results as $result) {
 								?>
 											<post class="row post mb-3 position-center">
-												<div class="col-md-12 mt-2">
-													<h3><?php echo $result -> titulo; ?></h3>
-												</div>
+												<!-- Titulo -->
+												<div class="col-md-12 mt-2"><h3><?php echo $result -> titulo; ?></h3></div>
+												<!-- Información -->
 												<post-info class="info-post mt-2 col-md-12"><p><?php echo $result -> info; ?></p></post-info>
-												<div class="reaction" align="left">
-													<?php require 'includes\reactions.php'; ?>
-												</div>
+												<!-- Reacciones -->
+												<div class="reaction" align="left"><?php require 'includes\reactions.php'; ?></div>
 												<!-- Comentarios -->
 												<post-comment class="col-md-12">
 													<div class="col-md-12">
@@ -69,14 +63,17 @@
 															<p class="text-name-comment"><?php  ?></p><p class="text-comment"><?php  ?></p>
 														</div>
 													</div>
-													<div class="input-group mb-3">
-														<input type="hidden" name="id_user" id="id_user" value="<?php echo $user['id']; ?>">
-														<input type="hidden" name="id_post" id="id_post" value="<?php echo $result -> id_post; ?>">
-														<textarea type="text" name="comment" id="comment" class="form-control textarea-comment" placeholder="Escribir comentario..."></textarea>
-														<button  type="button" class="btn btn-outline-secondary submit-comment" id="enviar">
-															<i class="bi bi-chat-right-text-fill"></i>
-														</button>
-													</div>
+													<form action="" id="formComment<?php echo $result -> id_post; ?>">
+														<div class="input-group mb-3">
+															<input type="hidden" name="id_user" id="id_user" value="<?php echo $user['id']; ?>">
+															<input type="hidden" name="id_post" id="id_post" value="<?php echo $result -> id_post; ?>">
+															<textarea type="text" name="comment" id="comment<?php echo $result -> id_post; ?>" class="form-control textarea-comment" placeholder="Escribir comentario..."></textarea>
+															<button type="button" class="btn btn-outline-secondary submit-comment" id="enviar" 
+															onclick="enviarDatos(<?php echo $result -> id_post; ?>)">
+																<i class="bi bi-chat-right-text-fill"></i>
+															</button>
+														</div>
+													</form>
 												</post-comment>
 											</post>
 								<?php
@@ -89,14 +86,12 @@
 
 						<!-- Pestaña Acerca De -->
 						<div class="tab-pane fade" id="acercaDe" role="tabpanel" aria-labelledby="acercaDe-tab">
-							<section class="col-md-8 col-sm-4 position-center"><?php require 'includes\acercaDe.php'; ?></section>	
+							<section class="col-md-8 col-sm-4 position-center"><?php require 'includes\acercaDe.php';?></section>	
 						</div>
 
 						<!-- Pestaña perfil -->
 						<div class="tab-pane fade" id="perfil" role="tabpanel" aria-labelledby="perfil-tab">
-							<section class="col-md-8 col-sm-4 position-center">
-								<?php require 'includes\profile.php';?>
-							</section>
+							<section class="col-md-8 col-sm-4 position-center"><?php require 'includes\profile.php';?></section>
 						</div>
 
 					</div>
@@ -106,7 +101,7 @@
 		<!-- Buzón -->
 		<buzon class="mailbox">
 			<a class="mailbox2"><img src="Imagenes\buzon.png" id="mailbox-open"></a>
-			<a href="javascript:to_open()"><img src="Imagenes\buzon1.png" id="mailbox-closed"></a>
+			<a onclick="to_open()"><img src="Imagenes\buzon1.png" id="mailbox-closed"></a>
 		</buzon>
 		<buzon-abierto class="v-mailbox p-4 container-sm container-md" id="vent">
 			<div class="row g-2 mb-2">
@@ -132,9 +127,10 @@
 			</div>
 		</buzon-abierto>
 	</div>
+	<!-- Scripts -->
+	<script src="resources/js/app.js"></script>
 	<script src="resources/js/script.js"></script>
 	<script src="resources/js/plataformas.js"></script>
-	<script src="resources/js/app.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>	
 </body>

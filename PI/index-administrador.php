@@ -5,7 +5,6 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://fonticons-free-fonticons.netdna-ssl.com/kits/1ce05b4b/publications/118813/woff2.css" media="all">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
@@ -19,14 +18,15 @@
 </head>
 <body>
 	<div class="container">
+		<!-- Navegador de plataformas -->
 		<div class="site-sidebar"> 
 			<nav class="scroller gif"><div id="menu"><!-- Plataformas --></div></nav>
 		</div>
+		<!-- Encabezado -->
 		<header>
-			<div class="col-md-8 position-center logo" align="center">
-				<img src="Imagenes\logoblog.png">
-			</div>
+			<div class="col-md-8 position-center logo justify-content-center"><img src="Imagenes\logoblog.png"></div>
 		</header>
+		<!-- Navegador -->
 		<nav class="nav justify-content-center navbar-dark mb-3 col-md-8 position-center row">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item col-4" role="presentation">
@@ -92,7 +92,6 @@
 											</select>
 											<label for="floatingSelect">Plataforma</label>	
 										</div>
-
 										<div class="form-floating mb-3 col-6">
 											<select class="form-select bg-dark text-white" id="floatingSelect" aria-label="Floating label select example" name="tipo" required>
 												<option selected disabled>Elija el tipo</option>
@@ -106,6 +105,7 @@
 									<input class="button-submit2 text-white mb-3" type="submit" value="Subir">
 								</form>
 							</post-form>
+							<!-- Publicaciones -->
 							<?php 
 								if($query -> rowCount() > 0) { 
 									foreach($results as $result) {
@@ -209,10 +209,11 @@
 			</content>
 		</div>
 	</div>
+	<!-- Scripts -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="resources/js/plataformas.js"></script>
 	<script src="resources/js/peticion.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/ulg/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
-
 </body>
 </html>

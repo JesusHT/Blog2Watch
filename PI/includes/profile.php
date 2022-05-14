@@ -34,7 +34,7 @@
 	}
 </style>
 
-<div class="row g-2 mt-4">
+<div class="row mt-4">
 	<div class="col-4">
 		<div class="row">
 			<div class="card bg-dark" style="width: 18rem;">
@@ -65,7 +65,7 @@
 						<label for="floatingPassword"><span><i class="bi bi-lock-fill"></i></span> Nueva Contraseña <p class="coincide" id="demo"></p></label>
 					</div>
 					<div class="form-floating mb-3">
-						<input class="form-control input-profile" id="newPassConfirm" type="password" name="pass-confirm" minlength="6" maxlength="20" required id="floatingPassword" placeholder="Password">
+						<input class="form-control input-profile" id="newPassConfirm" type="password" name="pass-confirm" minlength="6" maxlength="20" id="floatingPassword" placeholder="Password" required>
 						<label for="floatingPassword"><span><i class="bi bi-lock-fill"></i></span> Confirmar nueva contraseña <p class="coincide" id="demo2"></p></label>
 					</div>	
 		      		<input type="hidden" name="id_user" value="<?php echo $user['id']; ?>">
@@ -81,8 +81,8 @@
 		      </button>
 		    </h2>
 		    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-		      <div class="accordion-body bg-item">
-		      	<form action="" method="post">
+		    <form action="" method="post">
+		      	<div class="accordion-body bg-item">
 		      		<input type="hidden" name="id_user" value="<?php echo $user['id']; ?>">	
 					<div class="form-floating mb-3">
 						<select class="form-select align-input input-profile" id="floatingSelect" aria-label="Floating label select example" name="newPregunta" required>
@@ -98,8 +98,8 @@
 						<label for="floatingResponse"><i class="bi bi-chat-right-text-fill"></i> Respuesta</label>
 					</div>
 					<input type="submit" class="w-submit bg-dark bg-gradient text-white" value="Guardar">
-		      	</form>
-		      </div>
+		      	</div>
+		     </form>
 		    </div>
 		  </div>
 		</div>
