@@ -33,6 +33,7 @@
 			</div>
 		</div>
 	</div>
+	
 	<div class="col-8">
 		<div class="accordion accordion-flush mb-4" id="accordionFlushExample">
 		  <div class="accordion-item mb-4 bg-darkPurple">
