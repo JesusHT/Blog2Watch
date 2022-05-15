@@ -15,6 +15,8 @@
 	$message = "";
 	$message2 = "";
 	$correo = "";
+	$id_user = "";
+	$newPass = "";
 	
 	
 	# Registro de usuarios 	
@@ -54,27 +56,26 @@
 
 		
 	# Inicio de sesión  
-	} else if (isset($_POST['name']) && isset($_POST['pass']) && empty($_POST['user2'])) { # Validamos que exista un valor en 	$_POST['name'] y  $_POST['pass'].
-		session_start(); # Iniciamos una sesion que nos ayudara más tarde.
+	} else if (isset($_POST['name']) && isset($_POST['pass']) && empty($_POST['user2'])) {
+		session_start(); 
 
-		# Asignamos las variables previamente declaradas a sus respectivos $_POST.
 		$user = $_POST['name'];
 		$pass = $_POST['pass'];
 
-		if (!empty($user) && !empty($pass)) { # Validamos que no este vacia la variable $user y $pass.
-		    $records = $conn -> prepare('SELECT * FROM users WHERE name = :name'); # Preparamos una sentencia sql.
-		    $records -> bindParam(':name', $user); # asiganamos el valor que tendra :name (bindParam = Vincula un parámetro al nombre de variable especificado)
-		    $records -> execute(); # Ejecutamos la sentencia sql.
-		    $results = $records -> fetch(PDO::FETCH_ASSOC); # Obtenemos los datos de la bd (PDO::FETCH_ASSOC: devuelve un array indexado por los nombres de las columnas del conjunto de resultados.) y le asignamos la variable $result a los datos obtenidos.
+		if (!empty($user) && !empty($pass)) {
+		    $records = $conn -> prepare('SELECT * FROM users WHERE name = :name');
+		    $records -> bindParam(':name', $user); 
+		    $records -> execute(); 
+		    $results = $records -> fetch(PDO::FETCH_ASSOC); 
 
 
-		    if (is_countable($results) > 0 && password_verify($pass, $results['pass'])) { # validamos que el usuario exista y que la contraseña sea correcta.
-		      	if ($results['name'] == 'Administrador'){ # Validadmos que sea la cuenta de administrador.
-		      		$_SESSION['user_id'] = $results['id']; # Le asiganomos a una variable $_SESSION la id del usuario.
-		     		header("Location: index-administrador.php"); # Redirigimos al usuario al index administrador.
+		    if (is_countable($results) > 0 && password_verify($pass, $results['pass'])) {
+		      	if ($results['name'] == 'Administrador'){ 
+		      		$_SESSION['user_id'] = $results['id'];
+		     		header("Location: index-administrador.php"); 
 		      	} else { 
-		      		$_SESSION['user_id'] = $results['id']; # Le asiganomos a una variable $_SESSION la id del usuario.
-		     		header("Location: index-user.php"); # Redirigimos al usuario al index user.
+		      		$_SESSION['user_id'] = $results['id']; 
+		     		header("Location: index-user.php");
 		      	}
 		    } else {
 				$message = "El usuario y/o la contraseña son incorrectos"; 
@@ -152,7 +153,7 @@
 			      	$stmt -> bindParam(':pass', $password);
 
 			      	if ($stmt -> execute()) {
-						$_COOKIE['user'] = null; # Después de que el usuario restablece su contraseña limpiamos la cookie declarando la variable null.
+						$_COOKIE['user'] = null;
 					  	$message = '¡Se ha enviado a tu correo tu nueva contraseña!';
 					} else {
 					 	$message2 = '¡No se ha podido restablecer la contraseña!';
@@ -178,7 +179,7 @@
 			$results = $records->fetch(PDO::FETCH_ASSOC);
 
 			if (is_countable($results) > 0) {
-				setcookie("user", $user); # Creamos la COOKIE que contendra el nombre del usuario, que nos servira después para hacer una consulta sql en el archivo validacion.php
+				setcookie("user", $user);
 				header("Location: validacion.php");
 			} else {
 				$message2 = 'El usuario no existe. <a href="sign_up.php">Regístrate</a>';
@@ -187,18 +188,87 @@
 	}
 
 	# Validamos que la COOKIE se haya creado correctamente para poder mostrar la pregunta de seguridad sin necesidad de que el usuario la ponga, esto por el posible escenario donde se le olvidé la pregunta.
-	if (isset($_COOKIE['user'])) { # Validamos que la variable $_COOKIE['user'] tiene un valor 
-		$records = $conn->prepare('SELECT * FROM users WHERE name = :name'); # Preparamos una sentencia sql SELECT
-		$records->bindParam(':name', $_COOKIE['user']); # Definimos cual va ser el valor de :name
-		$records->execute(); # Ejecutamos la sentecncia SQL
-		$results = $records->fetch(PDO::FETCH_ASSOC); # Obtenemos los datos de la bd (PDO::FETCH_ASSOC: devuelve un array indexado por los nombres de las columnas del conjunto de resultados.) y le asignamos la variable $result a los datos obtenidos.
+	if (isset($_COOKIE['user'])) {  
+		$records = $conn->prepare('SELECT * FROM users WHERE name = :name'); 
+		$records->bindParam(':name', $_COOKIE['user']); 
+		$records->execute(); 
+		$results = $records->fetch(PDO::FETCH_ASSOC); 
 
-		$users = null; # Creamos una variable $users y establecemos que su valor es null
+		$users = null;
 
-		if (is_countable($results) > 0) { # Validamos que el array indexado $results tenga valores 
-			$users = $results; # Establecemos que la variable $user contendra los valores del array $results para usarlo después en validacion.php
+		if (is_countable($results) > 0) { 
+			$users = $results;
 		}
-	}	
+	}
+
+	# Cambiar contraseña
+	if (isset($_POST['newPass']) && isset($_POST['id_user']) && isset($_POST['actualPass'])) {
+		$id_user = $_POST['id_user'];
+		$pass = $_POST['actualPass'];
+		$newPass = $_POST['newPass'];
+		$data = "";
+
+		if (!empty($id_user) && !empty($pass) && !empty($newPass)) {
+			$records = $conn -> prepare('SELECT * FROM users WHERE id = :id');
+
+			$records -> bindParam(':id', $id_user);
+			$records -> execute();
+			$results = $records->fetch(PDO::FETCH_ASSOC);
+
+			if (password_verify($pass, $results['pass'])) {
+				$sql = "UPDATE users SET pass = :pass WHERE id = :id";
+			    
+				$stmt = $conn -> prepare($sql);
+				$stmt -> bindParam(':id', $id_user);
+				$password = password_hash($newPass, PASSWORD_BCRYPT);
+			    $stmt -> bindParam(':pass', $password);
+
+				if ($stmt -> execute()) {
+					$data = '¡Se ha cambiado tú contraseña exitosamente!';
+				} else {
+					$data = '¡No se ha podido cambiar la contraseña!';
+				}
+			} else {
+				$data = "¡La información es incorrecta!";
+			}
+			die(json_encode($data));
+		}
+	}
+
+	# Cambiar pregunta y respuesta 
+	if (isset($_POST['pass']) && isset($_POST['id_user']) && isset($_POST['newPregunta']) && isset($_POST['newRespuesta'])) {
+		$id_user = $_POST['id_user'];
+		$pass = $_POST['pass'];
+		$question = $_POST['newPregunta'];
+		$respuesta = $_POST['newRespuesta'];
+		$data = "";
+
+		if (!empty($id_user) && !empty($pass) && !empty($question) && !empty($respuesta)) {
+			$records = $conn -> prepare('SELECT * FROM users WHERE id = :id');
+
+			$records -> bindParam(':id', $id_user);
+			$records -> execute();
+			$results = $records->fetch(PDO::FETCH_ASSOC);
+
+			if (password_verify($pass, $results['pass'])) {
+				$sql = "UPDATE users SET pregunta = :pregunta, respuesta = :respuesta WHERE id = :id";
+			    
+				$stmt = $conn -> prepare($sql);
+				$stmt -> bindParam(':id', $id_user);
+			    $stmt -> bindParam(':pregunta', $question);
+			    $stmt -> bindParam(':respuesta', $respuesta);
+
+				if ($stmt -> execute()) {
+					$data = '¡Se ha cambiado tú pregunta y respuesta de seguridad exitosamente!';
+				} else {
+					$data = '¡No se ha podido cambiar la pregunta y respuesta de seguridad!';
+				}
+			} else {
+				$data = "¡La información es incorrecta!";
+			}
+			die(json_encode($data));
+		}
+	}
 
 	# Buzón 
 	//$records = $conn -> prepare('INSERT INTO buzon (users, tipo_mensaje, mensaje) VALUES (:users, :tipo_mensaje, :mensaje)');

@@ -26,16 +26,20 @@
 				<td scope="row">'.$filaAlumnos['id'].'</td>
 				<td>'.$filaAlumnos['name'].'</td>
 				<td>
-					<form action="index-administrador.php" method="POST" >
+					<form action="index-administrador.php" method="POST" id="userDelete'.$filaAlumnos['id'].'">
 						<input type="hidden" name="eliminar-user" value="'.$filaAlumnos['id'].'">
-						<button type="submit" class="submit"><i class="bi bi-trash-fill"></i></button>	
+						<button type="button" class="submit" onclick="userDelete('.$filaAlumnos['id'].')"><i class="bi bi-trash-fill"></i></button>	
 					</form>
 				</td>
 			</tr>
 			';
 		}
 	} else{
-			$tabla="No se encontraron coincidencias con sus criterios de búsqueda.";
+			$tabla ="<tr>
+						<td></td>
+						<td>No se encontraron coincidencias con sus criterios de búsqueda.</td>
+						<td></td>
+		 			</tr>";
 	}
 	echo $tabla;
 ?>

@@ -22,10 +22,10 @@
 			<section class="col-md-4 col-sm-4 position-center rounded bg-gray p-4">
 				<?php 
 					if (!empty($message)) {
-						echo '<p class="message-correcto text-white">', $message ,'</p>';	
+						echo '<p class="bg-green fw-bold text-white p-1">', $message ,'</p>';	
 					}
 					if (!empty($message2)) {
-						echo '<p class="message-error text-white">', $message2 ,'</p>';
+						echo '<p class="bg-red fw-bold text-white p-1">', $message2 ,'</p>';
 					}
 				?>
 				<form method="POST" action="sign_up.php">
@@ -35,11 +35,11 @@
 					</div>
 					<div class="form-floating mb-3">
 						<input class="form-control" id="pass" type="password" name="pass" minlength="6" maxlength="20" required id="floatingPassword" placeholder="Password">
-						<label for="floatingPassword"><span><i class="bi bi-lock-fill"></i></span> Contraseña <p class="coincide" id="demo"></p></label>
+						<label for="floatingPassword"><span><i class="bi bi-lock-fill"></i></span> Contraseña <span id="demo"></span></label>
 					</div>
 					<div class="form-floating mb-3">
 						<input class="form-control" id="pass-confirm" type="password" name="pass-confirm" minlength="6" maxlength="20" required id="floatingPassword" placeholder="Password">
-						<label for="floatingPassword"><span><i class="bi bi-lock-fill"></i></span> Confirmar contraseña <p class="coincide" id="demo2"></p></label>
+						<label for="floatingPassword"><span><i class="bi bi-lock-fill"></i></span> Confirmar contraseña <span id="demo2"></span></label>
 					</div>	
 					<div class="row g-2">
 						<div class="form-floating mb-3 col-7">

@@ -20,7 +20,7 @@
 			<section class="col-lg-4 position-center rounded bg-gray p-4">
 				<?php 					 	
 					if (!empty($message)) {
-						echo '<p class="message-error text-white">' . $message . '</p>';
+						echo '<p class="bg-red fw-bold text-white p-1">' . $message . '</p>';
 					}
 				?>
 				<form method="POST" action="login.php">

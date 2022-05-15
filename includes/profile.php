@@ -43,21 +43,21 @@
 		    </h2>
 		    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
 		      <div class="accordion-body text-white bg-darkPurple">
-		      	<form action="" method="POST">
+		      	<form action="" method="POST" id="newPassword">
 		      		<div class="form-floating mb-3">
-						<input class="form-control input-profile text-white" type="password" name="actualPass" minlength="6" maxlength="20" required id="floatingPassword" placeholder="Password">
+						<input class="form-control input-profile text-white" type="password" id="passActual" name="actualPass" minlength="6" maxlength="20" required id="floatingPassword" placeholder="Password">
 						<label for="floatingPassword"><span><i class="bi bi-lock-fill"></i></span> Contraseña actual</label>
 					</div>
 					<div class="form-floating mb-3">
 						<input class="form-control input-profile text-white" id="pass" type="password" name="newPass" minlength="6" maxlength="20" required id="floatingPassword" placeholder="Password">
-						<label for="floatingPassword"><span><i class="bi bi-lock-fill"></i></span> Nueva Contraseña <p class="coincide" id="demo"></p></label>
+						<label for="floatingPassword"><span><i class="bi bi-lock-fill"></i></span> Nueva Contraseña <span id="demo"></span></label>
 					</div>
 					<div class="form-floating mb-3">
 						<input class="form-control input-profile text-white" id="pass-confirm" type="password" name="pass-confirm" minlength="6" maxlength="20" id="floatingPassword" placeholder="Password" required>
-						<label for="floatingPassword"><span><i class="bi bi-lock-fill"></i></span> Confirmar nueva contraseña <p class="coincide" id="demo2"></p></label>
+						<label for="floatingPassword"><span><i class="bi bi-lock-fill"></i></span> Confirmar nueva contraseña <span id="demo2"></span></label>
 					</div>	
 		      		<input type="hidden" name="id_user" value="<?php echo $user['id']; ?>">
-					<input type="submit" class="w-submit bg-dark bg-gradient text-white" value="Guardar">
+					<button type="button" class="btn w-submit bg-dark bg-gradient text-white" id="enviar" onclick="newPassword()">Guardar</button>
 		      	</form>
 		      </div>
 		    </div>
@@ -69,11 +69,15 @@
 		      </button>
 		    </h2>
 		    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-		    <form action="" method="post">
+		    <form action="" method="post" id="newPregunta">
 		      	<div class="accordion-body bg-darkPurple text-white">
 		      		<input type="hidden" name="id_user" value="<?php echo $user['id']; ?>">	
 					<div class="form-floating mb-3">
-						<select class="form-select align-input input-profile text-white" id="floatingSelect" aria-label="Floating label select example" name="newPregunta" required>
+						<input class="form-control input-profile text-white" type="password" id="pass-actual" name="pass" minlength="6" maxlength="20" required id="floatingPassword" placeholder="Password">
+						<label for="floatingPassword"><span><i class="bi bi-lock-fill"></i></span> Contraseña</label>
+					</div>
+					<div class="form-floating mb-3">
+						<select class="form-select align-input input-profile text-white" id="selectPregunta" id="floatingSelect" aria-label="Floating label select example" name="newPregunta" required>
 							<option class="bg-option" selected disabled>Elija una pregunta</option>
 							<option class="bg-option" value="1">¿Cuál es el nombre de mi mascota?</option>
 							<option class="bg-option" value="2">¿Cuál es mi canción favorita?</option>
@@ -82,10 +86,10 @@
 						<label for="floatingSelect"><i class="bi bi-question-lg"></i> Pregunta de seguridad</label>				
 					</div>
 					<div class="form-floating mb-3">
-						<input class="form-control input-profile text-white" type="text" name="newRespuesta" minlength="3" maxlength="20" required id="floatingResponse" placeholder="respuesta">
+						<input class="form-control input-profile text-white" type="text" name="newRespuesta" id="respuesta" minlength="3" maxlength="20" required id="floatingResponse" placeholder="respuesta">
 						<label for="floatingResponse"><i class="bi bi-chat-right-text-fill"></i> Respuesta</label>
 					</div>
-					<input type="submit" class="w-submit bg-dark bg-gradient text-white" value="Guardar">
+					<button type="button" class="btn w-submit bg-dark bg-gradient text-white" onclick="newPreguntas()">Guardar</button>
 		      	</div>
 		     </form>
 		    </div>

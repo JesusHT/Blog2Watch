@@ -57,14 +57,14 @@
 					<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 						<section class="col-md-8 col-sm-4  position-center mb-3"><?php require 'includes\filtros.php'; ?></section>
 						<section class="col-md-8 col-sm-4 position-center">
-							<post-form class="row post mb-3 text-white">
+							<post-form class="row border rounded-3 border-white mb-3 position-center mb-3 text-white">
 								<div class="mt-3">
 									<?php 
 										if (!empty($message)) {
-											echo '<p class="message-correcto text-white">' . $message . '</p>';	
+											echo '<p class="bg-green fw-bold text-white">' . $message . '</p>';	
 										}
 										if (!empty($message2)) {
-											echo '<p class="message-error text-white">' . $message2 . '</p>';
+											echo '<p class="bg-red fw-bold text-white">' . $message2 . '</p>';
 										}
 									?>
 								</div>
@@ -114,14 +114,14 @@
 											<div class="col-md-12 mt-2">
 												<div class="row">
 													<div class="col-md-10"><h3  class="text-white fw-bold"><?php echo $result -> titulo; ?></h3></div>
-													<div class="col-md-2 btn-group color"> 
+													<div class="col-md-2 btn-group"> 
 														<form action="index-administrador.php" method="POST" >
 															<input type="hidden" name="eliminar" value="<?php echo $result -> id_post; ?>">
-															<button type="submit" class="submit"><i class="bi bi-trash-fill"></i></button>	
+															<button type="submit" class="submit bg-dark text-white"><i class="bi bi-trash-fill"></i></button>	
 														</form>
 														<form action="index-administrador.php" method="POST" >
 															<input type="hidden" name="editar" value="<?php echo $result -> id_post; ?>">
-															<button type="submit" class="submit"><i class="bi bi-pencil-square"></i></button>
+															<button type="submit" class="submit bg-dark text-white"><i class="bi bi-pencil-square"></i></button>
 														</form>
 													</div>
 												</div>
