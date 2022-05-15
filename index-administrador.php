@@ -165,6 +165,7 @@
 					<!-- Pestaña Buzón -->
 					<div class="tab-pane fade" id="buzon" role="tabpanel" aria-labelledby="buzon-tab">
 						<section class="col-md-8 col-sm-4 position-center">
+						<div class="d-flex align-items-start">
 							<div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 								<?php 
 									if($query2 -> rowCount() > 0) { 
@@ -181,12 +182,13 @@
 									if($query2 -> rowCount() > 0) { 
 										foreach($comentarios as $buzon) {
 								?>
-									<div class="tab-pane fade <?php if($comentarios[0] -> mensaje == $buzon -> mensaje){echo 'show active';}?>" id="user<?php echo $buzon -> id_buzon;?>" role="tabpanel" aria-labelledby="user<?php echo $buzon -> id_buzon;?>-tab"><?php echo $buzon -> mensaje; ?></div>
+									<div class="tab-pane fade <?php if($comentarios[0] -> users == $buzon -> users){echo 'show active';}?>" id="user<?php echo $buzon -> id_buzon;?>" role="tabpanel" aria-labelledby="user<?php echo $buzon -> id_buzon;?>-tab"><P class="text-white"><?php echo $buzon -> mensaje; ?></P></div>
 								<?php
 										} 
 									}
 								?>
 							</div>
+						</div>
 						</section>
 					</div>
 					<!-- Pestaña Usuarios -->

@@ -20,7 +20,7 @@
 					require 'includes\users.php';
 					
 					if (!empty($message2)) {
-						echo '<p class="message-error text-white">' . $message2 . '</p>';	
+						echo '<p class="bg-red fw-bold text-white p-1">' . $message2 . '</p>';	
 					}
 				?>
 				<form method="POST" action="recuperar.php">

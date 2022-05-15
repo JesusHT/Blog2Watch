@@ -18,7 +18,15 @@
 	$id_user = "";
 	$newPass = "";
 	
-	
+	function validarUsuario($name, $conn){
+		$records = $conn -> prepare('SELECT * FROM users WHERE name = :name');
+		$records -> bindParam(':name', $name);
+		$records -> execute();
+		$results = $records -> fetch(PDO::FETCH_ASSOC);
+
+		return $results;
+	}
+
 	# Registro de usuarios 	
 	if (isset($_POST['name']) && isset($_POST['pregunta']) && isset($_POST['respuesta'])) {
 		$user = $_POST['name'];
@@ -28,12 +36,9 @@
 
 		if (!empty($user) && !empty($pass) && !empty($question) && !empty($respuesta)) {
 
-		  	$records = $conn -> prepare('SELECT * FROM users WHERE name = :name');
-		    $records -> bindParam(':name', $user);
-		    $records -> execute();
-		    $results = $records -> fetch(PDO::FETCH_ASSOC);
+			$validar = validarUsuario($user, $conn);
 
-		    if (is_countable($results) > 0) {
+		    if (is_countable($validar) > 0) {
 		    	$message2 = 'El usuario ya existe';
 		    } else {
 			    $sql = "INSERT INTO users (name, pass, pregunta, respuesta) VALUES (:name, :pass, :pregunta, :respuesta)";
@@ -63,18 +68,14 @@
 		$pass = $_POST['pass'];
 
 		if (!empty($user) && !empty($pass)) {
-		    $records = $conn -> prepare('SELECT * FROM users WHERE name = :name');
-		    $records -> bindParam(':name', $user); 
-		    $records -> execute(); 
-		    $results = $records -> fetch(PDO::FETCH_ASSOC); 
+			$validar = validarUsuario($user, $conn);
 
-
-		    if (is_countable($results) > 0 && password_verify($pass, $results['pass'])) {
-		      	if ($results['name'] == 'Administrador'){ 
-		      		$_SESSION['user_id'] = $results['id'];
+		    if (is_countable($validar) > 0 && password_verify($pass, $validar['pass'])) {
+		      	if ($validar['name'] == 'Administrador'){ 
+		      		$_SESSION['user_id'] = $validar['id'];
 		     		header("Location: index-administrador.php"); 
 		      	} else { 
-		      		$_SESSION['user_id'] = $results['id']; 
+		      		$_SESSION['user_id'] = $validar['id']; 
 		     		header("Location: index-user.php");
 		      	}
 		    } else {
@@ -90,15 +91,10 @@
 		$respuesta = $_POST['respuesta'];
 		$correo = $_POST['correo'];
 
-
 		if (!empty($correo) && !empty($user) && !empty($respuesta)) {
-		  	$records = $conn -> prepare('SELECT * FROM users WHERE name = :name');
+			$validar = validarUsuario($user, $conn);
 
-		  	$records -> bindParam(':name', $user);
-		    $records -> execute();
-		    $results = $records->fetch(PDO::FETCH_ASSOC);
-
-		    if (is_countable($results) > 0) {
+		    if (is_countable($validar) > 0) {
 			    if ($results['respuesta'] == $respuesta) {
 			      	$sql = "UPDATE users SET pass = :pass WHERE id = :id";
 			      	$stmt = $conn -> prepare($sql);
@@ -106,10 +102,10 @@
 			      	$stmt -> bindParam(':id', $results['id']);
 
 			      	$newpass = "";
-					$pattern = "1234567890abcdefghijklmnopqrstuvwxyz"; // Definimos que caracters debe tener la contraseña
-					$max = strlen($pattern)-1; // Determina el tamaño de un array
+					$pattern = "1234567890abcdefghijklmnopqrstuvwxyz";
+					$max = strlen($pattern)-1;
 					for($i = 0; $i < 10; $i++){ 
-						$newpass .= substr($pattern, mt_rand(0,$max), 1); // Extraemos valores de pattern de manera aleatoria 
+						$newpass .= substr($pattern, mt_rand(0,$max), 1);
 					}
 
 					$mail = new PHPMailer(true);
@@ -172,13 +168,9 @@
 		$user = $_POST['user'];
 		
 		if (!empty($user)) {
-			$records = $conn -> prepare('SELECT * FROM users WHERE name = :name');
+			$validar = validarUsuario($user, $conn);
 
-			$records -> bindParam(':name', $user);
-			$records -> execute();
-			$results = $records->fetch(PDO::FETCH_ASSOC);
-
-			if (is_countable($results) > 0) {
+			if (is_countable($validar) > 0) {
 				setcookie("user", $user);
 				header("Location: validacion.php");
 			} else {
@@ -189,15 +181,12 @@
 
 	# Validamos que la COOKIE se haya creado correctamente para poder mostrar la pregunta de seguridad sin necesidad de que el usuario la ponga, esto por el posible escenario donde se le olvidé la pregunta.
 	if (isset($_COOKIE['user'])) {  
-		$records = $conn->prepare('SELECT * FROM users WHERE name = :name'); 
-		$records->bindParam(':name', $_COOKIE['user']); 
-		$records->execute(); 
-		$results = $records->fetch(PDO::FETCH_ASSOC); 
+		$validar = validarUsuario($_COOKIE['user'], $conn);
 
 		$users = null;
 
-		if (is_countable($results) > 0) { 
-			$users = $results;
+		if (is_countable($validar) > 0) { 
+			$users = $validar;
 		}
 	}
 
@@ -273,4 +262,3 @@
 	# Buzón 
 	//$records = $conn -> prepare('INSERT INTO buzon (users, tipo_mensaje, mensaje) VALUES (:users, :tipo_mensaje, :mensaje)');
 ?>
-

@@ -19,10 +19,10 @@
 				<div style="display: none;"><?php require 'includes\users.php';?></div>
 				<?php 				
 					if (!empty($message)) {
-						echo '<p class="message-correcto text-white">' . $message . ' <a href="login.php">Inicia sesión</a></p>';	
+						echo '<p class="bg-green fw-bold text-white p-1">' . $message . ' <a href="login.php">Inicia sesión</a></p>';	
 					}
 					if (!empty($message2)) {
-						echo '<p class="message-error text-white">' . $message2 . '</p>';	
+						echo '<p class="bg-red fw-bold text-white p-1">' . $message2 . '</p>';	
 					}
 				?>
 				<form method="POST" action="<?php $_SERVER['PHP_SELF'] ?>">
