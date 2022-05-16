@@ -179,6 +179,8 @@
 	if (isset($_COOKIE['user'])) {  
 		$validar = validarUsuario($_COOKIE['user'], $conn);
 
+		$preguntas = ['¿Cómo rayos lograste ver esta pregunta?','¿Cuál es el nombre de mi mascota?','¿Cuál es mi canción favorita?','¿Cuál es mi videojuego favorito?'];
+
 		$users = null;
 		$users = (is_countable($validar) > 0) ? $validar : null;
 	}

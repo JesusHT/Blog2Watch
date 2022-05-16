@@ -6,8 +6,6 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://fonticons-free-fonticons.netdna-ssl.com/kits/1ce05b4b/publications/118813/woff2.css" media="all">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 	<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css">
 	<link rel="stylesheet" type="text/css" href="resources\css\stylePlataformas.css">
   	<link rel="stylesheet" type="text/css" href="resources\css\styleReactions.css">
@@ -27,13 +25,13 @@
 		<nav class="nav justify-content-center navbar-dark mb-3 col-md-8 position-center row">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item col-4" role="presentation">
-					<button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><i class="bi bi-house-door-fill"></i> Home</button>
+					<button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><i class="fa-solid fa-house"></i> Home</button>
 				</li>
 				<li class="nav-item col-4" role="presentation">
-					<button class="nav-link" id="acercaDe-tab" data-bs-toggle="tab" data-bs-target="#acercaDe" type="button" role="tab" aria-controls="acercaDe" aria-selected="false"><i class="bi bi-info-circle-fill"></i> Acerca De</button>
+					<button class="nav-link" id="acercaDe-tab" data-bs-toggle="tab" data-bs-target="#acercaDe" type="button" role="tab" aria-controls="acercaDe" aria-selected="false"><i class="fa-solid fa-circle-info"></i> Acerca De</button>
 				</li>
 				<li class="nav-item col-4">
-					<button class="nav-link" id="perfil-tab" data-bs-toggle="pill" data-bs-target="#perfil" type="button" role="tab" aria-controls="perfil" aria-selected="false" ><i class="bi bi-person-fill"></i> <?php if (!empty($user)){ echo $user['name']; } ?></button>
+					<button class="nav-link" id="perfil-tab" data-bs-toggle="pill" data-bs-target="#perfil" type="button" role="tab" aria-controls="perfil" aria-selected="false" ><i class="fa-solid fa-user"></i> <?php if (!empty($user)){ echo $user['name']; } ?></button>
 				</li>
 			</ul>
 		</nav>
@@ -70,7 +68,7 @@
 															<textarea type="text" name="comment" id="comment<?php echo $result -> id_post; ?>" class="form-control h-comment bg-dark text-white" placeholder="Escribir comentario..."></textarea>
 															<button type="button" class="btn btn-outline-secondary submit-comment text-white" id="enviar" 
 															onclick="enviarDatos(<?php echo $result -> id_post; ?>)">
-																<i class="bi bi-chat-right-text-fill"></i>
+																<i class="fa-solid fa-message"></i>
 															</button>
 														</div>
 													</form>
@@ -106,7 +104,7 @@
 		<buzon-abierto class="v-mailbox text-dark rounded-2 bg-gray p-4 container-sm container-md" id="vent">
 			<div class="row g-2 mb-2">
 				<div class="col-10"><h5 class="fw-bold">BUZÓN</h5></div>
-				<div class="col-2" align="right"><button type="button" class="text-light bg-visitante" onclick="location.href='javascript:close()'"><i class="bi bi-x-circle-fill"></i></button></div>
+				<div class="col-2" align="right"><button type="button" class="text-light bg-visitante" onclick="location.href='javascript:close()'"><i class="fa-solid fa-x"></i></button></div>
 			</div>
 			<div class="position-center bg-darkGray rounded p-2">
 				<form action="" method="post">
@@ -116,13 +114,13 @@
 							<option value="2">Queja</option>
 							<option value="3">Reportar error</option>
 						</select>
-						<label for="floatingSelect">Tipo</label>				
+						<label for="floatingSelect"><i class="fa-solid fa-list-radio"></i> Tipo</label>				
 					</div>
 					<div class="form-floating mb-3 ">
 						<textarea type="text" class="form-control" style="height: 200px" id="floatingInput" placeholder="Mensaje..." name="mensajeBuzon"  minlength="6" maxlength="500" required></textarea>
-						<label for="floatingInput"><i class="bi bi-chat-right-text"></i> Mensaje</label>
+						<label for="floatingInput"><i class="fa-solid fa-message"></i> Mensaje</label>
 					</div>
-					<button class="button-submit text-white mb-3" type="submit">Enviar <i class="bi bi-send-fill"></i></button>
+					<button class="button-submit text-white mb-3" type="submit">Enviar <i class="fa-solid fa-paper-plane"></i></button>
 				</form>
 			</div>
 		</buzon-abierto>
