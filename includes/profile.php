@@ -47,15 +47,15 @@
 		      	<form action="" method="POST" id="newPassword">
 		      		<div class="form-floating mb-3">
 						<input class="form-control input-profile text-white" type="password" id="passActual" name="actualPass" minlength="6" maxlength="20" required id="floatingPassword" placeholder="Password">
-						<label for="floatingPassword"><span><i class="bi bi-lock-fill"></i></span> Contraseña actual</label>
-					</div>
+						<label for="floatingPassword"><span><i class="fa-solid fa-lock"></i></span> Contraseña actual</label>
+					</div>	
 					<div class="form-floating mb-3">
 						<input class="form-control input-profile text-white" id="pass" type="password" name="newPass" minlength="6" maxlength="20" required id="floatingPassword" placeholder="Password">
-						<label for="floatingPassword"><span><i class="bi bi-lock-fill"></i></span> Nueva Contraseña <span id="demo"></span></label>
+						<label for="floatingPassword"><span><i class="fa-solid fa-lock-keyhole"></i></span> Nueva Contraseña <span id="demo"></span></label>
 					</div>
 					<div class="form-floating mb-3">
 						<input class="form-control input-profile text-white" id="pass-confirm" type="password" name="pass-confirm" minlength="6" maxlength="20" id="floatingPassword" placeholder="Password" required>
-						<label for="floatingPassword"><span><i class="bi bi-lock-fill"></i></span> Confirmar nueva contraseña <span id="demo2"></span></label>
+						<label for="floatingPassword"><span><i class="fa-solid fa-lock-keyhole"></i></span> Confirmar nueva contraseña <span id="demo2"></span></label>
 					</div>	
 		      		<input type="hidden" name="id_user" value="<?php echo $user['id']; ?>">
 					<button type="button" class="btn w-submit bg-dark bg-gradient text-white" id="enviar" onclick="newPassword()">Guardar</button>
@@ -75,7 +75,7 @@
 		      		<input type="hidden" name="id_user" value="<?php echo $user['id']; ?>">	
 					<div class="form-floating mb-3">
 						<input class="form-control input-profile text-white" type="password" id="pass-actual" name="pass" minlength="6" maxlength="20" required id="floatingPassword" placeholder="Password">
-						<label for="floatingPassword"><span><i class="bi bi-lock-fill"></i></span> Contraseña</label>
+						<label for="floatingPassword"><span><i class="fa-solid fa-lock-keyhole"></i></span> Contraseña</label>
 					</div>
 					<div class="form-floating mb-3">
 						<select class="form-select align-input input-profile text-white" id="selectPregunta" id="floatingSelect" aria-label="Floating label select example" name="newPregunta" required>
@@ -84,11 +84,11 @@
 							<option class="bg-option" value="2">¿Cuál es mi canción favorita?</option>
 							<option class="bg-option" value="3">¿Cuál es mi videojuego favorito?</option>
 						</select>
-						<label for="floatingSelect"><i class="bi bi-question-lg"></i> Pregunta de seguridad</label>				
+						<label for="floatingSelect"><i class="fa-solid fa-block-question"></i> Pregunta de seguridad</label>				
 					</div>
 					<div class="form-floating mb-3">
 						<input class="form-control input-profile text-white" type="text" name="newRespuesta" id="respuesta" minlength="3" maxlength="20" required id="floatingResponse" placeholder="respuesta">
-						<label for="floatingResponse"><i class="bi bi-chat-right-text-fill"></i> Respuesta</label>
+						<label for="floatingResponse"><i class="fa-thin fa-comment-minus"></i> Respuesta</label>
 					</div>
 					<button type="button" class="btn w-submit bg-dark bg-gradient text-white" onclick="newPreguntas()">Guardar</button>
 		      	</div>

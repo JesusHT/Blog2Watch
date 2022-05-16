@@ -22,10 +22,7 @@
 			<section class="col-md-4 col-sm-4 position-center rounded bg-gray p-4">
 				<?php 
 					if (!empty($message)) {
-						echo '<p class="bg-green fw-bold text-white p-1">', $message ,'</p>';	
-					}
-					if (!empty($message2)) {
-						echo '<p class="bg-red fw-bold text-white p-1">', $message2 ,'</p>';
+						echo $message;	
 					}
 				?>
 				<form method="POST" action="sign_up.php">

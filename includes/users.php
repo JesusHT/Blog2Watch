@@ -39,7 +39,7 @@
 			$validar = validarUsuario($user, $conn);
 
 		    if (is_countable($validar) > 0) {
-		    	$message2 = 'El usuario ya existe';
+		    	$message = '<p class="bg-red fw-bold text-white p-1">El usuario ya existe</p>';
 		    } else {
 			    $sql = "INSERT INTO users (name, pass, pregunta, respuesta) VALUES (:name, :pass, :pregunta, :respuesta)";
 			    $stmt = $conn->prepare($sql);
@@ -51,11 +51,7 @@
 			    $stmt -> bindParam(':pregunta', $question);
 			    $stmt -> bindParam(':respuesta', $respuesta);
 
-			    if ($stmt -> execute()) {
-			      	$message = '¡Usuario registrado exitosamente!';
-			    } else {
-			      	$message2 = '¡No se ha podido registrar el usuario!';
-			    }
+				$message = $stmt -> execute() ? '<p class="bg-green fw-bold text-white p-1">¡Usuario registrado exitosamente!</p>' : '<p class="bg-red fw-bold text-white p-1">¡No se ha podido registrar el usuario!</p>';
 			} 
 		}
 
@@ -184,10 +180,7 @@
 		$validar = validarUsuario($_COOKIE['user'], $conn);
 
 		$users = null;
-
-		if (is_countable($validar) > 0) { 
-			$users = $validar;
-		}
+		$users = (is_countable($validar) > 0) ? $validar : null;
 	}
 
 	# Cambiar contraseña
@@ -212,11 +205,8 @@
 				$password = password_hash($newPass, PASSWORD_BCRYPT);
 			    $stmt -> bindParam(':pass', $password);
 
-				if ($stmt -> execute()) {
-					$data = '¡Se ha cambiado tú contraseña exitosamente!';
-				} else {
-					$data = '¡No se ha podido cambiar la contraseña!';
-				}
+				$data = $stmt -> execute() ? '¡Se ha cambiado tú contraseña exitosamente!' : '¡No se ha podido cambiar la contraseña!';
+
 			} else {
 				$data = "¡La información es incorrecta!";
 			}
@@ -247,11 +237,8 @@
 			    $stmt -> bindParam(':pregunta', $question);
 			    $stmt -> bindParam(':respuesta', $respuesta);
 
-				if ($stmt -> execute()) {
-					$data = '¡Se ha cambiado tú pregunta y respuesta de seguridad exitosamente!';
-				} else {
-					$data = '¡No se ha podido cambiar la pregunta y respuesta de seguridad!';
-				}
+				$data = $stmt -> execute() ? '¡Se ha cambiado tú pregunta y respuesta de seguridad exitosamente!' : '¡No se ha podido cambiar la pregunta y respuesta de seguridad!';
+
 			} else {
 				$data = "¡La información es incorrecta!";
 			}

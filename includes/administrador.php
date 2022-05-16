@@ -2,13 +2,11 @@
   	require 'db.php';
   	
 	# Declaración de variables 
-
 	$titulo = "";
 	$info = "";
 	$plataforma = "";
 	$tipo = "";
 	$message = "";
-	$message2 = "";
 
 	# Crear publicaciones
 	if (isset($_POST['title'])) {
@@ -24,46 +22,41 @@
 			$results = $records -> fetch(PDO::FETCH_ASSOC);
 	
 			if (is_countable($results) > 0) {
-				$message2 = 'Ya existe una publicación con ese titulo';
+				$message = '<p class="bg-red fw-bold text-white p-1">Ya existe una publicación con ese titulo</p>';
 			} else {
-				$sql = "INSERT INTO post (titulo, info, plataforma, tipo) VALUES (:titulo, :info, :plataforma, :tipo)";
-				$stmt = $conn -> prepare($sql);
+				$sql = $conn -> prepare('INSERT INTO post (titulo, info, plataforma, tipo) VALUES (:titulo, :info, :plataforma, :tipo)');
 		
-				$stmt -> bindParam(':titulo', $titulo);
-				$stmt -> bindParam(':info', $info);
-				$stmt -> bindParam(':plataforma', $plataforma);
-				$stmt -> bindParam(':tipo', $tipo);
-		
-				if ($stmt -> execute()) {
-					$message = '¡Publicación subida exitoxamente!';
-				} else {
-					$message2 = '¡No se ha podido subir la publicación!';
-				}	
+				$sql -> bindParam(':titulo', $titulo);
+				$sql -> bindParam(':info', $info);
+				$sql -> bindParam(':plataforma', $plataforma);
+				$sql -> bindParam(':tipo', $tipo);
+			
+				$message = $stmt -> execute() ? '<p class="bg-green fw-bold text-white p-1">¡Publicación subida exitoxamente!</p>' : '<p class="bg-red fw-bold text-white p-1">¡No se ha podido subir la publicación!</p>';
 			}
 		}
-		
 	}
 
 	# Eliminar publicaciones
 	if(isset($_POST['eliminar'])){
-		$sql = "DELETE FROM post WHERE id_post = :id_post";
-		$stmt = $conn -> prepare($sql);
-		$stmt -> bindParam(':id_post', $_POST['eliminar']);
-		$stmt -> execute();
+		$sql = $conn -> prepare('DELETE FROM post WHERE id_post = :id_post');
+		$sql-> bindParam(':id_post', $_POST['eliminar']);
+		$sql -> execute();
 	} 
 
 	# Mostrar buzon
-	$sql = "SELECT * FROM buzon ORDER BY id_buzon DESC";
-
-	$query2 = $conn -> prepare($sql);
-	$query2 -> execute();
-	$comentarios = $query2 -> fetchAll(PDO::FETCH_OBJ);
+	$sqlComment = $conn -> prepare('SELECT * FROM buzon ORDER BY id_buzon DESC');
+	$sqlComment -> execute();
+	$comments = $sqlComment -> fetchAll(PDO::FETCH_OBJ);
 	
 	# Eliminar usuarios
 	if(isset($_POST['eliminar-user'])){
 		$sql = "DELETE FROM users WHERE id = :id";
 		$stmt = $conn -> prepare($sql);
 		$stmt -> bindParam(':id', $_POST['eliminar-user']);
-		$stmt -> execute();
+
+		$data = $stmt -> execute() ? '¡Se elimino exitosamente!' : '¡No se ha podido eliminar!';
+
+		die(json_encode($data));
 	} 
+
 ?>
