@@ -4,8 +4,6 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://fonticons-free-fonticons.netdna-ssl.com/kits/1ce05b4b/publications/118813/woff2.css" media="all">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 	<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css">
 	<link rel="stylesheet" type="text/css" href="resources\css\stylePlataformas.css">
   	<link rel="stylesheet" type="text/css" href="resources\css\styleReactions.css">
@@ -28,13 +26,13 @@
 		<nav class="nav justify-content-center navbar-dark mb-3 col-md-8 position-center row">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item col-4" role="presentation">
-					<button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><i class="bi bi-house-door-fill"></i> Home</button>
+					<button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true"><i class="fa-solid fa-house"></i>  Home</button>
 				</li>
 				<li class="nav-item col-4" role="presentation">
-					<button class="nav-link" id="acercaDe-tab" data-bs-toggle="tab" data-bs-target="#acercaDe" type="button" role="tab" aria-controls="acercaDe" aria-selected="false"><i class="bi bi-info-circle-fill"></i> Acerca De</button>
+					<button class="nav-link" id="acercaDe-tab" data-bs-toggle="tab" data-bs-target="#acercaDe" type="button" role="tab" aria-controls="acercaDe" aria-selected="false"><i class="fa-solid fa-circle-info"></i> Acerca De</button>
 				</li>
 				<li class="nav-item col-4">
-					<button class="nav-link" type="button" onclick="location.href='login.php'"><i class="bi bi-person-fill"></i> Inicio de sesion </button>
+					<button class="nav-link" type="button" onclick="location.href='login.php'"><i class="fa-solid fa-user"></i> Inicio de sesion </button>
 				</li>
 			</ul>
 		</nav>
@@ -78,7 +76,7 @@
 													<div class="input-group mb-3">
 														<input type="hidden" name="id_post" value="<?php echo $result -> id_post; ?>">
 														<textarea type="text" class="form-control h-comment bg-dark text-white" placeholder="Escribir comentario..." name="comment"></textarea>
-														<button class="btn btn-outline-secondary submit-comment text-white" type="submit" id="button-addon2" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-chat-right-text-fill"></i></button>
+														<button class="btn btn-outline-secondary submit-comment text-white" type="submit" id="button-addon2" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-message"></i></button>
 													</div>
 												</post-comment>
 											</post>
@@ -113,7 +111,7 @@
 					<div class="col-md-12 mb-2" >
 						<div class="row g-2">
 							<div class="col-6" align="right">
-								<h5><i class="bi bi-chat-right-text-fill"></i><br><?php for ($i=0; $i < 5; $i++) {?><i class="fa-solid fa-popcorn"></i><?php }?><br><i class="bi bi-mailbox"></i></h5>
+								<h5><i class="fa-solid fa-message"></i><br><?php for ($i=0; $i < 5; $i++) {?><i class="fa-solid fa-popcorn"></i><?php }?><br><i class="fa-solid fa-mailbox"></i></h5>
 							</div>
 							<div class="col-6">
 								<h5>Comentar<br>Reaccionar<br>Buzón</h4>

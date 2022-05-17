@@ -21,9 +21,7 @@
 			<!-- Contenido -->
 			<section class="col-md-4 col-sm-4 position-center rounded bg-gray p-4">
 				<?php 
-					if (!empty($message)) {
-						echo $message;	
-					}
+					if (!empty($message)) { echo $message; }
 				?>
 				<form method="POST" action="sign_up.php">
 					<div class="form-floating mb-3">

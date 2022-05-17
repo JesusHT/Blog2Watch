@@ -13,7 +13,6 @@
 	$question = "";
 	$respuesta = "";
 	$message = "";
-	$message2 = "";
 	$correo = "";
 	$id_user = "";
 	$newPass = "";
@@ -146,15 +145,15 @@
 
 			      	if ($stmt -> execute()) {
 						$_COOKIE['user'] = null;
-					  	$message = '¡Se ha enviado a tu correo tu nueva contraseña!';
+					  	$message = '<p class="bg-green fw-bold text-white p-1">¡Se ha enviado a tu correo tu nueva contraseña!</p>';
 					} else {
-					 	$message2 = '¡No se ha podido restablecer la contraseña!';
+					 	$message = '<p class="bg-red fw-bold text-white p-1">¡No se ha podido restablecer la contraseña!</p>';
 					}
 			    } else {
-			      	$message2 = 'Datos incorrectos';
+			      	$message = '<p class="bg-red fw-bold text-white p-1">Datos incorrectos</p>';
 			    }
 		    } else {
-		      	$message2 = 'El usuario no existe. <a href="sign_up.php">Regístrate</a>';
+		      	$message = '<p class="bg-red fw-bold text-white p-1">El usuario no existe. <a href="sign_up.php">Regístrate</a></p>';
 		    }
 		}
 	}
@@ -170,7 +169,7 @@
 				setcookie("user", $user);
 				header("Location: validacion.php");
 			} else {
-				$message2 = 'El usuario no existe. <a href="sign_up.php">Regístrate</a>';
+				$message = '<p class="bg-red fw-bold text-white p-1">El usuario no existe. <a href="sign_up.php">Regístrate</a></p>';
 			}
 		}
 	}

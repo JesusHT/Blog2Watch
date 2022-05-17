@@ -18,12 +18,7 @@
 			<section class="col-lg-4 position-center bg-gray p-4 rounded">
 				<div style="display: none;"><?php require 'includes\users.php';?></div>
 				<?php 				
-					if (!empty($message)) {
-						echo '<p class="bg-green fw-bold text-white p-1">' . $message . ' <a href="login.php">Inicia sesión</a></p>';	
-					}
-					if (!empty($message2)) {
-						echo '<p class="bg-red fw-bold text-white p-1">' . $message2 . '</p>';	
-					}
+					if (!empty($message)) { echo $message; }
 				?>
 				<form method="POST" action="<?php $_SERVER['PHP_SELF'] ?>">
                     <div class="form-floating mt-2 mb-3">

@@ -13,7 +13,7 @@
     }
 </style>
 
-<div class="row mt-4">
+<div class="row">
     <div class="row">
         <div class="col-md-12 mt-2"><h3 class="txt">Sobre el Sitio</h3></div>
         <p class="txt2"><b>
@@ -51,4 +51,4 @@
         </div>
     </div>
 	
-</div><br><br><br>
+</div>
