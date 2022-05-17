@@ -28,10 +28,11 @@
 						<input class="align-input form-control" type="text" name="name" required id="floatingInput" placeholder="username">
 						<label for="floatingInput"><span><i class="fa-solid fa-user"></i></span> Usuario</label>
 					</div>
-					<div class="form-floating mb-3">
-						<input class="align-input form-control" type="password" name="pass" required id="floatingPassword" placeholder="Password">
+					<div class="form-floating mb-2">
+						<input class="align-input form-control" type="password" name="pass" id="pass" id="floatingPassword" placeholder="..." required>
 						<label for="floatingPassword"><span><i class="fa-solid fa-lock"></i></span> Contraseña</label>
 					</div>
+					<input type="checkbox" id="eye" name="eye" class="mb-3"><label for="eye" class="text-white p-1">Mostrar contraseña</label>
 					<input class="button-submit  align-input mb-3 text-white" type="submit" value="Ingresar"> 
 				</form>
 				<p class="text-center text-white">¿No tienes una cuenta? <a href="sign_up.php">Regístrate</a><br>¿Se te olvidó tu contraseña? <a href="recuperar.php">Recuperar</a></p>
@@ -39,6 +40,7 @@
 		</content>
 	</div>
 	<!-- Scripts -->
+	<script src="resources/js/ver.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 </body>
 </html>

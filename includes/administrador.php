@@ -7,6 +7,7 @@
 	$plataforma = "";
 	$tipo = "";
 	$message = "";
+	$editar = "";
 
 	# Crear publicaciones
 	if (isset($_POST['title'])) {
@@ -31,7 +32,7 @@
 				$sql -> bindParam(':plataforma', $plataforma);
 				$sql -> bindParam(':tipo', $tipo);
 			
-				$message = $stmt -> execute() ? '<p class="bg-green fw-bold text-white p-1">¡Publicación subida exitoxamente!</p>' : '<p class="bg-red fw-bold text-white p-1">¡No se ha podido subir la publicación!</p>';
+				$message = $sql -> execute() ? '<p class="bg-green fw-bold text-white p-1">¡Publicación subida exitoxamente!</p>' : '<p class="bg-red fw-bold text-white p-1">¡No se ha podido subir la publicación!</p>';
 			}
 		}
 	}
@@ -57,6 +58,60 @@
 		$data = $stmt -> execute() ? '¡Se elimino exitosamente!' : '¡No se ha podido eliminar!';
 
 		die(json_encode($data));
-	} 
+	}
+
+	# Formulario Editar
+	if (isset($_POST['editar'])) {
+		$editar = $_POST['editar'];
+		if (!empty($editar)) {
+			$records = $conn -> prepare('SELECT * FROM post WHERE id_post = :id_post');
+			$records->bindParam(':id_post', $editar);
+			$records->execute();
+			$results = $records -> fetch(PDO::FETCH_ASSOC);
+			$plataforma = ["Netflix","Amazon","Disney+","HBO","Otro"];
+			$tipo = ["¿Cómo conseguiste que saliera esta opción?","Serie","Pelicula"];
+
+			if (is_countable($results)>0) {
+				$data = '<form action="index-administrador.php" method="POST" id="formul"> 
+							<div class="form-floating mb-3">
+								<input type="text" value="'. $results['titulo'] .'" class="form-control bg-dark text-white" id="floatingInput" placeholder="title" name="title" maxlength="100" required>
+								<label for="floatingInput">Titulo</label>
+							</div>
+
+							<div class="form-floating mb-3 ">
+								<textarea type="text" name="info" class="form-control bg-dark text-white" style="height: 100px" id="floatingInput" placeholder="info" minlength="6" maxlength="500" required>'. $results['info'] .'</textarea>
+								<label for="floatingInput">Información</label>
+							</div>
+
+							<div class="row g-2">
+								<div class="form-floating mb-3 col-6">
+									<select class="form-select bg-dark text-white"  id="floatingSelect" aria-label="Floating label select example" name="plataforma" required>
+										<option selected disabled>'. $plataforma[$results['plataforma'] - 1] .'</option>
+										<option value="1">Netflix</option>
+										<option value="2">Amazon Prime</option>
+										<option value="3">Disney+</option>
+										<option value="4">HBO</option>
+										<option value="5">Otro</option>
+									</select>
+									<label for="floatingSelect">Plataforma</label>	
+								</div>
+								<div class="form-floating mb-3 col-6">
+									<select class="form-select bg-dark text-white" id="floatingSelect" aria-label="Floating label select example" name="tipo" required>
+										<option selected disabled>'. $tipo[$results['tipo']] .'</option>
+										<option value="2">Pelicula</option>
+										<option value="1">Serie</option>
+									</select>
+									<label for="floatingSelect">Tipo</label>	
+								</div>
+							</div>
+							<input class="button-submit2 text-white mb-3 rounded border-white border-1" type="submit" value="Subir">
+						</form>';
+			} else {
+				$data = '<p class="bg-red fw-bold text-white p-1">¡No se ha podido editar la publicación!</p>';
+			}
+
+		}
+		die(json_encode($data));
+	}
 
 ?>

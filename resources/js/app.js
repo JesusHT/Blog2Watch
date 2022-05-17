@@ -84,3 +84,17 @@ function userDelete(id_user){
           console.log(data);
      })
 }
+
+// Editar post (Formulario)
+function updatePost(id_post){
+     let publicacion = new FormData(document.getElementById("updatePost"+id_post));
+
+     fetch('includes/administrador.php', {
+          method: "post",
+          body: publicacion
+     }).then((response) => {
+         return response.json();
+     }).then((data) => {
+          document.getElementById("editarPost").innerHTML = data;
+     })
+}

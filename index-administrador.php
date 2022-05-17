@@ -59,10 +59,7 @@
 								<div class="mt-3">
 									<?php 
 										if (!empty($message)) {
-											echo '<p class="bg-green fw-bold text-white">' . $message . '</p>';	
-										}
-										if (!empty($message2)) {
-											echo '<p class="bg-red fw-bold text-white">' . $message2 . '</p>';
+											echo $message;	
 										}
 									?>
 								</div>
@@ -98,7 +95,6 @@
 											</select>
 											<label for="floatingSelect">Tipo</label>	
 										</div>
-
 									</div>
 									<input class="button-submit2 text-white mb-3 rounded border-white border-1" type="submit" value="Subir">
 								</form>
@@ -121,9 +117,9 @@
 																	<input type="hidden" name="eliminar" value="<?php echo $result -> id_post; ?>">
 																	<button type="submit" class="submit bg-dark text-white"><i class="fa-solid fa-trash-can"></i></button>	
 																</form>
-																<form action="index-administrador.php" method="POST" >
+																<form action="" method="POST" id="updatePost<?php echo $result -> id_post; ?>">
 																	<input type="hidden" name="editar" value="<?php echo $result -> id_post; ?>">
-																	<button type="submit" class="submit bg-dark text-white"><i class="fa-solid fa-pencil"></i></button>
+																	<button type="button" class="submit bg-dark text-white" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="updatePost(<?php echo $result -> id_post; ?>)"><i class="fa-solid fa-pencil"></i></button>
 																</form>
 															</div>
 														</div>
@@ -209,6 +205,20 @@
 							</table>
 						</section>
 					</div>
+				</div>
+				<!-- Modal -->
+				<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content bg-gray text-white p-2">
+						<div class="modal-header">
+							<h5 class="modal-title fw-bold" id="staticBackdropLabel">EDITAR PUBLICACIÓN</h5>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body bg-darkGray" id="editarPost">
+							
+						</div>
+					</div>
+				</div>
 				</div>
 			</content>
 		</div>
