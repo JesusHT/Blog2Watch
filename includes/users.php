@@ -16,6 +16,8 @@
 	$correo = "";
 	$id_user = "";
 	$newPass = "";
+	$tipo_mensaje = "";
+	$mensaje_buzon = "";
 	
 	function validarUsuario($name, $conn){
 		$records = $conn -> prepare('SELECT * FROM users WHERE name = :name');
@@ -248,5 +250,22 @@
 	}
 
 	# Buzón 
-	//$records = $conn -> prepare('INSERT INTO buzon (users, tipo_mensaje, mensaje) VALUES (:users, :tipo_mensaje, :mensaje)');
+	if (isset($_POST['tipoMensaje']) && isset($_POST['mensajeBuzon']) && isset($_POST['user_buzon'])) {
+		$tipo_mensaje = $_POST['tipoMensaje'];
+		$mensaje_buzon = $_POST['mensajeBuzon'];
+		$user = $_POST['user_buzon'];
+
+		if (!empty($tipo_mensaje) && !empty($mensaje_buzon) && !empty($user)) {
+			$sql = "INSERT INTO buzon (users, tipo_mensaje, mensaje) VALUES (:users, :tipo_mensaje, :mensaje)";
+			$stmt = $conn -> prepare($sql);
+			$stmt -> bindParam(':users', $user);
+			$stmt -> bindParam(':tipo_mensaje', $tipo_mensaje);
+			$stmt -> bindParam(':mensaje', $mensaje_buzon);
+
+			$data = $stmt -> execute() ? '<p class="bg-green fw-bold text-white p-1">Mensaje Enviado Correctamente!</p>' : '<p class="bg-red fw-bold text-white p-1">No se ha podido enviar el mensaje</p>';
+
+			echo json_encode($data);
+		}
+	}
+	
 ?>

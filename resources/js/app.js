@@ -100,6 +100,23 @@
                window.alert(data);
           }).catch(err => console.error(err));
      }
+     // Enviar datos de Buzon
+     function enviarDatosBuzon(){
+          let buzon = new FormData(document.getElementById("enviarDatosBuzon"));
+          fetch('includes/users.php',{
+               method: "post",
+               body: buzon
+          }).then((response) =>{
+               document.getElementById('enviarDatosBuzon').reset();
+               return response.json(); 
+          }).then((data) =>{
+               document.getElementById("Respuesta").innerHTML = data;
+          }).catch(err => console.error(err));
+     }
+     
+     document.getElementById("cerrar_buzon").addEventListener("click",function(){
+          document.getElementById("Respuesta").innerHTML = "<p></p>";
+     })
 
 /* ADMINISTRADOR */
 

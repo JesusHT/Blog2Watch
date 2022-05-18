@@ -69,12 +69,14 @@
 		<buzon-abierto class="v-mailbox text-dark rounded-2 bg-gray p-4 container-sm container-md" id="vent">
 			<div class="row g-2 mb-2">
 				<div class="col-10"><h5 class="fw-bold">BUZÓN</h5></div>
-				<div class="col-2" align="right"><button type="button" class="text-light bg-visitante" onclick="location.href='javascript:close()'"><i class="fa-solid fa-x"></i></button></div>
+				<div class="col-2" align="right"><button type="button" id="cerrar_buzon" class="text-light bg-visitante" onclick="location.href='javascript:close()'"><i class="fa-solid fa-x"></i></button></div>
 			</div>
 			<div class="position-center bg-darkGray rounded p-2">
-				<form action="" method="post">
-					<div class="form-floating mb-3 mt-2">
-						<select class="form-select" id="floatingSelect" aria-label="Floating label select example" name="tipoMensaje" required>
+				<div id="Respuesta"></div>
+				<form action="" method="post" id="enviarDatosBuzon">
+					<div class="form-floating mb-3 mt-2"> 
+						<input type="hidden" name="user_buzon" id="user_buzon" value="<?php echo $user['name'] ?>">
+						<select class="form-select" id="tipo_mensaje" id="floatingSelect" aria-label="Floating label select example" name="tipoMensaje" required>
 							<option value="1">Sugerencia</option>
 							<option value="2">Queja</option>
 							<option value="3">Reportar error</option>
@@ -82,10 +84,10 @@
 						<label for="floatingSelect"><i class="fa-solid fa-list-radio"></i> Tipo</label>				
 					</div>
 					<div class="form-floating mb-3 ">
-						<textarea type="text" class="form-control" style="height: 200px" id="floatingInput" placeholder="Mensaje..." name="mensajeBuzon"  minlength="6" maxlength="500" required></textarea>
+						<textarea type="text" id="mensaje_buzon" class="form-control" style="height: 200px" id="floatingInput" placeholder="Mensaje..." name="mensajeBuzon"  minlength="6" maxlength="500" required></textarea>
 						<label for="floatingInput"><i class="fa-solid fa-message"></i> Mensaje</label>
 					</div>
-					<button class="button-submit text-white mb-3" type="submit">Enviar <i class="fa-solid fa-paper-plane"></i></button>
+					<button class="button-submit text-white mb-3" type="button" onclick="enviarDatosBuzon()">Enviar <i class="fa-solid fa-paper-plane"></i></button>
 				</form>
 			</div>
 		</buzon-abierto>
