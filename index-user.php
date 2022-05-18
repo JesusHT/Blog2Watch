@@ -1,4 +1,5 @@
 <?php require 'includes\sesion.php';?>
+<?php require 'includes\interacciones.php'; ?>
 
 <!DOCTYPE html>
 <html>
@@ -43,8 +44,54 @@
 						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 							<!-- Filtros -->
 							<section class="col-md-8 col-sm-4 position-center mb-3"><?php require 'includes\filtros.php'; ?></section>
+<<<<<<< Updated upstream
 							<!-- Publicaciones -->
 							<section class="col-md-8 col-sm-4 position-center" id="publicaciones"></section>
+=======
+							<section class="col-md-8 col-sm-4 position-center">
+								<?php 
+									if($query -> rowCount() > 0) { 
+										foreach($results as $result) {
+								?>
+											<post class="row border rounded-3 border-white mb-3 position-center">
+												<!-- Titulo -->
+												<div class="col-md-12 mt-2"><h3 class="text-white fw-bold"><?php echo $result -> titulo; ?></h3></div>
+												<!-- Información -->
+												<post-info class="info-post mt-2 col-md-12 text-white"><p><?php echo $result -> info; ?></p></post-info>
+												<!-- Reacciones -->
+												<div class="reaction text-white" align="left"><?php require 'includes\reactions.php'; ?></div>
+												<!-- Comentarios -->
+												<?php //if($querycom -> rowCount() > 0) { foreach($resultscom as $resultc) {?>
+												<post-comment class="col-md-12">
+													<div class="col-md-12">
+														<div class="body-comment mb-2">
+															<p class="text-name-comment text-white"><?php if (!empty($user)){ echo $user['name']; } ?></p><br><p class="text-comment text-white">
+																<?php 
+																	$comentarios = mostrarCom($result -> id_post);
+																	print_r($comentarios);
+																?></p>
+														</div>
+													</div>
+												<?php//} }?>
+													<form action="" id="formComment<?php echo $result -> id_post; ?>">
+														<div class="input-group mb-3">
+															<input type="hidden" name="id_user" id="id_user" value="<?php echo $user['id']; ?>">
+															<input type="hidden" name="id_post" id="id_post" value="<?php echo $result -> id_post; ?>">
+															<textarea type="text" name="comment" id="comment<?php echo $result -> id_post; ?>" class="form-control h-comment bg-dark text-white" placeholder="Escribir comentario..."></textarea>
+															<button type="button" class="btn btn-outline-secondary submit-comment text-white" id="enviar" 
+															  onclick="enviarDatos(<?php echo $result -> id_post; ?>)">
+																<i class="fa-solid fa-message"></i>
+															</button>
+														</div>
+													</form>
+												</post-comment>
+											</post>
+								<?php
+										} 
+									}
+								?>
+							</section>
+>>>>>>> Stashed changes
 						</div>
 
 						<!-- Pestaña Acerca De -->

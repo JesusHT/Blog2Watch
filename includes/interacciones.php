@@ -1,6 +1,19 @@
 <?php 
   require 'db.php';
 
+function mostrarCom($id_post)
+{
+  global $conn;
+  //Mostrar comentarios
+  if(/**$com = */true){
+    $sql = "SELECT * FROM comments WHERE id_post = {$id_post}";
+    $querycom = $conn -> prepare($sql); #query variable"conn" -> 
+    $querycom -> execute(); #ejecutar
+    return $querycom -> fetchAll(PDO::FETCH_OBJ); 
+  } 
+}
+
+
   $id_post = "";
   $id_user = "";
   $comment = "";
@@ -24,6 +37,7 @@
 		}
     
   }
+<<<<<<< Updated upstream
   
   //Mostrar comentarios
   if($com = true){
@@ -34,6 +48,9 @@
     $querycom -> execute(); #ejecutar
     $resultscom = $querycom -> fetchAll(PDO::FETCH_OBJ); 
   }
+=======
+
+>>>>>>> Stashed changes
 
   //Reacciones
 ?>
