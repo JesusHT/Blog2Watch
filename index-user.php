@@ -55,19 +55,28 @@
 												<!-- Reacciones -->
 												<div class="reaction text-white" align="left"><?php require 'includes\reactions.php'; ?></div>
 												<!-- Comentarios -->
+												<?php require 'includes\interacciones.php'; ?>
+												<?php 
+													if($querycom -> rowCount() > 0) { 
+														foreach($resultscom as $resultc) {
+												?>
 												<post-comment class="col-md-12">
 													<div class="col-md-12">
 														<div class="body-comment mb-2">
-															<p class="text-name-comment"><?php  ?></p><p class="text-comment"><?php  ?></p>
+															<p class="text-name-comment text-white"><?php if (!empty($user)){ echo $user['name']; } ?></p><br><p class="text-comment text-white"><?php $com = true; echo $resultc -> comment?></p>
 														</div>
 													</div>
+												<?php
+														} 
+													}
+												?>
 													<form action="" id="formComment<?php echo $result -> id_post; ?>">
 														<div class="input-group mb-3">
 															<input type="hidden" name="id_user" id="id_user" value="<?php echo $user['id']; ?>">
 															<input type="hidden" name="id_post" id="id_post" value="<?php echo $result -> id_post; ?>">
 															<textarea type="text" name="comment" id="comment<?php echo $result -> id_post; ?>" class="form-control h-comment bg-dark text-white" placeholder="Escribir comentario..."></textarea>
 															<button type="button" class="btn btn-outline-secondary submit-comment text-white" id="enviar" 
-															onclick="enviarDatos(<?php echo $result -> id_post; ?>)">
+															  onclick="enviarDatos(<?php echo $result -> id_post; ?>)">
 																<i class="fa-solid fa-message"></i>
 															</button>
 														</div>
@@ -77,7 +86,6 @@
 								<?php
 										} 
 									}
-
 								?>
 							</section>
 						</div>

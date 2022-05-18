@@ -42,7 +42,7 @@
 
 	$query = $conn -> prepare($sql); #query variable"conn" -> 
 	$query -> execute(); #ejecutar
-	$results = $query -> fetchAll(PDO::FETCH_OBJ);
+	$results = $query -> fetchAll(PDO::FETCH_OBJ); 
 
 ?>
 
