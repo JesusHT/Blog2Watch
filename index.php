@@ -43,49 +43,9 @@
 					<!-- Pestaña de inicio -->
 					<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 						<!-- Filtros -->
-						<section class="col-md-8 col-sm-4 position-center mb-3"><?php require 'includes\filtros.php'; ?></section>
+						<section class="col-md-8 col-sm-4 position-center mb-3 row"><?php require 'includes\filtros.php'; ?></section>
 						<!-- Publicaciones -->
-						<section class="col-md-8 col-sm-4 position-center container">
-							<div class="row">
-								<?php 
-									if($query -> rowCount() > 0) { 
-										foreach($results as $result) {
-								?>
-											<post class="row border rounded-3 border-white mb-3 position-center">
-												<div class="col-md-12 mt-2 row">
-													<h3 class="text-white fw-bold"><?php echo $result -> titulo; ?></h3>
-												</div>
-												<post-info class="info-post text-white mt-2 col-md-12"><p><?php echo $result -> info; ?></p></post-info>
-												<div class="reactions2 text-white" align="left">
-													<h6 class="clasificacion2">
-
-														<?php for ($i=5; $i >= 1; $i--) { ?>
-
-															<input id="radio<?php echo $i, $result -> id_post; ?>" type="radio" name="estrellas" value="<?php echo $i?>" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-															<label for="radio<?php echo $i, $result -> id_post; ?>"onclick="javascript:to_open()"><i class="fa-solid fa-popcorn"></i></label>
-
-														<?php }?>
-													</h6>
-												</div>
-												<post-comment class="col-md-12">
-													<div class="col-md-12">
-														<div class="body-comment mb-2">
-															<p class="text-name-comment"><?php  ?></p><p class="text-comment"><?php  ?></p>
-														</div>
-													</div>
-													<div class="input-group mb-3">
-														<input type="hidden" name="id_post" value="<?php echo $result -> id_post; ?>">
-														<textarea type="text" class="form-control h-comment bg-dark text-white" placeholder="Escribir comentario..." name="comment"></textarea>
-														<button class="btn btn-outline-secondary submit-comment text-white" type="submit" id="button-addon2" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="fa-solid fa-message"></i></button>
-													</div>
-												</post-comment>
-											</post>
-								<?php
-										} 
-									}
-								?>
-							</div>
-						</section>
+						<section class="col-md-8 col-sm-4 position-center container" id="publicacionesUser"></section>
 					</div>
 					<!-- Pestaña acerca de -->
 					<div class="tab-pane fade" id="acercaDe" role="tabpanel" aria-labelledby="acercaDe-tab">
@@ -129,7 +89,8 @@
 		</div>
 	</div>
 	<!-- Scripts -->
-	<script src="resources/js/script.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="resources/js/appVisitante.js"></script>
 	<script src="resources/js/plataformas.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>

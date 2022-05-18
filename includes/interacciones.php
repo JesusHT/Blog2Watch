@@ -2,33 +2,29 @@
   require 'db.php';
 
   $id_post = "";
-  global $id_post;
   $id_user = "";
   $comment = "";
 
+  session_start();
   //Comentarios
-  if(isset($_POST['comment'])){
-    global $id_post;
+  if(isset($_POST['comment']) && isset($_SESSION['user_id'])){
     $id_post = $_POST['id_post'];
-    $id_user = $_POST['id_user'];
     $comment = $_POST['comment'];
-
-    if (!empty($comment)) {
-			$sql = "INSERT INTO comments (id_post, id_user, comment) VALUES (:id_post, :id_user, :comment)";
-			$stmt = $conn -> prepare($sql);
+    
+    if (!empty($comment) && !empty($id_post)) {
+			$sql = $conn -> prepare("INSERT INTO comments (id_post, id_user, comment) VALUES (:id_post, :id_user, :comment)");
 		
-			$stmt -> bindParam(':id_post', $id_post);
-			$stmt -> bindParam(':id_user', $id_user);
-			$stmt -> bindParam(':comment', $comment);
+			$sql -> bindParam(':id_post', $id_post);
+			$sql -> bindParam(':id_user', $_SESSION['user_id']);
+			$sql -> bindParam(':comment', $comment);
 
-			$stmt -> execute();
+      $data = $sql -> execute() ? "Todo bien" : "Oh no, qué le moviste ya no sirve ctrl + z rapidooo!!!!";
 
-			$_POST['id_post'] = null;
-			$_POST['id_user'] = null;
-			$_POST['comment'] = null;
+      echo json_encode($data);
 		}
+    
   }
-
+  
   //Mostrar comentarios
   if($com = true){
     //$query="select * form post_comment where post_id=".$post_id;

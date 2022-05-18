@@ -41,53 +41,10 @@
 					<div class="tab-content" id="myTabContent">
 						<!-- Pestaña de inicio -->
 						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+							<!-- Filtros -->
 							<section class="col-md-8 col-sm-4 position-center mb-3"><?php require 'includes\filtros.php'; ?></section>
-							<section class="col-md-8 col-sm-4 position-center">
-								<?php 
-									if($query -> rowCount() > 0) { 
-										foreach($results as $result) {
-								?>
-											<post class="row border rounded-3 border-white mb-3 position-center">
-												<!-- Titulo -->
-												<div class="col-md-12 mt-2"><h3 class="text-white fw-bold"><?php echo $result -> titulo; ?></h3></div>
-												<!-- Información -->
-												<post-info class="info-post mt-2 col-md-12 text-white"><p><?php echo $result -> info; ?></p></post-info>
-												<!-- Reacciones -->
-												<div class="reaction text-white" align="left"><?php require 'includes\reactions.php'; ?></div>
-												<!-- Comentarios -->
-												<?php require 'includes\interacciones.php'; ?>
-												<?php 
-													if($querycom -> rowCount() > 0) { 
-														foreach($resultscom as $resultc) {
-												?>
-												<post-comment class="col-md-12">
-													<div class="col-md-12">
-														<div class="body-comment mb-2">
-															<p class="text-name-comment text-white"><?php if (!empty($user)){ echo $user['name']; } ?></p><br><p class="text-comment text-white"><?php $com = true; echo $resultc -> comment?></p>
-														</div>
-													</div>
-												<?php
-														} 
-													}
-												?>
-													<form action="" id="formComment<?php echo $result -> id_post; ?>">
-														<div class="input-group mb-3">
-															<input type="hidden" name="id_user" id="id_user" value="<?php echo $user['id']; ?>">
-															<input type="hidden" name="id_post" id="id_post" value="<?php echo $result -> id_post; ?>">
-															<textarea type="text" name="comment" id="comment<?php echo $result -> id_post; ?>" class="form-control h-comment bg-dark text-white" placeholder="Escribir comentario..."></textarea>
-															<button type="button" class="btn btn-outline-secondary submit-comment text-white" id="enviar" 
-															  onclick="enviarDatos(<?php echo $result -> id_post; ?>)">
-																<i class="fa-solid fa-message"></i>
-															</button>
-														</div>
-													</form>
-												</post-comment>
-											</post>
-								<?php
-										} 
-									}
-								?>
-							</section>
+							<!-- Publicaciones -->
+							<section class="col-md-8 col-sm-4 position-center" id="publicaciones"></section>
 						</div>
 
 						<!-- Pestaña Acerca De -->
@@ -134,9 +91,9 @@
 		</buzon-abierto>
 	</div>
 	<!-- Scripts -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="resources/js/app.js"></script>
 	<script src="resources/js/script.js"></script>
-	<script src="resources/js/validar.js"></script>
 	<script src="resources/js/plataformas.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>	
