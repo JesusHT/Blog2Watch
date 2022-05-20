@@ -246,7 +246,7 @@
 		}
 	}
 
-	# Buzón 
+	# Buzón
 	if (isset($_POST['tipoMensaje']) && isset($_POST['mensajeBuzon']) && isset($_POST['user_buzon'])) {
 		$tipo_mensaje = $_POST['tipoMensaje'];
 		$mensaje_buzon = $_POST['mensajeBuzon'];

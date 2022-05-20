@@ -18,9 +18,11 @@
 		<div class="site-sidebar"> 
 			<nav class="scroller gif"><div id="menu"><!-- Plataformas --> </div></nav>
 		</div>
+		<!-- Encabezado -->
 		<header>
 			<div class="col-md-8 position-center logo row justify-content-center"><img src="resources\pictures\logoblog.png"></div>
 		</header>
+		<!-- Menú -->
 		<nav class="nav justify-content-center navbar-dark mb-3 col-md-8 position-center row">
 			<ul class="nav nav-tabs" id="myTab" role="tablist">
 				<li class="nav-item col-4" role="presentation">
@@ -34,6 +36,7 @@
 				</li>
 			</ul>
 		</nav>
+		<!-- Contenido -->
 		<content>
 			<div class="container">
 				<content class="row">

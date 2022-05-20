@@ -116,8 +116,8 @@
 		        	<p class="text-center">Si quieres disfrutar los privilegios:</p>
 					<div class="col-md-12 mb-2" >
 						<div class="row g-2">
-							<div class="col-6" align="right">
-								<h5><i class="fa-solid fa-message"></i><br><i class="fa-solid fa-mailbox"></i></h5>
+							<div class="col-6">
+								<h5 class="float-end"><i class="fa-solid fa-message"></i><br><i class="fa-solid fa-mailbox"></i></h5>
 							</div>
 							<div class="col-6">
 								<h5>Comentar<br>Buzón</h4>
