@@ -96,7 +96,7 @@
 		    </div>
 		  </div>
 		</div>
-		<button type="button" class="text-white bg-darkPurple" onclick="location.href='includes/logout.php'">
+		<button type="button" class="btn text-white bg-darkPurple bg-gradient" onclick="location.href='includes/logout.php'">
 			<i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar sesión
 		</button>
 	</div>

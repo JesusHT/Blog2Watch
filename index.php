@@ -1,3 +1,4 @@
+<?php require 'includes\publicaciones.php';?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,7 +7,6 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css">
 	<link rel="stylesheet" type="text/css" href="resources\css\stylePlataformas.css">
-  	<link rel="stylesheet" type="text/css" href="resources\css\styleReactions.css">
 	<link rel="stylesheet" type="text/css" href="resources\css\styleNav.css">
   	<link rel="stylesheet" type="text/css" href="resources\css\style.css">
 	<link rel="icon" type="image/png" href="resources\pictures\icono.ico">
@@ -42,10 +42,56 @@
 				<div class="tab-content" id="myTabContent">
 					<!-- Pestaña de inicio -->
 					<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-						<!-- Filtros -->
-						<section class="col-md-8 col-sm-4 position-center mb-3 row"><?php require 'includes\filtros.php'; ?></section>
 						<!-- Publicaciones -->
-						<section class="col-md-8 col-sm-4 position-center container" id="publicacionesUser"></section>
+						<section class="col-md-8 col-sm-4 position-center container">
+						<?php 
+									if($sql -> rowCount() > 0) { 
+										foreach($publicaciones as $publicacion) {
+								?>
+											<post class="row border rounded-3 mb-3 position-center" style="border-color: <?php echo $bg[$publicacion -> plataforma - 1]; ?>!important;">
+												<!-- Titulo -->
+												<div class="col-md-12 mt-2"><h3 class="text-white fw-bold"><?php echo  $publicacion-> titulo; ?></h3></div>
+												<!-- Información -->
+												<post-info class="info-post mt-2 col-md-12 text-white"><p><?php echo  $publicacion-> info ?></p></post-info>
+												<!-- Calificación -->
+												<label>
+												<?php
+													for ($i=0; $i < $publicacion -> calificacion; $i++) { 
+														echo '<i class="fa-solid fa-popcorn '. $colors[$publicacion -> plataforma - 1].'"></i>';
+													}
+												?>
+												</label>
+												<!-- Comentarios -->
+												<post-comment class="col-md-12">
+													<div class="col-md-12">
+														<div class="body-comment mb-2 text-white">
+															<?php 
+																$comentarios = mostrarCom($publicacion -> id_post);
+																if (!empty($comentarios)) {
+																	foreach($comentarios as $comentario) {?>
+																		<p class="text-name-comment"><?php echo $comentario -> name; ?></p>
+																		<p class="text-comment"><?php echo $comentario -> comment;  ?></p>
+															<?php 	}
+																}
+															?>
+														</div>
+													</div>
+													<form id="formComment<?php echo  $publicacion -> id_post; ?>">
+														<div class="input-group mb-3">
+															<textarea type="text" name="comment" id="comment<?php echo  $publicacion-> id_post; ?>" class="form-control h-comment bg-dark text-white" placeholder="Escribir comentario..." ></textarea>
+															<button type="button" class="btn btn-outline-secondary submit-comment text-white" onclick="limpiar(<?php echo  $publicacion -> id_post; ?>)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+																<i class="fa-solid fa-message"></i>
+															</button>
+														</div>
+													</form>
+												</post-comment>
+											</post>
+								<?php
+										} 
+									}
+
+								?>
+						</section>
 					</div>
 					<!-- Pestaña acerca de -->
 					<div class="tab-pane fade" id="acercaDe" role="tabpanel" aria-labelledby="acercaDe-tab">
@@ -55,7 +101,7 @@
 			</content>
 		</div>
 		<!-- Button trigger modal -->
-		<div  class="mailbox" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+		<div class="mailbox" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
 		  	<img src="resources/pictures/buzon1.png" >
 		</div>
 		<!-- Modal -->
@@ -71,10 +117,10 @@
 					<div class="col-md-12 mb-2" >
 						<div class="row g-2">
 							<div class="col-6" align="right">
-								<h5><i class="fa-solid fa-message"></i><br><?php for ($i=0; $i < 5; $i++) {?><i class="fa-solid fa-popcorn"></i><?php }?><br><i class="fa-solid fa-mailbox"></i></h5>
+								<h5><i class="fa-solid fa-message"></i><br><i class="fa-solid fa-mailbox"></i></h5>
 							</div>
 							<div class="col-6">
-								<h5>Comentar<br>Reaccionar<br>Buzón</h4>
+								<h5>Comentar<br>Buzón</h4>
 							</div>
 						</div>
 					</div>
@@ -89,10 +135,9 @@
 		</div>
 	</div>
 	<!-- Scripts -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="resources/js/appVisitante.js"></script>
 	<script src="resources/js/plataformas.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script> -->
 </body>
 </html>

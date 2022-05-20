@@ -8,6 +8,26 @@
 	$tipo = "";
 	$message = "";
 	$editar = "";
+	$colors = ["text-darkPurple","text-darkBlue","text-red","text-blue"];
+    $bg = ["#610094","#05387b","darkred","#0296d6"];
+	global $conn;
+
+	# Funciones 
+	function mostrarCom($id_post){
+        global $conn;
+        if(true){
+            $sql = "SELECT * FROM comments WHERE id_post = {$id_post}";
+            $querycom = $conn -> prepare($sql);
+            $querycom -> execute(); 
+
+            return $querycom -> fetchAll(PDO::FETCH_OBJ); 
+        } 
+    }
+
+	# Mostrar tabla publicaciones
+	$sql = $conn -> prepare("SELECT * FROM post ORDER BY id_post DESC");
+	$sql -> execute();
+	$publicaciones = $sql -> fetchAll(PDO::FETCH_OBJ); 
 
 	# Crear publicaciones
 	if (isset($_POST['title'])) {

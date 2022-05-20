@@ -34,7 +34,7 @@
 			'<tr>
 				<td scope="row">'. $user -> id .'</td>
 				<td>'. $user -> name. '</td>
-				<td>
+				<td class="text-center" scope="row">
 					<form action="" method="POST" id="userDelete'.  $user -> id.'">
 						<input type="hidden" name="eliminar-user" value="'.  $user -> id .'">
 						<button type="button" class="submit" onclick="userDelete('.  $user -> id .')"><i class="fa-solid fa-trash-can"></i></button>	
