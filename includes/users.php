@@ -22,10 +22,9 @@
 	function validarUsuario($name, $conn){
 		$records = $conn -> prepare('SELECT * FROM users WHERE name = :name');
 		$records -> bindParam(':name', $name);
-		$records -> execute();
-		$results = $records -> fetch(PDO::FETCH_ASSOC);
+		$records -> execute(); 
 
-		return $results;
+		return $records -> fetch(PDO::FETCH_ASSOC);
 	}
 
 	# Registro de usuarios 	
@@ -55,7 +54,6 @@
 				$message = $stmt -> execute() ? '<p class="bg-green fw-bold text-white p-1">¡Usuario registrado exitosamente!</p>' : '<p class="bg-red fw-bold text-white p-1">¡No se ha podido registrar el usuario!</p>';
 			} 
 		}
-
 		
 	# Inicio de sesión  
 	} else if (isset($_POST['name']) && isset($_POST['pass']) && empty($_POST['user2'])) {
@@ -76,10 +74,9 @@
 		     		header("Location: index-user.php");
 		      	}
 		    } else {
-				$message = "El usuario y/o la contraseña son incorrectos"; 
+				$message = '<p class="bg-red fw-bold text-white p-1">El usuario y/o la contraseña son incorrectos</p>'; 
 		    }
 		}
-
 
 	# Recuperación de contraseña
 	} else if (isset($_POST['correo']) && isset($_POST['respuesta']) && isset($_POST['pregunta']) && isset($_POST['user2'])){
@@ -92,11 +89,11 @@
 			$validar = validarUsuario($user, $conn);
 
 		    if (is_countable($validar) > 0) {
-			    if ($results['respuesta'] == $respuesta) {
+			    if ($validar['respuesta'] == $respuesta) {
 			      	$sql = "UPDATE users SET pass = :pass WHERE id = :id";
 			      	$stmt = $conn -> prepare($sql);
 
-			      	$stmt -> bindParam(':id', $results['id']);
+			      	$stmt -> bindParam(':id', $validar['id']);
 
 			      	$newpass = "";
 					$pattern = "1234567890abcdefghijklmnopqrstuvwxyz";
@@ -274,7 +271,7 @@
 		}
 	}
 
-	# Buzón 
+	# Buzón
 	if (isset($_POST['tipoMensaje']) && isset($_POST['mensajeBuzon']) && isset($_POST['user_buzon'])) {
 		$tipo_mensaje = $_POST['tipoMensaje'];
 		$mensaje_buzon = $_POST['mensajeBuzon'];

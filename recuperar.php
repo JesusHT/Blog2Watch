@@ -12,9 +12,11 @@
 <body class="body2">
 	<div class="container">
 		<content class="row p-2">
+			<!-- Encabezado -->
 			<header class="col-lg-12">
 				<div class="logo justify-content-center row"><img src="resources/pictures/logoblog.png"></div>
 			</header>
+			<!-- Contenido -->
 			<section class="col-lg-4 position-center bg-gray p-4 rounded">
 				<?php 
 					require 'includes\users.php';
@@ -28,10 +30,11 @@
 					</div>
 					<input type="submit" class="button-submit text-white align-input mb-3" value="Continuar"> 
 				</form>
-				<p class="text-white text-center">¿No tienes una cuenta? <a href="sign_up.php">Regístrate</a><br>Regresar <a href="login.php">Inicia sesión</a></p>
+				<p class="text-white text-center">¿No tienes una cuenta? <a href="sign_up.php">Regístrate</a><br><a href="login.php">Regresar</a></p>
 			</section>
 		</content>
 	</div>
+	<!-- Scripts -->
 	<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
 </body>
 </html>

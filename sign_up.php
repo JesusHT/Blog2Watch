@@ -20,9 +20,7 @@
 			</section>
 			<!-- Contenido -->
 			<section class="col-md-4 col-sm-4 position-center rounded bg-gray p-4">
-				<?php 
-					if (!empty($message)) { echo $message; }
-				?>
+				<?php if (!empty($message)) echo $message; ?>
 				<form method="POST" action="sign_up.php">
 					<div class="form-floating mb-3">
 						<input class="form-control" name="name" type="text" maxlength="20" minlength="5" required id="floatingInput" placeholder="user name">
@@ -51,27 +49,33 @@
 							<label for="floatingResponse"><i class="fa-thin fa-comment-minus"></i> Respuesta</label>
 						</div>	
 					</div>						
-					<terminos class="terminos text-white">
-						<input type="checkbox" name="terms" required><span> Acepto terminos y condiciones. </span> <a href="javascript:to_open()">ver más</a>
+					<terminos class="text-white">
+						<input type="checkbox" name="terms" id="terms" required> 
+						<label for="terms">Acepto terminos y condiciones.</label> 
+						<a data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="pointer">ver más</a>
 					</terminos>
-					<input class="button-submit text-white align-input mb-3 mt-2" type="submit" value="Registrar"> 
+					<input class="button-submit align-input text-white mb-3 mt-2" type="submit" value="Registrar"> 
 				</form>
-				<p class="text-center text-white">¿Ya tienes un cuenta? <a href="login.php">Inicia sesión</a></p>
+				<p class="text-center text-white">¿Ya tienes un cuenta? <span><a href="login.php">Inicia sesión</a></span></p>
 			</section>
 		</content>
 	</div>
-	<!-- Ventana terminos -->
-	<div class="v-terms bg-gray p-2 border rounded-2 border-dark" id="vent">
-		<div class="row g-2 mb-2">
-			<div class="col-10"><h5 class="fw-bold">TERMINOS</h5></div>
-			<div class="col-2 text-right" align="right"><button type="button" class="text-light bg-visitante" onclick="location.href='javascript:close()'"><i class="fa-solid fa-x"></i></button></div>
-		</div>
-		<div class="bg-darkGray p-2 text-white">
-			<p><!--INGRESAR AQUÍ LOS TERMINOS--></p>
+	<!-- Modal terminos -->
+	<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+		<div class="modal-dialog">
+		 	<div class="modal-content bg-gray text-white p-2">
+				<div class="modal-header">
+					<h5 class="modal-title fw-bold" id="staticBackdropLabel">TERMINOS</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body bg-darkGray">
+					<p><!-- Aquí van los termino --></p>
+				</div>
+			</div>
 		</div>
 	</div>
-	<script src="resources/js/script.js"></script>
+	<!-- Scripts -->
 	<script src="resources/js/validar.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
 </body>
 </html>

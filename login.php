@@ -14,15 +14,13 @@
 <body class="body2">
 	<div class="container">
 		<content class="row p-2">
+			<!-- Cabezera -->
 			<header class="col-lg-12">
 					<div class="logo justify-content-center row"><img src="resources/pictures/logoblog.png"></div>
 			</header>
+			<!-- Contenido -->
 			<section class="col-lg-4 position-center rounded bg-gray p-4">
-				<?php 					 	
-					if (!empty($message)) {
-						echo '<p class="bg-red fw-bold text-white p-1">' . $message . '</p>';
-					}
-				?>
+				<?php if (!empty($message)) echo $message;?>
 				<form method="POST" action="login.php">
 					<div class="form-floating mb-3">
 						<input class="align-input form-control" type="text" name="name" required id="floatingInput" placeholder="username">

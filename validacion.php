@@ -12,13 +12,15 @@
 <body class="body2">
 	<div class="container">
 		<content class="row p-2">
+			<!-- Encabezado -->
 			<header class="col-lg-12">
 				<div class="logo justify-content-center row"><img src="resources/pictures/logoblog.png"></div>
 			</header>
+			<!-- Contenido -->
 			<section class="col-lg-4 position-center bg-gray p-4 rounded">
 				<div style="display: none;"><?php require 'includes\users.php';?></div>
 				<?php 				
-					if (!empty($message)) { echo $message; }
+					if (!empty($message)){ echo $message; }
 				?>
 				<form method="POST" action="<?php $_SERVER['PHP_SELF'] ?>">
                     <div class="form-floating mt-2 mb-3">
@@ -39,10 +41,11 @@
                     </div>
                     <input class="button-submit align-input mb-3 text-white" type="submit" value="Continuar"> 
                 </form>
-				<p class="text-white text-center">¿No tienes una cuenta? <a href="sign_up.php">Regístrate</a><br>Regresar <a href="login.php">Inicia sesión</a></p>
+				<p class="text-white text-center">¿No tienes una cuenta? <a href="sign_up.php">Regístrate</a><br><a href="login.php">Regresar</a></p>
 			</section>
 		</content>
 	</div>
-</body>
+	<!-- Scripts -->
 	<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+</body>
 </html>

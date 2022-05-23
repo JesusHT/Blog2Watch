@@ -8,7 +8,6 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css">
 	<link rel="stylesheet" type="text/css" href="resources\css\stylePlataformas.css">
-  	<link rel="stylesheet" type="text/css" href="resources\css\styleReactions.css">
 	<link rel="stylesheet" type="text/css" href="resources\css\styleNav.css">
   	<link rel="stylesheet" type="text/css" href="resources\css\style.css">
 	<link rel="icon" type="image/png" href="resources\pictures\icono.ico">
@@ -53,7 +52,6 @@
 				<div class="tab-content" id="myTabContent">	
 					<!-- Pestaña de inicio  -->	
 					<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-						<section class="col-md-8 col-sm-4  position-center mb-3"><?php require 'includes\filtros.php'; ?></section>
 						<section class="col-md-8 col-sm-4 position-center">
 							<post-form class="row border rounded-3 border-white mb-3 position-center mb-3 text-white">
 								<div class="mt-3">
@@ -96,62 +94,72 @@
 											<label for="floatingSelect">Tipo</label>	
 										</div>
 									</div>
-									<input class="button-submit2 text-white mb-3 rounded border-white border-1" type="submit" value="Subir">
+									<input class="btn button-submit2 text-white mb-3 rounded border-white border-1" type="submit" value="Subir">
 								</form>
 							</post-form>
-							<!-- Publicaciones -->
-							<?php 
-								if($query -> rowCount() > 0) { 
-									foreach($results as $result) {
-							?>
-										<post class="row border rounded-3 border-white mb-3 position-center">
-											<div class="col-md-12 mt-2">
-												<div class="row">
-													<div class="col-md-12"> 
-														<div class="row g-2">
-															<div class="col-10">
-																<h3  class="text-white fw-bold"><?php echo $result -> titulo; ?></h3>
-															</div>
-															<div class="col-2 btn-group justify-content-end">
-																<form action="index-administrador.php" method="POST" >
-																	<input type="hidden" name="eliminar" value="<?php echo $result -> id_post; ?>">
-																	<button type="submit" class="submit bg-dark text-white"><i class="fa-solid fa-trash-can"></i></button>	
-																</form>
-																<form action="" method="POST" id="updatePost<?php echo $result -> id_post; ?>">
-																	<input type="hidden" name="editar" value="<?php echo $result -> id_post; ?>">
-																	<button type="button" class="submit bg-dark text-white" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="updatePost(<?php echo $result -> id_post; ?>)"><i class="fa-solid fa-pencil"></i></button>
-																</form>
-															</div>
-														</div>
+							<!-- publicaciones -->
+							<?php if($sql -> rowCount() > 0) { foreach($publicaciones as $publicacion) {?>
+								<post class="row border rounded-3 mb-3 position-center" style="border-color: <?php echo $bg[$publicacion -> plataforma - 1]; ?>!important;">
+									<!-- Titulo -->
+									<div class="col-md-12 mt-2">
+										<div class="row">
+											<div class="col-md-12"> 
+												<div class="row g-2">
+													<div class="col-10">
+														<h3  class="text-white fw-bold"><?php echo $publicacion -> titulo; ?></h3>
+													</div>
+													<div class="col-2 btn-group justify-content-end">
+														<form action="index-administrador.php" method="POST" >
+															<input type="hidden" name="eliminar" value="<?php echo $publicacion -> id_post; ?>">
+															<button type="submit" class="submit bg-dark text-white"><i class="fa-solid fa-trash-can"></i></button>	
+														</form>
+														<form action="" method="POST" id="updatePost<?php echo $publicacion -> id_post; ?>">
+															<input type="hidden" name="editar" value="<?php echo $publicacion -> id_post; ?>">
+															<button type="button" class="submit bg-dark text-white" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="updatePost(<?php echo $publicacion -> id_post; ?>)"><i class="fa-solid fa-pencil"></i></button>
+														</form>
 													</div>
 												</div>
 											</div>
-											<post-info class="info-post text-white mt-2 col-md-12"><p><?php echo $result -> info; ?></p></post-info>
-											<div class="reaction text-white" align="left"><?php require 'includes\reactions.php'; ?></div>
-											<post-comment class="col-md-12">
-												<div class="col-md-12">
-													<div class="body-comment mb-2">
-														<p class="text-name-comment"><?php  ?></p><p class="text-comment"><?php  ?></p>
-													</div>
-												</div>
-												<form action="" id="formComment<?php echo $result -> id_post; ?>">
-													<div class="input-group mb-3">
-														<input type="hidden" name="id_user" id="id_user" value="<?php echo $user['id']; ?>">
-														<input type="hidden" name="id_post" id="id_post" value="<?php echo $result -> id_post; ?>">
-														<textarea type="text" name="comment" id="comment<?php echo $result -> id_post; ?>" class="form-control h-comment bg-dark text-white" placeholder="Escribir comentario..."></textarea>
-														<button type="button" class="btn btn-outline-secondary submit-comment text-white" id="enviar" 
-														onclick="enviarDatos(<?php echo $result -> id_post; ?>)">
-															<i class="fa-solid fa-message"></i>
-														</button>
-													</div>
-												</form>
-											</post-comment>
-										</post>
-							<?php
-									} 
-								}
-
-							?>
+										</div>
+									</div>
+									<!-- Información -->
+									<post-info class="info-post mt-2 col-md-12 text-white"><p><?php echo  $publicacion-> info ?></p></post-info>
+									<!-- Calificación -->
+									<label>
+									<?php
+										for ($i=0; $i < $publicacion -> calificacion; $i++) { 
+											echo '<i class="fa-solid fa-popcorn '. $colors[$publicacion -> plataforma - 1].'"></i>';
+										}
+									?>
+									</label>
+									<!-- Comentarios -->
+									<post-comment class="col-md-12">
+										<div class="col-md-12">
+											<div class="body-comment mb-2 text-white">
+												<?php 
+													$comentarios = mostrarCom($publicacion -> id_post);
+													if (!empty($comentarios)) {
+														foreach($comentarios as $comentario) {?>
+															<p class="text-name-comment"><?php echo $comentario -> name; ?></p>
+															<p class="text-comment"><?php echo $comentario -> comment;  ?></p>
+												<?php 	}
+													}
+												?>
+											</div>
+										</div>
+										<form id="formComment<?php echo  $publicacion -> id_post; ?>">
+											<div class="input-group mb-3">
+												<input type="hidden" name="user" id="user" value="<?php echo $user['name']; ?>">
+												<input type="hidden" name="id_post" id="id_post" value="<?php echo  $publicacion -> id_post; ?>">
+												<textarea type="text" name="comment" id="comment<?php echo  $publicacion-> id_post; ?>" class="form-control h-comment bg-dark text-white" placeholder="Escribir comentario..."></textarea>
+												<button type="button" class="btn btn-outline-secondary submit-comment text-white" id="enviar" onclick="enviarDatos(<?php echo  $publicacion -> id_post; ?>)">
+													<i class="fa-solid fa-message"></i>
+												</button>
+											</div>
+										</form>
+									</post-comment>
+								</post>
+							<?php } } ?>
 						</section>
 					</div>
 					<!-- Pestaña Acerca De -->
@@ -196,9 +204,9 @@
 							<table class="table table-dark mt-3">
 								<thead>
 									<tr>
-										<td scope="col">#</td>
-										<td scope="col">Usuario</td>
-										<td scope="col">Eliminar</td>
+										<td class="col">#</td>
+										<td class="col-10">Usuario</td>
+										<td class="col-2 text-center">Eliminar</td>
 									</tr>
 								</thead>
 								<tbody id="tabla_resultado"></tbody>
@@ -208,27 +216,25 @@
 				</div>
 				<!-- Modal -->
 				<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content bg-gray text-white p-2">
-						<div class="modal-header">
-							<h5 class="modal-title fw-bold" id="staticBackdropLabel">EDITAR PUBLICACIÓN</h5>
-							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-						</div>
-						<div class="modal-body bg-darkGray" id="editarPost">
-							
+					<div class="modal-dialog">
+						<div class="modal-content bg-gray text-white p-2">
+							<div class="modal-header">
+								<h5 class="modal-title fw-bold" id="staticBackdropLabel">EDITAR PUBLICACIÓN</h5>
+								<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+							</div>
+							<div class="modal-body bg-darkGray" id="editarPost"></div>
 						</div>
 					</div>
-				</div>
 				</div>
 			</content>
 		</div>
 	</div>
 	<!-- Scripts -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="resources/js/appAdmin.js"></script>
 	<script src="resources/js/app.js"></script>
 	<script src="resources/js/plataformas.js"></script>
 	<script src="resources/js/validar.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/ulg/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>	
 </body>
 </html>
