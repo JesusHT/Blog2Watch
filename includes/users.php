@@ -127,38 +127,170 @@
 						<meta charset="UTF-8">
 						<meta http-equiv="X-UA-Compatible" content="IE=edge">
 						<meta name="viewport" content="width=device-width, initial-scale=1.0">
-						<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+						<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 						<style> 
-						.cuadro{width: 100%; position: relative;margin-top: 0px;}
-						.fondo{width: 100%;position: absolute;height: 800px; opacity: 1;background: #000000;margin: 10px 0px 0px 0px;}
-						.logo{width: 100%;height: 120px;position: absolute;opacity: 1;z-index: 20;margin: -30px 0px 0px 0px;}
-						.titulo{width: 100%;height: 120px;position: absolute;opacity: 1;z-index: 20;/*background: rgb(123, 154, 128, 0.3);*/
-							margin: -25px 0px 0px 0px;} .texto{color: rgb(47, 47, 47); font-size: 205px;
-							font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;        
-							text-align: center; padding: -100px 0px 0px 0px;}
-						.cuerpo{color: #fff; font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-							text-align: justify; /*padding: 130px 85px 0px 85px;*/}
-						.links{color: white; background-color: rgb(5, 0, 95); width: 230px; height: 45px;
-							padding-top: 10px; text-align: center;
-							font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
-							font-size: 27px; margin: -18px 0px 0px 0px; text-decoration: none;}
-						.footer{width: 100%; position: relative; margin-top: 0px; background-color: rgb(255, 255, 255); height: 10px; margin-top: 800px;}
+					
+						.column {
+							width: 100%;
+							}@media (min-width: 600px) {
+						.column {
+							width: 90%;
+						}}
+						.container {
+							width: 100%;
+							margin: 1em auto;
+							padding: 1em 5%;
+							background: rgb(0, 0, 0,0);
+						}
+					
+						main {
+							display: flex;
+							flex-wrap: wrap;
+							justify-content: space-between;
+						}
+						div {
+							flex-basis: 100%;
+							width: 100%;
+							height: auto;
+							margin: 0rem;
+						}
+					
+						@media (min-width: 600px) {
+							main {
+							flex-wrap: nowrap;
+							}
+							div {
+							flex-basis: 40%;
+							}
+						}
+					
+						* {
+							box-sizing: border-box;
+						}
+						html {
+							font-size: 100%;
+							font-family: sans-serif;
+							/*line-height: 1.5;*/
+							color: #fff;
+						}
+						h1, h2 {
+							margin-bottom: .5em;
+						}
+					
+						h1 {
+							font-size: 2rem;
+							text-align: center;
+						}
+					  
+						h2 {
+							font-size: 1.6rem;
+						}
+					
+						p {
+							margin-bottom: 1em;
+						}
+					
+						.cuadro{
+							width: 100%; 
+							height: auto;
+							display: flex;
+							flex-wrap: wrap;
+							position: relative;
+							margin-top: 0rem;
+						}
+						.fondo{
+							width: 100%;
+							position: absolute;
+							display: flex;
+							flex-wrap: wrap;
+							height: auto; 
+							opacity: 1;
+							background: rgb(0, 0, 0,0);
+							margin: 0rem 0rem 0rem 0rem;
+						}
+						.logo{
+							width: 100%;
+							height: auto;
+							position: absolute;
+							display: flex;
+							flex-wrap: wrap;
+							opacity: 1;
+							z-index: 20;
+							margin: 0rem 0rem 0rem 25rem;
+						}
+					
+						.titulo{
+							width: 100%;
+							height: auto;
+							position: absolute;
+							display: flex;
+							flex-wrap: wrap;
+							opacity: 1;
+							z-index: 20;
+							/*background: rgb(123, 154, 128, 0.3);*/
+							margin: -2rem 0rem 0rem 5rem;
+						}.texto{
+							color: rgba(47, 47, 47, 0.655);
+							font-size: 9.8rem;
+							font-family: Arial, sans-serif;      
+							font-weight: bold;  
+							text-align: center;
+							padding: -10rem 0rem 0rem 0rem;
+						}
+					
+						.cuerpo{
+							color: #fff;
+							font-family: Calibri, sans-serif;
+							text-align: justify;
+							/*padding: 130px 85px 0px 85px;*/
+							margin: 1rem 2rem 2rem 1rem;
+						}
+					
+						.links{
+							color: white; 
+							background-color: rgb(5, 0, 95); 
+							width: 5rem;
+							height: auto;
+							/*padding-top: 0.2rem;*/
+							text-align: center;
+							font-family: Calibri, sans-serif;
+							font-size: 1.5rem;
+							text-decoration: none;
+							margin: 2rem 2rem 2rem 2rem;
+							padding: 1rem 1rem 0.5rem 1rem; 
+						}
+						@media (min-width: 600px) {
+							.links{
+							color: white; 
+							background-color: rgb(5, 0, 95); 
+							width: 70%;
+							height: auto;
+							padding-top: 0.2rem;
+							/*text-align: center;*/
+							font-family: Calibri, sans-serif;
+							font-size: 1.5rem;
+							margin: 0.4rem 0rem 0rem 0rem;
+							text-decoration: none;
+						}
+						}
+						
 						</style>
 					</head>
-					<body style="background-color: #ffffff;">
+					
+					<body style="background-color: #000000;">
 						<div class="cuadro";>
-							<div class="fondo">
-								<p class="cuerpo" style="font-size: 40px; padding: 140px 85px 0px 85px;">Hola, ' . $user . ':</p>
-								<p class="cuerpo" style="font-size: 30px; padding: 0px 85px 0px 85px;">Queremos que sigas disfrutando de nuestro contenido, así que hemos generado una contraseña temporal que podrás cambiar en cualquier momento en el apartado de "Perfil" de nuestro Blog.</p>
-								<p class="cuerpo" style="font-size: 30px; padding: 0px 85px 0px 85px;">Nueva contraseña:</p>
-								<center><div class="links">' . $newpass . '</div></center>
-								<center><div class="links" style="margin: 45px 0px 0px 0px; text-decoration: underline;"><a href="url" style="color: #fff;">Seguir al login</a></div></center>
-								<p class="cuerpo" style="font-size: 20px; padding: 125px 130px 0px 130px; text-align: center; font-style: italic;">Aviso de Privacidad: Blog2Watch no almacena en su base de datos ninguna información personal tal como correo electrónico, nombres o fechas de nacimiento.</p>
-							</div>
-							<div class="titulo"><div class="titulo texto">BLOG2WATCH</div></div>
-							<div class="logo"><div align="center"><img src="https://i.ibb.co/dMWmZGV/logo.png" alt="Blog2Watch" title="Blog2Watch" width="375"></div></div>
+							<!--<div class="fondo">-->
+								<center><h1><div class="titulo texto">BLOG2WATCH</div></h1></center>
+								<center><div class="logo"><img src="https://i.ibb.co/dMWmZGV/logo.png" alt="Blog2Watch" title="Blog2Watch"></div></center>
+								<p class="cuerpo" style="font-size: 2rem; padding: 8rem 6rem 0rem 6rem;"><br><br>Hola, ' . $user . ':</p>
+								<p class="cuerpo" style="font-size: 1.5rem; padding: 0rem 6rem 0rem 6rem;">Queremos que sigas disfrutando de nuestro contenido, así que hemos generado una contraseña temporal que podrás cambiar en cualquier momento en el apartado de "Perfil" de nuestro Blog.</p>
+								<p class="cuerpo" style="font-size: 1.5rem; padding: 0rem 6rem 0rem 6rem;">Nueva contraseña:' . $newpass . '</p>
+								<p class="cuerpo" style="font-size: 1.5rem; padding: 0rem 6rem 0rem 6rem;">Regresa al login...</p>
+								<center><div class="links">' . $newpass . '</div></center><br><br>
+								<center><div class="links" style="text-decoration: underline;"><a href="../login.php" style="color: #fff;">Seguir al login</a></div></center>
+								<p class="cuerpo" style="font-size: 1rem; padding: 8rem 8rem 0rem 8rem; text-align: center; font-style: italic;">Aviso de Privacidad: Blog2Watch no almacena en su base de datos ninguna información personal tal como correo electrónico, nombres o fechas de nacimiento.</p>
+							<!--</div>-->
 						</div><br>
-						<div class="footer" style="background-color: #fff;"></div>
 					</body>
 					</html>';
 		
