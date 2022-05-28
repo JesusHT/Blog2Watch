@@ -32,17 +32,17 @@ body {
 	
 /* text color */
 	.text-darkPurple{
-		color: #610094;
+		color: rgb(66, 17, 181);
 	}
 
 	.text-red{
-		color: darkred;
+		color: red;
 	}
 	.text-darkBlue{
-		color: #05387b;
+		color: rgb(6, 51, 136);
 	}
 	.text-blue {
-		color: #0296d6;
+		color: rgb(28, 137, 157);
 	}
 
 .txt-justify{
@@ -190,4 +190,8 @@ div[class="mt-3"] p {
 
 .submit:hover {
 	opacity: 50%;
+}
+
+input[name="plataforma"]{
+	display:none;
 }

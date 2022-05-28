@@ -46,7 +46,7 @@
 							<!-- Publicaciones -->
 							<section class="col-md-8 col-sm-4 position-center" id="publicaciones">
 							<?php 
-									if($sql -> rowCount() > 0) { 
+									if($query  -> rowCount() > 0) { 
 										foreach($publicaciones as $publicacion) {
 								?>
 											<post class="row border rounded-3 mb-3 position-center" style="border-color: <?php echo $bg[$publicacion -> plataforma - 1]; ?>!important;">

@@ -1,4 +1,4 @@
-<?php require 'includes/sesion.php'; require 'includes/administrador.php'; ?>
+<?php require 'includes/sesion.php'; require 'includes/administrador.php'; require 'includes/publicaciones.php' ?>
 
 <!DOCTYPE html>
 <html>
@@ -54,18 +54,12 @@
 					<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 						<section class="col-md-8 col-sm-4 position-center">
 							<post-form class="row border rounded-3 border-white mb-3 position-center mb-3 text-white">
-								<div class="mt-3">
-									<?php 
-										if (!empty($message)) {
-											echo $message;	
-										}
-									?>
-								</div>
+								<div class="mt-3"> <?php if (!empty($message)) echo $message; ?> </div>
 								<!--Form Publicaciones-->
 								<form action="index-administrador.php" method="POST" id="formul"> 
 									<div class="form-floating mb-3">
 										<input type="text" class="form-control bg-dark text-white" id="floatingInput" placeholder="title" name="title" maxlength="100" required>
-										<label for="floatingInput">Titulo</label>
+										<label for="floatingInput">Título</label>
 									</div>
 
 									<div class="form-floating mb-3 ">
@@ -85,8 +79,9 @@
 											</select>
 											<label for="floatingSelect">Plataforma</label>	
 										</div>
+
 										<div class="form-floating mb-3 col-6">
-											<select class="form-select bg-dark text-white" id="floatingSelect" aria-label="Floating label select example" name="tipo" required>
+											<select class="form-select bg-dark text-white" id="tipo" id="floatingSelect" aria-label="Floating label select example" name="tipo" required>
 												<option selected disabled>Elija el tipo</option>
 												<option value="2">Pelicula</option>
 												<option value="1">Serie</option>
@@ -94,11 +89,29 @@
 											<label for="floatingSelect">Tipo</label>	
 										</div>
 									</div>
+									<div class="row g-2">
+										<div class="col-6 form-floating mb-3">
+											<input type="number" name="extreno" class="form-control bg-dark text-white" max="2022" id="floatingInput" placeholder="..." required>
+											<label for="floatingInput">Año de extreno</label>
+										</div>
+										<div class="col-6 form-floating mb-3" id="pelicula" style="display: none">
+											<input class="form-control bg-dark text-white" name="duracion" type="text" id="floatingInput" placeholder="...">
+											<label for="floatingInput">Duración</label>
+										</div>
+										<div class="col-6 form-floating mb-3" id="serie" style="display: none">
+											<input class="form-control bg-dark text-white" name="duracion2" type="text" id="floatingInput" placeholder="...">
+											<label for="floatingInput">Temporadas</label>
+										</div>
+									</div>
+									<div class="form-floating mb-3">
+										<input type="number" name="calificacion" min="0" max="5" id="floatingInput" class="form-control bg-dark text-white" placeholder="..." required>
+										<label for="floatingInput">Calificación</label>
+									</div>
 									<input class="btn button-submit2 text-white mb-3 rounded border-white border-1" type="submit" value="Subir">
 								</form>
 							</post-form>
 							<!-- publicaciones -->
-							<?php if($sql -> rowCount() > 0) { foreach($publicaciones as $publicacion) {?>
+							<?php if($query -> rowCount() > 0) { foreach($publicaciones as $publicacion) {?>
 								<post class="row border rounded-3 mb-3 position-center" style="border-color: <?php echo $bg[$publicacion -> plataforma - 1]; ?>!important;">
 									<!-- Titulo -->
 									<div class="col-md-12 mt-2">
@@ -232,7 +245,6 @@
 	<!-- Scripts -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="resources/js/appAdmin.js"></script>
-	<script src="resources/js/app.js"></script>
 	<script src="resources/js/plataformas.js"></script>
 	<script src="resources/js/validar.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>	

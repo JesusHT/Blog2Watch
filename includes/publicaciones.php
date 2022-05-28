@@ -5,15 +5,27 @@
     $id_post = "";
     $name = "";
     $comment = "";
-    
+    $plataformas = null;
+
     global $conn;
     
-    $sql = $conn -> prepare("SELECT * FROM post ORDER BY id_post DESC");
-	$sql -> execute();
-	$publicaciones = $sql -> fetchAll(PDO::FETCH_OBJ); 
+    $sql = "SELECT * FROM post ORDER BY id_post DESC";
 
-    $colors = ["text-darkPurple","text-darkBlue","text-red","text-blue"];
-    $bg = ["#610094","#05387b","darkred","#0296d6"];
+    if(isset($_POST['plataforma'])){
+        $plataformas = $_POST['plataforma'];
+        if (!empty($plataformas) && $plataformas != 5) {
+            $sql = "SELECT * FROM post WHERE plataforma = {$plataformas} ORDER BY id_post DESC";
+        } else if (empty($plataformas) || $plataformas == 5) {
+            $sql = "SELECT * FROM post ORDER BY id_post DESC";
+        }
+    }
+
+    $query = $conn -> prepare($sql);
+	$query -> execute();
+	$publicaciones = $query -> fetchAll(PDO::FETCH_OBJ); 
+
+    $colors = ["text-red","text-blue","text-darkBlue","text-darkPurple"];
+    $bg = ["red","rgb(28, 137, 157)","rgb(6, 51, 136)","rgb(66, 17, 181)"];
 
     function mostrarCom($id_post){
         global $conn;

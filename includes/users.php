@@ -18,7 +18,7 @@
 	$newPass = "";
 	$tipo_mensaje = "";
 	$mensaje_buzon = "";
-	
+
 	function validarUsuario($name, $conn){
 		$records = $conn -> prepare('SELECT * FROM users WHERE name = :name');
 		$records -> bindParam(':name', $name);
@@ -134,13 +134,13 @@
 						.logo{width: 100%;height: 120px;position: absolute;opacity: 1;z-index: 20;margin: -30px 0px 0px 0px;}
 						.titulo{width: 100%;height: 120px;position: absolute;opacity: 1;z-index: 20;/*background: rgb(123, 154, 128, 0.3);*/
 							margin: -25px 0px 0px 0px;} .texto{color: rgb(47, 47, 47); font-size: 205px;
-							font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;        
+							font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;        
 							text-align: center; padding: -100px 0px 0px 0px;}
-						.cuerpo{color: #fff; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+						.cuerpo{color: #fff; font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 							text-align: justify; /*padding: 130px 85px 0px 85px;*/}
 						.links{color: white; background-color: rgb(5, 0, 95); width: 230px; height: 45px;
 							padding-top: 10px; text-align: center;
-							font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+							font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 							font-size: 27px; margin: -18px 0px 0px 0px; text-decoration: none;}
 						.footer{width: 100%; position: relative; margin-top: 0px; background-color: rgb(255, 255, 255); height: 10px; margin-top: 800px;}
 						</style>
