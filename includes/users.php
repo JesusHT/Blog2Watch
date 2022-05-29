@@ -127,170 +127,61 @@
 						<meta charset="UTF-8">
 						<meta http-equiv="X-UA-Compatible" content="IE=edge">
 						<meta name="viewport" content="width=device-width, initial-scale=1.0">
-						<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-						<style> 
-					
-						.column {
-							width: 100%;
-							}@media (min-width: 600px) {
-						.column {
-							width: 90%;
-						}}
-						.container {
-							width: 100%;
-							margin: 1em auto;
-							padding: 1em 5%;
-							background: rgb(0, 0, 0,0);
-						}
-					
-						main {
-							display: flex;
-							flex-wrap: wrap;
-							justify-content: space-between;
-						}
-						div {
-							flex-basis: 100%;
-							width: 100%;
-							height: auto;
-							margin: 0rem;
-						}
-					
-						@media (min-width: 600px) {
-							main {
-							flex-wrap: nowrap;
+						<style>
+							img {
+								display: block;
+								margin: 0 auto;
+								height: auto;
+								width: 250px;
 							}
-							div {
-							flex-basis: 40%;
+							section, footer {
+								padding: 0px 15%;
+								margin-bottom: 30px;
 							}
-						}
-					
-						* {
-							box-sizing: border-box;
-						}
-						html {
-							font-size: 100%;
-							font-family: sans-serif;
-							/*line-height: 1.5;*/
-							color: #fff;
-						}
-						h1, h2 {
-							margin-bottom: .5em;
-						}
-					
-						h1 {
-							font-size: 2rem;
-							text-align: center;
-						}
-					  
-						h2 {
-							font-size: 1.6rem;
-						}
-					
-						p {
-							margin-bottom: 1em;
-						}
-					
-						.cuadro{
-							width: 100%; 
-							height: auto;
-							display: flex;
-							flex-wrap: wrap;
-							position: relative;
-							margin-top: 0rem;
-						}
-						.fondo{
-							width: 100%;
-							position: absolute;
-							display: flex;
-							flex-wrap: wrap;
-							height: auto; 
-							opacity: 1;
-							background: rgb(0, 0, 0,0);
-							margin: 0rem 0rem 0rem 0rem;
-						}
-						.logo{
-							width: 100%;
-							height: auto;
-							position: absolute;
-							display: flex;
-							flex-wrap: wrap;
-							opacity: 1;
-							z-index: 20;
-							margin: 0rem 0rem 0rem 25rem;
-						}
-					
-						.titulo{
-							width: 100%;
-							height: auto;
-							position: absolute;
-							display: flex;
-							flex-wrap: wrap;
-							opacity: 1;
-							z-index: 20;
-							/*background: rgb(123, 154, 128, 0.3);*/
-							margin: -2rem 0rem 0rem 5rem;
-						}.texto{
-							color: rgba(47, 47, 47, 0.655);
-							font-size: 9.8rem;
-							font-family: Arial, sans-serif;      
-							font-weight: bold;  
-							text-align: center;
-							padding: -10rem 0rem 0rem 0rem;
-						}
-					
-						.cuerpo{
-							color: #fff;
-							font-family: Calibri, sans-serif;
-							text-align: justify;
-							/*padding: 130px 85px 0px 85px;*/
-							margin: 1rem 2rem 2rem 1rem;
-						}
-					
-						.links{
-							color: white; 
-							background-color: rgb(5, 0, 95); 
-							width: 5rem;
-							height: auto;
-							/*padding-top: 0.2rem;*/
-							text-align: center;
-							font-family: Calibri, sans-serif;
-							font-size: 1.5rem;
-							text-decoration: none;
-							margin: 2rem 2rem 2rem 2rem;
-							padding: 1rem 1rem 0.5rem 1rem; 
-						}
-						@media (min-width: 600px) {
-							.links{
-							color: white; 
-							background-color: rgb(5, 0, 95); 
-							width: 70%;
-							height: auto;
-							padding-top: 0.2rem;
-							/*text-align: center;*/
-							font-family: Calibri, sans-serif;
-							font-size: 1.5rem;
-							margin: 0.4rem 0rem 0rem 0rem;
-							text-decoration: none;
-						}
-						}
-						
+							p {text-align: justify;
+							color:#fff;}
+							button {
+								display: block;
+								margin: 0 auto;
+								padding: 0.375rem 0.75rem;
+								cursor: pointer;
+								background-color: rgb(5,0,95);
+								transition: background-color 2s;
+							} button:hover{
+							  background-color: rgb(62, 63, 132); 
+							}
+							a {
+								color: #fff;
+								font-size: 1.3em;
+							}
+							p span {
+								background-color: rgb(5,0,95);
+								padding: 0.375rem 0.75rem;
+							}
+							.text-center{
+								text-align: center;
+							}
 						</style>
 					</head>
-					
-					<body style="background-color: #000000;">
-						<div class="cuadro";>
-							<!--<div class="fondo">-->
-								<center><h1><div class="titulo texto">BLOG2WATCH</div></h1></center>
-								<center><div class="logo"><img src="https://i.ibb.co/dMWmZGV/logo.png" alt="Blog2Watch" title="Blog2Watch"></div></center>
-								<p class="cuerpo" style="font-size: 2rem; padding: 8rem 6rem 0rem 6rem;"><br><br>Hola, ' . $user . ':</p>
-								<p class="cuerpo" style="font-size: 1.5rem; padding: 0rem 6rem 0rem 6rem;">Queremos que sigas disfrutando de nuestro contenido, así que hemos generado una contraseña temporal que podrás cambiar en cualquier momento en el apartado de "Perfil" de nuestro Blog.</p>
-								<p class="cuerpo" style="font-size: 1.5rem; padding: 0rem 6rem 0rem 6rem;">Nueva contraseña:' . $newpass . '</p>
-								<p class="cuerpo" style="font-size: 1.5rem; padding: 0rem 6rem 0rem 6rem;">Regresa al login...</p>
-								<center><div class="links">' . $newpass . '</div></center><br><br>
-								<center><div class="links" style="text-decoration: underline;"><a href="../login.php" style="color: #fff;">Seguir al login</a></div></center>
-								<p class="cuerpo" style="font-size: 1rem; padding: 8rem 8rem 0rem 8rem; text-align: center; font-style: italic;">Aviso de Privacidad: Blog2Watch no almacena en su base de datos ninguna información personal tal como correo electrónico, nombres o fechas de nacimiento.</p>
-							<!--</div>-->
-						</div><br>
+					<body style="margin: 0px; padding: 0px; background-color: #202124; color: #fff; font-family:Verdana, Geneva, Tahoma, sans-serif;">
+						<header>
+							<img src="https://i.ibb.co/dMWmZGV/logo.png" alt="Logo Blog2Watch" >
+						</header>
+						<section>
+							<article>
+								<p>Hola, '. $user .'</p>
+								<p>Queremos que sigas disfrutando de nuestro contenido, así que hemos generado una contraseña temporal que podrás cambiar en cualquier momento en el apartado de "Perfil" de nuestro Blog.  </p>
+								<p>Nueva contraseña: '. $newpass .'</p>
+								<p class="text-center"><span>'. $newpass .'</span></p>
+							</article>
+							<article>
+								<button><a href="">Seguir al login</a></button>
+							</article>
+						</section>
+						<footer>
+							<p><b>Aviso De Privacidad:</b> En Blog2Watch respetamos tu privacidad, por ello jámas almacenaremos en nuestra base de datos el correo proporcionado para la recuperación de contraseña, de igual manera jámas te pediremos ningun dato personal.</p>
+							<p><b>Aviso Importante:</b> Este correo electrónico y/o el material adjunto es para uso exclusivo de la persona a la que expresamente se le ha enviado, el cual contiene información confidencial. Si usted ha recibido esta transmisión por error, notifíquenos inmediatamente en nuestros correo electrónico oficial y borre dicho mensaje y sus anexos en caso de contenerlos. Se hace de su conocimiento por medio de esta nota, que cualquier divulgación, copia, distribución o toma de cualquier acción derivada de la información confiada en esta transmisión, queda estrictamente prohibido. </p>
+						</footer><br><br>
 					</body>
 					</html>';
 		

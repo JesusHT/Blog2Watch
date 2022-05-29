@@ -6,7 +6,7 @@
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css">
 	<link rel="stylesheet" type="text/css" href="resources\css\style.css">
-	<link rel="icon" type="image/png" href="resources\pictures\icono.ico">
+	<link rel="icon" type="image/png" href="resources\img\icono.ico">
 	<title>Blog2Watch</title>
 </head>
 <body class="body2">
@@ -14,7 +14,7 @@
 		<content class="row p-2">
 			<!-- Encabezado -->
 			<header class="col-lg-12">
-				<div class="logo justify-content-center row"><img src="resources/pictures/logoblog.png"></div>
+				<div class="logo justify-content-center row"><img src="resources/img/logoblog.png"></div>
 			</header>
 			<!-- Contenido -->
 			<section class="col-lg-4 position-center bg-gray p-4 rounded">

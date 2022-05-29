@@ -12,12 +12,12 @@
     <div class="row">
         <div class="col-md-12 mt-2 mb-2"><h3 class="txt-justify text-white fw-bold text-decoration-underline">Equipo de Desarrollo</h3></div>
         <div class="col">
-            <img src="resources/pictures/perfil.png" class="card-img-top perfil-img d-block mx-auto" loading="lazy">
+            <img src="resources/img/perfil.png" class="card-img-top perfil-img d-block mx-auto" loading="lazy">
             <p class="text-center text-white fw-bolder mt-4">Diseñadora<br>Fátima Marín</p>
             <p class="text-center text-white">fmarin0@ucol.mx</p><br>
         </div>
         <div class="col">
-            <img src="resources/pictures/perfil.png" class="card-img-top perfil-img d-block mx-auto" loading="lazy">
+            <img src="resources/img/perfil.png" class="card-img-top perfil-img d-block mx-auto" loading="lazy">
             <p class="text-center text-white fw-bolder mt-4">Líder de Proyecto<br>Ximena Manzo</p>
             <p class="text-center text-white">xmanzo@ucol.mx</p><br>
         </div>
@@ -25,12 +25,12 @@
 
     <div class="row">
         <div class="col">
-            <img src="resources/pictures/perfil.png" class="card-img-top perfil-img d-block mx-auto" loading="lazy">
+            <img src="resources/img/perfil.png" class="card-img-top perfil-img d-block mx-auto" loading="lazy">
             <p class=" text-center text-white fw-bolder mt-4">Codificador<br>Jesús Hernández</p>
             <p class="text-center text-white">jhernandez117@ucol.mx</p><br>
         </div>
         <div class="col">
-            <img src="resources/pictures/perfil.png" class="card-img-top perfil-img d-block mx-auto" loading="lazy">
+            <img src="resources/img/perfil.png" class="card-img-top perfil-img d-block mx-auto" loading="lazy">
             <p class=" text-center text-white fw-bolder mt-4">Analista<br>Geremi Gomez</p>
             <p class="text-center text-white">ggomez19@ucol.mx</p><br>
         </div>

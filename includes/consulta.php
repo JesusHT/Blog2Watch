@@ -28,7 +28,7 @@
 	$stmt -> execute();
 	$users = $stmt -> fetchAll(PDO::FETCH_OBJ);
 
-	if (is_countable($users) > 0){
+	if ($stmt -> rowCount() > 0){
 		foreach($users as $user){
 			$tabla.=
 			'<tr>
@@ -42,12 +42,13 @@
 				</td>
 			</tr>';
 		}
-	} else{
-			$tabla ="<tr>
+	} else {
+			$tabla.="<tr>
 						<td></td>
 						<td>No se encontraron coincidencias con sus criterios de búsqueda.</td>
 						<td></td>
 		 			</tr>";
 	}
+	
 	echo $tabla;
 ?>
