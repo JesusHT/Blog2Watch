@@ -10,7 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="resources\css\stylePlataformas.css">
 	<link rel="stylesheet" type="text/css" href="resources\css\styleNav.css">
   	<link rel="stylesheet" type="text/css" href="resources\css\style.css">
-	<link rel="icon" type="image/png" href="resources\pictures\icono.ico">
+	<link rel="icon" type="image/png" href="resources\img\icono.ico">
 	<title>Blog2Watch</title>
 </head>
 <body>
@@ -21,7 +21,7 @@
 		</div>
 		<!-- Encabezado -->
 		<header>
-			<div class="col-md-8 position-center logo justify-content-center row"><img src="resources\pictures\logoblog.png"></div>
+			<div class="col-md-8 position-center logo justify-content-center row"><img src="resources\img\logoblog.png"></div>
 		</header>
 		<!-- Menú -->
 		<nav class="nav justify-content-center navbar-dark mb-3 col-md-8 position-center row">
@@ -177,11 +177,11 @@
 					</div>
 					<!-- Pestaña Acerca De -->
 					<div class="tab-pane fade" id="acercaDe" role="tabpanel" aria-labelledby="acercaDe-tab">
-						<section class="col-md-8 col-sm-4 position-center"><?php require 'includes\acercaDe.php'; ?></section>
+						<section class="col-md-8 col-sm-4 position-center"><?php require 'views\acercaDe.php'; ?></section>
 					</div>
 					<!-- Pestaña perfil -->
 					<div class="tab-pane fade" id="perfil" role="tabpanel" aria-labelledby="perfil-tab">
-						<section class="col-md-8 col-sm-4 position-center"><?php require 'includes\profile.php'; ?></section>
+						<section class="col-md-8 col-sm-4 position-center"><?php require 'views\profile.php'; ?></section>
 					</div>
 					<!-- Pestaña Buzón -->
 					<div class="tab-pane fade" id="buzon" role="tabpanel" aria-labelledby="buzon-tab">
@@ -192,7 +192,7 @@
 										if($sqlComment -> rowCount() > 0) { 
 											foreach($comments as $buzon) {
 									?>
-										<button class="nav-link <?php if($comments[0] -> users == $buzon -> users){echo 'active';}?>" id="user<?php echo $buzon -> id_buzon;?>-tab" data-bs-toggle="pill" data-bs-target="#user<?php echo $buzon -> id_buzon;?>" type="button" role="tab" aria-controls="user-<?php echo $buzon -> id_buzon;?>" aria-selected="<?php if($comments[0] -> users == $buzon -> mensaje){echo 'true';}?>"><?php echo $buzon -> users; ?></button>
+										<button class="btn nav-link <?php if($comments[0] -> users == $buzon -> users){echo 'active';}?>" id="user<?php echo $buzon -> id_buzon;?>-tab" data-bs-toggle="pill" data-bs-target="#user<?php echo $buzon -> id_buzon;?>" type="button" role="tab" aria-controls="user-<?php echo $buzon -> id_buzon;?>" aria-selected="<?php if($comments[0] -> users == $buzon -> mensaje){echo 'true';}?>"><?php echo $buzon -> users; ?></button>
 									<?php
 											} 
 									?>

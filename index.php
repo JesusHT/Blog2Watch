@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="resources\css\stylePlataformas.css">
 	<link rel="stylesheet" type="text/css" href="resources\css\styleNav.css">
   	<link rel="stylesheet" type="text/css" href="resources\css\style.css">
-	<link rel="icon" type="image/png" href="resources\pictures\icono.ico">
+	<link rel="icon" type="image/png" href="resources\img\icono.ico">
 	<title>Blog2Watch</title>
 </head>
 <body>
@@ -20,7 +20,7 @@
 		</div>
 		<!-- Encabezado -->
 		<header>
-			<div class="col-md-8 position-center logo justify-content-center row"><img src="resources/pictures/logoblog.png"></div>
+			<div class="col-md-8 position-center logo justify-content-center row"><img src="resources/img/logoblog.png"></div>
 		</header>
 		<!-- Menú -->
 		<nav class="nav justify-content-center navbar-dark mb-3 col-md-8 position-center row">
@@ -95,14 +95,14 @@
 					</div>
 					<!-- Pestaña acerca de -->
 					<div class="tab-pane fade" id="acercaDe" role="tabpanel" aria-labelledby="acercaDe-tab">
-						<section class="col-md-8 col-sm-4 position-center"><?php require 'includes/acercaDe.php'; ?></section>
+						<section class="col-md-8 col-sm-4 position-center"><?php require 'views/acercaDe.php'; ?></section>
 					</div>
 				</div>
 			</content>
 		</div>
 		<!-- Button trigger modal -->
 		<div class="mailbox" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-		  	<img src="resources/pictures/buzon1.png" >
+		  	<img src="resources/img/buzon1.png" >
 		</div>
 		<!-- Modal -->
 		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -138,6 +138,5 @@
 	<script src="resources/js/appVisitante.js"></script>
 	<script src="resources/js/plataformas.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
-	<!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script> -->
 </body>
 </html>

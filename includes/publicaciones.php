@@ -27,6 +27,7 @@
     $colors = ["text-red","text-blue","text-darkBlue","text-darkPurple"];
     $bg = ["red","rgb(28, 137, 157)","rgb(6, 51, 136)","rgb(66, 17, 181)"];
 
+    # Mostrar comentarios
     function mostrarCom($id_post){
         global $conn;
         if(true){
@@ -38,7 +39,7 @@
         } 
     }
 
-    //Comentarios
+    # Guardar comentarios
     if(isset($_POST['comment'])){
         $id_post = $_POST['id_post'];
         $name = $_POST['user'];
