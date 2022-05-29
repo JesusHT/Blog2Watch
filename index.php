@@ -16,7 +16,7 @@
 	<div class="container">
 		<!-- Menú de plataformas -->
 		<div class="site-sidebar"> 
-			<nav class="scroller gif"><div id="menu"><!-- Plataformas --> </div></nav>
+			<nav class="scroller gif"><div><?php require 'views/plataformas.php'; ?></div></nav>
 		</div>
 		<!-- Encabezado -->
 		<header>
@@ -42,6 +42,7 @@
 				<div class="tab-content" id="myTabContent">
 					<!-- Pestaña de inicio -->
 					<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+						<section class="col-md-8 col-sm-4 position-center container mb-3"><?php require 'views/filtros.php'; ?></section>
 						<!-- Publicaciones -->
 						<section class="col-md-8 col-sm-4 position-center container">
 						<?php 
@@ -136,7 +137,6 @@
 	</div>
 	<!-- Scripts -->
 	<script src="resources/js/appVisitante.js"></script>
-	<script src="resources/js/plataformas.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
 </body>
 </html>

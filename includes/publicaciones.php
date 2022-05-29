@@ -7,6 +7,48 @@
     $comment = "";
     $plataformas = null;
 
+    //
+    
+    $fecha = 3;
+    $tipo = 3;
+    $relevancia = 3;
+    $sql = "SELECT * FROM post ORDER BY id_post DESC";
+
+	#if determina que las variables post si existe (un valor) 
+	if (isset($_POST['fecha']) && isset($_POST['relevancia']) && isset($_POST['tipo'])) {
+		$fecha = $_POST['fecha']; #dentro de los corchetes estara las variables que definieron en los imput
+	    $tipo = $_POST['tipo'];
+	    $relevancia = $_POST['relevancia'];		
+
+	    if ($fecha == 3 || $fecha == 1) { #if si fecha es igual 3 o igual a 1 
+			switch($tipo){
+				case 1:
+					$sql = "SELECT * FROM post WHERE tipo='1' ORDER BY id_post DESC";
+					break;
+				case 2:
+					$sql = "SELECT * FROM post WHERE tipo='2' ORDER BY id_post DESC";
+					break;
+				case 3:
+					$sql = "SELECT * FROM post ORDER BY id_post DESC"; #poner de manera descendente las publicaciones 
+					break;
+			}	
+	    } else {
+	    	switch($tipo){
+				case 1:
+					$sql = "SELECT * FROM post WHERE tipo='1' ORDER BY id_post ASC";
+					break;
+				case 2:
+					$sql = "SELECT * FROM post WHERE tipo='2' ORDER BY id_post ASC";
+					break;
+				case 3:
+					$sql = "SELECT * FROM post ORDER BY id_post ASC"; #poner de manera descendente las publicaciones 
+					break;
+			}	
+	    }
+	}
+
+    //
+
     global $conn;
     
     $sql = "SELECT * FROM post ORDER BY id_post DESC";
@@ -55,4 +97,6 @@
                 $stmt -> execute();
             }
     }
+
+
 ?>

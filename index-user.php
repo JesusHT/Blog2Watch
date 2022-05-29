@@ -16,7 +16,7 @@
 <body>
 	<div class="container">
 		<div class="site-sidebar"> 
-			<nav class="scroller gif"><div id="menu"><!-- Plataformas --> </div></nav>
+			<nav class="scroller gif"><div><?php require 'views/plataformas.php'; ?></div></nav>
 		</div>
 		<!-- Encabezado -->
 		<header>
@@ -148,7 +148,6 @@
 	</div>
 	<!-- Scripts -->
 	<script src="resources/js/app.js"></script>
-	<script src="resources/js/plataformas.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>	
 </body>
 </html>
