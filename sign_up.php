@@ -65,11 +65,24 @@
 		<div class="modal-dialog">
 		 	<div class="modal-content bg-gray text-white p-2">
 				<div class="modal-header">
-					<h5 class="modal-title fw-bold" id="staticBackdropLabel">TERMINOS</h5>
+					<h5 class="modal-title fw-bold" id="staticBackdropLabel">TÉRMINOS Y CONDICIONES</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
-				<div class="modal-body bg-darkGray">
-					<p><!-- Aquí van los termino --></p>
+				<div class="modal-body bg-darkGray" style="text-align: justify;">
+					<!-- <p>Aquí van los terminos </p> -->
+					Al acceder y utilizar este servicio, usted acepta y accede a estar obligado por los términos y disposiciones de este acuerdo. 
+					Asimismo, al utilizar estos servicios particulares, usted estará sujeto a toda regla o guía de uso correspondiente que se haya publicado para dichos servicios. 
+					Toda participación en este servicio constituirá la aceptación de este acuerdo. Si no acepta cumplir con lo anterior, por favor, no lo utilice.<br><br>
+
+					Esta página web no utiliza ningún método de cobro o pago, su uso es gratuito y la suscripción al servicio no tiene costo monetario alguno. <br><br>
+
+					El producto o servicio al que usted se suscribirá tiene únicamente fines recreativos y de entretenimiento. 
+					La página cuenta con recomendaciones de series y películas con 4 diferentes plataformas de streaming (Netfliz, Disney +, Amazon Prime Video y HBO Max) 
+					para que el usuario decida sobre el texto el contenido para su propio entretenimiento.<br><br>
+					
+					La presente página web puede ser utilizada por todo público, no se incluye contenido violento o sexual por lo que es clasificado para todas las edades. 
+					Blog2Watch se deslinda de los menores de edad que tengan ciertas prohibiciones incluídas nuestra página, cada miembro que se suscribe concuerda en aceptar estos 
+					Términos y Condiciones, asímismo, no tenemos los derechos sobre ningún material audiovisual, únicamente se presentan recomendaciones sobre visualizarlas o no.<br>
 				</div>
 			</div>
 		</div>
