@@ -1,4 +1,3 @@
-<?php require 'includes\publicaciones.php';?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,57 +41,10 @@
 				<div class="tab-content" id="myTabContent">
 					<!-- Pestaña de inicio -->
 					<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+						<!-- filtros -->
 						<section class="col-md-8 col-sm-4 position-center container mb-3"><?php require 'views/filtros.php'; ?></section>
 						<!-- Publicaciones -->
-						<section class="col-md-8 col-sm-4 position-center container">
-						<?php 
-									if($query -> rowCount() > 0) { 
-										foreach($publicaciones as $publicacion) {
-								?>
-											<post class="row border rounded-3 mb-3 position-center" style="border-color: <?php echo $bg[$publicacion -> plataforma - 1]; ?>!important;">
-												<!-- Titulo -->
-												<div class="col-md-12 mt-2"><h3 class="text-white fw-bold"><?php echo  $publicacion-> titulo; ?></h3></div>
-												<!-- Información -->
-												<post-info class="info-post mt-2 col-md-12 text-white"><p><?php echo  $publicacion-> info ?></p></post-info>
-												<!-- Calificación -->
-												<label>
-												<?php
-													for ($i=0; $i < $publicacion -> calificacion; $i++) { 
-														echo '<i class="fa-solid fa-popcorn '. $colors[$publicacion -> plataforma - 1].'"></i>';
-													}
-												?>
-												</label>
-												<!-- Comentarios -->
-												<post-comment class="col-md-12">
-													<div class="col-md-12">
-														<div class="body-comment mb-2 text-white">
-															<?php 
-																$comentarios = mostrarCom($publicacion -> id_post);
-																if (!empty($comentarios)) {
-																	foreach($comentarios as $comentario) {?>
-																		<p class="text-name-comment"><?php echo $comentario -> name; ?></p>
-																		<p class="text-comment"><?php echo $comentario -> comment;  ?></p>
-															<?php 	}
-																}
-															?>
-														</div>
-													</div>
-													<form id="formComment<?php echo  $publicacion -> id_post; ?>">
-														<div class="input-group mb-3">
-															<textarea type="text" name="comment" id="comment<?php echo  $publicacion-> id_post; ?>" class="form-control h-comment bg-dark text-white" placeholder="Escribir comentario..." ></textarea>
-															<button type="button" class="btn btn-outline-secondary submit-comment text-white" onclick="limpiar(<?php echo  $publicacion -> id_post; ?>)" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-																<i class="fa-solid fa-message"></i>
-															</button>
-														</div>
-													</form>
-												</post-comment>
-											</post>
-								<?php
-										} 
-									}
-
-								?>
-						</section>
+						<section class="col-md-8 col-sm-4 position-center container" id="post"></section>
 					</div>
 					<!-- Pestaña acerca de -->
 					<div class="tab-pane fade" id="acercaDe" role="tabpanel" aria-labelledby="acercaDe-tab">
@@ -136,6 +88,7 @@
 		</div>
 	</div>
 	<!-- Scripts -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script src="resources/js/appVisitante.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
 </body>

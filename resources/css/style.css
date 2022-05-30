@@ -29,6 +29,12 @@ body {
 	.bg-green {
 		background-color: #072;
 	}
+	.bg-darkRed {
+		background-color: #3d0000;
+		transition: background-color 1.5s;
+	}.bg-darkRed:hover {
+		background-color: #950101;
+	}
 	
 /* text color */
 	.text-darkPurple{
@@ -194,4 +200,18 @@ div[class="mt-3"] p {
 
 input[name="plataforma"]{
 	display:none;
+}
+
+.form-check-input:checked {
+    background-color: #950101!important;
+    border-color: #fff!important;
+}
+
+
+.accordion-button::after {
+    background-image: url();
+}
+.accordion-button:not(.collapsed)::after {
+    background-image: url();
+    transform: rotate(-180deg);
 }

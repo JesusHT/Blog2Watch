@@ -1,4 +1,39 @@
 /* USUARIO REGISTRADO */
+
+     $(filtros());
+
+     function filtros(){
+          let datos = new FormData(document.getElementById("plataformas"));
+          let datos2 = new FormData(document.getElementById("filtros"));
+
+          for (let [key, value] of datos2.entries()) {
+               datos.append(key, value);
+          }
+
+          fetch('includes/publicaciones.php',{
+               method: "post",
+               body: datos
+          }).then((response) => {
+               return response.json(); 
+          }).then((data) => {
+               document.getElementById("post").innerHTML = data;
+          }).catch(err => console.error(err));
+     }
+
+     function reset(){
+          document.getElementById("plataformas").reset();
+          document.getElementById("filtros").reset();
+          
+          filtros();
+     }
+
+     document.getElementById("submit").addEventListener("click",function(){
+          document.querySelector("#reset").style.display="block";  
+     });
+     document.getElementById("reset").addEventListener("click",function(){
+          document.querySelector("#reset").style.display="none";  
+     });
+
      // Enviar datos de comentarios
      function enviarDatos(id_post){
           let form = new FormData(document.getElementById("formComment"+id_post));
@@ -9,7 +44,7 @@
           }).then((response) => {
                document.getElementById("comment"+id_post).value = "";
           }).then((data) => {
-               /* Funciones */
+               filtros();
           }).catch(err => console.error(err));
      }
 
@@ -71,3 +106,5 @@
           document.getElementById("closed").style.display="none";
            document.getElementById("open").style.display="block";
       });
+
+    

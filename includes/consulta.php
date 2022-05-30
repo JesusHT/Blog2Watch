@@ -2,7 +2,19 @@
 	require 'db.php';
 
 	$tabla = "";
+	$data = "";
 	$sql = "SELECT * FROM users ORDER BY id";
+
+	# Eliminar usuarios
+	if(isset($_POST['eliminar-user'])){
+		$sql = "DELETE FROM users WHERE id = :id";
+		$stmt = $conn -> prepare($sql);
+		$stmt -> bindParam(':id', $_POST['eliminar-user']);
+
+		$data = $stmt -> execute() ? '¡Se elimino exitosamente!' : '¡No se ha podido eliminar!';
+
+		die(json_encode($data));
+	}
 
 	function escape($value) {
 		$return = '';

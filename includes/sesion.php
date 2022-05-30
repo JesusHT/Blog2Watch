@@ -17,7 +17,7 @@
             $user = $results;
         }
     } else {
-        header('Location: ../login.php'); 
+        header('Location: login.php'); 
     }
 
 ?>

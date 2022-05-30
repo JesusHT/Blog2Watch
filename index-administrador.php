@@ -1,4 +1,4 @@
-<?php require 'includes/sesion.php'; require 'includes/administrador.php'; require 'includes/publicaciones.php' ?>
+<?php require 'includes/sesion.php'; ?>
 
 <!DOCTYPE html>
 <html>
@@ -15,10 +15,6 @@
 </head>
 <body>
 	<div class="container">
-		<!-- Menú de plataformas -->
-		<div class="site-sidebar"> 
-			<nav class="scroller gif"><div><?php require 'views/plataformas.php'; ?></div></nav>
-		</div>
 		<!-- Encabezado -->
 		<header>
 			<div class="col-md-8 position-center logo justify-content-center row"><img src="resources\img\logoblog.png"></div>
@@ -53,126 +49,67 @@
 					<!-- Pestaña de inicio  -->	
 					<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 						<section class="col-md-8 col-sm-4 position-center">
-							<post-form class="row border rounded-3 border-white mb-3 position-center mb-3 text-white">
-								<div class="mt-3"> <?php if (!empty($message)) echo $message; ?> </div>
+							<post-form class="row border rounded-3 border-white mb-3 position-center text-white">
 								<!--Form Publicaciones-->
-								<form action="index-administrador.php" method="POST" id="formul"> 
+								<div id="respustaCrear" class="mt-2"></div>
+								<form action="" id="crearPost" class="mt-1"> 
 									<div class="form-floating mb-3">
-										<input type="text" class="form-control bg-dark text-white" id="floatingInput" placeholder="title" name="title" maxlength="100" required>
-										<label for="floatingInput">Título</label>
+										<input type="text" class="form-control bg-dark text-white" id="floatingInputTitulo" placeholder="title" name="title" maxlength="100" required>
+										<label for="floatingInputTitulo">Título</label>
 									</div>
 
 									<div class="form-floating mb-3 ">
-										<textarea type="text" class="form-control bg-dark text-white" style="height: 100px" id="floatingInput" placeholder="info" name="info"  minlength="6" maxlength="500" required></textarea>
-										<label for="floatingInput">Información</label>
+										<textarea type="text" class="form-control bg-dark text-white" style="height: 100px" id="floatingInputInformacion" placeholder="info" name="info"  minlength="6" maxlength="500" required></textarea>
+										<label for="floatingInputInformacion">Información</label>
 									</div>
 
 									<div class="row g-2">
 										<div class="form-floating mb-3 col-6">
-											<select class="form-select bg-dark text-white"  id="floatingSelect" aria-label="Floating label select example" name="plataforma" required>
-												<option selected disabled>Elija una plataforma</option>
+											<select class="form-select bg-dark text-white"  id="floatingSelectPlataforma" aria-label="Floating label select example" name="plataforma" required>
+												<option value="" selected>Elija una plataforma</option>
 												<option value="1">Netflix</option>
 												<option value="2">Amazon Prime</option>
 												<option value="3">Disney+</option>
 												<option value="4">HBO</option>
 												<option value="5">Otro</option>
 											</select>
-											<label for="floatingSelect">Plataforma</label>	
+											<label for="floatingSelectPlataforma">Plataforma</label>	
 										</div>
 
 										<div class="form-floating mb-3 col-6">
-											<select class="form-select bg-dark text-white" id="tipo" id="floatingSelect" aria-label="Floating label select example" name="tipo" required>
-												<option selected disabled>Elija el tipo</option>
+											<select class="form-select bg-dark text-white" id="tipo" id="floatingSelectTipo" aria-label="Floating label select example" name="tipo" required>
+												<option value="" selected >Elija el tipo</option>
 												<option value="2">Pelicula</option>
 												<option value="1">Serie</option>
 											</select>
-											<label for="floatingSelect">Tipo</label>	
+											<label for="floatingSelectTipo">Tipo</label>	
 										</div>
 									</div>
 									<div class="row g-2">
 										<div class="col-6 form-floating mb-3">
-											<input type="number" name="extreno" class="form-control bg-dark text-white" max="2022" id="floatingInput" placeholder="..." required>
-											<label for="floatingInput">Año de extreno</label>
+											<input type="number" name="extreno" class="form-control bg-dark text-white" max="2022" id="floatingInputExtreno" placeholder="..." required>
+											<label for="floatingInputExtreno">Año de extreno</label>
 										</div>
 										<div class="col-6 form-floating mb-3" id="pelicula" style="display: none">
-											<input class="form-control bg-dark text-white" name="duracion" type="text" id="floatingInput" placeholder="...">
-											<label for="floatingInput">Duración</label>
+											<input class="form-control bg-dark text-white" name="duracion" type="text" id="floatingInputDuracion" placeholder="...">
+											<label for="floatingInputDuracion">Duración</label>
 										</div>
 										<div class="col-6 form-floating mb-3" id="serie" style="display: none">
-											<input class="form-control bg-dark text-white" name="duracion2" type="text" id="floatingInput" placeholder="...">
-											<label for="floatingInput">Temporadas</label>
+											<input class="form-control bg-dark text-white" name="duracion2" type="text" id="floatingInputTemporadas" placeholder="...">
+											<label for="floatingInputTemporadas">Temporadas</label>
 										</div>
 									</div>
 									<div class="form-floating mb-3">
 										<input type="number" name="calificacion" min="0" max="5" id="floatingInput" class="form-control bg-dark text-white" placeholder="..." required>
 										<label for="floatingInput">Calificación</label>
 									</div>
-									<input class="btn button-submit2 text-white mb-3 rounded border-white border-1" type="submit" value="Subir">
+									<button type="button" class="btn button-submit2 text-white mb-3 rounded border-white border-1" onclick="crearPost()">Subir</button>
 								</form>
 							</post-form>
 							<!-- publicaciones -->
-							<?php if($query -> rowCount() > 0) { foreach($publicaciones as $publicacion) {?>
-								<post class="row border rounded-3 mb-3 position-center" style="border-color: <?php echo $bg[$publicacion -> plataforma - 1]; ?>!important;">
-									<!-- Titulo -->
-									<div class="col-md-12 mt-2">
-										<div class="row">
-											<div class="col-md-12"> 
-												<div class="row g-2">
-													<div class="col-10">
-														<h3  class="text-white fw-bold"><?php echo $publicacion -> titulo; ?></h3>
-													</div>
-													<div class="col-2 btn-group justify-content-end">
-														<form action="index-administrador.php" method="POST" >
-															<input type="hidden" name="eliminar" value="<?php echo $publicacion -> id_post; ?>">
-															<button type="submit" class="submit bg-dark text-white"><i class="fa-solid fa-trash-can"></i></button>	
-														</form>
-														<form action="" method="POST" id="updatePost<?php echo $publicacion -> id_post; ?>">
-															<input type="hidden" name="editar" value="<?php echo $publicacion -> id_post; ?>">
-															<button type="button" class="submit bg-dark text-white" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="updatePost(<?php echo $publicacion -> id_post; ?>)"><i class="fa-solid fa-pencil"></i></button>
-														</form>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<!-- Información -->
-									<post-info class="info-post mt-2 col-md-12 text-white"><p><?php echo  $publicacion-> info ?></p></post-info>
-									<!-- Calificación -->
-									<label>
-									<?php
-										for ($i=0; $i < $publicacion -> calificacion; $i++) { 
-											echo '<i class="fa-solid fa-popcorn '. $colors[$publicacion -> plataforma - 1].'"></i>';
-										}
-									?>
-									</label>
-									<!-- Comentarios -->
-									<post-comment class="col-md-12">
-										<div class="col-md-12">
-											<div class="body-comment mb-2 text-white">
-												<?php 
-													$comentarios = mostrarCom($publicacion -> id_post);
-													if (!empty($comentarios)) {
-														foreach($comentarios as $comentario) {?>
-															<p class="text-name-comment"><?php echo $comentario -> name; ?></p>
-															<p class="text-comment"><?php echo $comentario -> comment;  ?></p>
-												<?php 	}
-													}
-												?>
-											</div>
-										</div>
-										<form id="formComment<?php echo  $publicacion -> id_post; ?>">
-											<div class="input-group mb-3">
-												<input type="hidden" name="user" id="user" value="<?php echo $user['name']; ?>">
-												<input type="hidden" name="id_post" id="id_post" value="<?php echo  $publicacion -> id_post; ?>">
-												<textarea type="text" name="comment" id="comment<?php echo  $publicacion-> id_post; ?>" class="form-control h-comment bg-dark text-white" placeholder="Escribir comentario..."></textarea>
-												<button type="button" class="btn btn-outline-secondary submit-comment text-white" id="enviar" onclick="enviarDatos(<?php echo  $publicacion -> id_post; ?>)">
-													<i class="fa-solid fa-message"></i>
-												</button>
-											</div>
-										</form>
-									</post-comment>
-								</post>
-							<?php } } ?>
+							<div class="accordion" id="accordionPublications">
+								
+							</div>
 						</section>
 					</div>
 					<!-- Pestaña Acerca De -->
@@ -186,28 +123,7 @@
 					<!-- Pestaña Buzón -->
 					<div class="tab-pane fade" id="buzon" role="tabpanel" aria-labelledby="buzon-tab">
 						<section class="col-md-8 col-sm-4 position-center">
-							<div class="d-flex align-items-start">
-								<div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-									<?php 
-										if($sqlComment -> rowCount() > 0) { 
-											foreach($comments as $buzon) {
-									?>
-										<button class="btn nav-link <?php if($comments[0] -> users == $buzon -> users){echo 'active';}?>" id="user<?php echo $buzon -> id_buzon;?>-tab" data-bs-toggle="pill" data-bs-target="#user<?php echo $buzon -> id_buzon;?>" type="button" role="tab" aria-controls="user-<?php echo $buzon -> id_buzon;?>" aria-selected="<?php if($comments[0] -> users == $buzon -> mensaje){echo 'true';}?>"><?php echo $buzon -> users; ?></button>
-									<?php
-											} 
-									?>
-								</div>
-								<div class="tab-content" id="v-pills-tabContent">
-									<?php 
-											foreach($comments as $buzon) {
-									?>
-										<div class="tab-pane fade <?php if($comments[0] -> users == $buzon -> users){echo 'show active';}?>" id="user<?php echo $buzon -> id_buzon;?>" role="tabpanel" aria-labelledby="user<?php echo $buzon -> id_buzon;?>-tab"><P class="text-white"><?php echo $buzon -> mensaje; ?></P></div>
-									<?php
-											} 
-										}
-									?>
-								</div>
-							</div>
+							
 						</section>
 					</div>
 					<!-- Pestaña Usuarios -->

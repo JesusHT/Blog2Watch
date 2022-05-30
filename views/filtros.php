@@ -1,48 +1,37 @@
 <acordion-filtered class="acordion-item" id="accordionExample">
-	<a class="text-filtered btn text-white" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-controls="collapseOne"><i class="fa-solid fa-filter"></i> FILTROS</a>
-	<div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-		<div class="body-filtered section-filtered fw-bold text-white row hr-filterd mt-2">
-			<section-filtered class="col-md-12 col-sm-12">
-				<form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
-					<div class="row">
-						<div class="col-4 mt-2 mb-3">
-							TIPO<hr>  <!-- sub indices o categorias -->
-							<input type="radio" value="1" name="tipo" id="1" <?php if ($tipo == 1){ echo "checked";}?>> <!-- radio sirve para que el usuario elija una opcion por categoria, php cumple la condicion significa que el radio esta seleccionado  -->
-							<label for="1">Series</label>
-							<br>
-							<input type="radio" value="2" name="tipo" id="2" <?php if ($tipo == 2){ echo "checked";}?>> 
-							<label for="2">Peliculas</label>
-							<br>
-							<input type="radio" value="3" name="tipo" id="3" <?php if ($tipo == 3){ echo "checked";}?>>
-							<label for="3">Todo</label>
-						</div>
-						<div class="col-4 mt-2 mb-3">
-							ORDENAR POR<hr>
-							<input type="radio" value=1 name="relevancia" id="4" <?php if ($relevancia == 1){ echo "checked";}?>> 
-							<label for="4">Más relevante</label>
-							<br>
-							<input type="radio" value="2" name="relevancia" id="5" <?php if ($relevancia == 2){ echo "checked";}?>>
-							<label for="5">Menos relevante</label>
-							<br>
-							<input type="radio" value="3" name="relevancia" id="6" <?php if ($relevancia == 3){ echo "checked";}?>>
-							<label for="6">Todo</label>
-						</div>
-						<div class="col-4 mt-2 mb-3">
-							FECHA DE CARGA<hr>
-							<input type="radio" value="1" name="fecha" id="7" <?php if ($fecha == 1 || $fecha == 3){ echo "checked";}?>>
-							<label for="7">Más reciente</label>
-							<br>
-							<input type="radio" value="2" name="fecha" id="8" <?php if ($fecha == 2){ echo "checked";}?>>
-							<label for="8">Menos reciente</label>
-						</div>
+	<button class="btn text-white" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-controls="collapseOne"><i class="fa-solid fa-filter"></i> FILTROS</button>
+	<div id="collapseOne" class="accordion-collapse collapse mt-2" data-bs-parent="#accordionExample">
+		<form method="POST" id="filtros">
+			<div class="row row g-2 text-white">
+				<div class="col-6 mt-2 mb-3">
+					<p>TIPO</p><hr>  <!-- sub indices o categorias -->
+					<div class="form-check form-switch">
+						<input class="form-check-input" type="radio" name="tipo" id="flexSwitchCheckSeries" value="1">
+						<label class="form-check-label" for="flexSwitchCheckSeries">Series</label>
 					</div>
-					<input type="submit" value="Aplicar"> <!-- boton para que el usuario pueda ver que es lo que quiere -->
-				</form>
-				<form action="" method="POST">
-					<input type="hidden" name="normal">
-					<input type="submit" value="Reiniciar"> <!-- boton para renicia -->
-				</form>
-			</section-filtered>
-		</div>
+					<div class="form-check form-switch">
+						<input class="form-check-input" type="radio" name="tipo" id="flexSwitchCheckPeliculas" value="2">
+						<label class="form-check-label" for="flexSwitchCheckPeliculas">Peliculas</label>
+					</div>
+					<div class="form-check form-switch">
+						<input class="form-check-input" type="radio" name="tipo" id="flexSwitchCheckTodo" value="3" checked>
+						<label class="form-check-label" for="flexSwitchCheckTodo">Todo</label>
+					</div>
+				</div>
+				<div class="col-6 mt-2 mb-3">
+					<p>FECHA DE CARGA</p><hr>
+					<div class="form-check form-switch">
+						<input class="form-check-input" type="radio" name="fecha" id="flexSwitchCheckMasReciente"  value="1" checked>
+						<label class="form-check-label" for="flexSwitchCheckMasReciente">Más reciente</label>
+					</div>
+					<div class="form-check form-switch">
+						<input class="form-check-input" type="radio" name="fecha" id="flexSwitchCheckMenosReciente" value="2">
+						<label class="form-check-label" for="flexSwitchCheckMenosReciente">Menos reciente</label>
+					</div>
+				</div>
+			</div>
+			<button type="button" onclick="filtros()" id="submit" class="btn text-white bg-darkRed bg-gradient"> Aplicar </button>
+		</form>
+		<button type="button" onclick="reset()" id="reset" class="btn text-white bg-darkRed bg-gradient mt-2" style="display:none;"> Borrar </button>
 	</div>
 </acordion-filtered>
