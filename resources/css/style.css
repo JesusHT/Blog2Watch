@@ -35,7 +35,10 @@ body {
 	}.bg-darkRed:hover {
 		background-color: #950101;
 	}
-	
+	.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+		color: #fff;
+		background-color: #3d0000!important;
+	}
 /* text color */
 	.text-darkPurple{
 		color: rgb(66, 17, 181);
@@ -214,4 +217,8 @@ input[name="plataforma"]{
 .accordion-button:not(.collapsed)::after {
     background-image: url();
     transform: rotate(-180deg);
+}
+
+.b-word {
+	word-wrap: break-word;
 }

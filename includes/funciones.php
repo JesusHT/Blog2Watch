@@ -37,7 +37,7 @@
             $results = $records -> fetch(PDO::FETCH_ASSOC);
 
             if (is_countable($results) > 0) {
-                $data = '<p class="bg-red fw-bold text-white p-1">Ya existe una publicación con ese titulo</p>';
+                $data = '<p class="bg-red fw-bold text-white p-1 rounded">Ya existe una publicación con ese titulo</p>';
                 echo json_encode($data);
             } else {
                 $sql = $conn -> prepare('INSERT INTO post (titulo, info, plataforma, tipo, calificacion, extreno, duracion) VALUES (:titulo, :info, :plataforma, :tipo, :calificacion, :extreno, :duracion)');
@@ -50,7 +50,7 @@
                 $sql -> bindParam(':duracion', $duracion);
                 $sql -> bindParam(':calificacion', $calificacion);
             
-                $data = $sql -> execute() ? '<p class="bg-green fw-bold text-white p-1">¡Publicación subida exitoxamente!</p>' : '<p class="bg-red fw-bold text-white p-1">¡No se ha podido subir la publicación!</p>';
+                $data = $sql -> execute() ? '<p class="bg-green fw-bold text-white p-1 rounded">¡Publicación subida exitoxamente!</p>' : '<p class="bg-red fw-bold text-white p-1">¡No se ha podido subir la publicación!</p>';
                 echo json_encode($data);
             }
         }
@@ -61,6 +61,25 @@
 		$sql = $conn -> prepare('DELETE FROM post WHERE id_post = :id_post');
 		$sql-> bindParam(':id_post', $_POST['eliminar']);
 		$sql -> execute();
+        $data = "todo okay";
+        echo json_encode($data);
+	}
+
+    # Eliminar comentarios
+    if(isset($_POST['id_comment'])){
+		$sql = $conn -> prepare('DELETE FROM comments WHERE id_comment = :id_comment');
+		$sql-> bindParam(':id_comment', $_POST['id_comment']);
+		$sql -> execute();
+        $data = "todo okay";
+        echo json_encode($data);
+	}
+
+    #Elminar buzón 
+    if(isset($_POST['id_buzon'])){
+		$sql = $conn -> prepare('DELETE FROM buzon WHERE id_buzon = :id_buzon');
+		$sql-> bindParam(':id_buzon', $_POST['id_buzon']);
+		$sql -> execute();
+        
         $data = "todo okay";
         echo json_encode($data);
 	}

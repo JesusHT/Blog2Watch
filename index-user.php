@@ -14,6 +14,7 @@
 </head>
 <body>
 	<div class="container">
+		<!-- Plataformas -->
 		<div class="site-sidebar"> 
 			<nav class="scroller gif"><div><?php require 'views/plataformas.php'; ?></div></nav>
 		</div>

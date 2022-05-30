@@ -15,6 +15,10 @@
 </head>
 <body>
 	<div class="container">
+		<!-- Plataformas -->
+		<div class="site-sidebar"> 
+			<nav class="scroller gif"><div><?php require 'views/plataformas.php'; ?></div></nav>
+		</div>
 		<!-- Encabezado -->
 		<header>
 			<div class="col-md-8 position-center logo justify-content-center row"><img src="resources\img\logoblog.png"></div>
@@ -49,66 +53,81 @@
 					<!-- Pestaña de inicio  -->	
 					<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 						<section class="col-md-8 col-sm-4 position-center">
-							<post-form class="row border rounded-3 border-white mb-3 position-center text-white">
-								<!--Form Publicaciones-->
-								<div id="respustaCrear" class="mt-2"></div>
-								<form action="" id="crearPost" class="mt-1"> 
-									<div class="form-floating mb-3">
-										<input type="text" class="form-control bg-dark text-white" id="floatingInputTitulo" placeholder="title" name="title" maxlength="100" required>
-										<label for="floatingInputTitulo">Título</label>
-									</div>
+							<ul class="nav nav-pills mb-3 justify-content-end" id="pills-tab" role="tablist">
+								<li class="nav-item" role="presentation">
+									<button class="nav-link active" id="pills-homeAdmin-tab" data-bs-toggle="pill" data-bs-target="#pills-homeAdmin" type="button" role="tab" aria-controls="pills-homeAdmin" aria-selected="true"><i class="fa-solid fa-house"></i></button>
+								</li>
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" id="pills-verComo-tab" data-bs-toggle="pill" data-bs-target="#pills-verComo" type="button" role="tab" aria-controls="pills-verComo" aria-selected="false" title="Ver como usuario"><i class="fa-solid fa-eye"></i></button>
+								</li>
+							</ul>
+							<div class="tab-content" id="pills-tabContent">
+								<div class="tab-pane fade show active" id="pills-homeAdmin" role="tabpanel" aria-labelledby="pills-homeAdmin-tab">
+										<post-form class="row border rounded-3 border-white mb-3 position-center text-white">
+										<!--Form Publicaciones-->
+										<div id="respustaCrear" class="mt-2"></div>
+										<form action="" id="crearPost" class="mt-1"> 
+											<div class="form-floating mb-3">
+												<input type="text" class="form-control bg-dark text-white" id="floatingInputTitulo" placeholder="title" name="title" maxlength="100" required>
+												<label for="floatingInputTitulo">Título</label>
+											</div>
 
-									<div class="form-floating mb-3 ">
-										<textarea type="text" class="form-control bg-dark text-white" style="height: 100px" id="floatingInputInformacion" placeholder="info" name="info"  minlength="6" maxlength="500" required></textarea>
-										<label for="floatingInputInformacion">Información</label>
-									</div>
+											<div class="form-floating mb-3 ">
+												<textarea type="text" class="form-control bg-dark text-white" style="height: 100px" id="floatingInputInformacion" placeholder="info" name="info"  minlength="6" maxlength="500" required></textarea>
+												<label for="floatingInputInformacion">Información</label>
+											</div>
 
-									<div class="row g-2">
-										<div class="form-floating mb-3 col-6">
-											<select class="form-select bg-dark text-white"  id="floatingSelectPlataforma" aria-label="Floating label select example" name="plataforma" required>
-												<option value="" selected>Elija una plataforma</option>
-												<option value="1">Netflix</option>
-												<option value="2">Amazon Prime</option>
-												<option value="3">Disney+</option>
-												<option value="4">HBO</option>
-												<option value="5">Otro</option>
-											</select>
-											<label for="floatingSelectPlataforma">Plataforma</label>	
-										</div>
+											<div class="row g-2">
+												<div class="form-floating mb-3 col-6">
+													<select class="form-select bg-dark text-white"  id="floatingSelectPlataforma" aria-label="Floating label select example" name="plataforma" required>
+														<option value="" selected>Elija una plataforma</option>
+														<option value="1">Netflix</option>
+														<option value="2">Amazon Prime</option>
+														<option value="3">Disney+</option>
+														<option value="4">HBO</option>
+														<option value="5">Otro</option>
+													</select>
+													<label for="floatingSelectPlataforma">Plataforma</label>	
+												</div>
 
-										<div class="form-floating mb-3 col-6">
-											<select class="form-select bg-dark text-white" id="tipo" id="floatingSelectTipo" aria-label="Floating label select example" name="tipo" required>
-												<option value="" selected >Elija el tipo</option>
-												<option value="2">Pelicula</option>
-												<option value="1">Serie</option>
-											</select>
-											<label for="floatingSelectTipo">Tipo</label>	
-										</div>
+												<div class="form-floating mb-3 col-6">
+													<select class="form-select bg-dark text-white" id="tipo" id="floatingSelectTipo" aria-label="Floating label select example" name="tipo" required>
+														<option value="" selected >Elija el tipo</option>
+														<option value="2">Pelicula</option>
+														<option value="1">Serie</option>
+													</select>
+													<label for="floatingSelectTipo">Tipo</label>	
+												</div>
+											</div>
+											<div class="row g-2">
+												<div class="col-6 form-floating mb-3">
+													<input type="number" name="extreno" class="form-control bg-dark text-white" max="2022" id="floatingInputExtreno" placeholder="..." required>
+													<label for="floatingInputExtreno">Año de extreno</label>
+												</div>
+												<div class="col-6 form-floating mb-3" id="pelicula" style="display: none">
+													<input class="form-control bg-dark text-white" name="duracion" type="text" id="floatingInputDuracion" placeholder="...">
+													<label for="floatingInputDuracion">Duración</label>
+												</div>
+												<div class="col-6 form-floating mb-3" id="serie" style="display: none">
+													<input class="form-control bg-dark text-white" name="duracion2" type="text" id="floatingInputTemporadas" placeholder="...">
+													<label for="floatingInputTemporadas">Temporadas</label>
+												</div>
+											</div>
+											<div class="form-floating mb-3">
+												<input type="number" name="calificacion" min="0" max="5" id="floatingInput" class="form-control bg-dark text-white" placeholder="..." required>
+												<label for="floatingInput">Calificación</label>
+											</div>
+											<button type="button" class="btn button-submit2 text-white mb-3 rounded border-white border-1" onclick="crearPost()">Subir</button>
+										</form>
+									</post-form>
+									<!-- publicaciones -->
+									<div class="accordion" id="accordionPublications">
+										
 									</div>
-									<div class="row g-2">
-										<div class="col-6 form-floating mb-3">
-											<input type="number" name="extreno" class="form-control bg-dark text-white" max="2022" id="floatingInputExtreno" placeholder="..." required>
-											<label for="floatingInputExtreno">Año de extreno</label>
-										</div>
-										<div class="col-6 form-floating mb-3" id="pelicula" style="display: none">
-											<input class="form-control bg-dark text-white" name="duracion" type="text" id="floatingInputDuracion" placeholder="...">
-											<label for="floatingInputDuracion">Duración</label>
-										</div>
-										<div class="col-6 form-floating mb-3" id="serie" style="display: none">
-											<input class="form-control bg-dark text-white" name="duracion2" type="text" id="floatingInputTemporadas" placeholder="...">
-											<label for="floatingInputTemporadas">Temporadas</label>
-										</div>
-									</div>
-									<div class="form-floating mb-3">
-										<input type="number" name="calificacion" min="0" max="5" id="floatingInput" class="form-control bg-dark text-white" placeholder="..." required>
-										<label for="floatingInput">Calificación</label>
-									</div>
-									<button type="button" class="btn button-submit2 text-white mb-3 rounded border-white border-1" onclick="crearPost()">Subir</button>
-								</form>
-							</post-form>
-							<!-- publicaciones -->
-							<div class="accordion" id="accordionPublications">
-								
+								</div>
+								<div class="tab-pane fade" id="pills-verComo" role="tabpanel" aria-labelledby="pills-verComo-tab">
+									<?php require 'views/verComo.php'; ?>
+								</div>
 							</div>
 						</section>
 					</div>
@@ -123,13 +142,17 @@
 					<!-- Pestaña Buzón -->
 					<div class="tab-pane fade" id="buzon" role="tabpanel" aria-labelledby="buzon-tab">
 						<section class="col-md-8 col-sm-4 position-center">
-							
+							<div class="d-flex align-items-start" >
+								<div class="nav flex-column nav-pills col-2" id="v-pills-tab" role="tablist" aria-orientation="vertical"></div>
+								<div class="tab-content col-10 p-2" id="v-pills-tabContent"></div>
+							</div>
 						</section>
 					</div>
 					<!-- Pestaña Usuarios -->
 					<div class="tab-pane fade" id="users" role="tabpanel" aria-labelledby="users-tab">
 						<section class="col-md-8 col-sm-4 position-center">
 							<input type="text" name="busqueda" id="busqueda" placeholder="Buscar..." class="bg-dark text-white">
+							<button type="button" onclick="actualizarUsers()" class="btn submit bg-dark text-white border-radius border-white" title="Actualizar usuarios"><i class="fa-solid fa-arrows-rotate"></i></button>
 							<table class="table table-dark mt-3">
 								<thead>
 									<tr>

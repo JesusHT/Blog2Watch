@@ -7,6 +7,27 @@
 
 	# Eliminar usuarios
 	if(isset($_POST['eliminar-user'])){
+		$records = $conn->prepare('SELECT * FROM users WHERE id = :id');
+        $records->bindParam(':id', $_POST['eliminar-user']);
+        $records->execute();
+        $results = $records->fetch(PDO::FETCH_ASSOC);
+
+        $user = null;
+
+        if (count($results) > 0) {
+            $user = $results;
+        }
+
+		$sql = "DELETE FROM buzon WHERE users = :users";
+		$stmt = $conn -> prepare($sql);
+		$stmt -> bindParam(':users', $user['name']);
+		$stmt -> execute();
+
+		$sql = "DELETE FROM comments WHERE name = :name";
+		$stmt = $conn -> prepare($sql);
+		$stmt -> bindParam(':name', $user['name']);
+		$stmt -> execute();
+
 		$sql = "DELETE FROM users WHERE id = :id";
 		$stmt = $conn -> prepare($sql);
 		$stmt -> bindParam(':id', $_POST['eliminar-user']);
