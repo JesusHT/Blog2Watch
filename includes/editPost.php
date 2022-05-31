@@ -63,10 +63,6 @@
                                 </div>
 
                             </div>
-                            <div class="form-floating mb-3">
-                                <input type="number" name="calificacion" value="'. $results['calificacion'] .'" min="0" max="5" id="floatingInput" class="form-control bg-dark text-white" placeholder="..." required>
-                                <label for="floatingInput">Calificación</label>
-                            </div>
                             <button type="button" class="btn button-submit2 text-white rounded border-white border-1" onclick="postUpdate('. $results['id_post'] .')">Actualizar</button>
                         </form>';
             } else {

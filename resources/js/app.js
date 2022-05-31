@@ -34,6 +34,20 @@
           document.querySelector("#reset").style.display="none";  
      });
 
+     // mostrar reaciones 
+     function mostrarReacciones(reacciones){
+          let datos = new FormData(document.getElementById("formReactions"+reacciones));
+     
+          fetch('includes/funciones.php', {
+               method: "post",
+               body: datos
+          }).then((response) => {
+          return response.json();
+          }).then((data) => {
+               filtros();
+          }).catch(err => console.error(err));
+     }
+
      // Enviar datos de comentarios
      function enviarDatos(id_post){
           let form = new FormData(document.getElementById("formComment"+id_post));

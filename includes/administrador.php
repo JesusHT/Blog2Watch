@@ -47,7 +47,7 @@
 							</div>
 							<div id="flush-collapse'. $publicacion -> id_post.'" class="accordion-collapse collapse" aria-labelledby="flush-heading'. $publicacion -> id_post.'" data-bs-parent="#accordionFlushPublications">
 								<div class="accordion-body">
-									<p class="text-white"><b>Plataforma: </b>'. $plataforma[$publicacion -> plataforma - 1] .'<br><b>Tipo: </b>'. $tipo[$publicacion -> tipo - 1] .'<br><b>Calificación: </b>'. $publicacion -> calificacion .'/5</p>
+									<p class="text-white"><b>Plataforma: </b>'. $plataforma[$publicacion -> plataforma - 1] .'<br><b>Tipo: </b>'. $tipo[$publicacion -> tipo - 1] .'<br><b>Fecha de extreno: '. $publicacion -> extreno.'</b><br><b>Calificación: </b>'. $publicacion -> calificacion .'/5</p>
 									<p class="text-white text-justify"><b>Información: </b>'. $publicacion -> info.'</p>
 									<p class="text-white text-justify"><b>Comentarios: </b></p><hr style="background:'. $bg[$publicacion -> plataforma - 1] .';height: 5px; ">';
 			$comentarios = mostrarCom($publicacion -> id_post);

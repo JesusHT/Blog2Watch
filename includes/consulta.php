@@ -28,6 +28,11 @@
 		$stmt -> bindParam(':name', $user['name']);
 		$stmt -> execute();
 
+		$sql = "DELETE FROM reactions WHERE id_user = :id_user";
+		$stmt = $conn -> prepare($sql);
+		$stmt -> bindParam(':id_user', $_POST['eliminar-user']);
+		$stmt -> execute();
+
 		$sql = "DELETE FROM users WHERE id = :id";
 		$stmt = $conn -> prepare($sql);
 		$stmt -> bindParam(':id', $_POST['eliminar-user']);

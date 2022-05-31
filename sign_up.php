@@ -68,7 +68,7 @@
 					<h5 class="modal-title fw-bold" id="staticBackdropLabel">TÉRMINOS Y CONDICIONES</h5>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
-				<div class="modal-body bg-darkGray" style="text-align: justify;">
+				<div class="modal-body bg-darkGray txt-justify">
 					<!-- <p>Aquí van los terminos </p> -->
 					Al acceder y utilizar este servicio, usted acepta y accede a estar obligado por los términos y disposiciones de este acuerdo. 
 					Asimismo, al utilizar estos servicios particulares, usted estará sujeto a toda regla o guía de uso correspondiente que se haya publicado para dichos servicios. 

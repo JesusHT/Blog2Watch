@@ -222,3 +222,7 @@ input[name="plataforma"]{
 .b-word {
 	word-wrap: break-word;
 }
+
+.pl-2 {
+	padding-left: 2%;
+}

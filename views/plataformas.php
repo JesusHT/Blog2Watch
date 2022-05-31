@@ -12,5 +12,5 @@
     <label for="hbo"><img src="resources/img/hbo.gif" alt="Gif HBO"></label><br>
 
     <input type="radio" name="plataforma" id="todo" value="5" onclick="filtros()" checked>
-    <label for="todo">Todo</label>
+    <label for="todo" ><img src="resources/img/todo.gif" alt="Gif HBO"></label>
 </form>

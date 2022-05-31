@@ -11,6 +11,7 @@ function crearPost(){
    }).then((data) => {
        document.getElementById("respustaCrear").innerHTML = data
        mostrarPost();
+       filtros();
    }).catch(err => console.error(err));
 }
 
@@ -85,6 +86,21 @@ function postUpdate(editar){
     }).catch(err => console.error(err));
 }
 
+// mostrar reaciones 
+function mostrarReacciones(reacciones){
+    let datos = new FormData(document.getElementById("formReactions"+reacciones));
+
+    fetch('includes/funciones.php', {
+         method: "post",
+         body: datos
+    }).then((response) => {
+        return response.json();
+    }).then((data) => {
+        filtros();
+        mostrarPost();
+    }).catch(err => console.error(err));
+}
+
 // Mostrar duracion
 var tipo = document.querySelector('#tipo');
 
@@ -136,6 +152,7 @@ function userDelete(id_user){
         mostrarPost();
         obtener_registros();
         actualizar();
+        filtros()
     }).catch(err => console.error(err));
 }
 
@@ -144,7 +161,7 @@ function actualizarUsers(){
     obtener_registros();
 }
 
-// Mostrar post ver como
+// Mostrar post ver como    
 $(filtros());
 
 function filtros(){
@@ -275,3 +292,4 @@ function deleteBuzon(buzon){
         actualizar();
     }).catch(err => console.error(err));
 }
+
