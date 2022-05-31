@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-05-2022 a las 20:05:09
+-- Tiempo de generación: 31-05-2022 a las 08:35:12
 -- Versión del servidor: 10.4.22-MariaDB
 -- Versión de PHP: 8.1.2
 
@@ -87,6 +87,19 @@ INSERT INTO `post` (`id_post`, `titulo`, `info`, `plataforma`, `tipo`, `califica
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `reactions`
+--
+
+CREATE TABLE `reactions` (
+  `id_reaction` int(11) NOT NULL,
+  `id_post` int(3) NOT NULL,
+  `id_user` int(3) NOT NULL,
+  `calificacion` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `users`
 --
 
@@ -132,6 +145,12 @@ ALTER TABLE `post`
   ADD PRIMARY KEY (`id_post`);
 
 --
+-- Indices de la tabla `reactions`
+--
+ALTER TABLE `reactions`
+  ADD PRIMARY KEY (`id_reaction`);
+
+--
 -- Indices de la tabla `users`
 --
 ALTER TABLE `users`
@@ -157,7 +176,13 @@ ALTER TABLE `comments`
 -- AUTO_INCREMENT de la tabla `post`
 --
 ALTER TABLE `post`
-  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_post` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+
+--
+-- AUTO_INCREMENT de la tabla `reactions`
+--
+ALTER TABLE `reactions`
+  MODIFY `id_reaction` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `users`

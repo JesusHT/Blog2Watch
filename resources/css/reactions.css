@@ -1,5 +1,5 @@
 
-input[name="calificacion"] {
+p[class="clasificacion"]  input[type="radio"] {
     display: none;
 }
   
@@ -8,7 +8,6 @@ input[name="calificacion"] {
     unicode-bidi: bidi-override;
 }
 
-  
 p[class="clasificacion"] label:hover, label:hover ~ label {
     color: #950101;
 }
