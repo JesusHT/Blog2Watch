@@ -86,7 +86,6 @@
 														<option value="2">Amazon Prime</option>
 														<option value="3">Disney+</option>
 														<option value="4">HBO</option>
-														<option value="5">Otro</option>
 													</select>
 													<label for="floatingSelectPlataforma">Plataforma</label>	
 												</div>
@@ -103,7 +102,7 @@
 											<div class="row g-2">
 												<div class="col-6 form-floating mb-3">
 													<input type="number" name="extreno" class="form-control bg-dark text-white" max="2022" id="floatingInputExtreno" placeholder="..." required>
-													<label for="floatingInputExtreno">Año de extreno</label>
+													<label for="floatingInputExtreno">Año de estreno</label>
 												</div>
 												<div class="col-6 form-floating mb-3" id="pelicula" style="display: none">
 													<input class="form-control bg-dark text-white" name="duracion" type="text" id="floatingInputDuracion" placeholder="...">
