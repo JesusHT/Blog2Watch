@@ -18,23 +18,25 @@
 			</header>
 			<!-- Contenido -->
 			<section class="col-lg-4 position-center bg-gray p-4 rounded">
-				<?php 
-					require 'includes\users.php';
-					
-					if (!empty($message)) { echo  $message;	}
-				?>
-				<form method="POST" action="recuperar.php">
+				<div id="noexiste">
+
+				</div>
+				<form method="POST" id="formRecuperar">
 					<div class="form-floating mt-2 mb-3">
-						<input class="align-input form-control" type="text" name="user"  maxlength="20" minlength="5" required id="floatingInput" placeholder="username">
+						<input class="align-input form-control" type="text" name="user"  maxlength="20" minlength="5" required id="floatingInputUser" placeholder="username">
 						<label for="floatingInput"><span><i class="fa-solid fa-user"></i></span> Usuario</label>
 					</div>
-					<input type="submit" class="button-submit text-white align-input mb-3" value="Continuar"> 
+					<input type="button" id="enviar" style="display: block;" class="button-submit text-white align-input mb-3" value="Continuar" onclick="recuperar()"> 
 				</form>
-				<p class="text-white text-center">¿No tienes una cuenta? <a href="sign_up.php">Regístrate</a><br><a href="login.php">Regresar</a></p>
+				<div id="resultado">
+
+				</div>
+				<p class="text-white text-center">¿No tienes una cuenta? <a href="sign_up.php">Regístrate</a><br><a href="login.php">Regresar al login</a></p>
 			</section>
 		</content>
 	</div>
 	<!-- Scripts -->
 	<script src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+	<script src="resources/js/recuperar.js"></script>
 </body>
 </html>

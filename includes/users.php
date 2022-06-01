@@ -79,11 +79,10 @@
 		}
 
 	# Recuperación de contraseña
-	} else if (isset($_POST['correo']) && isset($_POST['respuesta']) && isset($_POST['pregunta']) && isset($_POST['user2'])){
-		$user = $_POST['user2'];
-		$question = $_POST['pregunta'];
+	} else if (isset($_POST['correo']) && isset($_POST['respuesta']) && isset($_POST['user2'])){
 		$respuesta = $_POST['respuesta'];
 		$correo = $_POST['correo'];
+		$user = $_POST['user2'];
 
 		if (!empty($correo) && !empty($user) && !empty($respuesta)) {
 			$validar = validarUsuario($user, $conn);
@@ -190,17 +189,15 @@
 			      	$password = password_hash($newpass, PASSWORD_BCRYPT);
 			      	$stmt -> bindParam(':pass', $password);
 
-			      	if ($stmt -> execute()) {
-						$_COOKIE['user'] = null;
-					  	$message = '<p class="bg-green fw-bold text-white p-1">¡Se ha enviado a tu correo tu nueva contraseña!</p>';
-					} else {
-					 	$message = '<p class="bg-red fw-bold text-white p-1">¡No se ha podido restablecer la contraseña!</p>';
-					}
+					$data = $stmt -> execute() ? true : false;
+					die(json_encode($data));
 			    } else {
-			      	$message = '<p class="bg-red fw-bold text-white p-1">Datos incorrectos</p>';
+			      	$data = false;
+					die(json_encode($data));
 			    }
 		    } else {
-		      	$message = '<p class="bg-red fw-bold text-white p-1">El usuario no existe. <a href="sign_up.php">Regístrate</a></p>';
+		      	$data = false;
+				die(json_encode($data));
 		    }
 		}
 	}
@@ -212,23 +209,31 @@
 		if (!empty($user)) {
 			$validar = validarUsuario($user, $conn);
 
-			if (is_countable($validar) > 0) {
-				setcookie("user", $user);
-				header("Location: validacion.php");
+			if (!empty($validar)) {
+				$preguntas = ['¿Cómo rayos lograste ver esta pregunta?','¿Cuál es el nombre de mi mascota?','¿Cuál es mi canción favorita?','¿Cuál es mi videojuego favorito?'];
+				$data = '<form method="POST" id="formValidar">
+						<input type="hidden" name="user2" value="'.$validar['name'].'">
+							<div class="form-floating mb-3">
+								<input class="align-input form-control" type="email" name="correo" required id="floatingEmail" placeholder="...">
+								<label for="floatingEmail"><i class="fa-solid fa-envelope"></i> Correo</label>
+							</div>
+							<div class="form-floating mb-3">
+								<input class="align-input form-control" type="text" value="'. $preguntas[$validar['pregunta']] .'" id="floatingPregunta" placeholder="..." readonly="readonly">
+								<label for="floatingPregunta"><i class="fa-solid fa-block-question"></i> Pregunta de seguridad</label>				
+							</div>
+							<div class="form-floating mb-3">
+								<input class="align-input form-control" type="text" name="respuesta" minlength="3" maxlength="20" required id="floatingResponse" placeholder="...">
+								<label for="floatingResponse"><i class="fa-thin fa-comment-minus"></i> Respuesta</label>
+							</div>
+							<input class="button-submit align-input mb-3 text-white" type="button" value="Continuar" onclick="validar()"> 
+						</form>';
+
+				die(json_encode($data));
 			} else {
-				$message = '<p class="bg-red fw-bold text-white p-1">El usuario no existe. <a href="sign_up.php">Regístrate</a></p>';
+				$data = false;
+				die(json_encode($data));
 			}
 		}
-	}
-
-	# Validamos que la COOKIE se haya creado correctamente para poder mostrar la pregunta de seguridad sin necesidad de que el usuario la ponga, esto por el posible escenario donde se le olvidé la pregunta.
-	if (isset($_COOKIE['user'])) {  
-		$validar = validarUsuario($_COOKIE['user'], $conn);
-
-		$preguntas = ['¿Cómo rayos lograste ver esta pregunta?','¿Cuál es el nombre de mi mascota?','¿Cuál es mi canción favorita?','¿Cuál es mi videojuego favorito?'];
-
-		$users = null;
-		$users = (is_countable($validar) > 0) ? $validar : null;
 	}
 
 	# Cambiar contraseña
@@ -314,3 +319,4 @@
 	}
 	
 ?>
+
