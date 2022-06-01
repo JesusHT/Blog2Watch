@@ -9,43 +9,39 @@
     $message = "";
     $editar = "";
     $duracion = "";
-    $duracion2 = "";
     $duracion3 = "";
     $extreno = "";
     $id_post = "";
+    $calificacion = 0;
     $data = "";
 
     # Crear publicaciones
-    if (isset($_POST['title']) && isset($_POST['info']) && isset($_POST['plataforma']) && isset($_POST['tipo']) && isset($_POST['duracion']) || isset($_POST['duracion2']) && isset( $_POST['extreno'])) {
+    if (isset($_POST['title']) && isset($_POST['info']) && isset($_POST['plataforma']) && isset($_POST['tipo']) && isset( $_POST['extreno']) && isset($_POST['duracion'])) {
         $titulo = $_POST['title'];
         $info = $_POST['info'];
         $plataforma = $_POST['plataforma'];
         $type = $_POST['tipo'];
         $extreno = $_POST['extreno'];
+        $duracion = $_POST['duracion'];
 
-        if (isset($_POST['duracion'])) {
-            $duracion = $_POST['duracion'];
-        } else {
-            $duracion = $_POST['duracion2'];
-        }
-
-        if (!empty($titulo) && !empty($info) && !empty($plataforma) && !empty($type) && !empty($extreno) && !empty($duracion) || !empty($duracion2)){
+        if (!empty($titulo) && !empty($info) && !empty($plataforma) && !empty($type) && !empty($extreno) && !empty($duracion)){
             $records = $conn -> prepare('SELECT * FROM post WHERE titulo = :titulo');
             $records -> bindParam(':titulo', $titulo);
             $records -> execute();
             $results = $records -> fetch(PDO::FETCH_ASSOC);
 
-            if (is_countable($results) > 0) {
+            if (!empty($results)) {
                 $data = '<p class="bg-red fw-bold text-white p-1 rounded">Ya existe una publicación con ese titulo</p>';
                 echo json_encode($data);
             } else {
-                $sql = $conn -> prepare('INSERT INTO post (titulo, info, plataforma, tipo, extreno, duracion) VALUES (:titulo, :info, :plataforma, :tipo, :extreno, :duracion)');
+                $sql = $conn -> prepare('INSERT INTO post (titulo, info, plataforma, tipo, calificacion, extreno, duracion) VALUES (:titulo, :info, :plataforma, :tipo, :calificacion, :extreno, :duracion)');
         
                 $sql -> bindParam(':titulo', $titulo);
                 $sql -> bindParam(':info', $info);
                 $sql -> bindParam(':plataforma', $plataforma);
                 $sql -> bindParam(':tipo', $type);
                 $sql -> bindParam(':extreno', $extreno);
+                $sql -> bindParam(':calificacion', $calificacion);
                 $sql -> bindParam(':duracion', $duracion);
             
                 $data = $sql -> execute() ? '<p class="bg-green fw-bold text-white p-1 rounded">¡Publicación subida exitoxamente!</p>' : '<p class="bg-red fw-bold text-white p-1">¡No se ha podido subir la publicación!</p>';
@@ -56,9 +52,14 @@
 
     # Eliminar publicaciones
 	if(isset($_POST['eliminar'])){
+        $sql = $conn -> prepare('DELETE FROM comments WHERE id_post = :id_post');
+		$sql-> bindParam(':id_post', $_POST['eliminar']);
+		$sql -> execute();
+
 		$sql = $conn -> prepare('DELETE FROM post WHERE id_post = :id_post');
 		$sql-> bindParam(':id_post', $_POST['eliminar']);
 		$sql -> execute();
+        
         $data = "todo okay";
         echo json_encode($data);
 	}
@@ -116,7 +117,7 @@
         $query -> execute();
         $query = $query -> fetch(PDO::FETCH_ASSOC);
 
-        if (is_countable($query) > 0) {
+        if (!empty($query) > 0) {
             $sql = $conn -> prepare('UPDATE reactions SET calificacion = :calificacion WHERE id_reaction = :id_reaction');
 		
 	        $sql -> bindParam(':calificacion', $_POST['calificacion']);

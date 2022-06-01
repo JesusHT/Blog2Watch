@@ -13,7 +13,7 @@
             $plataforma = ["Netflix","Amazon","Disney+","HBO","Otro"];
             $tipo = ["¿Cómo conseguiste que saliera esta opción?","Serie","Pelicula"];
 
-            if (is_countable($results) > 0) {
+            if (!empty($results)) {
                 $data = '<div class="mt-2" id="respuetaUpdate"></div>
                         <form id="formUpdate"> 
                             <input type="hidden" name="id_editar" value="'. $results['id_post'] .'">

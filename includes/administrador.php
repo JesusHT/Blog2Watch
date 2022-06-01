@@ -47,13 +47,13 @@
 							</div>
 							<div id="flush-collapse'. $publicacion -> id_post.'" class="accordion-collapse collapse" aria-labelledby="flush-heading'. $publicacion -> id_post.'" data-bs-parent="#accordionFlushPublications">
 								<div class="accordion-body">
-									<p class="text-white"><b>Plataforma: </b>'. $plataforma[$publicacion -> plataforma - 1] .'<br><b>Tipo: </b>'. $tipo[$publicacion -> tipo - 1] .'<br><b>Fecha de extreno: '. $publicacion -> extreno.'</b><br><b>Calificación: </b>'. $publicacion -> calificacion .'/5</p>
+									<p class="text-white"><b>Plataforma: </b>'. $plataforma[$publicacion -> plataforma - 1] .'<br><b>Tipo: </b>'. $tipo[$publicacion -> tipo - 1] .'<br><b>Fecha de extreno: '. $publicacion -> extreno.'</b><br><b>Calificación: </b>'. round($publicacion -> calificacion, 2, PHP_ROUND_HALF_UP) .'/5</p>
 									<p class="text-white text-justify"><b>Información: </b>'. $publicacion -> info.'</p>
 									<p class="text-white text-justify"><b>Comentarios: </b></p><hr style="background:'. $bg[$publicacion -> plataforma - 1] .';height: 5px; ">';
 			$comentarios = mostrarCom($publicacion -> id_post);
 				if (!empty($comentarios)) {
 					foreach($comentarios as $comentario) {
-						$data .= '    <form id="deleteComment'. $publicacion -> id_post + $comentario -> id_comment .'">
+						$data .= '    <form id="deleteComment'. $comentario -> id_comment .'">
 										<input type="hidden" name="id_comment" value="'.  $comentario -> id_comment . '">
 										<div class="row g-2">
 											<div class="col-10">
@@ -61,7 +61,7 @@
 												<p class="text-white text-comment">'.  $comentario -> comment .'</p>
 											</div>
 											<div class="col-2 btn-group  justify-content-end">
-												<button type="button" class="submit bg-dark text-white" onclick="deleteComment('. $publicacion -> id_post + $comentario -> id_comment .')"><i class="fa-solid fa-trash-can"></i></button>	
+												<button type="button" class="submit bg-dark text-white" onclick="deleteComment('. $comentario -> id_comment .')"><i class="fa-solid fa-trash-can"></i></button>	
 											</div>
 										</div>
 									</form>';

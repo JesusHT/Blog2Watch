@@ -2,7 +2,7 @@
 function crearPost(){
     let datos = new FormData(document.getElementById("crearPost"));
 
-    fetch('includes/funciones.php', {
+    fetch('../includes/funciones.php', {
         method: "post",
         body: datos
    }).then((response) => {
@@ -20,7 +20,7 @@ $(mostrarPost());
 function mostrarPost(){
     let datos = true;
 
-    fetch('includes/administrador.php', {
+    fetch('../includes/administrador.php', {
         method: "post",
         body: datos
    }).then((response) => {
@@ -34,13 +34,14 @@ function mostrarPost(){
 function deletePost(eliminar){
     let datos = new FormData(document.getElementById("formDelete"+eliminar));
 
-    fetch('includes/funciones.php', {
+    fetch('../includes/funciones.php', {
         method: "post",
         body: datos
    }).then((response) => {
         return response.json();
    }).then((data) => {
        mostrarPost();
+       filtros();
    }).catch(err => console.error(err));
 }
 
@@ -48,7 +49,7 @@ function deletePost(eliminar){
 function updatePost(id_post){
     let publicacion = new FormData(document.getElementById("updatePost"+id_post));
 
-    fetch('includes/editPost.php', {
+    fetch('../includes/editPost.php', {
          method: "post",
          body: publicacion
     }).then((response) => {
@@ -61,13 +62,14 @@ function updatePost(id_post){
 function deleteComment(comment){
     let datos = new FormData(document.getElementById("deleteComment"+comment));
 
-    fetch('includes/funciones.php', {
+    fetch('../includes/funciones.php', {
          method: "post",
          body: datos
     }).then((response) => {
         return response.json();
     }).then((data) => {
         mostrarPost();
+        filtros();
     }).catch(err => console.error(err));
 }
 
@@ -75,7 +77,7 @@ function deleteComment(comment){
 function postUpdate(editar){
     let datos = new FormData(document.getElementById("formUpdate"));
 
-    fetch('includes/funciones.php', {
+    fetch('../includes/funciones.php', {
          method: "post",
          body: datos
     }).then((response) => {
@@ -90,7 +92,7 @@ function postUpdate(editar){
 function mostrarReacciones(reacciones){
     let datos = new FormData(document.getElementById("formReactions"+reacciones));
 
-    fetch('includes/funciones.php', {
+    fetch('../includes/funciones.php', {
          method: "post",
          body: datos
     }).then((response) => {
@@ -101,27 +103,13 @@ function mostrarReacciones(reacciones){
     }).catch(err => console.error(err));
 }
 
-// Mostrar duracion
-var tipo = document.querySelector('#tipo');
-
-tipo.addEventListener("change", function(){
-    let selectipo = this.options[tipo.selectedIndex];
-    if (selectipo.value == 1) {
-        document.querySelector("#pelicula").style.display="none";
-        document.querySelector("#serie").style.display="block";
-    }else if(selectipo.value == 2) {
-        document.querySelector("#serie").style.display="none";
-        document.querySelector("#pelicula").style.display="block";  
-    }
-});
-
 // Usuarios 
 
 $(obtener_registros());
 
 function obtener_registros(name){
     $.ajax({
-        url: 'includes/consulta.php',
+        url: '../includes/consulta.php',
         type: 'POST',
         dataType: 'html',
         data: { name: name },
@@ -143,7 +131,7 @@ $(document).on('keyup', '#busqueda', function(){
 function userDelete(id_user){
     let user = new FormData(document.getElementById("userDelete"+id_user));
 
-    fetch('includes/consulta.php', {
+    fetch('../includes/consulta.php', {
         method: "post",
         body: user
     }).then((response) => {
@@ -172,7 +160,7 @@ function filtros(){
         datos.append(key, value);
     }
 
-    fetch('includes/publicaciones.php',{
+    fetch('../includes/publicaciones.php',{
         method: "post",
         body: datos
     }).then((response) => {
@@ -200,7 +188,7 @@ document.getElementById("reset").addEventListener("click",function(){
 function enviarDatos(id_post){
     let form = new FormData(document.getElementById("formComment"+id_post));
 
-    fetch('includes/publicaciones.php', {
+    fetch('../includes/publicaciones.php', {
          method: "post",
          body: form
     }).then((response) => {
@@ -214,7 +202,7 @@ function enviarDatos(id_post){
 function newPreguntas(){
     let formP = new FormData(document.getElementById("newPregunta"));
 
-    fetch('includes/users.php', {
+    fetch('../includes/users.php', {
             method: "post",
             body: formP
     }).then((response) => {
@@ -231,7 +219,7 @@ function newPreguntas(){
 function newPassword(){
     let form = new FormData(document.getElementById("newPassword"));
 
-    fetch('includes/users.php', {
+    fetch('../includes/users.php', {
             method: "post",
             body: form
     }).then((response) => {
@@ -249,7 +237,7 @@ $(buzon());
 function buzon(){
     let data = true;
 
-    fetch('includes/buzon.php', {
+    fetch('../includes/buzon.php', {
             method: "post",
             body: data
     }).then((response) => {
@@ -263,7 +251,7 @@ $(buzon2());
 function buzon2(){
     let data = true;
 
-    fetch('includes/buzon2.php', {
+    fetch('../includes/buzon2.php', {
             method: "post",
             body: data
     }).then((response) => {
@@ -283,7 +271,7 @@ function actualizar(){
 function deleteBuzon(buzon){
     let datos = new FormData(document.getElementById("formDeleteBuzon"+buzon));
 
-    fetch('includes/funciones.php', {
+    fetch('../includes/funciones.php', {
          method: "post",
          body: datos
     }).then((response) => {

@@ -10,7 +10,7 @@
                datos.append(key, value);
           }
 
-          fetch('includes/publicaciones.php',{
+          fetch('../includes/publicaciones.php',{
                method: "post",
                body: datos
           }).then((response) => {
@@ -38,7 +38,7 @@
      function mostrarReacciones(reacciones){
           let datos = new FormData(document.getElementById("formReactions"+reacciones));
      
-          fetch('includes/funciones.php', {
+          fetch('../includes/funciones.php', {
                method: "post",
                body: datos
           }).then((response) => {
@@ -52,7 +52,7 @@
      function enviarDatos(id_post){
           let form = new FormData(document.getElementById("formComment"+id_post));
 
-          fetch('includes/publicaciones.php', {
+          fetch('../includes/publicaciones.php', {
                method: "post",
                body: form
           }).then((response) => {
@@ -66,7 +66,7 @@
      function newPreguntas(){
           let formP = new FormData(document.getElementById("newPregunta"));
 
-          fetch('includes/users.php', {
+          fetch('../includes/users.php', {
                method: "post",
                body: formP
           }).then((response) => {
@@ -83,7 +83,7 @@
      function newPassword(){
           let form = new FormData(document.getElementById("newPassword"));
 
-          fetch('includes/users.php', {
+          fetch('../includes/users.php', {
                method: "post",
                body: form
           }).then((response) => {
@@ -99,7 +99,7 @@
      // Enviar datos de Buzon
      function enviarDatosBuzon(){
           let buzon = new FormData(document.getElementById("enviarDatosBuzon"));
-          fetch('includes/users.php',{
+          fetch('../includes/users.php',{
                method: "post",
                body: buzon
           }).then((response) =>{

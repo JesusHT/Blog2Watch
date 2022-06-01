@@ -134,10 +134,10 @@
                    if ($contar -> id_post == $publicacion -> id_post) {
                         $contVotos++;
                         $cont = $cont + $contar -> calificacion;
-                        $calificacion = $cont/5;
+                        $calificacion = $cont/$contVotos;
                     }
                 }
-                $data .= '<p class="pl-2"><b>Votos: </b>'. $contVotos .' <b>Calificación: </b>'. $calificacion .'/5</p>';
+                $data .= '<p class="pl-2"><b>Votos: </b>'. $contVotos .' <b>Calificación: </b>'. round($calificacion, 2, PHP_ROUND_HALF_UP) .'/5</p>';
                 
                 $querypost = $conn -> prepare( "UPDATE post SET calificacion = {$calificacion} WHERE id_post = {$publicacion -> id_post}");
                 $querypost -> execute(); 

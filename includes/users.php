@@ -1,12 +1,8 @@
 <?php 
 
 	require 'db.php';
-
-	use PHPMailer\PHPMailer\PHPMailer;
-
-	require 'phpmailer/PHPMailer/src/PHPMailer.php';
-	require 'phpmailer/PHPMailer/src/SMTP.php';
-
+	require 'PHPMailer/clsMail.php';
+	
 	# Declaramos las variables que vamos a utilizar, esto con el fin de que no aparezca el warning de variable indefinida.
 	$user = "";
 	$pass = "";
@@ -38,7 +34,7 @@
 
 			$validar = validarUsuario($user, $conn);
 
-		    if (is_countable($validar) > 0) {
+		    if (!empty($validar)) {
 		    	$message = '<p class="bg-red fw-bold text-white p-1">El usuario ya existe</p>';
 		    } else {
 			    $sql = "INSERT INTO users (name, pass, pregunta, respuesta) VALUES (:name, :pass, :pregunta, :respuesta)";
@@ -65,13 +61,13 @@
 		if (!empty($user) && !empty($pass)) {
 			$validar = validarUsuario($user, $conn);
 
-		    if (is_countable($validar) > 0 && password_verify($pass, $validar['pass'])) {
+		    if (!empty($validar) && password_verify($pass, $validar['pass'])) {
 		      	if ($validar['name'] == 'Administrador'){ 
 		      		$_SESSION['user_id'] = $validar['id'];
-		     		header("Location: index-administrador.php"); 
+		     		header("Location: Administrador"); 
 		      	} else { 
 		      		$_SESSION['user_id'] = $validar['id']; 
-		     		header("Location: index-user.php");
+		     		header("Location: Usuario");
 		      	}
 		    } else {
 				$message = '<p class="bg-red fw-bold text-white p-1">El usuario y/o la contraseña son incorrectos</p>'; 
@@ -87,7 +83,7 @@
 		if (!empty($correo) && !empty($user) && !empty($respuesta)) {
 			$validar = validarUsuario($user, $conn);
 
-		    if (is_countable($validar) > 0) {
+		    if (!empty($validar)) {
 			    if ($validar['respuesta'] == $respuesta) {
 			      	$sql = "UPDATE users SET pass = :pass WHERE id = :id";
 			      	$stmt = $conn -> prepare($sql);
@@ -101,95 +97,76 @@
 						$newpass .= substr($pattern, mt_rand(0,$max), 1);
 					}
 
-					$mail = new PHPMailer(true);
-
-					//Server settings
-					$mail->SMTPDebug = 2;                                 // Enable verbose debug output
-					$mail->isSMTP();                                      // Set mailer to use SMTP
-					$mail->Host = 'smtp.gmail.com';                   	  // Specify main and backup SMTP servers
-					$mail->SMTPAuth = true;                               // Enable SMTP authentication
-					$mail->Username = 'blogtwowatch@gmail.com';           // SMTP username
-					$mail->Password = '!Root123';                         // SMTP password
-					$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-					$mail->Port = 587;                                    // TCP port to connect to
-		
-					//Recipients
-					$mail->setFrom('blogtwowatch@gmail.com', 'Blog2Watch');
-					$mail->addAddress($correo, $user);
-		
-					//Content
-					$mail->isHTML(true);                                  // Set email format to HTML
-					$mail->Subject = 'Recuperar password';
-					$mail->Body    = '<!DOCTYPE html>
+					$mailSend = new clsMail();
+					$bodyHTML='<!DOCTYPE html>
 					<html lang="es">
 					<head>
-						<meta charset="UTF-8">
-						<meta http-equiv="X-UA-Compatible" content="IE=edge">
-						<meta name="viewport" content="width=device-width, initial-scale=1.0">
-						<style>
-							img {
-								display: block;
-								margin: 0 auto;
-								height: auto;
-								width: 250px;
-							}
-							section, footer {
-								padding: 0px 15%;
-								margin-bottom: 30px;
-							}
-							p {text-align: justify;
-							color:#fff;}
-							button {
-								display: block;
-								margin: 0 auto;
-								padding: 0.375rem 0.75rem;
-								cursor: pointer;
-								background-color: rgb(5,0,95);
-								transition: background-color 2s;
-							} button:hover{
-							  background-color: rgb(62, 63, 132); 
-							}
-							a {
-								color: #fff;
-								font-size: 1.3em;
-							}
-							p span {
-								background-color: rgb(5,0,95);
-								padding: 0.375rem 0.75rem;
-							}
-							.text-center{
-								text-align: center;
-							}
-						</style>
+					<meta charset="UTF-8">
+					<meta http-equiv="X-UA-Compatible" content="IE=edge">
+					<meta name="viewport" content="width=device-width, initial-scale=1.0">
+					<style>
+						img {
+						display: block;
+						margin: 0 auto;
+						height: auto;
+						width: 250px;
+						}
+						section, footer {
+						padding: 0px 15%;
+						margin-bottom: 30px;
+						}
+						p {text-align: justify;
+						color:#fff;}
+						button {
+						display: block;
+						margin: 0 auto;
+						padding: 0.375rem 0.75rem;
+						cursor: pointer;
+						background-color: rgb(5,0,95);
+						transition: background-color 2s;
+						} button:hover{
+						background-color: rgb(62, 63, 132); 
+						}
+						a {
+						color: #fff;
+						font-size: 1.3em;
+						}
+						p span {
+						background-color: rgb(5,0,95);
+						padding: 0.375rem 0.75rem;
+						}
+						.text-center{
+						text-align: center;
+						}
+					</style>
 					</head>
 					<body style="margin: 0px; padding: 0px; background-color: #202124; color: #fff; font-family:Verdana, Geneva, Tahoma, sans-serif;">
-						<header>
-							<img src="https://i.ibb.co/dMWmZGV/logo.png" alt="Logo Blog2Watch" >
-						</header>
-						<section>
-							<article>
-								<p>Hola, '. $user .'</p>
-								<p>Queremos que sigas disfrutando de nuestro contenido, así que hemos generado una contraseña temporal que podrás cambiar en cualquier momento en el apartado de "Perfil" de nuestro Blog.  </p>
-								<p>Nueva contraseña: '. $newpass .'</p>
-								<p class="text-center"><span>'. $newpass .'</span></p>
-							</article>
-							<article>
-								<button><a href="">Seguir al login</a></button>
-							</article>
-						</section>
-						<footer>
-							<p><b>Aviso De Privacidad:</b> En Blog2Watch respetamos tu privacidad, por ello jámas almacenaremos en nuestra base de datos el correo proporcionado para la recuperación de contraseña, de igual manera jámas te pediremos ningun dato personal.</p>
-							<p><b>Aviso Importante:</b> Este correo electrónico y/o el material adjunto es para uso exclusivo de la persona a la que expresamente se le ha enviado, el cual contiene información confidencial. Si usted ha recibido esta transmisión por error, notifíquenos inmediatamente en nuestros correo electrónico oficial y borre dicho mensaje y sus anexos en caso de contenerlos. Se hace de su conocimiento por medio de esta nota, que cualquier divulgación, copia, distribución o toma de cualquier acción derivada de la información confiada en esta transmisión, queda estrictamente prohibido. </p>
-						</footer><br><br>
+					<header>
+						<img src="https://i.ibb.co/dMWmZGV/logo.png" alt="Logo Blog2Watch" >
+					</header>
+					<section>
+						<article>
+						<p>Hola, '. $user .'</p>
+						<p>Queremos que sigas disfrutando de nuestro contenido, así que hemos generado una contraseña temporal que podrás cambiar en cualquier momento en el apartado de "Perfil" de nuestro Blog.  </p>
+						<p>Nueva contraseña: '. $newpass .'</p>
+						<p class="text-center"><span>'. $newpass .'</span></p>
+						</article>
+						<article>
+						<button><a href="">Seguir al login</a></button>
+						</article>
+					</section>
+					<footer>
+						<p><b>Aviso De Privacidad:</b> En Blog2Watch respetamos tu privacidad, por ello jámas almacenaremos en nuestra base de datos el correo proporcionado para la recuperación de contraseña, de igual manera jámas te pediremos ningun dato personal.</p>
+						<p><b>Aviso Importante:</b> Este correo electrónico y/o el material adjunto es para uso exclusivo de la persona a la que expresamente se le ha enviado, el cual contiene información confidencial. Si usted ha recibido esta transmisión por error, notifíquenos inmediatamente en nuestros correo electrónico oficial y borre dicho mensaje y sus anexos en caso de contenerlos. Se hace de su conocimiento por medio de esta nota, que cualquier divulgación, copia, distribución o toma de cualquier acción derivada de la información confiada en esta transmisión, queda estrictamente prohibido. </p>
+					</footer><br><br>
 					</body>
 					</html>';
-		
-					$mail->send();
+					$enviado = $mailSend->metEnviar("Blog2Watch",$user, $correo, "Restablecer contraseña", $bodyHTML);
 
 			      	$password = password_hash($newpass, PASSWORD_BCRYPT);
 			      	$stmt -> bindParam(':pass', $password);
-
-					$data = $stmt -> execute() ? true : false;
+                    $stmt -> execute();
+					$data = ($enviado) ? true : false;
 					die(json_encode($data));
 			    } else {
 			      	$data = false;

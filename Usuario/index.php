@@ -1,4 +1,4 @@
-<?php require 'includes\sesion.php';?>
+<?php require '../includes/sesion.php';?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,22 +6,22 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.1.1/css/all.css">
-	<link rel="stylesheet" type="text/css" href="resources\css\stylePlataformas.css">
-	<link rel="stylesheet" type="text/css" href="resources\css\reactions.css">
-	<link rel="stylesheet" type="text/css" href="resources\css\styleNav.css">
-  	<link rel="stylesheet" type="text/css" href="resources\css\style.css">
-	<link rel="icon" type="image/png" href="resources\img\icono.ico">
+	<link rel="stylesheet" type="text/css" href="../resources/css/stylePlataformas.css">
+	<link rel="stylesheet" type="text/css" href="../resources/css/reactions.css">
+	<link rel="stylesheet" type="text/css" href="../resources/css/styleNav.css">
+  	<link rel="stylesheet" type="text/css" href="../resources/css/style.css">
+	<link rel="icon" type="image/png" href="../resources/img/icono.ico">
 	<title>Blog2Watch</title>
 </head>
 <body>
 	<div class="container">
 		<!-- Plataformas -->
 		<div class="site-sidebar"> 
-			<nav class="scroller gif"><div><?php require 'views/plataformas.php'; ?></div></nav>
+			<nav class="scroller gif"><div><?php require '../views/plataformas.php'; ?></div></nav>
 		</div>
 		<!-- Encabezado -->
 		<header>
-			<div class="col-md-8 position-center logo row justify-content-center"><img src="resources\img\logoblog.png"></div>
+			<div class="col-md-8 position-center logo row justify-content-center"><img src="../resources/img/logoblog.png" ></div>
 		</header>
 		<!-- Menú -->
 		<nav class="nav justify-content-center navbar-dark mb-3 col-md-8 position-center row">
@@ -45,18 +45,18 @@
 						<!-- Pestaña de inicio -->
 						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 							<!-- Filtros -->
-							<section class="col-md-8 col-sm-4 position-center container mb-3"><?php require 'views/filtros.php'; ?></section>
+							<section class="col-md-8 col-sm-4 position-center container mb-3"><?php require '../views/filtros.php'; ?></section>
 							<!-- Publicaciones -->
 							<section class="col-md-8 col-sm-4 position-center" id="post"></section>
 						</div>
 						<!-- Pestaña Acerca De -->
 						<div class="tab-pane fade" id="acercaDe" role="tabpanel" aria-labelledby="acercaDe-tab">
-							<section class="col-md-8 col-sm-4 position-center"><?php require 'views\acercaDe.php';?></section>	
+							<section class="col-md-8 col-sm-4 position-center"><?php require '../views/acercaDe.php';?></section>	
 						</div>
 
 						<!-- Pestaña perfil -->
 						<div class="tab-pane fade" id="perfil" role="tabpanel" aria-labelledby="perfil-tab">
-							<section class="col-md-8 col-sm-4 position-center"><?php require 'views\profile.php';?></section>
+							<section class="col-md-8 col-sm-4 position-center"><?php require '../views/profile.php';?></section>
 						</div>
 
 					</div>
@@ -65,8 +65,8 @@
 		</content>
 		<!-- Button trigger modal (BUZON) -->
 		<div class="mailbox" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-			<a class="mailbox2"><img src="resources/img/buzon.png" id="open"></a>
-			<a id="mostrar"><img src="resources/img/buzon1.png" id="closed"></a>
+			<a class="mailbox2"><img src="../resources/img/buzon.png" id="open"></a>
+			<a id="mostrar"><img src="../resources/img/buzon1.png" id="closed"></a>
 		</div>
 		<!-- Modal BUZON -->
 		<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -101,7 +101,7 @@
 	</div>
 	<!-- Scripts -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="resources/js/app.js"></script>
+	<script src="../resources/js/app.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>	
 </body>
 </html>

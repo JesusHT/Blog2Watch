@@ -26,7 +26,7 @@
 	<div class="col-4">
 		<div class="row">
 			<div class="card bg-dark" style="width: 18rem;">
-			  	<img src="resources/img/perfil.png" class="card-img-top perfil-img d-block mx-auto">
+			  	<img src="../resources/img/perfil.png" class="card-img-top perfil-img d-block mx-auto">
 			  	<div class="card-body">
 			   		<p class="card-text text-center text-white"><?php if (!empty($user)){ echo $user['name']; } ?></p>
 			  	</div>
@@ -96,7 +96,7 @@
 		    </div>
 		  </div>
 		</div>
-		<button type="button" class="btn text-white bg-darkPurple bg-gradient" onclick="location.href='includes/logout.php'">
+		<button type="button" class="btn text-white bg-darkPurple bg-gradient" onclick="location.href='../includes/logout.php'">
 			<i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar sesión
 		</button>
 	</div>

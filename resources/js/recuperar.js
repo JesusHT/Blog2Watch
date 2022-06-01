@@ -30,7 +30,7 @@ function validar(){
     }).then((data) => {
         console.log(data);
         if (data == false) {
-            window.alert("Ah ocurrido un error, asegurese de que haya ingresado los datos correctamente");
+            document.getElementById("noexiste").innerHTML = '<p class="bg-red fw-bold text-white p-1">¡Ah ocurrido un error, asegurese de haber ingresado los datos correctos!</p>';
         } else {
             document.getElementById("formValidar").reset();
             document.getElementById("noexiste").innerHTML = '<p class="bg-green fw-bold text-white p-1">¡Se ha enviado a tu correo tu nueva contraseña!</p>';

@@ -1,4 +1,4 @@
-<?php require 'includes\users.php';?>
+<?php require './includes/users.php';?>
 
 <!DOCTYPE html>
 <html>
@@ -23,17 +23,17 @@
 				<?php if (!empty($message)) echo $message;?>
 				<form method="POST" action="login.php">
 					<div class="form-floating mb-3">
-						<input class="align-input form-control" type="text" name="name" required id="floatingInput" placeholder="username">
+						<input class="align-input form-control" type="text" name="name" required id="floatingInputUser" placeholder="...">
 						<label for="floatingInput"><span><i class="fa-solid fa-user"></i></span> Usuario</label>
 					</div>
 					<div class="form-floating mb-2">
-						<input class="align-input form-control" type="password" name="pass" id="pass" id="floatingPassword" placeholder="..." required>
+						<input class="align-input form-control" type="password" name="pass" id="pass" placeholder="..." required>
 						<label for="floatingPassword"><span><i class="fa-solid fa-lock"></i></span> Contraseña</label>
 					</div>
 					<input type="checkbox" id="eye" name="eye" class="mb-3"><label for="eye" class="text-white p-1">Mostrar contraseña</label>
 					<input class="button-submit  align-input mb-3 text-white" type="submit" value="Ingresar"> 
 				</form>
-				<p class="text-center text-white">¿No tienes una cuenta? <a href="sign_up.php">Regístrate</a><br>¿Se te olvidó tu contraseña? <a href="recuperar.php">Recuperar</a></p>
+				<p class="text-center text-white">¿No tienes una cuenta? <a href="sign_up.php">Regístrate</a><br>¿Se te olvidó tu contraseña? <a href="recuperar.html">Recuperar</a></p>
 			</section>
 		</content>
 	</div>
