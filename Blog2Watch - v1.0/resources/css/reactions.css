@@ -1,0 +1,18 @@
+p[class="clasificacion"]  input[type="radio"] {
+    display: none;
+}
+  
+.clasificacion {
+    direction: rtl;
+    unicode-bidi: bidi-override;
+}
+
+  
+p[class="clasificacion"] label:hover, label:hover ~ label {
+    color: #950101;
+}
+  
+input[name="calificacion"]:checked ~ label {
+    color: #950101;
+}
+
